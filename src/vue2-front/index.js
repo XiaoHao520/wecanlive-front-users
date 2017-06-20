@@ -7,7 +7,8 @@ import VueRouter from 'vue-router';
 /** Relative Imports */
 import './assets/css/style.less';
 
-import ImageViewer from './plugins/image-viewer';
+// TODO: 需要改写成移动端版本
+// import ImageViewer from './plugins/image-viewer';
 import mixins from './mixins';
 
 // 应用内配置文件
@@ -18,71 +19,6 @@ import routes from '../components/routes';
 
 export default {
   install(Vue, options = {}) {
-    // -------------------------
-    // Vue Plugins
-    // -------------------------
-    Vue.use(VueHtml5Editor, {
-      // global component name
-      name: 'vue-html5-editor',
-      // default en-us, en-us and zh-cn are built-in
-      language: 'zh-cn',
-      // the modules you don't want
-      hiddenModules: [],
-      // keep only the modules you want and customize the order.
-      // can be used with hiddenModules together
-      visibleModules: [
-        'text',
-        'color',
-        'font',
-        'align',
-        //'list',
-        'link',
-        'unlink',
-        'tabulation',
-        'image',
-        'hr',
-        'eraser',
-        //'undo',
-        'full-screen',
-      ],
-      // extended modules
-      modules: {
-        // omit,reference to source code of build-in modules
-      },
-      // config image module
-      image: {
-        // Url of the server-side,default null and convert image to base64
-        server: `${config.api_root}/image/`,
-        // the name for file field in multipart request
-        fieldName: 'image',
-        // max file size
-        sizeLimit: 512 * 1024,
-        // default true,if set to true,the image will resize by localResizeIMG (https://github.com/think2011/localResizeIMG)
-        compress: true,
-        // follows are options of localResizeIMG
-        width: 1600,
-        height: 1600,
-        quality: 80,
-        // handle response data，return image url
-        uploadHandler(responseText) {
-          // default accept json data like  {ok:false,msg:'unexpected'} or {ok:true,data:'image url'}
-          const json = JSON.parse(responseText);
-          return json.image;
-//        if (!json.ok) {
-//          console.error(json.msg);
-//        } else {
-//          return json.data;
-//        }
-        },
-      },
-    });
-    // 如果传入 config.skip_vue_beauty = true，不加载 VueBeauty 库
-    if (!config.skip_vue_beauty) Vue.use(VueAntd);
-    Vue.use(ImageViewer);
-    Vue.use(Notifier);
-    Vue.use(GeoPicker);
-    Vue.use(ListViewDialog);
-
     // -------------------------
     // Vue Mixin
     // -------------------------
@@ -148,14 +84,7 @@ export default {
 
     Vue.use(VueRouter);
 
-    const router = new VueRouter({
-      routes: [{
-        path: '/',
-        name: 'main',
-        component: require('./components/main/App.vue'),
-        children: routes,
-      }],
-    });
+    const router = new VueRouter({ routes });
 
     // router.beforeEach((to, from, next) => {
     //   // noReuse 模式，启用组件内参数跳转自动 reload
@@ -194,6 +123,7 @@ export default {
       // if (window.afterRoutePromise) {
       //   window.afterRoutePromise.resolve();
       // }
+      console.log(route);
       document.body.className = classNames;
       console.log(`>>> ${route.name}`);
     });

@@ -16,14 +16,15 @@ export default {
   // 缺省 underscore
   api_model_adjust: 'underscore',
   // 平台名称
-  platform_name: 'Vue2 Admin',
+  platform_name: 'WeCanLive',
   // 版本号
   version: '1.0',
   // 初始路由
   init_route: { name: 'main_user_list' },
   // 初始登录的处理 function(vm)
-  on_login(vm) {
-    vm.$router.replace(this.init_route);
+  on_login() {
+    const vm = this;
+    vm.$router.replace(vm.config.init_route);
   },
   // 右上角的按钮链接
   tooltip_menus: [

@@ -27,6 +27,9 @@ export default {
 
     // 保证 this.$el 已经插入文档
     this.$nextTick(() => {
+      // [config] html_title
+      document.title = vm.html_title
+      // 调用 reload 函数加载数据
       if (vm.reload) vm.reload();
       // vm.clearDialogs();
     });
@@ -153,6 +156,21 @@ export default {
         vm.current_user = null;
         vm.$router.push({ name: 'passport_login' });
       });
+    },
+    /**
+     * 让一个值转换成一个返回 then 的函数
+     * @param func
+     * @param params
+     * @returns {Promise}
+     */
+    thenify(func, params = []) {
+      const vm = this;
+      // 如果 func 不是函数，直接 resolve
+      if (!func instanceof Function) return Promise.resolve(func);
+      // 否则看执行结果
+      const result = func.apply(vm, params);
+      if (result && result.then instanceof Function) return result;
+      return Promise.resolve(result);
     },
     /**
      * 替换 vm 对象为 this 执行一个函数作为方法调用并返回结果

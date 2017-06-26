@@ -46,26 +46,26 @@
     left: 0;
     right: 0;
     padding-top: 36*@px;
-    height: 126*@px;
+    height: 90*@px;
     &.not-status-bar {
       padding-top: 0;
     }
     .title {
       display: block;
-      height: 126*@px;
-      font-size: 48*@px;
+      height: 90*@px;
+      font-size: 38*@px;
       color: #fff;
-      line-height: 126*@px;
+      line-height: 90*@px;
       text-align: center;
       margin: 0;
       font-weight: normal;
     }
     .btn-back-warpper {
-      width: 110*@px;
+      width: 90*@px;
       position: absolute;
       left: 0;
       bottom: 0;
-      height: 126*@px;
+      height: 90*@px;
       .btn-back {
         display: block;
         position: absolute;
@@ -76,8 +76,8 @@
         -ms-transform: translate(-50%, -50%);
         -o-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
-        width: 55*@px;
-        height: 55*@px;
+        width: 44*@px;
+        height: 44*@px;
         background: url("../../assets/image/A/nav_back@3x.png") 50% 50% no-repeat;
         -webkit-background-size: 100%;
         background-size: 100%;

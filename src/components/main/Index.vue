@@ -1,5 +1,6 @@
 <template>
   <div>
+    <header-common></header-common>
     <router-link to="/hot">hot</router-link>
   </div>
 </template>

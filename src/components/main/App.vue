@@ -34,18 +34,19 @@
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: 1;
     transition: all .8s cubic-bezier(.55,0,.1,1);
   }
   .slide-left-enter,
   .slide-right-leave-active {
     opacity: 0;
-    -webkit-transform: translate3d(150*@px, 0, 0);
-    transform: translate3d(150*@px, 0, 0);
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
   }
   .slide-left-leave-active,
   .slide-right-enter {
     opacity: 0;
-    -webkit-transform: translate3d(-150*@px, 0, 0);
-    transform: translate3d(-150*@px, 0, 0);
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
   }
 </style>

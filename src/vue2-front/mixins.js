@@ -403,5 +403,13 @@ export default {
     echo(obj) {
       console.log(obj);
     },
+    getContext(key) {
+      const $root = this.$root;
+      return $root.context[key];
+    },
+    setContext(key, value) {
+      const $root = this.$root;
+      $root.$set($root.context, key, value);
+    },
   },
 };

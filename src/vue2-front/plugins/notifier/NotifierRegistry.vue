@@ -2,255 +2,198 @@
 
   <div class="notifiers">
 
-    <!--<div class="block-notify">-->
-    <!--<div class="ant-notification" v-for="(item, i) in itemsNotify">-->
-    <!--<div class="ant-notification-notice ant-notification-notice-closable">-->
-    <!--<div class="ant-notification-notice-content">-->
-    <!--<div class="ant-notification-notice-content ">-->
-    <!--<div class="ant-notification-notice-message">-->
-    <!--{{ item.title }}-->
-    <!--</div>-->
-    <!--<div class="ant-notification-notice-description">-->
-    <!--{{ item.content }}-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<a tabindex="0" @click="dismissNotify(i);"-->
-    <!--class="ant-notification-notice-close">-->
-    <!--<span class="ant-notification-notice-close-x"></span>-->
-    <!--</a>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-
-    <!--<div class="ant-modal-wrap block-modal-form"-->
-    <!--v-for="(item, i) in itemsConfirm">-->
-    <!--<div role="document" class="ant-modal" style="width: 520px;">-->
-    <!--<div class="ant-modal-content">-->
-    <!--<button class="ant-modal-close" @click="confirmAction(false, i)">-->
-    <!--<span class="ant-modal-close-x"></span>-->
-    <!--</button>-->
-    <!--<div class="ant-modal-header">-->
-    <!--<div class="ant-modal-title">{{item.title}}</div>-->
-    <!--</div>-->
-    <!--<div class="ant-modal-body" v-html="item.content"></div>-->
-    <!--<div class="ant-modal-footer">-->
-    <!--<button type="button"-->
-    <!--@click="confirmAction(false, i)"-->
-    <!--class="ant-btn ant-btn-ghost ant-btn-lg">-->
-    <!--<span>取消</span>-->
-    <!--</button>-->
-    <!--<button type="button"-->
-    <!--@click="confirmAction(true, i)"-->
-    <!--class="ant-btn ant-btn-primary ant-btn-lg">-->
-    <!--<span>确认</span>-->
-    <!--</button>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div tabindex="0" style="width: 0; height: 0; overflow: hidden;">sentinel</div>-->
-    <!--</div>-->
-    <!--</div>-->
-
-    <div v-if="modalFormData"
-         class="ant-modal-wrap block-modal-form">
-      <div role="document" class="ant-modal" style="width: 520px;">
-        <div class="ant-modal-content">
-          <button class="ant-modal-close" @click="modalFormAction(false)">
-            <span class="ant-modal-close-x"></span>
-          </button>
-          <div class="ant-modal-header">
-            <div class="ant-modal-title">{{modalFormData.title}}</div>
+    <div class="block-notify">
+      <transition name="quick-slide-fade" appear>
+        <div class="row" v-for="item in itemsNotify">
+          <div
+            class="'alert alert-' + item.type + ' col-sm-offset-3 col-md-offset-4 col-xs-12 col-sm-6 col-md-4 m-b-5' alert">
+            {{ item.content }}
           </div>
-          <div class="ant-modal-body">
-            <div class="ant-form ant-form-horizontal">
-              <div class="ant-row" v-for="field in modalFormData.fields">
-                <div class="ant-col-6 ant-form-item-label">
-                  <label>
-                    <span v-if="field.required" style="color: red">*</span>
-                    {{field.label}}
-                  </label>
-                </div>
-                <!-- type: text -->
-                <div class="ant-col-18 ant-form-item-control" v-if="field.type == 'text'">
-                  <input type="text"
-                         class="ant-input"
-                         :placeholder="field.placeholder"
-                         :disabled="field.disabled"
-                         :readonly="field.readonly"
-                         v-model="field.value"
-                         @keypress.enter="modalFormAction(true)"/>
-                </div>
-                <!-- type: password -->
-                <div class="ant-col-18 ant-form-item-control" v-else-if="field.type == 'password'">
-                  <input type="password"
-                         class="ant-input"
-                         :placeholder="field.placeholder"
-                         :disabled="field.disabled"
-                         :readonly="field.readonly"
-                         v-model="field.value"
-                         @keypress.enter="modalFormAction(true)"/>
-                </div>
-                <!-- type: number -->
-                <div class="ant-col-18 ant-form-item-control" v-else-if="field.type == 'number'">
-                  <input type="number"
-                         class="ant-input"
-                         :placeholder="field.placeholder"
-                         :disabled="field.disabled"
-                         :readonly="field.readonly"
-                         v-model="field.value"
-                         @keypress.enter="modalFormAction(true)"/>
-                </div>
-                <!-- type: date -->
-                <div class="ant-col-18 ant-form-item-control" v-else-if="field.type == 'date'">
-                  <v-date-picker v-model="field.value"
-                                 format="yyyy-MM-dd"></v-date-picker>
-                </div>
-                <!-- type: datetime -->
-                <div class="ant-col-18 ant-form-item-control" v-else-if="field.type == 'datetime'">
-                  <datepicker :time.sync="field.value"
-                              type="min"
-                              format="YYYY-MM-DD HH:mm"
-                              :input-class="{'ant-input': true}"></datepicker>
-                </div>
-                <!-- type: date_range -->
-                <div class="ant-col-18 ant-form-item-control" v-else-if="field.type == 'date_range'">
-                  <v-date-picker :range="true"
-                                 :clearable="true"
-                                 format="yyyy-MM-dd"
-                                 v-model="field.value"></v-date-picker>
-                  <!--:startTime="field.value && field.value.[0] || '1900-01-01'"-->
-                  <!--:endTime="field.value && field.value.split('~')[1] || '2999-12-31'"-->
-                </div>
-                <!-- type: textarea -->
-                <div class="ant-col-18 ant-form-item-control" v-else-if="field.type == 'textarea'">
-                <textarea class="ant-input"
-                          :placeholder="field.placeholder"
-                          @keypress.enter="modalFormAction(true)"
-                          :disabled="field.disabled"
-                          :readonly="field.readonly"
-                          v-model="field.value"></textarea>
-                </div>
-                <!-- type: district -->
-                <div class="ant-col-18 ant-form-item-control" v-else-if="field.type == 'district'">
-                  <district-picker v-model="field.value"></district-picker>
-                </div>
-                <!-- type: object -->
-                <v-col :span="field.span || 18" class="ant-form-item-control"
-                       v-else-if="field.type == 'object'">
-                  <!--<router-link v-if="field.value && field.value[field.options.pk || 'id']"-->
-                  <!--style="margin-right: 10px;"-->
-                  <!--:to="{name: 'main_'+toUnderscore(field.options.model)+'_edit',-->
-                  <!--params: {id: field.value[field.options.pk || 'id']}}">-->
-                  <template v-if="field.value">{{field.value[field.options.display_field || 'name']}}</template>
-                  <!--</router-link>-->
-                  <v-button size="small"
-                            @click="pickObject(field)">选择
-                  </v-button>
-                  <v-button size="small" v-if="field.value"
-                            @click="field.value = null">清除
-                  </v-button>
-                </v-col>
-                <!-- type: select -->
-                <div class="ant-col-18 ant-form-item-control" v-else-if="field.type == 'select'">
-                  <select v-model="field.value" class="ant-input" title
-                          :disabled="field.disabled">
-                    <option value="" v-if="field.placeholder">{{field.placeholder}}</option>
-                    <option v-for="choice in field.choices" :value="choice.value">
-                      {{choice.text}}
-                    </option>
-                  </select>
-                </div>
-                <!-- type: multi-select -->
-                <div class="ant-col-18 ant-form-item-control" v-else-if="field.type == 'multi-select'">
-                  <v-checkbox-group :data="field.choices"
-                                    label="text"
-                                    v-model="field.value">
-                    <!--{{field.value.length}} xx-->
-                    <!--{{field.choices.length}}-->
-                    <!--:value="field.value.length===field.choices.length"-->
-                    <v-checkbox
-                      @input="(field.value=!$event?field.choices.map(x=>x.value):[])">
-                      <!--:on-change="field.value=[]">-->
-                      <!--<span v-if="!checked"></span>-->
-                      全选
-                    </v-checkbox>
-                  </v-checkbox-group>
-                </div>
+        </div>
+      </transition>
+    </div>
 
-                <!--<div class="ant-col-16 ant-form-item-control" v-if="field.type == text">-->
-                <!--</div>-->
-                <!--<div class="ant-col-16 ant-form-item-control" v-if="field.type == text">-->
-                <!--</div>-->
+    <transition name="fade" appear>
+      <div class="block-dialog block-confirm modal fade in"
+           tabindex="-1" role="dialog"
+           style="display: block;" v-for="(item, index) in itemsConfirm">
+        <transition name="slide-fade" appear>
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <a href="javascript:" class="btn-close"
+                   @click="confirmReject({}, index)">&times;</a>
+                <h4 class="modal-title">{{item.title}}</h4>
+              </div>
+              <div class="modal-body">
+                {{item.content}}
+              </div>
+              <div class="modal-footer">
+                <a @click="confirmAction(true, index)"
+                   href="javascript:"
+                   type="button" class="btn btn-sm btn-confirm">确定
+                </a>
+                <a @click="confirmAction(false, index)"
+                   href="javascript:"
+                   type="button" class="btn btn-sm btn-cancel">取消
+                </a>
               </div>
             </div>
           </div>
-          <div class="ant-modal-footer">
-            <button type="button"
-                    @click="modalFormAction(false)"
-                    class="ant-btn ant-btn-ghost">
-              <span>{{modalFormData.textCancel || '取消'}}</span>
-            </button>
-            <button type="button"
-                    @click="modalFormAction(true)"
-                    class="ant-btn ant-btn-primary">
-              <span>{{modalFormData.textOk || '确认'}}</span>
-            </button>
-          </div>
-        </div>
-        <div tabindex="0" style="width: 0px; height: 0px; overflow: hidden;">sentinel</div>
+        </transition>
       </div>
-    </div>
+    </transition>
 
-    <div class="block-imagepicker invisible">
+    <transition name="fade" appear>
+      <div class="block-dialog block-prompt modal fade in"
+           tabindex="-1" role="dialog"
+           style="display: block;" v-for="(item, index) in itemsPrompt">
+        <transition name="slide-fade" appear>
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header" v-if="item.title">
+                <a href="javascript:" class="btn-close"
+                   @click="promptReject(index)">&times;</a>
+                <h4 class="modal-title">{{item.title}}</h4>
+              </div>
+              <div class="modal-body">
+                <div class="prompt-content">{{item.content}}</div>
+                <input class="prompt-input" type="text"
+                       :placeholder="item.placeholder" ref="promptInput"
+                       title v-model="item.value"/>
+              </div>
+              <div class="modal-footer">
+                <a @click.stop="promptAction(true, index)"
+                   href="javascript:"
+                   type="button" class="btn btn-sm btn-confirm">确定
+                </a>
+                <a @click.stop="promptAction(false, index)"
+                   href="javascript:"
+                   type="button" class="btn btn-sm btn-cancel">取消
+                </a>
+              </div>
+            </div>
+          </div>
+        </transition>
+      </div>
+    </transition>
+
+    <transition name="fade" appear>
+      <div class="block-choices"
+           @click="pickChoiceAction(false)"
+           v-if="choicepicker.choices.length > 0">
+        <transition name="slide-fade" appear>
+          <ul>
+            <li v-for="item in choicepicker.choices">
+              <a :class="{active: item.selected}"
+                 @click.stop="pickChoiceAction(true, item.value)">{{item.text}}</a>
+            </li>
+            <li>
+              <a @click.stop="pickChoiceAction(false)">取消</a>
+            </li>
+          </ul>
+        </transition>
+      </div>
+    </transition>
+
+    <div class="block-imagepicker block-invisible">
       <input type="file" accept="image/*"
              @change="pickImageAction()"
-             ref="uploader"/>
-      <input type="file"
-             @change="pickFileAction()"
-             ref="uploader_file"/>
+             ref="imageUploader"/>
     </div>
-
-    <object-picker :options="objectPickerField.options"
-                   v-if="objectPickerField"
-                   @input="pickObjectAction($event)"
-                   @cancel="objectPickerField=null"></object-picker>
 
   </div>
 
 </template>
 
 <script type="text/babel" lang="babel">
+  import lrz from 'lrz';
+
   export default {
+    mounted() {
+      window.$notifier = this;
+    },
     data() {
       return {
-//        itemsNotify: [],
-//        itemsConfirm: [],
+        itemsNotify: [],
+        itemsConfirm: [],
         itemsPrompt: [],
-        modalFormData: null,
-        objectPickerField: null,
-        imagepicker: {
+        itemsNotifyConfirm: [],
+        choicepicker: {
+          choices: [],
           deferred: null,
         },
-        filepicker: {
+        imagepicker: {
+          size: 1080,
+          image_uri: null,
           deferred: null,
         },
       };
     },
     methods: {
-      pickObject(field) {
+      confirmAction(success = true, index = -1, params = {}) {
         const vm = this;
-        vm.objectPickerField = field;
+        const pos = index === -1 ? vm.itemsConfirm.length - 1 : index;
+        const item = vm.itemsConfirm[pos];
+        vm.itemsConfirm.splice(pos, 1);
+        return item.deferred[success ? 'resolve' : 'reject'](params);
       },
-      pickObjectAction(id) {
+      promptAction(success = true, index = -1) {
         const vm = this;
-        const field = vm.objectPickerField;
-        vm.objectPickerField = null;
-//        field.value = id;
-        vm.api(field.options.model).get({ id }).then(resp => {
-          field.value = resp.data;
+        const pos = index === -1 ? vm.itemsPrompt.length - 1 : index;
+        const item = vm.itemsPrompt[pos];
+        vm.itemsPrompt.splice(pos, 1);
+        return item.deferred[success ? 'resolve' : 'reject'](item.value);
+      },
+      pickImageAction() {
+        const vm = this;
+        const formdata = new FormData();
+        const deferred = vm.imagepicker.deferred;
+        vm.imagepicker.deferred = null;
+        const files = vm.$refs.imageUploader.files;
+        const imageURI = vm.imagepicker.image_uri || files.length && files[0];
+        vm.imagepicker.image_uri = null;
+        if (!imageURI) {
+          return deferred.reject('尚未选择图片文件');
+        }
+        if (/base64/.test(imageURI)) {
+          // formdata.append('image', imageURI, files[0].name);
+          formdata.append('image', imageURI);
+          return api.Image.save(formdata).then(
+            resp => deferred.resolve(resp.data)
+          );
+        }
+        vm.resetStatusBar();
+        // 压缩并加入 formdata 上传
+        return lrz(imageURI, {
+          width: vm.imagepicker.size,
+          height: vm.imagepicker.size,
+        }).then(rst => {
+//          vm.notify('compress success');
+          formdata.append('image', rst.file, rst.origin.name);
+          // reset the form
+          vm.$refs.imageUploader.value = '';
+          // [config] image_model
+          const model = window.app.config.image_model || window.app.api('Image');
+          return model.save(formdata).then(
+            resp => deferred.resolve(resp.data)
+          );
+        }, err => {
+          console.log(err);
+        }).catch(err => {
+          console.log(err);
         });
       },
-    }
+    },
   };
 </script>
 
+<style lang="less" type="text/less" scoped>
+  .notifiers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+</style>

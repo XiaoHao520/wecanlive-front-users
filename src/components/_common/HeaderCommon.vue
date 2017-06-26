@@ -40,32 +40,32 @@
   @import (once) '../../vue2-front/assets/css/less-template/template';
   @import (once) '../../assets/css/defines';
   .component-header-common {
-    background: svg-gradient(to right, #A101FB, #3502EE);
+    background: @bg-header;
     position: relative;
     top: 0;
     left: 0;
     right: 0;
     padding-top: 36*@px;
-    height: 90*@px;
+    height: @height-header;
     &.not-status-bar {
       padding-top: 0;
     }
     .title {
       display: block;
-      height: 90*@px;
+      height: @height-header;
       font-size: 38*@px;
       color: #fff;
-      line-height: 90*@px;
+      line-height: @height-header;
       text-align: center;
       margin: 0;
       font-weight: normal;
     }
     .btn-back-warpper {
-      width: 90*@px;
+      width: @height-header;
       position: absolute;
       left: 0;
       bottom: 0;
-      height: 90*@px;
+      height: @height-header;
       .btn-back {
         display: block;
         position: absolute;

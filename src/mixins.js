@@ -14,9 +14,14 @@ export default {
      * 重写路由返回方法
      * 路由返回用此方法
      */
-    goBack() {
+    goBack(backLink = null) {
+      const vm = this;
       window.isBack = true;
-      window.history.go(-1);
+      if (backLink) {
+        vm.$router.replace(backLink);
+      } else {
+        window.history.go(-1);
+      }
     },
   },
 };

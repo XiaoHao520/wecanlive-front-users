@@ -1,7 +1,8 @@
 <template>
   <div>
     <header-common></header-common>
-    <router-link to="/hot">hot</router-link>
+    <!--<router-link to="/hot">hot</router-link>-->
+
   </div>
 </template>
 
@@ -17,4 +18,5 @@
 <style rel="stylesheet/less" type="text/less" lang="less" scoped>
   @import (once) '../../vue2-front/assets/css/less-template/template';
   @import (once) '../../assets/css/defines';
+
 </style>

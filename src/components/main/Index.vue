@@ -1,8 +1,6 @@
 <template>
-  <div>
-    <header-common></header-common>
-    <!--<router-link to="/hot">hot</router-link>-->
-
+  <div id="main-index">
+    主页
   </div>
 </template>
 
@@ -18,5 +16,9 @@
 <style rel="stylesheet/less" type="text/less" lang="less" scoped>
   @import (once) '../../vue2-front/assets/css/less-template/template';
   @import (once) '../../assets/css/defines';
-
+  #main-index {
+    a {
+      color: #2db7f5;
+    }
+  }
 </style>

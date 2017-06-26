@@ -1,5 +1,7 @@
 <template>
-  <div>此页面尚未实现</div>
+  <div id="app-passport-signup">
+
+  </div>
 </template>
 
 <script type="text/babel" lang="babel">

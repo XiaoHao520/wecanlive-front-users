@@ -42,7 +42,9 @@
   .component-header-common {
     background: svg-gradient(to right, #A101FB, #3502EE);
     position: relative;
-    top: 0; left: 0; right: 0;
+    top: 0;
+    left: 0;
+    right: 0;
     padding-top: 36*@px;
     height: 126*@px;
     &.not-status-bar {
@@ -51,7 +53,7 @@
     .title {
       display: block;
       height: 126*@px;
-      font-size: 50*@px;
+      font-size: 48*@px;
       color: #fff;
       line-height: 126*@px;
       text-align: center;
@@ -76,7 +78,6 @@
         transform: translate(-50%, -50%);
         width: 55*@px;
         height: 55*@px;
-
         background: url("../../assets/image/A/nav_back@3x.png") 50% 50% no-repeat;
         -webkit-background-size: 100%;
         background-size: 100%;

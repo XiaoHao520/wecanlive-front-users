@@ -1,5 +1,7 @@
 <template>
-  <div>此页面尚未实现</div>
+  <div>
+    <router-link to="/hot">hot</router-link>
+  </div>
 </template>
 
 <script type="text/babel" lang="babel">

@@ -1,4 +1,6 @@
 /* 程序配置 */
+import mixins from '../mixins';
+
 export default {
   // 平台标识符，暂用于区分菜单
   project: 'myproject',
@@ -48,5 +50,8 @@ export default {
   //   // is_superuser: true,
   //   is_active: true,
   // },
+  action_init_mixins(Vue) {
+    Vue.mixin(mixins);
+  },
 };
 

@@ -22,7 +22,18 @@ export default {
     // -------------------------
     // Vue Mixin
     // -------------------------
+
+    // [config] action_init 钩子
+    if (config.action_init) {
+      config.action_init(Vue);
+    }
+
     Vue.mixin(mixins);
+
+    // [config] action_init_mixins 钩子
+    if (config.action_init_mixins) {
+      config.action_init_mixins(Vue, mixins);
+    }
 
     // -------------------------
     // Vue resource config
@@ -78,6 +89,11 @@ export default {
       });
     })();
 
+    // [config] action_init_http 钩子
+    if (config.action_init_http) {
+      config.action_init_http(Vue);
+    }
+
     // -------------------------
     // Vue router config
     // -------------------------
@@ -123,10 +139,15 @@ export default {
       // if (window.afterRoutePromise) {
       //   window.afterRoutePromise.resolve();
       // }
-      console.log(route);
+      // console.log(route);
       document.body.className = classNames;
       console.log(`>>> ${route.name}`);
     });
+
+    // [config] action_init_router 钩子
+    if (config.action_init_router) {
+      config.action_init_router(Vue, router);
+    }
 
     const AppConstructor = Vue.extend(require('./components/App.vue'));  // eslint-disable-line
     window.app = new AppConstructor({ router, el: '#app' });

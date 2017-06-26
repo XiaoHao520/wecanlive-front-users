@@ -90,6 +90,7 @@ export default [
       { path: '/chat/:type/:id', name: 'main_chat', component: require('./main/Chat.vue') },
       // F - 个人（三个 tab 做在一起）
       { path: '/member/:id', name: 'main_member_detail', component: require('./main/MemberDetail.vue') },
+
       // F1 - 粉丝
       { path: '/member/:id/fans', name: 'main_member_fans', component: require('./main/MemberFans.vue') },
       // F2 - 追踪

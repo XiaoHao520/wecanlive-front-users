@@ -1,5 +1,7 @@
 <template>
-  <div>此页面尚未实现</div>
+  <div>
+    <div @click="goBack">返回</div>
+  </div>
 </template>
 
 <script type="text/babel" lang="babel">

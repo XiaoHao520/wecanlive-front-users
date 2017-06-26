@@ -36,3 +36,12 @@ html {
     transform: translate3d(0, 0, 0);
   }
 }
+
+.blur(@blur: 10px) {
+  //filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */
+  -webkit-filter: blur(@blur); /* Chrome, Opera */
+  -moz-filter: blur(@blur);
+  -ms-filter: blur(@blur);
+  filter: blur(@blur);
+  filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
+}

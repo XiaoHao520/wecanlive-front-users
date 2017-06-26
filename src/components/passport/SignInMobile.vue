@@ -41,18 +41,20 @@
   @import (once) '../../vue2-front/assets/css/less-template/template';
   @import (once) '../../assets/css/defines';
 
-  .signin-mobile-block {
-    position: absolute;
-    top: 162*@px;
-    left: 0; right: 0; bottom: 0;
+  .signin-mobile {
     background: #E5E5EC;
-    padding: 30*@px 30*@px 0 30*@px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    .row {
+    .blur(20px);
+    .signin-mobile-block {
+      padding: 30*@px 30*@px 0 30*@px;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      .row {
+
+      }
 
     }
-
   }
+
+
 </style>

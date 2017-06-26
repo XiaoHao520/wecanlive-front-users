@@ -1,4 +1,4 @@
-@px: 20rem/1080;
+@px: 20rem/750;
 @color-main: yellow;
 @color-text: rgba(0, 0, 0, 0.86);
 @color-text-fade: rgba(0, 0, 0, 0.68);
@@ -18,3 +18,15 @@
   z-index: -999;
 }
 
+.app-scroll() {
+  /*苹果滚动*/
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  * {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}

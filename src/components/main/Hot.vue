@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div @click="goBack">返回</div>
+    <div @click="goBack()">返回</div>
   </div>
 </template>
 

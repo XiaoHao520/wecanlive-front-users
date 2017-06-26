@@ -1,6 +1,6 @@
 <template>
   <div class="signin-mobile">
-    <header-common></header-common>
+    <header-common title="手機號登錄"></header-common>
 
     <div class="signin-mobile-block">
       <div class="row mobile-row">
@@ -8,24 +8,24 @@
           <div class="icon mobile-icon"></div>
           <div class="mobile-location">+886</div>
         </div>
-        <input type="text" class="row-input" placeholder="請輸入手機號">
+        <input type="text" v-model="mobile" class="row-input" placeholder="請輸入手機號">
       </div>
 
       <div class="row pass-row">
         <div class="row-label">
           <div class="icon pass-icon"></div>
         </div>
-        <input type="text" class="row-input" placeholder="請輸入密碼">
+        <input type="password" v-model="password" class="row-input" placeholder="請輸入密碼">
       </div>
 
 
       <div class="submit-row">
-        <a class="btn" href="javascript:;">登錄</a>
+        <a class="btn" @click="submit()" href="javascript:;">登錄</a>
       </div>
 
       <div class="action-row">
-        <a class="btn forgot-btn" href="javascript:;">忘記密碼</a>
-        <a class="btn register-btn" href="javascript:;">立即註冊</a>
+        <router-link to="/forgot" class="btn forgot-btn">忘記密碼</router-link>
+        <router-link to="/signup" class="btn register-btn">立即註冊</router-link>
       </div>
 
 
@@ -35,8 +35,20 @@
 
 <script type="text/babel" lang="babel">
   export default {
+    data() {
+      return {
+        mobile: '',
+        password: '',
+      };
+    },
     methods: {
       reload() {
+      },
+      submit() {
+        const vm = this;
+        vm.login(vm.mobile, vm.password).then(() => {
+//          vm.notify('登錄成功');
+        });
       },
     },
   };
@@ -78,7 +90,7 @@
             background: 50% 50% no-repeat;
             background-size: 100%;
             &.mobile-icon {
-              background-image: url("../../assets/image/A/login_icon_phone@3x.png") ;
+              background-image: url("../../assets/image/A/login_icon_phone@3x.png");
             }
             &.pass-icon {
               background-image: url("../../assets/image/A/login_icon_password@3x.png");

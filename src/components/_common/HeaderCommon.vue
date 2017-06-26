@@ -6,7 +6,7 @@
       </div>
     </slot>
     <slot name="middle">
-      <h1 class="title">{{title || '页面标题'}}</h1>
+      <h1 class="title">{{title || '頁面標題'}}</h1>
     </slot>
     <slot name="right"></slot>
   </header>
@@ -41,7 +41,7 @@
   @import (once) '../../assets/css/defines';
   .component-header-common {
     background: svg-gradient(to right, #A101FB, #3502EE);
-    position: absolute;
+    position: relative;
     top: 0; left: 0; right: 0;
     padding-top: 36*@px;
     height: 126*@px;
@@ -59,12 +59,27 @@
       font-weight: normal;
     }
     .btn-back-warpper {
-      width: 90*@px;
+      width: 110*@px;
       position: absolute;
       left: 0;
-      height: 90*@px;
+      bottom: 0;
+      height: 126*@px;
       .btn-back {
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        width: 55*@px;
+        height: 55*@px;
 
+        background: url("../../assets/image/A/nav_back@3x.png") 50% 50% no-repeat;
+        -webkit-background-size: 100%;
+        background-size: 100%;
       }
     }
   }

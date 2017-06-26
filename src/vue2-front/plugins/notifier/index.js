@@ -4,158 +4,162 @@ import api from '../../resource/api';
 
 export default {
   install(Vue, opts) {
+    // 注册 NotifierRegistry 组件
+    const el = document.createElement('div');
+    const NotifierRegistryApp = Vue.extend(NotifierRegistry);
+    document.body.appendChild(el);
+    new NotifierRegistryApp({ el });
+    // 注册 mixin 工具方法
     Vue.mixin({
-      components: { NotifierRegistry },
+      // components: { NotifierRegistry },
       computed: {
         vmNotifier() {
-          return this.$root.$refs.notifier;
+          return window.$notifier;
         },
       },
       mounted() {
-        const vm = this;
-        if (vm.$root === vm && vm.$route && !vm.vmNotifier) {
-          const msg = '请在路由根的插件内置入 <notifier-registry ref="notifier"/>';
-          console.error(msg);
-        }
+        // if (vm.$root === vm && vm.$route && !vm.vmNotifier) {
+        //   const msg = '请在路由根的插件内置入 <notifier-registry ref="notifier"/>';
+        //   console.error(msg);
+        // }
       },
       methods: {
-        /**
-         * 弹出提示框，类似于 alert，具体参数参照 vue-beauty 文档
-         * @link https://fe-driver.github.io/vue-beauty/#!/components/notification
-         * @param content
-         * @param title
-         * @param options:2
-         *   options.duration: 整数，自动关闭时间，0 为不自动关闭
-         *   options.type: 提示类型图标 success/error/info/warning
-         *   options.top: 离顶部的高度，默认 24
-         */
         notify(content, title = '系统消息', options = {}) {
-          this.$notification[options && options.type || 'info']({
-            message: title,
-            description: content,
-            duration: options && options.duration || 4.5,
-            top: options && options.top || 24,
-          });
-        },
-        confirm(content, title = '操作确认', options = {}) {
-          // const vm = this.$root;
-          return new Promise((resolve, reject) => {
-            Vue.$modal.confirm({
-              title,
-              content,
-              onOk: resolve,
-              onCancel: reject,
-            });
-          });
-        },
-        modalForm(form) {
           const vm = this.vmNotifier;
-          form.deferred = new Deferred();
-          vm.modalFormData = form;
-          return form.deferred.promise;
+          const DEFAULTS = {
+            type: 'info',
+            duration: 3000,
+          };
+          const item = Object.assign({ title, content }, options, DEFAULTS);
+          console.log(`notify: ${content}`);
+          console.log(vm);
+          vm.itemsNotify.unshift(item);
+          setTimeout(() => {
+            vm.itemsNotify.shift(item);
+          }, item.duration);
         },
-        modalFormAction(success = true) {
+        dismissNotify(index) {
           const vm = this.vmNotifier;
-          const deferred = vm.modalFormData.deferred;
-          const form = {};
-          if (success) {
-            let checkRequiredOk = true;
-            let isNumberOk =true;
-            vm.modalFormData.fields.forEach(field => {
-              if (field.type === 'object' && typeof field === 'object') {
-                form[field.name] = field.value[field.options.pk || 'id'];
-              } else {
-                form[field.name] = field.value;
-              }
-              if (field.required && !form[field.name]) {
-                vm.$message.warning(`必须填写${field.title||field.label}`);
-                checkRequiredOk = false;
-              }
-              if (field.isDigit && !Number.isInteger(Number(field.value))) {
-                vm.$message.warning(`必须填写数字${field.title}`);
-                isNumberOk = false;
-              }
-            });
-            if (!checkRequiredOk) return false;
-            if (!isNumberOk) return false;
-            if ((vm.modalFormData.validator instanceof Function)
-              && !vm.modalFormData.validator(form)) {
-              return false;
-            }
+          vm.itemsNotify.splice(index, 1);
+        },
+        clearDialogs() {
+          const vm = this.vmNotifier;
+          vm.itemsPrompt.forEach(item => {
+            vm.promptAction(false);
+          });
+          vm.itemsConfirm.forEach(item => {
+            vm.confirmAction(false);
+          });
+          if (vm.datepicker.deferred) {
+            vm.pickDateAction(false);
           }
-          vm.modalFormData = null;
-          return deferred[success ? 'resolve' : 'reject'](form);
+          if (vm.choicepicker.deferred) {
+            vm.pickChoiceAction(false);
+          }
+          if (vm.imagepicker.deferred) {
+            vm.pickImageAction();
+          }
         },
-        pickFile() {
+        confirm(content, title = '', options = {}) {
           const vm = this.vmNotifier;
+          const DEFAULTS = {
+            size: 'md',  // sm/lg/md
+          };
           const deferred = new Deferred();
-          vm.filepicker.deferred = deferred;
-          vm.$refs.uploader_file.click();
+          const item = Object.assign({
+            title,
+            content,
+            deferred,
+          }, options, DEFAULTS);
+          vm.itemsConfirm.unshift(item);
+          console.log(`confirm: 【${title}】- ${content}`);
           return deferred.promise;
         },
-        pickFileAction() {
-          const vm = this.vmNotifier;
-          const deferred = vm.filepicker.deferred;
-          vm.filepicker.deferred = null;
-          return deferred.resolve(vm.$refs.uploader_file.files);
-        },
-        pickImage() {
+        prompt(content, title = '', defaultValue = '', placeholder = '') {
           const vm = this.vmNotifier;
           const deferred = new Deferred();
-          vm.imagepicker.deferred = deferred;
-          vm.$refs.uploader.click();
+          vm.itemsPrompt.push({
+            content,
+            title,
+            placeholder,
+            deferred,
+            value: defaultValue,
+          });
+          vm.$nextTick(() => {
+            vm.$refs.promptInput[0].focus();
+          });
           return deferred.promise;
         },
-        pickImageAction() {
-          const vm = this.vmNotifier;
-          const deferred = vm.imagepicker.deferred;
-          vm.imagepicker.deferred = null;
-          const formdata = new FormData();
-          const files = vm.$refs.uploader.files;
-          if (!files.length) {
-            return deferred.reject('尚未选择图片文件');
-          }
-          formdata.append('image', files[0], files[0].name);
-          return api('Image').save(formdata).then(
-            resp => deferred.resolve(resp.data)
-          );
-        },
+        // pickFile() {
+        //   const vm = this.vmNotifier;
+        //   const deferred = new Deferred();
+        //   vm.filepicker.deferred = deferred;
+        //   vm.$refs.uploader_file.click();
+        //   return deferred.promise;
+        // },
+        // pickFileAction() {
+        //   const vm = this.vmNotifier;
+        //   const deferred = vm.filepicker.deferred;
+        //   vm.filepicker.deferred = null;
+        //   return deferred.resolve(vm.$refs.uploader_file.files);
+        // },
+
         /**
-         * 管理员密码验证
-         * @param needVerify
-         * @returns {*}
+         * 调起拾取照片的 thenable
+         * @param size
+         * @param defaultSourceType 0-指定相册选择,1-手机拍照
+         * @returns {global.Promise}
          */
-        verifyPassword(needVerify = false) {
-          const vm = this;
-          if (!needVerify) return Promise.resolve();
-          return new Promise((resolve, reject) => {
-            vm.modalForm({
-              title: '请输入管理员密码',
-              fields: [{
-                type: 'password',
-                name: 'password',
-                label: '管理员密码',
-                value: '',
-              }],
-              validator(data) {
-                if (!data.password.length) {
-                  vm.notify('密码不能为空');
-                  return false;
-                }
-                return true;
-              },
-            }).then(data => {
-              vm.api('User').save({
-                action: 'verify_password',
-              }, {
-                password: data.password,
-              }).then(() => {
-                resolve();
-              }, () => {
-                reject('密码错误');
+        pickImage(size = 1080, defaultSourceType = false) {
+          const vm = this.vmNotifier;
+          const deferred = new Deferred();
+          vm.imagepicker.size = size;
+          vm.imagepicker.deferred = deferred;
+
+          if (navigator.camera && !/Android 4/.test(window.navigator.userAgent)) {
+            const chooseSourceType = defaultSourceType === false
+              ? vm.pickChoice([
+                { text: '从相册选择', value: 0 },
+                { text: '拍照上传', value: 1 },
+              ])
+              : Promise.resolve(defaultSourceType);
+            chooseSourceType.then(sourceType => {
+              // 多图拾取，尚未调通
+              //
+              // if (window.imagePicker && sourceType === 0) {
+              //   window.imagePicker.getPictures(
+              //     results => {
+              //       if (!results.length) deferred.reject('没有选择图片');
+              //       alert(results[0]);//eslint-disable-line
+              //       deferred.resolve(results[0]);
+              //     },
+              //     error => {
+              //       deferred.reject(error);
+              //     },
+              //   );
+              //   return deferred.promise;
+              // }
+              navigator.camera.getPicture(imageURI => { // on success
+                vm.imagepicker.image_uri = `data:image/jpeg;base64,${imageURI}`;
+                vm.resetStatusBar();
+                vm.pickImageAction();
+              }, message => { // on fail
+                vm.resetStatusBar();
+                vm.notify(`获取图片失败：${message}`);
+              }, { // options
+                destinationType: 0, // 0:DATAURL(base64), 1:FILE_URI, 2:NATIVE_URI
+                allowEdit: false,
+                saveToPhotoAlbum: true,
+                correctOrientation: true,
+                sourceType, // 0:PHOTOLIBRARY, 1:CAMERA, 2: SAVEDPHOTOALBUM
+                targetWidth: size,
+                // targetHeight: size,
               });
             });
-          });
+          } else { // normal browser
+            vm.$refs.imageUploader.click();
+          }
+          return deferred.promise;
         },
       },
     });

@@ -5,6 +5,8 @@
 @color-bg: #f5f5f5;
 @color-border: #eee;
 @color-text-secondary: rgba(0, 0, 0, 0.38);
+@height-header: 90*@px;
+@bg-header: svg-gradient(to right, #A101FB, #3502EE);
 
 // ================= 通用 ===================
 
@@ -44,4 +46,28 @@ html {
   -ms-filter: blur(@blur);
   filter: blur(@blur);
   filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
+}
+
+// 普通渐变
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0
+}
+
+// 由下往上小幅度渐变
+.quick-slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.quick-slide-fade-leave-active {
+  transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.quick-slide-fade-enter, .quick-slide-fade-leave-active {
+  -webkit-transform: translate3d(0, 80*@px, 0);
+  -moz-transform: translate3d(0, 80*@px, 0);
+  -ms-transform: translate3d(0, 80*@px, 0);
+  -o-transform: translate3d(0, 80*@px, 0);
+  transform: translate3d(0, 80*@px, 0);
+  opacity: 0;
 }

@@ -11,6 +11,8 @@ import './assets/css/style.less';
 // import ImageViewer from './plugins/image-viewer';
 import mixins from './mixins';
 
+import notifier from './plugins/notifier';
+
 // 应用内配置文件
 import config from '../config/config';
 
@@ -34,6 +36,11 @@ export default {
     if (config.action_init_mixins) {
       config.action_init_mixins(Vue, mixins);
     }
+
+    // -------------------------
+    // Plugins
+    // -------------------------
+    Vue.use(notifier);
 
     // -------------------------
     // Vue resource config

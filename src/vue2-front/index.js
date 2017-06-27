@@ -11,6 +11,8 @@ import './assets/css/style.less';
 // import ImageViewer from './plugins/image-viewer';
 import mixins from './mixins';
 
+import AwesomeSwiper from 'vue-awesome-swiper';
+
 import notifier from './plugins/notifier';
 
 // 应用内配置文件
@@ -41,6 +43,8 @@ export default {
     // Plugins
     // -------------------------
     Vue.use(notifier);
+
+    Vue.use(AwesomeSwiper);
 
     // -------------------------
     // Vue resource config

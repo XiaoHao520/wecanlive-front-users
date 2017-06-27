@@ -52,8 +52,8 @@ export default {
       return utils;
     },
     me: {
-      get: () => this.$root.current_user,
-      set: value => (this.$root.current_user = value),
+      get: () => window.app.current_user,
+      set: value => (window.app.current_user = value),
     },
   },
   filters: {

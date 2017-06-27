@@ -9,12 +9,18 @@
       <div class="row">
         <input type="text" v-model="vcode" placeholder="請輸入手機簡訊驗證碼">
       </div>
-      <div class="row-mistake">{{code_error}}</div>
+
+      <transition name="fade" appear>
+      <div class="row-mistake" v-if="code_error">{{code_error}}</div>
+      </transition>
 
       <div class="row">
         <input type="password" v-model="newpass" placeholder="請輸入新密碼">
       </div>
-      <div class="row-mistake">{{pass_error}}</div>
+
+      <transition name="fade" appear>
+        <div class="row-mistake" v-if="pass_error">{{pass_error}}</div>
+      </transition>
 
       <div class="row">
         <input type="password" v-model="confirmpass" placeholder="請再次輸入新密碼">
@@ -85,7 +91,7 @@
       .confirm-title {
         font-size: 33*@px;
         text-align: center;
-        margin-bottom: 30*@px;
+        margin-bottom: 52*@px;
       }
       .row {
         height: 90*@px;
@@ -93,6 +99,7 @@
         border-radius: 40*@px;
         padding: 0 52*@px;
         box-sizing: border-box;
+        margin-bottom: 22*@px;
         input {
           height: 90*@px;
           font-size: 32*@px;

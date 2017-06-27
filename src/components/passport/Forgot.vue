@@ -1,6 +1,7 @@
 <template>
   <div class="page-forgot">
-    <header-common title="忘記密碼"></header-common>
+    <header-common title="忘記密碼"
+                   :backLink="{ name: 'passport_signin_mobile' }"></header-common>
 
     <div class="forgot-block">
       <div class="forgot-title">我們將傳送重設密碼的驗證碼</div>
@@ -9,13 +10,17 @@
           <div class="location-name">臺灣</div>
           <div class="select-icon"></div>
         </div>
-        <input type="text" class="mobile-num" placeholder="+886 | 手機號碼">
+
+        <input v-model="mobile"
+               type="text"
+               class="mobile-num"
+               placeholder="+886 | 手機號碼">
       </div>
 
-      <div class="mistake-notify">錯誤提醒訊息！</div>
+      <div class="mistake-notify">{{error}}</div>
 
       <div class="next-btn">
-        <a href="javascript:;" class="btn">下一步</a>
+        <a href="javascript:;" @click="send_vcode()" class="btn">下一步</a>
       </div>
 
       <div class="next-warn">
@@ -26,9 +31,29 @@
 </template>
 
 <script type="text/babel" lang="babel">
+
   export default {
+    data() {
+      return {
+        mobile: '',
+        error: '',
+      };
+    },
     methods: {
       reload() {
+      },
+      send_vcode() {
+        const vm = this;
+        vm.error = '';
+        vm.api('User').save({
+          action: 'send_vcode',
+        }, {
+          mobile: vm.mobile,
+        }).then(() => {
+          vm.$router.push({ name: 'passport_forgot_confirm', params: { mobile: vm.mobile } });
+        }).catch((e) => {
+          vm.error = e.data.msg;
+        });
       },
     },
   };
@@ -65,11 +90,12 @@
           -o-transform: translateY(-50%);
           transform: translateY(-50%);
           color: #959595;
-          line-height: 44*@px;
           .clearfix();
           .location-name {
             float: left;
             font-size: 32*@px;
+            line-height: 44*@px;
+            height: 44*@px;
           }
           .select-icon {
             float: left;
@@ -80,12 +106,43 @@
           }
         }
         .mobile-num {
+          outline: none;
           height: 92*@px;
-          padding: 0; border: 0;
+          padding: 0;
+          border: 0;
           width: 100%;
           font-size: 32*@px;
-          line-height: 92*@px;
         }
+      }
+      .mistake-notify {
+        margin-top: 15*@px;
+        font-size: 22*@px;
+        color: #FE0202;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding-left: 48*@px;
+        height: 22*@px;
+      }
+      .next-btn {
+        margin-top: 60*@px;
+        .btn {
+          display: block;
+          height: 90*@px;
+          color: #fff;
+          background: #3ABBF0;
+          font-size: 30*@px;
+          text-align: center;
+          line-height: 90*@px;
+          border-radius: 40*@px;
+        }
+      }
+      .next-warn {
+        margin-top: 15*@px;
+        padding: 0 57*@px;
+        box-sizing: border-box;
+        color: #959595;
+        font-size: 26*@px;
       }
     }
   }

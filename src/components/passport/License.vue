@@ -6,10 +6,12 @@
       <div class="content">
         歡飲來到歡飲來到歡飲來到歡飲來到歡飲來到歡飲來到歡飲來到歡飲來到歡飲來到歡飲來到
         歡飲來到歡飲來到歡飲來到歡飲來到歡飲來到歡飲來到歡飲來到歡飲來到歡飲來到歡飲來到
+        歡飲來到歡飲來到歡飲來到歡飲來到歡飲來到歡飲來到歡飲來到歡飲來到歡飲來到歡飲來到
+
       </div>
 
       <div class="bottom-btn">
-        <router-link class="btn" to="/signin">同 意</router-link>
+        <a class="btn" @click="goBack()">同 意</a>
       </div>
     </div>
   </div>
@@ -33,16 +35,22 @@
       font-size: 28*@px;
       line-height: 45*@px;
       padding: 30*@px;
-      position: relative;
       .content {
-        padding-bottom: 150*@px;
+        position: absolute;
+        top: 126*@px;
+        bottom: 120*@px;
+        left: 0;
+        right: 0;
+        overflow-y: scroll;
+        padding: 30*@px;
       }
       .bottom-btn {
+        background: #fff;
         position: fixed;
         bottom: 30*@px;
-        left: 30*@px;
-        right: 30*@px;
-        padding-top: 30*@px;
+        left: 0;
+        right: 0;
+        padding: 30*@px 30*@px 0 30*@px;
         .btn {
           display: block;
           height: 90*@px;

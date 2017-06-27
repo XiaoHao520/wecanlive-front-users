@@ -1,6 +1,7 @@
 <template>
   <div class="signin-mobile">
-    <header-common title="手機號登錄"></header-common>
+    <header-common title="手機號登錄"
+                   :backLink="{name: 'passport_signin'}"></header-common>
 
     <div class="signin-mobile-block">
       <div class="row mobile-row">
@@ -47,7 +48,7 @@
       submit() {
         const vm = this;
         vm.login(vm.mobile, vm.password).then(() => {
-//          vm.notify('登錄成功');
+          vm.notify('登錄成功');
         });
       },
     },

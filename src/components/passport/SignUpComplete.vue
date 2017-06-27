@@ -55,9 +55,9 @@
   export default {
     methods: {
       reload() {
-        const vm = this;
-        vm.setContext('qqq', 1);
-        console.log(vm.getContext('qqq'));
+//        const vm = this;
+//        vm.setContext('qqq', 1);
+//        console.log(vm.getContext('qqq'));
       },
       updateAvatar() {},
       submit() {},

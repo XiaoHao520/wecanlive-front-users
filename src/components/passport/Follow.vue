@@ -99,6 +99,7 @@
       top: 126*@px;
       left: 0; right: 0;
       bottom: 0; overflow-y: scroll;
+      .app-scroll;
       box-sizing: border-box;
       .follow-item {
         position: relative;
@@ -121,6 +122,8 @@
           padding-top: 10*@px;
           .member-name {
             font-size: 32*@px;
+            line-height: 32*@px;
+            height: 32*@px;
           }
           .member-follow {
             margin-top: 15*@px;
@@ -139,6 +142,8 @@
             margin-top: 11*@px;
             color: #959595;
             font-size: 26*@px;
+            height: 26*@px;
+            line-height: 26*@px;
           }
         }
         .active-icon {

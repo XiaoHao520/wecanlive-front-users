@@ -42,6 +42,7 @@
         left: 0;
         right: 0;
         overflow-y: scroll;
+        .app-scroll();
         padding: 30*@px;
       }
       .bottom-btn {

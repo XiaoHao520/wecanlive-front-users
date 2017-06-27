@@ -16,7 +16,11 @@
                class="input-mobile"
                placeholder="請輸入手機號碼"
                v-model="mobile">
-        <a class="btn-send" @click="sendCode">傳送驗證碼</a>
+        <a class="btn-send"
+           v-if="resend_wait_seconds <= 0"
+           @click="sendCode">傳送驗證碼</a>
+        <div class="btn-send btn-send-disable" v-else
+        >重新發送({{resend_wait_seconds}})</div>
       </div>
 
       <div class="row-signup row-signup-normal">
@@ -40,7 +44,7 @@
                placeholder="請再次輸入密碼"
                class="input-normal"
                v-model="password_confirm"
-               @keyup="">
+               @keyup="confirm">
       </div>
 
       <transition name="fade" appear>
@@ -60,7 +64,8 @@
       <transition name="fade" appear>
         <div class="warn-tips" v-if="code_warn">{{code_warn}}</div>
       </transition>
-      <a class="btn-submit" @click="submit">確認</a>
+      <a class="btn-submit"
+         @click="submit">確認</a>
 
     </section>
   </div>
@@ -86,16 +91,30 @@
       },
       validate() {
         const vm = this;
-        if (vm.password) {
-          vm.password_warn = '密碼格式不正確！';
+        const reg = /(?!.*\s|.*"|.*')^.*$/;
+        if ((vm.password.length && vm.password.length < 6) ||
+          vm.password.length > 20) {
+          vm.password_warn = '密碼长度不正确！';
+        } else if (!reg.test(vm.password)) {
+          vm.password_warn = '密碼包含空格、「”」或「’」！';
         } else {
           vm.password_warn = '';
+        }
+      },
+      confirm() {
+        const vm = this;
+        if (vm.password !== vm.password_confirm) {
+          vm.password_confirm_warn = '两次输入密码不匹配！';
+          vm.disabled = true;
+        } else {
+          vm.password_confirm_warn = '';
+          vm.disabled = false;
         }
       },
       sendCode() {
         const vm = this;
         if (!(/^1(3|4|5|7|8)\d{9}$/.test(vm.mobile))) {
-          console.log('手机号码格式不正确'); // eslint-disable-line
+          vm.notify('手机号码格式不正确');
           return;
         }
         vm.api('User').save({
@@ -103,7 +122,6 @@
         }, {
           mobile: vm.mobile,
         }).then((resp) => {
-          console.log(resp.data.msg); // eslint-disable-line
           vm.code_from_server = resp.data.msg;
           // 启动再次发送倒计时
           (() => {
@@ -119,11 +137,45 @@
       },
       submit() {
         const vm = this;
-//        if (!vm.code) {
-//          console.log('請輸入驗證碼'); // eslint-disable-line
-//          return;
-//        }
-        vm.$router.push({ name: 'passport_signup_complete' });
+        const reg = /(?!.*\s|.*"|.*')^.*$/;
+        // TODO 换成港澳台手机格式验证
+        if (!(/^1(3|4|5|7|8)\d{9}$/.test(vm.mobile))) {
+          vm.notify('手机号码格式不正确!');
+          return;
+        }
+        if ((vm.password.length && vm.password.length < 6) ||
+          vm.password.length > 20) {
+          vm.password_warn = '密碼长度不正确！';
+          vm.notify('密碼长度不正确！');
+          return;
+        }
+        if (!reg.test(vm.password)) {
+          vm.password_warn = '密碼包含空格、「”」或「’」！';
+          vm.notify('密碼包含空格、「”」或「’」！');
+          return;
+        }
+        if (vm.password !== vm.password_confirm) {
+          vm.password_confirm_warn = '两次输入密码不匹配！';
+          vm.notify('两次输入密码不匹配！');
+          return;
+        }
+        if (vm.code !== vm.code_from_server) {
+          vm.code_warn = '驗證碼不正確！';
+          return;
+        }
+        vm.api('Member').save({
+          action: 'register',
+        }, {
+          mobile: vm.mobile,
+          password: vm.password,
+          mobile_vcode: vm.code,
+        }).then(() => {
+          vm.authenticate().then(() => {
+            vm.$router.push({ name: 'passport_signup_complete' });
+          });
+        }, () => {}).catch(() => {
+          vm.notify('註冊失敗！');
+        });
       },
     },
   };
@@ -203,6 +255,9 @@
             color: #FFFFFF;
             text-align: center;
             background: @bg-header;
+            &.btn-send-disable {
+              background: #c1c1c1;
+            }
           }
         }
         &.row-signup-normal {
@@ -247,6 +302,9 @@
         font-weight: normal;
         font-size: 40*@px;
         background: #3abbf0;
+        &.disabled {
+          background: #c1c1c1;
+        }
       }
     }
   }

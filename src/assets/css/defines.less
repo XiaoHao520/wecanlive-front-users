@@ -6,6 +6,7 @@
 @color-border: #eee;
 @color-text-secondary: rgba(0, 0, 0, 0.38);
 @height-header: 90*@px;
+
 @bg-header: svg-gradient(to right, #A101FB, #3502EE);
 
 // ================= 通用 ===================
@@ -57,6 +58,12 @@ a {
   -ms-filter: blur(@blur);
   filter: blur(@blur);
   filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
+}
+
+.single-text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 // 普通渐变

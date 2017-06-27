@@ -32,7 +32,6 @@ export default {
           };
           const item = Object.assign({ title, content }, options, DEFAULTS);
           console.log(`notify: ${content}`);
-          console.log(vm);
           vm.itemsNotify.unshift(item);
           setTimeout(() => {
             vm.itemsNotify.shift(item);

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <header-index></header-index>
     <div @click="goBack()">返回</div>
   </div>
 </template>

@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4f4bd95f-7c85-4987-9347-a2175dafbe9e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/css/defines.less" afterPath="$PROJECT_DIR$/src/assets/css/defines.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/CommentList.vue" afterPath="$PROJECT_DIR$/src/components/main/CommentList.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/Search.vue" afterPath="$PROJECT_DIR$/src/components/main/Search.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/passport/Follow.vue" afterPath="$PROJECT_DIR$/src/components/passport/Follow.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/passport/License.vue" afterPath="$PROJECT_DIR$/src/components/passport/License.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -41,7 +36,7 @@
             <entry file="file://$PROJECT_DIR$/src/components/main/CommentList.vue">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="539">
-                  <caret line="52" column="4" lean-forward="false" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="4" />
+                  <caret line="52" column="17" lean-forward="false" selection-start-line="52" selection-start-column="17" selection-end-line="52" selection-end-column="17" />
                   <folding />
                 </state>
               </provider>
@@ -431,7 +426,7 @@
       <workItem from="1498443674370" duration="3399000" />
       <workItem from="1498447095920" duration="1455000" />
       <workItem from="1498448600460" duration="14886000" />
-      <workItem from="1498525932598" duration="22252000" />
+      <workItem from="1498525932598" duration="22364000" />
     </task>
     <task id="LOCAL-00001" summary="頭部">
       <created>1498446946309</created>
@@ -503,17 +498,24 @@
       <option name="project" value="LOCAL" />
       <updated>1498550757074</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="pinglunliebiao">
+      <created>1498556748482</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1498556748482</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76917000" />
+    <option name="totallyTimeSpent" value="77029000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="24" width="1920" height="993" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17510548" sideWeight="0.73721594" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17510548" sideWeight="0.73721594" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -547,7 +549,8 @@
     <MESSAGE value="修改頭部" />
     <MESSAGE value="模糊效果" />
     <MESSAGE value="登錄頁面" />
-    <option name="LAST_COMMIT_MESSAGE" value="登錄頁面" />
+    <MESSAGE value="pinglunliebiao" />
+    <option name="LAST_COMMIT_MESSAGE" value="pinglunliebiao" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -936,7 +939,7 @@
     <entry file="file://$PROJECT_DIR$/src/components/main/CommentList.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="539">
-          <caret line="52" column="4" lean-forward="false" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="4" />
+          <caret line="52" column="17" lean-forward="false" selection-start-line="52" selection-start-column="17" selection-end-line="52" selection-end-column="17" />
           <folding />
         </state>
       </provider>

@@ -102,6 +102,50 @@
              ref="imageUploader"/>
     </div>
 
+    <transition name="slide-down-up">
+      <div class="share-block" v-show="shareBar">
+        <div class="title">分享到</div>
+        <div class="slide-library">
+          <swiper :options="swiperShareOption">
+            <swiper-slide>
+              <div class="slide-item"
+                   @click="shareTo('facabook')">
+                <div class="icon icon-facebook"></div>
+                Facebook
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="slide-item"
+                   @click="shareTo('instagram')">
+                <div class="icon icon-instagram"></div>
+                Instagram
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="slide-item"
+                   @click="shareTo('whatsapp')">
+                <div class="icon icon-whatsapp"></div>
+                Whatsapp
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="slide-item"
+                   @click="shareTo('copy')">
+                <div class="icon icon-copy"></div>
+                複製鏈接
+              </div>
+            </swiper-slide>
+          </swiper>
+        </div>
+      </div>
+    </transition>
+
+    <transition name="fade">
+      <div class="mask-block"
+           @click="shareBar=false"
+           v-show="shareBar"></div>
+    </transition>
+
   </div>
 
 </template>
@@ -127,6 +171,11 @@
           size: 1080,
           image_uri: null,
           deferred: null,
+        },
+        shareBar: false,
+        swiperShareOption: {
+          slidesPerView: 'auto',
+          freeMode: true,
         },
       };
     },
@@ -184,17 +233,15 @@
           console.log(err);
         });
       },
+      shareTo(type) {
+        const vm = this;
+        vm.shareBar = false;
+      },
     },
   };
 </script>
 
 <style lang="less" type="text/less" scoped>
   .notifiers {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: none;
   }
 </style>

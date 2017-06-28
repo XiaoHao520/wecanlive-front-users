@@ -3,6 +3,8 @@
   <transition :name="transitionName">
     <router-view class="child-view"></router-view>
   </transition>
+
+
 </template>
 
 <script>
@@ -22,6 +24,12 @@
       window.isBack = false;
       next();
     },
+    methods: {
+      reload() {
+        const vm = this;
+        vm.authenticate();
+      },
+    },
   };
 </script>
 
@@ -40,13 +48,13 @@
   .slide-left-enter,
   .slide-right-leave-active {
     opacity: 0;
-    -webkit-transform: translate3d(100%, 0, 0);
-    transform: translate3d(100%, 0, 0);
+    -webkit-transform: translate3d(20%, 0, 0);
+    transform: translate3d(20%, 0, 0);
   }
   .slide-left-leave-active,
   .slide-right-enter {
     opacity: 0;
-    -webkit-transform: translate3d(-100%, 0, 0);
-    transform: translate3d(-100%, 0, 0);
+    -webkit-transform: translate3d(-20%, 0, 0);
+    transform: translate3d(-20%, 0, 0);
   }
 </style>

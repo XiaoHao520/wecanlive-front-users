@@ -1,6 +1,5 @@
 <template>
   <div id="main-index">
-    <header-index></header-index>
     <section class="section-recommend-body">
       <div class="title">你可能會喜歡</div>
       <div class="image-library">
@@ -32,10 +31,42 @@
     </section>
 
     <ul class="tab-index">
-      <li class="tab-item">我關注的直播</li>
-      <li class="tab-item">我關注的動態</li>
-      <div class="underline"></div>
+      <li class="tab-item"
+          :class="{'tab-active': tab == 0}"
+          @click="tabTo(0)">我關注的直播
+      </li>
+      <li class="tab-item"
+          :class="{'tab-active': tab == 1}"
+          @click="tabTo(1)">我關注的動態
+      </li>
+      <div class="underline"
+           :class="{
+           'position-1': tab == 0,
+           'position-2': tab == 1
+           }"></div>
     </ul>
+
+    <transition :name="transitionName">
+      <section class="section-live-list" v-if="tab == 0">
+        <transition name="fade" appear>
+          <div class="tips">5 個新直播～</div>
+        </transition>
+        <live-item></live-item>
+        <live-item></live-item>
+        <live-item></live-item>
+      </section>
+    </transition>
+
+    <transition :name="transitionName">
+      <section class="section-live-list" v-if="tab == 1">
+        <transition name="fade" appear>
+          <div class="tips">5 個新動態～</div>
+        </transition>
+        <dynamic-item></dynamic-item>
+        <dynamic-item></dynamic-item>
+        <dynamic-item></dynamic-item>
+      </section>
+    </transition>
   </div>
 </template>
 
@@ -47,10 +78,22 @@
           slidesPerView: 'auto',
           freeMode: true,
         },
+        tab: 0,
+        transitionName: 'slide-left',
       };
     },
     methods: {
       reload() {
+        const vm = this;
+        console.log(vm.me);
+      },
+      tabTo(pos) {
+        const vm = this;
+        const index = vm.tab;
+        vm.transitionName = Number(pos) > Number(index) ? 'slide-left' : 'slide-right';
+        setTimeout(() => {
+          vm.tab = pos;
+        }, 0);
       },
     },
   };
@@ -59,6 +102,7 @@
 <style rel="stylesheet/less" type="text/less" lang="less" scoped>
   @import (once) '../../vue2-front/assets/css/less-template/template';
   @import (once) '../../assets/css/defines';
+
   #main-index {
     .section-recommend-body {
       width: 100%;
@@ -141,6 +185,70 @@
             }
           }
         }
+      }
+    }
+    .tab-index {
+      position: relative;
+      background: #FFFFFF;
+      height: 75*@px;
+      width: 100%;
+      overflow: hidden;
+      .border-box();
+      .tab-item {
+        float: left;
+        width: 50%;
+        height: 100%;
+        line-height: 75*@px;
+        text-align: center;
+        color: #8C8C8C;
+        font-size: 26*@px;
+        &.tab-active {
+          color: #0021E6;
+        }
+      }
+      .underline {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 155*@px;
+        height: 4*@px;
+        background: svg-gradient(to right, #00A1F5, #00EEE8);
+        -webkit-transition: all .5s cubic-bezier(.55, 0, .1, 1);
+        -moz-transition: all .5s cubic-bezier(.55, 0, .1, 1);
+        -ms-transition: all .5s cubic-bezier(.55, 0, .1, 1);
+        -o-transition: all .5s cubic-bezier(.55, 0, .1, 1);
+        transition: all .5s cubic-bezier(.55, 0, .1, 1);
+        &.position-1 {
+          -webkit-transform: translate3d(71%, 0, 0);
+          -moz-transform: translate3d(71%, 0, 0);
+          -ms-transform: translate3d(71%, 0, 0);
+          -o-transform: translate3d(71%, 0, 0);
+          transform: translate3d(71%, 0, 0);
+        }
+        &.position-2 {
+          -webkit-transform: translate3d(313%, 0, 0);
+          -moz-transform: translate3d(313%, 0, 0);
+          -ms-transform: translate3d(313%, 0, 0);
+          -o-transform: translate3d(313%, 0, 0);
+          transform: translate3d(313%, 0, 0);
+        }
+      }
+    }
+    .section-live-list {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 337*@px+75*@px;
+      background: #E3E3EA;
+      .app-scroll();
+      transition: all .5s cubic-bezier(.55, 0, .1, 1);
+      .tips {
+        text-align: center;
+        font-size: 23*@px;
+        height: 52*@px;
+        line-height: 52*@px;
+        color: #949494;
       }
     }
   }

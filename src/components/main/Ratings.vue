@@ -1,5 +1,23 @@
 <template>
-  <div>此页面尚未实现</div>
+  <div class="page-ratings">
+    <header-common>
+      <div slot="middle">
+        <ul>
+          <li class="ratings-type">
+            <a href="javascript:;">鑽石榜</a>
+          </li>
+
+          <li class="ratings-type">
+            <a href="javascript:;">送禮榜</a>
+          </li>
+
+          <li class="ratings-type">
+            <a href="javascript:;">星光榜</a>
+          </li>
+        </ul>
+      </div>
+    </header-common>
+  </div>
 </template>
 
 <script type="text/babel" lang="babel">

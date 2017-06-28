@@ -39,8 +39,8 @@
     methods: {
       reload() {
         const vm = this;
-        if (vm.model === 'activeevents') {
-          vm.api('Comment').get({ activeevents: vm.id }).then((resp) => {
+        if (vm.model === 'activeevent') {
+          vm.api('Comment').get({ activeevent: vm.id }).then((resp) => {
             vm.items = resp.data.results;
           });
         }
@@ -52,11 +52,12 @@
           return;
         }
 
-        if (vm.model === 'activeevents') {
+        if (vm.model === 'activeevent') {
           vm.api('Comment').save({ action: 'add_comment' }, {
-            activeevents: vm.id,
+            activeevent: vm.id,
             content: vm.comment_content,
           }).then(() => {
+            vm.comment_content = '';
             vm.reload();
           });
         }

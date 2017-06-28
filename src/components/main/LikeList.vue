@@ -5,12 +5,13 @@
 
     <div class="like-list">
       <ul>
-        <li class="like-item">
-          <div class="avatar"></div>
+        <li v-for="item in items" class="like-item">
+          <div class="avatar"
+               :style="{backgroundImage: 'url(' + item.author_avatar + ')'}"></div>
           <div class="item-info">
             <div class="like-header">
-              <div class="name">姓名</div>
-              <div class="date">04/20 16:40</div>
+              <div class="name">{{ item.author_nickname }}</div>
+              <div class="date">{{ item.date_created | date('mm/dd HH:MM') }}</div>
             </div>
             <div class="content">給你點了一個贊</div>
           </div>
@@ -23,8 +24,23 @@
 
 <script type="text/babel" lang="babel">
   export default {
+    data() {
+      return {
+        items: [],
+        model: this.$route.params.model,
+        id: this.$route.params.id,
+      };
+    },
     methods: {
       reload() {
+        const vm = this;
+        if (vm.model === 'activeevent') {
+          vm.api('UserMark').get({
+            activeevent: vm.id,
+          }).then((resp) => {
+            vm.items = resp.data.results;
+          });
+        }
       },
     },
   };
@@ -36,6 +52,13 @@
 
   .like-list {
     padding: 30*@px 30*@px 0 30*@px;
+    position: absolute;
+    top: 126*@px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: scroll;
+    .app-scroll();
     .like-item {
       position: relative;
       border-bottom: 1px solid @color-border;

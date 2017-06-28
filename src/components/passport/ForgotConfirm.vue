@@ -6,7 +6,7 @@
     <div class="forgot-confirm-block">
       <div class="confirm-title">請輸入您手機收到的簡訊驗證碼</div>
 
-      <div class="row">
+      <div class="row first-row">
         <input type="text" v-model="vcode" placeholder="請輸入手機簡訊驗證碼">
       </div>
 
@@ -91,7 +91,6 @@
       .confirm-title {
         font-size: 33*@px;
         text-align: center;
-        margin-bottom: 52*@px;
       }
       .row {
         height: 90*@px;
@@ -99,7 +98,10 @@
         border-radius: 40*@px;
         padding: 0 52*@px;
         box-sizing: border-box;
-        margin-bottom: 22*@px;
+        margin-top: 27*@px;
+        &.first-row {
+          margin-top: 30*@px;
+        }
         input {
           height: 90*@px;
           font-size: 32*@px;
@@ -108,19 +110,15 @@
       }
       .row-mistake {
         margin-top: 15*@px;
-        margin-bottom: 30*@px;
-        height: 22*@px;
         font-size: 22*@px;
         color: #FE0202;
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
         padding-left: 48*@px;
-        &.last {
-          margin-bottom: 60*@px;
-        }
       }
       .submit-btn {
+        margin-top: 60*@px;
         .btn {
           display: block;
           height: 90*@px;

@@ -17,7 +17,10 @@
                placeholder="+886 | 手機號碼">
       </div>
 
-      <div class="mistake-notify">{{error}}</div>
+      <transition name="fade" appear>
+        <div v-if="error" class="mistake-notify">{{error}}</div>
+      </transition>
+
 
       <div class="next-btn">
         <a href="javascript:;" @click="send_vcode()" class="btn">下一步</a>
@@ -45,14 +48,24 @@
       send_vcode() {
         const vm = this;
         vm.error = '';
-        vm.api('User').save({
-          action: 'send_vcode',
-        }, {
-          mobile: vm.mobile,
-        }).then(() => {
-          vm.$router.push({ name: 'passport_forgot_confirm', params: { mobile: vm.mobile } });
-        }).catch((e) => {
-          vm.error = e.data.msg;
+        vm.api('User').get({
+          username: vm.mobile,
+        }).then((resp) => {
+          const count = resp.data.count;
+          if (count === 0) {
+            // 手機號沒註冊
+            vm.error = '手機號還沒註冊';
+            return;
+          }
+          vm.api('User').save({
+            action: 'send_vcode',
+          }, {
+            mobile: vm.mobile,
+          }).then(() => {
+            vm.$router.push({ name: 'passport_forgot_confirm', params: { mobile: vm.mobile } });
+          }).catch((e) => {
+            vm.error = e.data.msg;
+          });
         });
       },
     },

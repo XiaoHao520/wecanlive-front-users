@@ -144,7 +144,7 @@
 
     <transition :name="transitionName">
       <section class="section-list live-list" v-if="tab == 1">
-        <live-item></live-item>
+        <live-item :te></live-item>
       </section>
     </transition>
   </div>

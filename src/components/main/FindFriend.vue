@@ -10,7 +10,7 @@
             <div class="type">通訊錄</div>
           </router-link>
         </li>
-
+        <!--todo: 右icon顏色不對，要換切圖-->
         <li class="type-item">
           <router-link :to="{name: 'main_member_official'}">
             <div class="icon facebook"></div>

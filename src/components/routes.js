@@ -33,24 +33,31 @@ export default [
     children: [
       // 引导页
       { path: '/tutorial', name: 'main_tutorial', component: require('./main/Tutorial.vue') },
-      // B - 首页 - 追踪（直播和动态用 tab 分开做在同一页）
-      { path: '/', name: 'main_index', component: require('./main/Index.vue') },
+      {
+        path: '/',
+        name: 'main_app',
+        component: require('./main/IndexMain.vue'),
+        children: [
+          // B - 首页 - 追踪（直播和动态用 tab 分开做在同一页）
+          { path: '/', name: 'main_index', component: require('./main/Index.vue') },
+          // B2 - 热门
+          { path: '/hot', name: 'main_hot', component: require('./main/Hot.vue') },
+          // B5 - 节目
+          { path: '/movie', name: 'main_movies', component: require('./main/Movies.vue') },
+          // B3 - 发现（包括所有 tab）
+          { path: '/discover', name: 'main_discover', component: require('./main/Discover.vue') },
+          // B4 - 附近
+          { path: '/thenearby', name: 'main_nearby', component: require('./main/Nearby.vue') },
+        ],
+      },
       // B1-2 - 评论列表（不同的 model 共用一个页面）
       { path: '/comments/:model/:id', name: 'main_comment_list', component: require('./main/CommentList.vue') },
       // B1-2-1 - 评论列表（不同的 model 共用一个页面）
       { path: '/likes/:model/:id', name: 'main_like_list', component: require('./main/LikeList.vue') },
-      // B2 - 热门
-      { path: '/hot', name: 'main_hot', component: require('./main/Hot.vue') },
       // B2-1 - 找朋友
       { path: '/find/friend', name: 'main_find_friend', component: require('./main/FindFriend.vue') },
       // B2-2 - 活动详情（包括所有类型）
       { path: '/activity/:id', name: 'main_activity_detail', component: require('./main/ActivityDetail.vue') },
-      // B3 - 发现（包括所有 tab）
-      { path: '/discover', name: 'main_discover', component: require('./main/Discover.vue') },
-      // B4 - 附近
-      { path: '/nearby', name: 'main_nearby', component: require('./main/Nearby.vue') },
-      // B5 - 节目
-      { path: '/movie', name: 'main_movies', component: require('./main/Movies.vue') },
       // B5-1 - 影片播放
       { path: '/movie/:id', name: 'main_movie_detail', component: require('./main/MovieDetail.vue') },
       // B5-2 - wecanlive官方账号（其实是个特殊的用户页面），三个 tab 做在一起

@@ -1,9 +1,11 @@
 import Deferred from 'es6-deferred';
 import NotifierRegistry from './NotifierRegistry.vue';
+import AwesomeSwiper from 'vue-awesome-swiper';
 import api from '../../resource/api';
 
 export default {
   install(Vue, opts) {
+    Vue.use(AwesomeSwiper);
     // 注册 NotifierRegistry 组件
     const el = document.createElement('div');
     const NotifierRegistryApp = Vue.extend(NotifierRegistry);
@@ -159,6 +161,10 @@ export default {
             vm.$refs.imageUploader.click();
           }
           return deferred.promise;
+        },
+        share() {
+          const vm = this.vmNotifier;
+          vm.shareBar = !vm.shareBar;
         },
       },
     });

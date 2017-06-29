@@ -75,13 +75,107 @@
         <div class="avatar"></div>
       </div>
     </div>
+
+    <div class="tab-menu">
+      <ul>
+        <li class="menu-item"
+            :class="{'tab-active': tab == 0}"
+            @click="tabTo(0)">
+          我的動態
+        </li>
+        <li class="menu-item"
+            :class="{'tab-active': tab == 1}"
+            @click="tabTo(1)">
+          我的直播
+        </li>
+        <li class="menu-item"
+            :class="{'tab-active': tab == 2}"
+            @click="tabTo(2)">
+          我的家族
+        </li>
+      </ul>
+      <div class="underline "
+           :class="{
+           'position-1': tab == 0,
+           'position-2': tab == 1,
+           'position-3': tab == 2,
+
+           }"></div>
+    </div>
+
+
+    <transition :name="transitionName">
+      <section class="section-list dynamic-list" v-if="tab == 0">
+        <div class="watch-style">
+          <a href="javascript:;" @click="big_dynamic=false" class="btn three-style"></a>
+          <a href="javascript:;" @click="big_dynamic=true" class="btn one-style"></a>
+        </div>
+        <div class="dynamic">
+          <ul>
+            <li class="dynamic-item" :class="{'big-photo': big_dynamic}">
+              <a href="javascript:;"></a>
+              <!--:style="{backgroundImage: 'url('+ item.images_item[0].image +')'}"-->
+              <img src="../../assets/image/B5/pic_hotbanner@3x.png"/>
+              <!--item.images_item[0].image-->
+            </li>
+            <li class="dynamic-item" :class="{'big-photo': big_dynamic}">
+              <a href="javascript:;"></a>
+              <!--:style="{backgroundImage: 'url('+ item.images_item[0].image +')'}"-->
+              <img src="../../assets/image/B5/pic_banner@3x.png"/>
+              <!--item.images_item[0].image-->
+            </li>
+            <li class="dynamic-item" :class="{'big-photo': big_dynamic}">
+              <a href="javascript:;"></a>
+              <!--:style="{backgroundImage: 'url('+ item.images_item[0].image +')'}"-->
+              <img src="../../assets/image/B5/pic_hotbanner@3x.png"/>
+              <!--item.images_item[0].image-->
+            </li>
+            <li class="dynamic-item" :class="{'big-photo': big_dynamic}">
+              <a href="javascript:;"></a>
+              <!--:style="{backgroundImage: 'url('+ item.images_item[0].image +')'}"-->
+              <img src="../../assets/image/B5/pic_hotbanner@3x.png"/>
+              <!--item.images_item[0].image-->
+            </li>
+          </ul>
+        </div>
+      </section>
+    </transition>
+
+
+    <transition :name="transitionName">
+      <section class="section-list live-list" v-if="tab == 1">
+        <live-item></live-item>
+      </section>
+    </transition>
   </div>
 </template>
 
 <script type="text/babel" lang="babel">
   export default {
+    data() {
+      return {
+        tab: 0,
+        transitionName: 'slide-left',
+        big_dynamic: false,
+        dynamic_items: [],
+      };
+    },
     methods: {
       reload() {
+//        const vm = this;
+//        vm.api('ActiveEvent').get({
+//          author: vm.me.id,
+//        }).then((resp) => {
+//          vm.dynamic_items = resp.data.results;
+//        });
+      },
+      tabTo(pos) {
+        const vm = this;
+        const index = vm.tab;
+        vm.transitionName = Number(pos) > Number(index) ? 'slide-left' : 'slide-right';
+        setTimeout(() => {
+          vm.tab = pos;
+        }, 0);
       },
     },
   };
@@ -262,6 +356,124 @@
           height: 65*@px;
           background: 50% 50% no-repeat #fff;
           border-radius: 50%;
+        }
+      }
+    }
+    .tab-menu {
+      height: 78*@px;
+      box-sizing: border-box;
+      font-size: 24*@px;
+      padding: 30*@px 75*@px 0 75*@px;
+      position: relative;
+      .menu-item {
+        float: left;
+        margin-right: 150*@px;
+        &:last-child {
+          margin-right: 0;
+        }
+        &.tab-active {
+          color: #0021E6;
+        }
+      }
+      .underline {
+        width: 98*@px;
+        position: absolute;
+        bottom: 0;
+        height: 4*@px;
+        background: svg-gradient(to right, #00A1F5, #00EEE8);
+        -webkit-transition: all .5s cubic-bezier(.55, 0, .1, 1);
+        -moz-transition: all .5s cubic-bezier(.55, 0, .1, 1);
+        -ms-transition: all .5s cubic-bezier(.55, 0, .1, 1);
+        -o-transition: all .5s cubic-bezier(.55, 0, .1, 1);
+        transition: all .5s cubic-bezier(.55, 0, .1, 1);
+        &.position-1 {
+          -webkit-transform: translate3d(0, 0, 0);
+          -moz-transform: translate3d(0, 0, 0);
+          -ms-transform: translate3d(0, 0, 0);
+          -o-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+        &.position-2 {
+          -webkit-transform: translate3d(250%, 0, 0);
+          -moz-transform: translate3d(250%, 0, 0);
+          -ms-transform: translate3d(250%, 0, 0);
+          -o-transform: translate3d(250%, 0, 0);
+          transform: translate3d(250%, 0, 0);
+        }
+        &.position-3 {
+          -webkit-transform: translate3d(502%, 0, 0);
+          -moz-transform: translate3d(502%, 0, 0);
+          -ms-transform: translate3d(502%, 0, 0);
+          -o-transform: translate3d(502%, 0, 0);
+          transform: translate3d(502%, 0, 0);
+        }
+      }
+    }
+
+    .section-list {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 883*@px;
+      background: #E3E3EA;
+      .app-scroll();
+      transition: all .5s cubic-bezier(.55, 0, .1, 1);
+      &.dynamic-list {
+        background: #E5E5EC;
+        .watch-style {
+          height: 72*@px;
+          box-sizing: border-box;
+          padding: 19*@px 170*@px 0 170*@px;
+          .btn {
+            width: 34*@px;
+            height: 34*@px;
+            background: 50% 50% no-repeat #fff;
+            background-size: 100%;
+            display: inline-block;
+            &.one-style {
+              float: right;
+            }
+          }
+        }
+        .dynamic {
+          box-sizing: border-box;
+          padding: 0 5*@px;
+          ul {
+            .clearfix();
+            .dynamic-item {
+              width: 235*@px;
+              height: 235*@px;
+              float: left;
+              margin: 0 5*@px 11*@px 6*@px;
+              box-sizing: border-box;
+              transition: all 0.5s cubic-bezier(.55, 0, .1, 1);
+              a {
+                display: block;
+                height: 100%;
+                background: url("../../assets/image/B5/pic_hotbanner@3x.png") 50% 50% no-repeat;
+                background-size: cover;
+              }
+              img {
+                display: none;
+                width: 100%;
+                height: auto;
+              }
+              &.big-photo {
+                padding: 0 5*@px;
+                display: block;
+                width: 100%;
+                height: auto;
+                margin: 0 0 11*@px 0;
+                a {
+                  display: none;
+                }
+                img {
+                  display: block;
+                }
+              }
+            }
+          }
         }
       }
     }

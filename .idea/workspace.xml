@@ -2,26 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f4bd95f-7c85-4987-9347-a2175dafbe9e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/example/avatar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/_common/DynamicItem.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/_common/FooterCommon.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/_common/LiveItem.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/main/IndexMain.vue" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/_common/HeaderIndex.vue" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/css/defines.less" afterPath="$PROJECT_DIR$/src/assets/css/defines.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/css/style.less" afterPath="$PROJECT_DIR$/src/assets/css/style.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/_common/index.js" afterPath="$PROJECT_DIR$/src/components/_common/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/App.vue" afterPath="$PROJECT_DIR$/src/components/main/App.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/Discover.vue" afterPath="$PROJECT_DIR$/src/components/main/Discover.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/Hot.vue" afterPath="$PROJECT_DIR$/src/components/main/Hot.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/Index.vue" afterPath="$PROJECT_DIR$/src/components/main/Index.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/MemberDetail.vue" afterPath="$PROJECT_DIR$/src/components/main/MemberDetail.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/Movies.vue" afterPath="$PROJECT_DIR$/src/components/main/Movies.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/Nearby.vue" afterPath="$PROJECT_DIR$/src/components/main/Nearby.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/routes.js" afterPath="$PROJECT_DIR$/src/components/routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mixins.js" afterPath="$PROJECT_DIR$/src/mixins.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vue2-front/plugins/notifier/NotifierRegistry.vue" afterPath="$PROJECT_DIR$/src/vue2-front/plugins/notifier/NotifierRegistry.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vue2-front/plugins/notifier/index.js" afterPath="$PROJECT_DIR$/src/vue2-front/plugins/notifier/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -44,12 +25,12 @@
           <file leaf-file-name="MemberDetail.vue" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/main/MemberDetail.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="209">
-                  <caret line="123" column="63" lean-forward="false" selection-start-line="123" selection-start-column="63" selection-end-line="123" selection-end-column="63" />
+                <state relative-caret-position="191">
+                  <caret line="146" column="22" lean-forward="false" selection-start-line="146" selection-start-column="22" selection-end-line="146" selection-end-column="22" />
                   <folding>
                     <element signature="e#698#704#0" expanded="true" />
                     <element signature="e#709#715#0" expanded="true" />
-                    <element signature="e#9917#10488#0" expanded="false" />
+                    <element signature="e#9921#10492#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -99,9 +80,9 @@
                   <folding>
                     <element signature="e#698#704#0" expanded="true" />
                     <element signature="e#709#715#0" expanded="true" />
-                    <element signature="e#5820#9893#0" expanded="false" />
-                    <marker date="1498722218765" expanded="true" signature="4943:5575" ph="{...}" />
-                    <marker date="1498722218765" expanded="true" signature="5111:5570" ph="{...}" />
+                    <element signature="e#5824#9897#0" expanded="false" />
+                    <marker date="1498722553091" expanded="true" signature="4947:5579" ph="{...}" />
+                    <marker date="1498722553091" expanded="true" signature="5115:5574" ph="{...}" />
                   </folding>
                 </state>
               </provider>
@@ -446,7 +427,7 @@
       <workItem from="1498556930301" duration="683000" />
       <workItem from="1498611851803" duration="22641000" />
       <workItem from="1498698752832" duration="7198000" />
-      <workItem from="1498706120742" duration="8431000" />
+      <workItem from="1498706120742" duration="8621000" />
     </task>
     <task id="LOCAL-00001" summary="頭部">
       <created>1498446946309</created>
@@ -560,11 +541,32 @@
       <option name="project" value="LOCAL" />
       <updated>1498643778294</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="個人中心">
+      <created>1498722473371</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1498722473371</updated>
+    </task>
+    <task id="LOCAL-00018" summary="個人中心">
+      <created>1498722486100</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1498722486100</updated>
+    </task>
+    <task id="LOCAL-00019" summary="個人中心">
+      <created>1498722558730</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1498722558730</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115982000" />
+    <option name="totallyTimeSpent" value="116172000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="24" width="1920" height="993" extended-state="6" />
@@ -609,7 +611,8 @@
     <MESSAGE value="評論列表，修改忘記密碼" />
     <MESSAGE value="贊列表" />
     <MESSAGE value="找朋友" />
-    <option name="LAST_COMMIT_MESSAGE" value="找朋友" />
+    <MESSAGE value="個人中心" />
+    <option name="LAST_COMMIT_MESSAGE" value="個人中心" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -987,12 +990,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/main/MemberDetail.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="123" column="63" lean-forward="false" selection-start-line="123" selection-start-column="63" selection-end-line="123" selection-end-column="63" />
+        <state relative-caret-position="191">
+          <caret line="146" column="22" lean-forward="false" selection-start-line="146" selection-start-column="22" selection-end-line="146" selection-end-column="22" />
           <folding>
             <element signature="e#698#704#0" expanded="true" />
             <element signature="e#709#715#0" expanded="true" />
-            <element signature="e#9917#10488#0" expanded="false" />
+            <element signature="e#9921#10492#0" expanded="false" />
           </folding>
         </state>
       </provider>

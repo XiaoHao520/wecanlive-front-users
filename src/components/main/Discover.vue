@@ -62,9 +62,10 @@
             </div>
           </li>
 
-          <li class="list-item">
+          <li class="list-item list-item-kown">
             <div class="avatar"></div>
             <div class="left-bar">
+              <div class="nickname">LAKE</div>
               <div class="info">
                 <span class="icon icon-female"></span>
                 <span class="text">女</span>
@@ -87,6 +88,8 @@
               <div class="time">39 分鐘前</div>
             </div>
           </li>
+
+
         </ul>
       </section>
     </transition>
@@ -312,6 +315,21 @@
             }
             &:last-child {
               border: none;
+            }
+            &.list-item-kown {
+              .left-bar {
+                .nickname {
+                  font-size: 30*@px;
+                }
+                .content {
+                  font-size: 24*@px;
+                  line-height: 32*@px;
+                  color: #9C9C9C;
+                  height: 32*@px;
+                  .single-text-overflow();
+                }
+              }
+
             }
           }
         }

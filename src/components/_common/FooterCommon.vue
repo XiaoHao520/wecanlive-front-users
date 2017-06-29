@@ -6,14 +6,14 @@
            @click="goto('main_index', 'home')"
            :class="{'footer-avtive': act == 'home'}"></a>
         <a class="footer-btn-member"
-           @click="goto('main_index', 'person')"
+           @click="goto('main_member_detail', 'person')"
            :class="{'footer-avtive': act == 'person'}"></a>
         <div class="footer-btn-popup" @click="toggleBtn"></div>
         <a class="footer-btn-search"
-           @click="goto('main_index', 'search')"
+           @click="goto('main_search', 'search')"
            :class="{'footer-avtive': act == 'search'}"></a>
         <a class="footer-btn-message"
-           @click="goto('main_index', 'message')"
+           @click="goto('main_message', 'message')"
            :class="{'footer-avtive': act == 'message'}"></a>
       </div>
     </footer>

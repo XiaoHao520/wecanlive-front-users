@@ -2,14 +2,13 @@
   <div class="page-member-detail">
     <div class="member-detail-block">
       <div class="header-action">
-        <a href="javascript:;" class="btn btn-set"></a>
-        <a href="javascript:;" class="btn btn-friend"></a>
+        <router-link :to="{name:'main_personal_settings'}" class="btn btn-set"></router-link>
+        <router-link :to="{name:'main_member_friends'}" href="javascript:;" class="btn btn-friend"></router-link>
       </div>
 
-      <!--todo 圖標-->
       <div class="member-detail">
-        <div class="avatar">
-          <a href="javascript:;" class="modify-avatar-btn"></a>
+        <div class="avatar" :style="{backgroundImage: 'url('+ avatar +')'}">
+          <a href="javascript:;" @click="modifyAvatar()" class="modify-avatar-btn"></a>
         </div>
         <div class="member-info">
           <div class="member-name">
@@ -22,12 +21,16 @@
 
           <div class="member-follow">
             <div class="follow-type">
-              <div class="type">粉絲</div>
-              <div class="num">2868</div>
+              <router-link :to="{name: 'main_member_fans'}">
+                <div class="type">粉絲</div>
+                <div class="num">2868</div>
+              </router-link>
             </div>
             <div class="follow-type follow">
-              <div class="type">追蹤</div>
-              <div class="num">876546</div>
+              <router-link :to="{name: 'main_member_follows'}">
+                <div class="type">追蹤</div>
+                <div class="num">876546</div>
+              </router-link>
             </div>
             <div class="follow-type">
               <div class="type">直播</div>
@@ -43,30 +46,33 @@
         <p>心本體體會陷入到對自己本體不能理解的狀態中</p>
       </div>
 
-      <!--todo 圖標-->
       <div class="member-balance">
         <div class="balance-type">
-          <div class="icon"></div>
-          <div class="balance-num">8695</div>
+          <router-link :to="{name: 'main_personal_diamond'}">
+            <div class="icon icon-zuan"></div>
+            <div class="balance-num">8695</div>
+          </router-link>
         </div>
         <div class="balance-type">
-          <div class="icon"></div>
-          <div class="balance-num">236</div>
+          <router-link :to="{name: 'main_personal_coin'}">
+            <div class="icon icon-gold"></div>
+            <div class="balance-num">236</div>
+          </router-link>
         </div>
         <div class="balance-type">
-          <div class="icon"></div>
+          <div class="icon icon-level"></div>
           <div class="balance-num">Lv.16</div>
         </div>
       </div>
     </div>
 
 
-    <!--todo 图标-->
     <div class="contribution-list">
       <div class="contribution-title">貢獻榜</div>
       <div class="contribution-item">
         <div class="top-one-bg"></div>
-        <div class="avatar"></div>
+        <div class="top-one-icon"></div>
+        <div class="avatar top-one"></div>
       </div>
       <div class="contribution-item">
         <div class="avatar"></div>
@@ -107,8 +113,12 @@
     <transition :name="transitionName">
       <section class="section-list dynamic-list" v-if="tab == 0">
         <div class="watch-style">
-          <a href="javascript:;" @click="big_dynamic=false" class="btn three-style"></a>
-          <a href="javascript:;" @click="big_dynamic=true" class="btn one-style"></a>
+          <a href="javascript:;" @click="big_dynamic=false"
+             :class="{'three-style-black': big_dynamic}"
+             class="btn three-style"></a>
+          <a href="javascript:;" @click="big_dynamic=true"
+             :class="{'one-style-black': big_dynamic}"
+             class="btn one-style"></a>
         </div>
         <div class="dynamic">
           <ul>
@@ -144,7 +154,36 @@
 
     <transition :name="transitionName">
       <section class="section-list live-list" v-if="tab == 1">
-        <live-item :te></live-item>
+        <!--todo 隱藏一些控件-->
+        <live-item></live-item>
+      </section>
+    </transition>
+
+
+    <transition :name="transitionName">
+      <section class="section-list family-list" v-if="tab == 2">
+        <div class="family">
+          <ul>
+            <li class="family-item">
+              <a href="javascript:;" class="family-img">
+                <div class="family-name">大家族</div>
+              </a>
+            </li>
+
+            <li class="family-item">
+              <a href="javascript:;" class="family-img">
+                <div class="family-name">大家族</div>
+              </a>
+            </li>
+
+            <li class="family-item">
+              <a href="javascript:;" class="add-family-btn">
+                <div class="add-icon"></div>
+                創立家族
+              </a>
+            </li>
+          </ul>
+        </div>
       </section>
     </transition>
   </div>
@@ -158,16 +197,15 @@
         transitionName: 'slide-left',
         big_dynamic: false,
         dynamic_items: [],
+        avatar: '',
       };
     },
     methods: {
       reload() {
-//        const vm = this;
-//        vm.api('ActiveEvent').get({
-//          author: vm.me.id,
-//        }).then((resp) => {
-//          vm.dynamic_items = resp.data.results;
-//        });
+        const vm = this;
+        vm.authenticate(true).then(() => {
+          vm.avatar = vm.me.avatar_url;
+        });
       },
       tabTo(pos) {
         const vm = this;
@@ -176,6 +214,18 @@
         setTimeout(() => {
           vm.tab = pos;
         }, 0);
+      },
+      modifyAvatar() {
+        const vm = this;
+        vm.pickImage().then((resp) => {
+          vm.api('Member').patch({
+            id: vm.me.id,
+          }, {
+            avatar: resp.id,
+          }).then(() => {
+            vm.avatar = resp.image;
+          });
+        });
       },
     },
   };
@@ -251,17 +301,18 @@
               font-size: 21*@px;
               height: 32*@px;
               line-height: 32*@px;
-              background: #BCBEC0;
-              width: 90*@px;
-              border-bottom-right-radius: 15*@px;
-              border-top-right-radius: 15*@px;
-              border-top-left-radius: 15*@px;
+              background: url("../../assets/image/f-f4/f_icon_vip_gray@3x.png") 50% 50% no-repeat;
+              background-size: 100%;
+              width: 88*@px;
+              /*<!--border-bottom-right-radius: 15*@px;-->*/
+              /*<!--border-top-right-radius: 15*@px;-->*/
+              /*<!--border-top-left-radius: 15*@px;-->*/
               text-align: center;
             }
             .code-btn {
               width: 32*@px;
               height: 32*@px;
-              background: 50% 50% no-repeat #fff;
+              background: url("../../assets/image/f-f4/f_icon_scan@3x.png") 50% 50% no-repeat;
               background-size: 100%;
               float: right;
             }
@@ -318,11 +369,20 @@
           float: left;
           width: 100%/3;
           .icon {
-            width: 70*@px;
-            height: 70*@px;
-            background: 50% 50% no-repeat #fff;
+            width: 80*@px;
+            height: 80*@px;
+            background: 50% 50% no-repeat;
             background-size: 100%;
             margin: 0 auto;
+            &.icon-zuan {
+              background-image: url('../../assets/image/f-f4/f_icon_diamond@3x.png');
+            }
+            &.icon-gold {
+              background-image: url('../../assets/image/f-f4/f_icon_coin@3x.png');
+            }
+            &.icon-level {
+              background-image: url('../../assets/image/f-f4/f_icon_grade@3x.png');
+            }
           }
           .balance-num {
             text-align: center;
@@ -351,11 +411,36 @@
       .contribution-item {
         float: left;
         margin-right: 35*@px;
+        position: relative;
         .avatar {
           width: 65*@px;
           height: 65*@px;
           background: 50% 50% no-repeat #fff;
           border-radius: 50%;
+          position: relative;
+          &.top-one {
+            width: 60*@px;
+            height: 60*@px;
+            position: absolute;
+            top: 2.5*@px;
+            left: 2.5*@px;
+          }
+        }
+        .top-one-icon {
+          background: url("../../assets/image/f-f4/f_icon_crown@3x.png") 50% 50% no-repeat;
+          width: 46*@px;
+          height: 31*@px;
+          background-size: 100%;
+          position: absolute;
+          left: -7*@px;
+          top: -24*@px;
+        }
+        .top-one-bg {
+          width: 65*@px;
+          height: 65*@px;
+          background: #F6C71A;
+          border-radius: 50%;
+          position: relative;
         }
       }
     }
@@ -415,7 +500,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      top: 883*@px;
+      top: 893*@px;
       background: #E3E3EA;
       .app-scroll();
       transition: all .5s cubic-bezier(.55, 0, .1, 1);
@@ -428,11 +513,21 @@
           .btn {
             width: 34*@px;
             height: 34*@px;
-            background: 50% 50% no-repeat #fff;
+            background: 50% 50% no-repeat;
             background-size: 100%;
             display: inline-block;
             &.one-style {
               float: right;
+              background-image: url('../../assets/image/f-f4/f_icon_bigpic_nor@3x.png');
+            }
+            &.three-style {
+              background-image: url('../../assets/image/f-f4/f_icon_spic_pred@3x.png');
+            }
+            &.three-style-black {
+              background-image: url('../../assets/image/f-f4/f_icon_spic_nor@3x.png');
+            }
+            &.one-style-black {
+              background-image: url('../../assets/image/f-f4/f_icon_bigpic_pred@3x.png');
             }
           }
         }
@@ -445,7 +540,7 @@
               width: 235*@px;
               height: 235*@px;
               float: left;
-              margin: 0 5*@px 11*@px 6*@px;
+              margin: 0 5*@px 10*@px 5*@px;
               box-sizing: border-box;
               transition: all 0.5s cubic-bezier(.55, 0, .1, 1);
               a {
@@ -470,6 +565,58 @@
                 }
                 img {
                   display: block;
+                }
+              }
+            }
+          }
+        }
+      }
+      &.family-list {
+        .family {
+          box-sizing: border-box;
+          padding: 0 5*@px;
+          ul {
+            .clearfix();
+            .family-item {
+              width: 235*@px;
+              height: 235*@px;
+              float: left;
+              margin: 10*@px 5*@px 0 5*@px;
+              box-sizing: border-box;
+              .family-img {
+                background: url("../../assets/image/B5/pic_hotbanner@3x.png") 50% 50% no-repeat;
+                background-size: cover;
+                display: block;
+                height: 100%;
+                position: relative;
+                .family-name {
+                  position: absolute;
+                  bottom: 0;
+                  left: 0;
+                  right: 0;
+                  text-align: right;
+                  padding: 0 12*@px 7*@px;
+                  color: #fff;
+                  font-size: 28*@px;
+                  background: rgba(0, 0, 0, 0.1);
+                }
+              }
+              .add-family-btn {
+                display: block;
+                height: 100%;
+                box-sizing: border-box;
+                padding-top: 77*@px;
+                background: #fff;
+                text-align: center;
+                font-size: 24*@px;
+                color: #BCBEC0;
+                .add-icon {
+                  display: block;
+                  width: 50*@px;
+                  height: 50*@px;
+                  background: url("../../assets/image/B1/icon_add_2@3x.png") 50% 50% no-repeat;
+                  background-size: 100%;
+                  margin: 0 auto 10*@px auto;
                 }
               }
             }

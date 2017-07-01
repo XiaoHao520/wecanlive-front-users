@@ -154,7 +154,7 @@ export default {
       }
       return api('User').get({ action: 'logout' }).then(() => {
         vm.current_user = null;
-        vm.$router.push({ name: 'passport_login' });
+        vm.$router.push({ name: 'passport_signin' });
       });
     },
     /**

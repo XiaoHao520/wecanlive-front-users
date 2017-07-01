@@ -28,7 +28,7 @@
         </li>
 
         <li class="setting-item">
-          <a href="javascript:;">意見反饋</a>
+          <router-link :to="{name: 'main_personal_feedback'}">意見反饋</router-link>
         </li>
 
         <li class="setting-item">

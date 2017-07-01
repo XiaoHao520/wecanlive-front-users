@@ -1,7 +1,6 @@
 <template>
   <div class="page-personal-black-list">
     <header-common title="封鎖清單"></header-common>
-
     <div class="black-list">
       <ul>
         <li class="black-item">
@@ -9,13 +8,11 @@
           <div class="name">LM-oof</div>
           <a class="del-btn" href="javascript:;">解除</a>
         </li>
-
         <li class="black-item">
           <div class="avatar"></div>
           <div class="name">LM-oof</div>
           <a class="del-btn" href="javascript:;">解除</a>
         </li>
-
         <li class="black-item">
           <div class="avatar"></div>
           <div class="name">LM-oof</div>

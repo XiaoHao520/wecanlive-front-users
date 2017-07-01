@@ -38,7 +38,7 @@
     </div>
     <div class="top-right-block">
       <a class="btn-activity"></a>
-      <a class="btn-jewel-box"></a>
+      <a class="btn-jewel-box" @click="starbox_display=true"></a>
     </div>
 
     <!--最底部輸入框-->
@@ -65,13 +65,23 @@
 
     </section>
 
+
+    <live-starbox :display="starbox_display" @click="starbox()"></live-starbox>
   </div>
 </template>
 
 <script type="text/babel" lang="babel">
   export default {
+    data() {
+      return {
+        starbox_display: false,
+      };
+    },
     methods: {
       reload() {
+      },
+      starbox(value) {
+        this.starbox_display = value;
       },
     },
   };
@@ -80,6 +90,7 @@
 <style rel="stylesheet/less" type="text/less" lang="less" scoped>
   @import (once) '../../vue2-front/assets/css/less-template/template';
   @import (once) '../../assets/css/defines';
+
   #app-main-live {
     background: url("../../assets/image/example/avatar.png") 50% 50% no-repeat;
     -webkit-background-size: cover;
@@ -96,7 +107,7 @@
         float: left;
         height: 88*@px;
         width: 410*@px;
-        background: rgba(0,0,0,0.4);
+        background: rgba(0, 0, 0, 0.4);
         .rounded-corners(88*@px);
         .border-box();
         padding: 0 9*@px 0 3*@px;
@@ -338,11 +349,16 @@
           margin-bottom: 0;
         }
         /*TODO*/
-        &.btn-item-like {}
-        &.btn-item-camera {}
-        &.btn-item-video {}
-        &.btn-item-tag {}
-        &.btn-item-share {}
+        &.btn-item-like {
+        }
+        &.btn-item-camera {
+        }
+        &.btn-item-video {
+        }
+        &.btn-item-tag {
+        }
+        &.btn-item-share {
+        }
       }
     }
   }

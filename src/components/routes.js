@@ -56,6 +56,8 @@ export default [
       { path: '/likes/:model/:id', name: 'main_like_list', component: require('./main/LikeList.vue') },
       // B2-1 - 找朋友
       { path: '/find/friend', name: 'main_find_friend', component: require('./main/FindFriend.vue') },
+      // B2-1-1 通信录好友
+      { path: '/find/friend/detail', name: 'main_find_friend_detail', component: require('./main/FindFriendDetail.vue') },
       // B2-2 - 活动详情（包括所有类型）
       { path: '/activity/:id', name: 'main_activity_detail', component: require('./main/ActivityDetail.vue') },
       // B5-1 - 影片播放

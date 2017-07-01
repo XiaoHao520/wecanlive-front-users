@@ -178,6 +178,33 @@ export default {
           }
           return deferred.promise;
         },
+        pickChoice(opts = [], defaultValue = '', title = '') {
+          const vm = this.vmNotifier;
+          const deferred = new Deferred();
+          let options = opts;
+          if (typeof (opts) === 'object' && !Array.isArray(opts)) {
+            options = Object.keys(opts).map(
+              value => ({ value, text: opts[value] })
+            );
+          }
+          options.forEach((item, i) => {
+            // 如果 options 是一个字符串，将其重新构造成一个 text-value 对象,
+            if (typeof (item) === 'string') {
+              options[i] = {
+                text: item,
+                value: item,
+              };
+            }
+            // 如果选项值等于默认值，将其设置为 selected
+            if (options[i].value === defaultValue) {
+              options[i].selected = true;
+            }
+          });
+          vm.choicepicker.title = title;
+          vm.choicepicker.choices = options;
+          vm.choicepicker.deferred = deferred;
+          return deferred.promise;
+        },
         share() {
           const vm = this.vmNotifier;
           vm.shareBar = !vm.shareBar;

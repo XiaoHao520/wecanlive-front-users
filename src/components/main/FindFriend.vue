@@ -5,21 +5,21 @@
     <div class="find-type">
       <ul>
         <li class="type-item">
-          <router-link :to="{name: 'main_member_official'}">
+          <router-link :to="{name: 'main_find_friend_detail'}">
             <div class="icon mobile"></div>
             <div class="type">通訊錄</div>
           </router-link>
         </li>
         <!--todo: 右icon顏色不對，要換切圖-->
         <li class="type-item">
-          <router-link :to="{name: 'main_member_official'}">
+          <router-link :to="{name: 'main_find_friend_detail'}">
             <div class="icon facebook"></div>
             <div class="type">Facebook 上的朋友</div>
           </router-link>
         </li>
 
         <li class="type-item">
-          <router-link :to="{name: 'main_member_official'}">
+          <router-link :to="{name: 'main_find_friend_detail'}">
             <div class="icon scan"></div>
             <div class="type">掃一掃</div>
           </router-link>

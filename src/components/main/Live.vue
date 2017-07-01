@@ -38,7 +38,7 @@
     </div>
     <div class="top-right-block">
       <a class="btn-activity"></a>
-      <a class="btn-jewel-box"></a>
+      <a class="btn-jewel-box" @click="starbox_display=true"></a>
     </div>
 
 
@@ -127,6 +127,8 @@
                  @click="toggleMemberCard"
                  @pick="choicePick"></member-card>
 
+
+    <live-starbox :display="starbox_display" @click="starbox()"></live-starbox>
   </div>
 </template>
 
@@ -142,6 +144,7 @@
           { text: '舉報', value: 2 },
         ],
         audioBox: false,
+        starbox_display: false,
       };
     },
     methods: {
@@ -163,6 +166,9 @@
       },
       toggleAudioBox() {
         this.audioBox = !this.audioBox;
+      },
+      starbox(value) {
+        this.starbox_display = value;
       },
     },
   };

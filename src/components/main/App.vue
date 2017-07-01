@@ -1,9 +1,8 @@
 <template>
   <!--<router-view></router-view>-->
   <transition :name="transitionName">
-    <router-view class="child-view"></router-view>
+    <router-view class="child-view" v-if="init"></router-view>
   </transition>
-
 
 </template>
 
@@ -12,6 +11,7 @@
     data() {
       return {
         transitionName: 'slide-left',
+        init: false,
       };
     },
     beforeRouteUpdate(to, from, next) {
@@ -24,10 +24,18 @@
       window.isBack = false;
       next();
     },
+    beforeMount() {
+      const vm = this;
+      vm.authenticate().then(() => {
+        vm.init = true;
+      }, () => {
+        vm.init = true;
+      }).catch(() => {
+        vm.init = true;
+      });
+    },
     methods: {
       reload() {
-        const vm = this;
-        vm.authenticate();
       },
     },
   };
@@ -43,7 +51,7 @@
     left: 0;
     right: 0;
     z-index: 1;
-    transition: all .8s cubic-bezier(.55,0,.1,1);
+    transition: all .5s cubic-bezier(.55,0,.1,1);
   }
   .slide-left-enter,
   .slide-right-leave-active {

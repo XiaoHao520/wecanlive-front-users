@@ -61,9 +61,22 @@ export default [
       // B5-1 - 影片播放
       { path: '/movie/:id', name: 'main_movie_detail', component: require('./main/MovieDetail.vue') },
       // B5-2 - wecanlive官方账号（其实是个特殊的用户页面），三个 tab 做在一起
-      { path: '/member/official', name: 'main_member_official', component: require('./main/MemberOfficial.vue') },
+      {
+        path: '/member/official',
+        name: 'main_member_official',
+        component: require('./main/MemberOfficial.vue'),
+      },
       // B6 - 排行榜（三个 tab 做在一起）
-      { path: '/ratings', name: 'main_ratings', component: require('./main/Ratings.vue') },
+      {
+        path: '/ratings',
+        name: 'main_ratings',
+        component: require('./main/Ratings.vue'),
+        children: [
+          { path: '/ratings/diamond', name: 'main_ratings_diamond', component: require('./main/RatingsDiamond.vue') },
+          { path: '/ratings/givegift', name: 'main_ratings_givegift', component: require('./main/RatingsGivegift.vue') },
+          { path: '/ratings/starlight', name: 'main_ratings_starlight', component: require('./main/RatingsStarlight.vue') },
+        ],
+      },
       // C - 搜索（搜索结果在当前页面遮罩层内实现）
       { path: '/search', name: 'main_search', component: require('./main/Search.vue') },
       // D - 开始直播

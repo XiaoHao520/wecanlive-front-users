@@ -19,14 +19,17 @@
           <router-link to="/thenearby">附近</router-link>
         </li>
       </ul>
-      <router-link to="/ratings" class="nav-other"></router-link>
+      <router-link to="/ratings/diamond" class="nav-other"></router-link>
     </header>
 
     <transition :name="transitionName">
       <router-view class="child-view-container"></router-view>
     </transition>
 
-    <footer-common active="home"></footer-common>
+    <footer-common></footer-common>
+
+    <member-card :display="memberCard" @click="toggleMemberCard"></member-card>
+
   </div>
 
 </template>
@@ -36,6 +39,7 @@
     data() {
       return {
         transitionName: 'slide-left',
+        memberCard: false,
       };
     },
     beforeRouteUpdate(to, from, next) {
@@ -46,6 +50,9 @@
     },
     methods: {
       reload() {
+      },
+      toggleMemberCard(value) {
+        this.memberCard = value;
       },
     },
   };
@@ -61,7 +68,7 @@
     left: 0;
     right: 0;
     z-index: 1;
-    transition: all .8s cubic-bezier(.55,0,.1,1);
+    transition: all .5s cubic-bezier(.55,0,.1,1);
     &.not-status-bar {
       top: 92*@px;
     }

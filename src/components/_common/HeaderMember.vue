@@ -1,37 +1,48 @@
 <template>
-  <header class="component-header-common ">
-    <slot name="left">
-      <div class="btn-back-warpper" @click="back">
-        <a class="btn btn-back"></a>
+  <header class="component-header-member">
+    <div class="top-bar">
+      <div class="top-btn-bar">
+        <a class="btn-settings"></a>
+        <a class="btn-friend"></a>
       </div>
-    </slot>
-    <slot name="middle">
-      <h1 class="title">{{title || '頁面標題'}}</h1>
-    </slot>
-    <slot name="right"></slot>
+      <div class="info-bar">
+        <div class="avatar">
+          <a class="btn-camera"></a>
+        </div>
+        <div class="right-block">
+          <div class="nickname">Chris Lin</div>
+          <div class="basic-info">
+            <div class="icon"></div>
+            男 • 29 歲 • 金牛座
+          </div>
+          <div class="live-num-block">
+            <div class="num-block">
+              <div class="title">粉絲</div>
+              <div class="num">2861332</div>
+            </div>
+            <div class="num-block">
+              <div class="title">追蹤</div>
+              <div class="num">78912</div>
+            </div>
+            <div class="num-block">
+              <div class="title">直播</div>
+              <div class="num">45612</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="description">
+      任何想法，都能產生的圓圈這就隊和錯，新本體會陷入到對自己本體不能理解的狀態中
+    </div>
   </header>
 </template>
 
 <script lang="babel">
   export default {
     methods: {
-      back() {
-        const vm = this;
-        if (vm.backLink) {
-          vm.$router.replace(vm.backLink);
-        } else {
-          vm.goBack();
-        }
-      },
     },
     props: {
-      backLink: {
-        type: Object,
-      },
-      title: {
-        type: String,
-      },
-      order_header: {},
     },
   };
 </script>
@@ -39,49 +50,125 @@
 <style rel="stylesheet/less" type="text/less" lang="less" scoped>
   @import (once) '../../vue2-front/assets/css/less-template/template';
   @import (once) '../../assets/css/defines';
-  .component-header-common {
+
+  .component-header-member {
     background: @bg-header;
     position: relative;
     top: 0;
     left: 0;
     right: 0;
-    padding-top: 36*@px;
-    height: @height-header;
+    padding: 36*@px 21*@px 0;
+    color: #FFFFFF;
     &.not-status-bar {
       padding-top: 0;
     }
-    .title {
-      display: block;
-      height: @height-header;
-      font-size: 38*@px;
-      color: #fff;
-      line-height: @height-header;
-      text-align: center;
-      margin: 0;
-      font-weight: normal;
-    }
-    .btn-back-warpper {
-      width: @height-header;
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      height: @height-header;
-      .btn-back {
-        display: block;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        -moz-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        -o-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        width: 44*@px;
-        height: 44*@px;
-        background: url("../../assets/image/A/nav_back@3x.png") 50% 50% no-repeat;
-        -webkit-background-size: 100%;
-        background-size: 100%;
+    .top-bar {
+      height: 317*@px;
+      padding-top: 21*@px;
+      border-bottom: 1px solid #481078;
+      .border-box();
+      .top-btn-bar {
+        overflow: hidden;
+        width: 100%;
+        .border-box();
+        .btn-settings {
+          float: left;
+          width: 52*@px;
+          height: 52*@px;
+          background: url("../../assets/image/B5/icon_setting@3x.png") 50% 50% no-repeat;
+          -webkit-background-size: 100%;
+          background-size: 100%;
+        }
+        .btn-friend {
+          float: right;
+          width: 52*@px;
+          height: 52*@px;
+          background: url("../../assets/image/B5/icon_friend@3x.png") 50% 50% no-repeat;
+          -webkit-background-size: 100%;
+          background-size: 100%;
+        }
+      }
+      .info-bar {
+        overflow: hidden;
+        width: 100%;
+        margin-top: 46*@px;
+        .avatar {
+          position: relative;
+          float: left;
+          width: 165*@px;
+          height: 165*@px;
+          .border-radius(50%);
+          background: #000;
+          background-position: 50% 50%;
+          background-repeat: no-repeat;
+          -webkit-background-size: cover;
+          background-size: cover;
+          .btn-camera {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60*@px;
+            height: 60*@px;
+            background: url("../../assets/image/B5/icon_changepic@3x.png") 50% 50% no-repeat;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+          }
+        }
+        .right-block {
+          float: right;
+          width: 505*@px;
+          .nickname {
+            font-size: 36*@px;
+            width: 100%;
+            .single-text-overflow();
+          }
+          .basic-info {
+            overflow: hidden;
+            height: 36*@px;
+            line-height: 36*@px;
+            font-size: 24*@px;
+            color: #BCA4F7;
+            .icon {
+              float: left;
+              width: 36*@px;
+              height: 36*@px;
+              background: url("../../assets/image/B3/icon_male@3x.png") 50% 50% no-repeat;
+              -webkit-background-size: 100%;
+              background-size: 100%;
+            }
+          }
+          .live-num-block {
+            overflow: hidden;
+            margin-top: 18*@px;
+            .num-block {
+              float: left;
+              margin-right: 28*@px;
+              width: 140*@px;
+              .title {
+                font-size: 23*@px;
+              }
+              .num {
+                font-size: 33*@px;
+                color: #00E2FD;
+                word-break:break-all;
+              }
+              &:last-child {
+                margin: 0;
+              }
+            }
+          }
+        }
       }
     }
+    .description {
+      margin: 0 auto;
+      height: 126*@px;
+      .border-box();
+      text-align: center;
+      padding: 25*@px 0;
+      font-size: 25*@px;
+      color: #E7DCFB;
+    }
+
   }
 </style>

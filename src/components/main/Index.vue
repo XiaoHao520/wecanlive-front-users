@@ -1,5 +1,5 @@
 <template>
-  <div id="main-index">
+  <div id="main-index" @scroll="handleScroll($event)">
     <section class="section-recommend-body">
       <div class="title">你可能會喜歡</div>
       <div class="image-library">
@@ -46,7 +46,7 @@
            }"></div>
     </ul>
 
-    <transition :name="transitionName">
+    <transition name="fade">
       <section class="section-live-list" v-if="tab == 0">
         <transition name="fade" appear>
           <div class="tips">5 個新直播～</div>
@@ -57,7 +57,7 @@
       </section>
     </transition>
 
-    <transition :name="transitionName">
+    <transition name="fade">
       <section class="section-live-list" v-if="tab == 1">
         <transition name="fade" appear>
           <div class="tips">5 個新動態～</div>
@@ -89,11 +89,10 @@
       },
       tabTo(pos) {
         const vm = this;
-        const index = vm.tab;
-        vm.transitionName = Number(pos) > Number(index) ? 'slide-left' : 'slide-right';
-        setTimeout(() => {
-          vm.tab = pos;
-        }, 0);
+        vm.tab = pos;
+      },
+      handleScroll(evt) {
+//        console.log(evt.target.scrollTop);
       },
     },
   };
@@ -104,6 +103,8 @@
   @import (once) '../../assets/css/defines';
 
   #main-index {
+    background: #E3E3EA;
+    .app-scroll();
     .section-recommend-body {
       width: 100%;
       height: 337*@px;
@@ -235,13 +236,7 @@
       }
     }
     .section-live-list {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      top: 337*@px+75*@px;
       background: #E3E3EA;
-      .app-scroll();
       transition: all .5s cubic-bezier(.55, 0, .1, 1);
       .tips {
         text-align: center;

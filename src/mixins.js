@@ -1,13 +1,21 @@
 // Mixins
 import * as common from './components/_common';
+import * as popup from './components/_popup';
 
 export default {
   mounted() {
   },
-  components: { ...common },
+  components: { ...common, ...popup },
   computed: {
   },
   filters: {
+    number(value) {
+      let val = Number(value);
+      if (val >= 1000) {
+        val = val % 1000 !== 0 ? `${(val / 1000).toFixed(1)}k` : `${(val / 1000)}k`;
+      }
+      return val;
+    },
   },
   methods: {
     /**

@@ -83,5 +83,19 @@
         background-size: 100%;
       }
     }
+    .deal-detail {
+      display: block;
+      width: 165*@px;
+      height: 50*@px;
+      line-height: 50*@px;
+      text-align: center;
+      font-size: 24*@px;
+      color: #fff;
+      background: #8967F5;
+      border-radius: 25*@px;
+      position: absolute;
+      right: 25*@px;
+      bottom: 18*@px;
+    }
   }
 </style>

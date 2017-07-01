@@ -181,5 +181,7 @@ export default [
       { path: '/vip', name: 'main_vip', component: require('./main/Vip.vue') },
       // F10 - VIP规则
       { path: '/vip/rules', name: 'main_vip_rules', component: require('./main/VipRules.vue') },
+      // F9-6 - 意见反馈
+      { path: '/personal/feedback', name: 'main_personal_feedback', component: require('./main/PersonalFeedback.vue') },
     ],
   }];

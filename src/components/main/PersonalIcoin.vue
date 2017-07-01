@@ -1,5 +1,7 @@
 <template>
-  <div>此页面尚未实现</div>
+  <div>
+    <header-common title="我的i幣"></header-common>
+  </div>
 </template>
 
 <script type="text/babel" lang="babel">

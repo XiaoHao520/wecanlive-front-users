@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4f4bd95f-7c85-4987-9347-a2175dafbe9e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/main/FindFriendDetail.vue" />
+    <list default="true" id="4f4bd95f-7c85-4987-9347-a2175dafbe9e" name="Default" comment="merge bin">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue" afterPath="$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/FindFriend.vue" afterPath="$PROJECT_DIR$/src/components/main/FindFriend.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/Live.vue" afterPath="$PROJECT_DIR$/src/components/main/Live.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/PersonalBlacklist.vue" afterPath="$PROJECT_DIR$/src/components/main/PersonalBlacklist.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/routes.js" afterPath="$PROJECT_DIR$/src/components/routes.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -636,7 +630,7 @@
       <workItem from="1498698945553" duration="30518000" />
       <workItem from="1498784468610" duration="35261000" />
       <workItem from="1498882126910" duration="12182000" />
-      <workItem from="1498900300192" duration="254000" />
+      <workItem from="1498900300192" duration="298000" />
     </task>
     <task id="LOCAL-00001" summary="頭部">
       <created>1498446946309</created>
@@ -708,11 +702,18 @@
       <option name="project" value="LOCAL" />
       <updated>1498882180524</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="merge bin">
+      <created>1498900576645</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1498900576645</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="207544000" />
+    <option name="totallyTimeSpent" value="207588000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -782,7 +783,8 @@
     <MESSAGE value="shouye" />
     <MESSAGE value="123" />
     <MESSAGE value="111" />
-    <option name="LAST_COMMIT_MESSAGE" value="111" />
+    <MESSAGE value="merge bin" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge bin" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -956,6 +958,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

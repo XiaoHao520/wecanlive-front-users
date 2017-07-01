@@ -18,7 +18,7 @@
       back() {
         const vm = this;
         if (vm.backLink) {
-          vm.$router.replace(vm.backLink);
+          vm.goBack(vm.backLink);
         } else {
           vm.goBack();
         }

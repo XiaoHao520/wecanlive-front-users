@@ -1,73 +1,86 @@
 <template>
-  <div class="page-member-official">
-    <header-common title="通訊錄好友"></header-common>
+  <div id="app-main-member-official">
+    <header-member></header-member>
+    <ul class="tab-index">
+      <li class="tab-item"
+          :class="{'tab-active': tab == 0}"
+          @click="tabTo(0)">影片
+      </li>
+      <li class="tab-item"
+          :class="{'tab-active': tab == 1}"
+          @click="tabTo(1)">直播
+      </li>
+      <li class="tab-item"
+          :class="{'tab-active': tab == 2}"
+          @click="tabTo(2)">動態
+      </li>
+      <div class="underline"
+           :class="{
+           'position-1': tab == 0,
+           'position-2': tab == 1,
+           'position-3': tab == 2
+           }"></div>
+    </ul>
+    <section class="section-body">
+      <transition :name="transitionName">
+        <section class="section-list section-list-1" v-if="tab == 0">
+          <div class="time">2017-05-04 03:00</div>
+          <div class="lists">
+            <movie-item category="recommend"></movie-item>
+            <movie-item category="new"></movie-item>
+            <movie-item category="exclusive"></movie-item>
+            <movie-item category="recommend"></movie-item>
+            <movie-item category="new"></movie-item>
+            <movie-item category="exclusive"></movie-item>
+            <movie-item category="recommend"></movie-item>
+            <movie-item category="new"></movie-item>
+            <movie-item category="exclusive"></movie-item>
+          </div>
+        </section>
+      </transition>
 
-    <div class="member-block">
-      <div class="app-member-list">
-        <div class="member-type">WecanLive 上的朋友</div>
-        <ul>
-          <li class="member-item">
-            <div class="avatar"></div>
-            <div class="member-info">
-              <div class="name">wecanlive娛樂</div>
-              <div class="intro">Kate Deverfdf</div>
-            </div>
-            <a href="javascript:;" class="btn follow-btn">
-              <div class="follow-icon"></div>
-              追蹤
-            </a>
-          </li>
+      <transition :name="transitionName">
+        <section class="section-list section-list-2" v-if="tab == 1">
+          <live-item :showInfo="showInfo"></live-item>
+          <live-item :showInfo="showInfo" :review="review"></live-item>
+          <live-item :showInfo="showInfo" :review="review"></live-item>
+          <live-item :showInfo="showInfo"></live-item>
+        </section>
+      </transition>
 
-          <li class="member-item">
-            <div class="avatar"></div>
-            <div class="member-info">
-              <div class="name">wecanlive娛樂</div>
-              <div class="intro">Kate Deverfdf</div>
-            </div>
-            <a href="javascript:;" class="btn follow-btn">
-              <div class="follow-icon"></div>
-              追蹤
+      <transition :name="transitionName">
+        <section class="section-list section-list-3" v-if="tab == 2">
+          <div class="dynamic-item"></div>
+          <div class="dynamic-item"></div>
+          <div class="dynamic-item"></div>
+          <div class="dynamic-item"></div>
+        </section>
+      </transition>
+    </section>
 
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="out-list">
-        <ul>
-          <li class="member-item">
-            <div class="avatar"></div>
-            <div class="member-info">
-              <div class="name">wecanlive娛樂</div>
-              <div class="intro">Kate Deverfdf</div>
-              <a href="javascript:;" class="btn invite-btn">
-                邀請
-              </a>
-            </div>
-          </li>
-
-          <li class="member-item">
-            <div class="avatar"></div>
-            <div class="member-info">
-              <div class="name">wecanlive娛樂</div>
-              <div class="intro">Kate Deverfdf</div>
-            </div>
-            <a href="javascript:;" class="btn invite-btn">
-              邀請
-            </a>
-          </li>
-
-
-        </ul>
-      </div>
-    </div>
   </div>
 </template>
 
 <script type="text/babel" lang="babel">
   export default {
+    data() {
+      return {
+        tab: 0,
+        transitionName: 'slide-left',
+        showInfo: false,
+        review: true,
+      };
+    },
     methods: {
       reload() {
+      },
+      tabTo(pos) {
+        const vm = this;
+        const index = vm.tab;
+        vm.transitionName = Number(pos) > Number(index) ? 'slide-left' : 'slide-right';
+        setTimeout(() => {
+          vm.tab = pos;
+        }, 0);
       },
     },
   };
@@ -77,89 +90,95 @@
   @import (once) '../../vue2-front/assets/css/less-template/template';
   @import (once) '../../assets/css/defines';
 
-  .page-member-official {
-    background: #E5E5EC;
-    .member-block {
-      position: absolute;
-      top: 126*@px;
-      left: 0; right: 0; bottom: 0;
-      overflow-y: scroll;
-      .app-scroll();
-      .app-member-list {
-        background: #fff;
-        padding: 35*@px 30*@px 0 30*@px;
-        .member-type {
-          font-size: 24*@px;
-          color: #989898;
-          margin-bottom: 30*@px;
+  #app-main-member-official {
+    .tab-index {
+      position: relative;
+      background: #FFFFFF;
+      height: 75*@px;
+      width: 100%;
+      overflow: hidden;
+      .border-box();
+      .tab-item {
+        float: left;
+        width: 100/3%;
+        height: 100%;
+        line-height: 75*@px;
+        text-align: center;
+        color: #8C8C8C;
+        font-size: 26*@px;
+        &.tab-active {
+          color: #0021E6;
         }
       }
-      .out-list {
-        margin-top: 28*@px;
-        background: #fff;
-        padding: 15*@px 30*@px 0 30*@px;
-      }
-      .member-item {
-        padding-left: 138*@px;
-        border-bottom: 1px solid @color-border;
-        position: relative;
-        margin-bottom: 15*@px;
-        padding-bottom: 15*@px;
-        .avatar {
-          position: absolute;
-          top: 0; left: 0;
-          width: 120*@px;
-          height: 120*@px;
-          background: url("../../assets/image/B2/list_icon_user_default@3x.png") 50% 50% no-repeat;
-          background-size: 100%;
+      .underline {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 4*@px;
+        width: 50*@px;
+        background: svg-gradient(to right, #00A1F5, #00EEE8);
+        -webkit-transition: all .5s cubic-bezier(.55, 0, .1, 1);
+        -moz-transition: all .5s cubic-bezier(.55, 0, .1, 1);
+        -ms-transition: all .5s cubic-bezier(.55, 0, .1, 1);
+        -o-transition: all .5s cubic-bezier(.55, 0, .1, 1);
+        transition: all .5s cubic-bezier(.55, 0, .1, 1);
+        &.position-1 {
+          -webkit-transform: translate3d(200%, 0, 0);
+          -moz-transform: translate3d(200%, 0, 0);
+          -ms-transform: translate3d(200%, 0, 0);
+          -o-transform: translate3d(200%, 0, 0);
+          transform: translate3d(200%, 0, 0);
         }
-        .member-info {
-          box-sizing: border-box;
-          padding-top: 30*@px;
-          min-height: 120*@px;
-          .name {
-            font-size: 30*@px;
-            height: 30*@px;
-            line-height: 30*@px;
-          }
-          .intro {
-            margin-top: 15*@px;
+        &.position-2 {
+          -webkit-transform: translate3d(700%, 0, 0);
+          -moz-transform: translate3d(700%, 0, 0);
+          -ms-transform: translate3d(700%, 0, 0);
+          -o-transform: translate3d(700%, 0, 0);
+          transform: translate3d(700%, 0, 0);
+        }
+        &.position-3 {
+          -webkit-transform: translate3d(1200%, 0, 0);
+          -moz-transform: translate3d(1200%, 0, 0);
+          -ms-transform: translate3d(1200%, 0, 0);
+          -o-transform: translate3d(1200%, 0, 0);
+          transform: translate3d(1200%, 0, 0);
+        }
+      }
+    }
+    .section-body {
+      .section-list {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 36*@px+317*@px+126*@px+75*@px;
+        background: #E3E3EA;
+        transition: all .5s cubic-bezier(.55, 0, .1, 1);
+        .app-scroll();
+        &.section-list-1 {
+          padding: 15*@px;
+          .time {
+            padding: 0 15*@px;
+            height: 43*@px;
+            line-height: 43*@px;
+            text-align: right;
             font-size: 20*@px;
-            line-height: 20*@px;
-            color: #989898;
+            color: #949494;
           }
-
-        }
-        .btn {
-          position: absolute;
-          top: 35*@px; right: 0;
-          display: block;
-          width: 145*@px;
-          height: 50*@px;
-          line-height: 50*@px;
-          color: #fff;
-          background: #A201FD;
-          font-size: 26*@px;
-          border-radius: 25*@px;
-          box-sizing: border-box;
-          .follow-icon {
-            height: 100%;
-            background: url("../../assets/image/B1/icon_add@3x.png") 50% 50% no-repeat;
-            background-size: 20*@px;
-            width: 20*@px;
-            position: absolute;
-            left: 32*@px;
-          }
-          &.follow-btn {
-            padding-left: 60*@px;
-          }
-          &.invite-btn {
-            text-align: center;
-            background: #3ABBF0;
+          .component-movie-item {
+            float: left;
+            margin: 0 15*@px 25*@px;
           }
         }
-        &:last-child {
-          border-bottom: 0;
+        &.section-list-3 {
+          padding: 3.5*@px;
+          .dynamic-item {
+            float: left;
+            margin: 3.5*@px;
+            width: 240.5*@px;
+            height: 240.5*@px;
+            background: #000;
+          }
         }
       }
     }

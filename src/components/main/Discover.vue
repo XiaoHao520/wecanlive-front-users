@@ -36,7 +36,7 @@
       <section class="section-live-list section-lookme" v-if="tab == 1">
         <div class="tips">最近 24 小時</div>
         <ul class="lists">
-          <li class="list-item">
+          <li class="list-item" @click="checkMember">
             <div class="avatar"></div>
             <div class="left-bar">
               <div class="info">
@@ -62,7 +62,7 @@
             </div>
           </li>
 
-          <li class="list-item list-item-kown">
+          <li class="list-item list-item-kown" @click="checkMember">
             <div class="avatar"></div>
             <div class="left-bar">
               <div class="nickname">LAKE</div>
@@ -89,7 +89,6 @@
             </div>
           </li>
 
-
         </ul>
       </section>
     </transition>
@@ -101,6 +100,7 @@
         <dynamic-item></dynamic-item>
       </section>
     </transition>
+
   </div>
 </template>
 
@@ -114,6 +114,10 @@
     },
     methods: {
       reload() {
+        this.notifyConfirm(
+          '充值成爲VIP或等級在綠色水晶區間上（含），即可無限制查看暱稱以及主頁～',
+          '取消',
+          '前去充值');
       },
       tabTo(pos) {
         const vm = this;
@@ -122,6 +126,10 @@
         setTimeout(() => {
           vm.tab = pos;
         }, 0);
+      },
+      checkMember() {
+        const vm = this;
+        vm.$parent.memberCard = true;
       },
     },
   };

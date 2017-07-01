@@ -29,32 +29,18 @@
       <div class="image-library">
         <swiper :options="swiperRankOption">
           <swiper-slide>
-            <div class="slide-item">
-              <div class="movie-thumbnail">
-                <div class="tag tag-exclusive"></div>
-              </div>
-              <div class="movie-title">夢夢 cos 化妝師</div>
-            </div>
+            <movie-item category="exclusive"></movie-item>
           </swiper-slide>
           <swiper-slide>
-            <div class="slide-item">
-              <div class="movie-thumbnail">
-                <div class="tag tag-new"></div>
-              </div>
-              <div class="movie-title">夢夢 cos 化妝師</div>
-            </div>
+            <movie-item category="new"></movie-item>
           </swiper-slide>
           <swiper-slide>
-            <div class="slide-item">
-              <div class="movie-thumbnail">
-                <div class="tag tag-recommend"></div>
-              </div>
-              <div class="movie-title">夢夢 cos 化妝師</div>
-            </div>
+            <movie-item category="recommend"></movie-item>
           </swiper-slide>
         </swiper>
       </div>
-      <a class="btn-more-movies">更多影片</a>
+      <router-link class="btn-more-movies"
+                   to="/member/official">更多影片</router-link>
     </section>
   </div>
 </template>

@@ -141,10 +141,38 @@
     </transition>
 
     <transition name="fade">
+      <div class="block-dialog block-notify-confirm modal fade in"
+           tabindex="-1" role="dialog"
+           style="display: block;" v-for="(item, index) in itemsNotifyConfirm">
+        <transition name="popup" appear>
+          <div class="modal-dialog modal-sm" v-if="item.content">
+            <div class="modal-content">
+              <div class="modal-body">
+                {{item.content}}
+              </div>
+              <div class="modal-footer">
+                <a @click="notifyConfirmAction(false, index)"
+                   href="javascript:"
+                   type="button" class="btn btn-sm btn-cancel">{{item.leftButtonText}}
+                </a>
+                <a @click="notifyConfirmAction(true, index)"
+                   href="javascript:"
+                   type="button" class="btn btn-sm btn-confirm">{{item.rightButtonText}}
+                </a>
+              </div>
+            </div>
+          </div>
+        </transition>
+      </div>
+    </transition>
+
+
+    <transition name="fade">
       <div class="mask-block"
            @click="shareBar=false"
            v-show="shareBar"></div>
     </transition>
+
 
   </div>
 
@@ -185,6 +213,13 @@
         const pos = index === -1 ? vm.itemsConfirm.length - 1 : index;
         const item = vm.itemsConfirm[pos];
         vm.itemsConfirm.splice(pos, 1);
+        return item.deferred[success ? 'resolve' : 'reject'](params);
+      },
+      notifyConfirmAction(success = true, index = -1, params = {}) {
+        const vm = this;
+        const pos = index === -1 ? vm.itemsNotifyConfirm.length - 1 : index;
+        const item = vm.itemsNotifyConfirm[pos];
+        vm.itemsNotifyConfirm.splice(pos, 1);
         return item.deferred[success ? 'resolve' : 'reject'](params);
       },
       promptAction(success = true, index = -1) {
@@ -242,6 +277,8 @@
 </script>
 
 <style lang="less" type="text/less" scoped>
+
   .notifiers {
   }
+
 </style>

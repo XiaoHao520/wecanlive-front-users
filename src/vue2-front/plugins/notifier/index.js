@@ -76,6 +76,22 @@ export default {
           console.log(`confirm: 【${title}】- ${content}`);
           return deferred.promise;
         },
+        notifyConfirm(content, leftButtonText = 'Cancel', rightButtonText = 'Confirm', options = {}) {
+          const vm = this.vmNotifier;
+          const DEFAULTS = {
+            size: 'md',  // sm/lg/md
+          };
+          const deferred = new Deferred();
+          const item = Object.assign({
+            content,
+            leftButtonText,
+            rightButtonText,
+            deferred,
+          }, options, DEFAULTS);
+          vm.itemsNotifyConfirm.unshift(item);
+          console.log(`notifyConfirm: ${content}`);
+          return deferred.promise;
+        },
         prompt(content, title = '', defaultValue = '', placeholder = '') {
           const vm = this.vmNotifier;
           const deferred = new Deferred();

@@ -2,19 +2,11 @@
   <div>
     <footer class="component-footer-common">
       <div class="footer-warpper">
-        <a class="footer-btn-home"
-           @click="goto('main_index', 'home')"
-           :class="{'footer-avtive': act == 'home'}"></a>
-        <a class="footer-btn-member"
-           @click="goto('main_member_detail', 'person')"
-           :class="{'footer-avtive': act == 'person'}"></a>
+        <router-link class="footer-btn-home" to="/"></router-link>
+        <router-link class="footer-btn-member" to="/member/0"></router-link>
         <div class="footer-btn-popup" @click="toggleBtn"></div>
-        <a class="footer-btn-search"
-           @click="goto('main_search', 'search')"
-           :class="{'footer-avtive': act == 'search'}"></a>
-        <a class="footer-btn-message"
-           @click="goto('main_message', 'message')"
-           :class="{'footer-avtive': act == 'message'}"></a>
+        <router-link class="footer-btn-search" to="/search"></router-link>
+        <router-link class="footer-btn-message" to="/message"></router-link>
       </div>
     </footer>
 
@@ -23,14 +15,14 @@
     </transition>
 
     <transition name="fade">
-      <div class="btn-live" v-show="btnBar"></div>
+      <div class="btn-live" @click="startLive" v-show="btnBar"></div>
     </transition>
     <transition name="quick-slide">
       <div class="btn-image" v-show="btnBar"></div>
     </transition>
-    <transition name="quick-slide-down">
-      <div class="btn-video" v-show="btnBar"></div>
-    </transition>
+    <!--<transition name="quick-slide-down">-->
+    <!--<div class="btn-video" v-show="btnBar"></div>-->
+    <!--</transition>-->
     <transition name="quick-slide-down-right">
       <div class="btn-camera" v-show="btnBar"></div>
     </transition>
@@ -49,21 +41,17 @@
     },
     methods: {
       reload() {
-        this.act = this.active;
       },
-      goto(routeName, active) {
+      startLive() {
         const vm = this;
-        vm.act = active;
-        vm.$router.push({ name: routeName });
+        vm.$router.push({ name: 'main_live_start' });
       },
       toggleBtn() {
         const vm = this;
         vm.btnBar = !vm.btnBar;
       },
     },
-    props: {
-      active: String,
-    },
+    props: {},
   };
 </script>
 
@@ -94,7 +82,7 @@
         -webkit-background-size: 100%;
         background-size: 100%;
         margin-left: 45*@px;
-        &.footer-avtive {
+        &.footer-avtive, &.router-link-active {
           background-image: url("../../assets/image/B1/icon_home_pred@3x.png");
         }
       }
@@ -107,7 +95,7 @@
         background: url("../../assets/image/B1/icon_person_nor@3x.png") 50% 50% no-repeat;
         -webkit-background-size: 100%;
         background-size: 100%;
-        &.footer-avtive {
+        &.footer-avtive, &.router-link-active {
           background-image: url("../../assets/image/B1/icon_person-_pred@3x.png");
         }
       }
@@ -120,7 +108,7 @@
         background: url("../../assets/image/B1/icon_message_nor@3x.png") 50% 50% no-repeat;
         -webkit-background-size: 100%;
         background-size: 100%;
-        &.footer-avtive {
+        &.footer-avtive, &.router-link-active {
           background-image: url("../../assets/image/B1/icon_message_pred@3x.png");
         }
       }
@@ -133,7 +121,7 @@
         background: url("../../assets/image/B1/icon_search_nor@3x.png") 50% 50% no-repeat;
         -webkit-background-size: 100%;
         background-size: 100%;
-        &.footer-avtive {
+        &.footer-avtive, &.router-link-active {
           background-image: url("../../assets/image/B1/icon_search_pred@3x.png");
         }
       }

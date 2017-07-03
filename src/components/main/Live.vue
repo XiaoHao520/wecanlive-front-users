@@ -95,6 +95,7 @@
         <div class="like-num">6.3K</div>
         <li class="btn-item btn-item-like" @click="showHearts"></li>
         <li class="btn-item btn-item-camera"></li>
+        <li class="btn-item btn-item-bag" @click="redbag_display=true"></li>
         <li class="btn-item btn-item-video"></li>
         <li class="btn-item btn-item-tag"></li>
         <li class="btn-item btn-item-share" @click="share"></li>
@@ -129,6 +130,8 @@
 
 
     <live-starbox :display="starbox_display" @click="starbox()"></live-starbox>
+
+    <live-redbag :display="redbag_display" @click="redbag()"></live-redbag>
   </div>
 </template>
 
@@ -145,6 +148,7 @@
         ],
         audioBox: false,
         starbox_display: false,
+        redbag_display: false,
       };
     },
     methods: {
@@ -169,6 +173,9 @@
       },
       starbox(value) {
         this.starbox_display = value;
+      },
+      redbag(value) {
+        this.redbag_display = value;
       },
     },
   };

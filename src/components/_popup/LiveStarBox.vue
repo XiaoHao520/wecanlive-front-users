@@ -30,10 +30,11 @@
           </div>
         </div>
         <div class="starbox-action">
-          <a class="btn top-btn" href="javascript:;">
+          <a class="btn top-btn" @click="white_maske=true;index=false;ranking=true" href="javascript:;">
             <div class="top-avatar"></div>
             星光推薦爭奪榜</a>
-          <a class="btn record-btn" @click="index=!index;record=!record" href="javascript:;">星光寶盒記錄</a>
+          <a class="btn record-btn"
+             @click="index=!index;record=!record" href="javascript:;">星光寶盒記錄</a>
         </div>
       </div>
     </transition>
@@ -70,10 +71,38 @@
       </div>
     </transition>
 
+    <transition name="popin">
+      <div v-if="display && ranking" class="starbox-ranking">
+        <div class="ranking-header">
+          <i class="fa fa-star" aria-hidden="true"></i>
+          星光幸運星
+          <span>(16:15-16:30)</span>
+          <!--todo 圖標-->
+          <div class="date">11:52</div>
+        </div>
+        <div class="ranking-top">
+          <div class="top-icon"></div>
+          <div class="avatar-bg">
+            <div class="avatar"></div>
+          </div>
+          <div class="top-member">
+            <div class="name">Chris Lin</div>
+            <div class="top-coin">抽中465金幣</div>
+          </div>
+        </div>
+
+      </div>
+    </transition>
+
 
     <transition name="fade">
-      <div class="maske" @click="handleClick" v-if="display"></div>
+      <div class="maske" @click="handleClick" v-if="display && !white_maske"></div>
     </transition>
+
+    <transition name="fade">
+      <div class="maske white-maske" @click="handleClick" v-if="display && white_maske"></div>
+    </transition>
+
   </div>
 </template>
 
@@ -83,6 +112,8 @@
       return {
         index: true,
         record: false,
+        ranking: false,
+        white_maske: false,
       };
     },
     methods: {
@@ -91,6 +122,7 @@
       handleClick(evt) {
         this.index = true;
         this.record = false;
+        this.white_maske = false;
         this.$emit('click', !this.display);
       },
     },
@@ -113,6 +145,9 @@
       right: 0;
       z-index: 99;
       background: rgba(0, 0, 0, 0.5);
+    }
+    .white-maske {
+      background-color: inherit;
     }
     .starbox {
       .border-radius(15*@px);
@@ -334,6 +369,48 @@
             right: 0;
             top: 32*@px;
           }
+        }
+      }
+    }
+
+    .starbox-ranking {
+      background: #fff;
+      position: fixed;
+      width: 690*@px;
+      bottom: 30*@px;
+      left: 50%;
+      -webkit-transform: translate(-50%, 0);
+      -moz-transform: translate(-50%, 0);
+      -ms-transform: translate(-50%, 0);
+      -o-transform: translate(-50%, 0);
+      transform: translate(-50%, 0);
+      .border-radius(15*@px);
+      overflow: hidden;
+      .ranking-header {
+        height: 90*@px;
+        padding: 0 17*@px;
+        background: @bg-header;
+        color: #fff;
+        line-height: 90*@px;
+        font-size: 30*@px;
+        i {
+          margin-right: 10*@px;
+        }
+        span {
+          color: #CD91F9;
+          margin-left: 18*@px;
+        }
+        .date {
+          float: right;
+          color: #F2B556;
+        }
+      }
+      .ranking-top {
+        height: 227*@px;
+        background: #170175;
+        padding-left: 30*@px;
+        .top-icon{
+
         }
       }
     }

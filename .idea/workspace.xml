@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4f4bd95f-7c85-4987-9347-a2175dafbe9e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/_popup/LiveRedBag.vue" afterPath="$PROJECT_DIR$/src/components/_popup/LiveRedBag.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue" afterPath="$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/Live.vue" afterPath="$PROJECT_DIR$/src/components/main/Live.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -31,14 +29,15 @@
           <file leaf-file-name="LiveStarBox.vue" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="413">
-                  <caret line="412" column="0" lean-forward="false" selection-start-line="412" selection-start-column="0" selection-end-line="412" selection-end-column="0" />
+                <state relative-caret-position="377">
+                  <caret line="534" column="19" lean-forward="false" selection-start-line="534" selection-start-column="19" selection-end-line="534" selection-end-column="19" />
                   <folding>
                     <element signature="n#div#0;n#transition#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-                    <element signature="e#4368#8162#0" expanded="false" />
-                    <element signature="e#4764#5879#0" expanded="false" />
-                    <element signature="e#7198#8155#0" expanded="false" />
-                    <element signature="e#8184#10337#0" expanded="false" />
+                    <element signature="e#5111#8905#0" expanded="false" />
+                    <element signature="e#5507#6622#0" expanded="false" />
+                    <element signature="e#7941#8898#0" expanded="false" />
+                    <element signature="e#8927#11080#0" expanded="false" />
+                    <element signature="e#13069#13556#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -61,14 +60,14 @@
           <file leaf-file-name="LiveStarBox.vue" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="188">
-                  <caret line="82" column="33" lean-forward="false" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="33" />
+                <state relative-caret-position="341">
+                  <caret line="96" column="41" lean-forward="false" selection-start-line="96" selection-start-column="41" selection-end-line="96" selection-end-column="41" />
                   <folding>
                     <element signature="n#div#0;n#transition#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-                    <element signature="e#4368#8162#0" expanded="false" />
-                    <element signature="e#4764#5879#0" expanded="false" />
-                    <element signature="e#7198#8155#0" expanded="false" />
-                    <element signature="e#8184#10337#0" expanded="false" />
+                    <element signature="e#5111#8905#0" expanded="false" />
+                    <element signature="e#5507#6622#0" expanded="false" />
+                    <element signature="e#7941#8898#0" expanded="false" />
+                    <element signature="e#8927#11080#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -409,7 +408,7 @@
       <workItem from="1498871280509" duration="10734000" />
       <workItem from="1498889241977" duration="10013000" />
       <workItem from="1498900705555" duration="134000" />
-      <workItem from="1499044713413" duration="12413000" />
+      <workItem from="1499044713413" duration="14147000" />
     </task>
     <task id="LOCAL-00001" summary="頭部">
       <created>1498446946309</created>
@@ -593,11 +592,18 @@
       <option name="project" value="LOCAL" />
       <updated>1499061383545</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="直播 揹包">
+      <created>1499063557511</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1499063557511</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="181512000" />
+    <option name="totallyTimeSpent" value="183246000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="24" width="1920" height="993" extended-state="6" />
@@ -1036,14 +1042,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="412" column="0" lean-forward="false" selection-start-line="412" selection-start-column="0" selection-end-line="412" selection-end-column="0" />
+        <state relative-caret-position="377">
+          <caret line="534" column="19" lean-forward="false" selection-start-line="534" selection-start-column="19" selection-end-line="534" selection-end-column="19" />
           <folding>
             <element signature="n#div#0;n#transition#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#4368#8162#0" expanded="false" />
-            <element signature="e#4764#5879#0" expanded="false" />
-            <element signature="e#7198#8155#0" expanded="false" />
-            <element signature="e#8184#10337#0" expanded="false" />
+            <element signature="e#5111#8905#0" expanded="false" />
+            <element signature="e#5507#6622#0" expanded="false" />
+            <element signature="e#7941#8898#0" expanded="false" />
+            <element signature="e#8927#11080#0" expanded="false" />
+            <element signature="e#13069#13556#0" expanded="false" />
           </folding>
         </state>
       </provider>

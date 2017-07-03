@@ -78,22 +78,26 @@
       </div>
     </transition>
 
-    <transition name="fade" appear>
+    <transition name="slide-down-up" appear>
       <div class="block-choices"
            @click="pickChoiceAction(false)"
            v-if="choicepicker.choices.length > 0">
-        <transition name="slide-fade" appear>
-          <ul>
-            <li v-for="item in choicepicker.choices">
-              <a :class="{active: item.selected}"
-                 @click.stop="pickChoiceAction(true, item.value)">{{item.text}}</a>
-            </li>
-            <li>
-              <a @click.stop="pickChoiceAction(false)">取消</a>
-            </li>
-          </ul>
-        </transition>
+        <ul>
+          <li v-for="item in choicepicker.choices">
+            <a :class="{active: item.selected}"
+               @click.stop="pickChoiceAction(true, item.value)">{{item.text}}</a>
+          </li>
+          <li>
+            <a @click.stop="pickChoiceAction(false)">取消</a>
+          </li>
+        </ul>
       </div>
+    </transition>
+
+    <transition name="fade">
+      <div class="mask-block"
+           @click="pickChoiceAction(false)"
+           v-if="choicepicker.choices.length > 0"></div>
     </transition>
 
     <div class="block-imagepicker block-invisible">
@@ -267,6 +271,13 @@
         }).catch(err => {
           console.log(err);
         });
+      },
+      pickChoiceAction(success = true, value = '') {
+        const vm = this;
+        const deferred = vm.choicepicker.deferred;
+        vm.choicepicker.deferred = null;
+        vm.choicepicker.choices = [];
+        return deferred[success ? 'resolve' : 'reject'](value);
       },
       shareTo(type) {
         const vm = this;

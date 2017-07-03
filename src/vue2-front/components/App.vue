@@ -99,36 +99,6 @@
     }
   }
 
-  .block-choices {
-    .fill-fixed();
-    background: rgba(0, 0, 0, 0.2);
-    font-size: 0.8rem;
-    z-index: 10;
-    header {
-      display: none;
-    }
-    ul {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 1.2rem 0;
-      @item-height: 1.8rem;
-      max-height: @item-height * 6;
-      overflow-y: auto;
-      background: white;
-      li a {
-        display: block;
-        line-height: @item-height;
-        padding: 0 1rem;
-        .nowrap();
-        &.active {
-          color: @color-main;
-        }
-      }
-    }
-  }
-
   .block-confirm {
     .fill-fixed();
     background: rgba(0, 0, 0, 0.2);

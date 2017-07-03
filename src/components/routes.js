@@ -88,6 +88,8 @@ export default [
         path: '/live/:id', name: 'main_live', component: require('./main/Live.vue'),
         children: [
           // （里面所有东西都做在这个页面）
+          // D - 鑽石貢獻榜
+          { path: '/live/:id/diamond', name: 'main_live_diamond', component: require('./main/LiveStart.vue') },
         ]
       },
       // D3 - 结束直播

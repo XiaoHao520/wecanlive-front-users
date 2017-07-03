@@ -3,7 +3,7 @@
     <transition name="popin">
       <div class="popup-member-card-body" v-if="display">
         <div class="popup-member-card-header">
-          <a class="btn-manage">管理</a>
+          <a class="btn-manage" @click="handlePick">管理</a>
           <a class="btn-close" @click="handleClick"></a>
           <div class="avatar"></div>
           <div class="nickname">Denka</div>
@@ -49,12 +49,27 @@
     methods: {
       reload() {
       },
+      handlePick() {
+        const vm = this;
+        if (vm.choice.length) {
+          vm.pickChoice(vm.choice).then((val) => {
+            this.$emit('pick', val);
+          });
+        }
+      },
       handleClick(evt) {
         this.$emit('click', !this.display);
       },
     },
     props: {
       display: Boolean,
+      choice: {
+        type: Array,
+        default() {
+          return [];
+        },
+      },
+      item: Object,
     },
   };
 </script>

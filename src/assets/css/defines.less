@@ -302,3 +302,31 @@ a {
     }
   }
 }
+
+.block-choices {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  header {
+    display: none;
+  }
+  ul {
+    @item-height: 90*@px;
+    max-height: @item-height * 6;
+    overflow-y: auto;
+    background: white;
+    li a {
+      display: block;
+      height: @item-height;
+      line-height: @item-height;
+      text-align: center;
+      font-size: 30*@px;
+      color: #000;
+      border-bottom: 1px solid #E0E0E0;
+      &.active {
+      }
+    }
+  }
+}

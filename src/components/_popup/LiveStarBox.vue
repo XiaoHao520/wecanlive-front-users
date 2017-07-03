@@ -30,10 +30,11 @@
           </div>
         </div>
         <div class="starbox-action">
-          <a class="btn top-btn" href="javascript:;">
+          <a class="btn top-btn" @click="white_maske=true;index=false;ranking=true" href="javascript:;">
             <div class="top-avatar"></div>
             星光推薦爭奪榜</a>
-          <a class="btn record-btn" @click="index=!index;record=!record" href="javascript:;">星光寶盒記錄</a>
+          <a class="btn record-btn"
+             @click="index=!index;record=!record" href="javascript:;">星光寶盒記錄</a>
         </div>
       </div>
     </transition>
@@ -70,10 +71,61 @@
       </div>
     </transition>
 
+    <transition name="popin">
+      <div v-if="display && ranking" class="starbox-ranking">
+        <div class="ranking-header">
+          <i class="fa fa-star" aria-hidden="true"></i>
+          星光幸運星
+          <span>(16:15-16:30)</span>
+          <!--todo 圖標-->
+          <div class="date">11:52</div>
+        </div>
+        <div class="ranking-top">
+          <div class="top-icon"></div>
+          <div class="avatar-bg">
+            <div class="avatar"></div>
+          </div>
+          <div class="top-member">
+            <div class="name">Chris Lin</div>
+            <div class="top-coin">抽中 <span>465金幣</span></div>
+          </div>
+        </div>
+
+        <div class="today-star">
+          <div class="title">今日幸運星</div>
+
+          <div class="today-star-member">
+            <div class="avatar"></div>
+            <div class="member-info">
+              <div class="name">娛樂</div>
+              <div class="date">16:15-16:30</div>
+            </div>
+            <div class="coin">抽中<span>316</span>金幣</div>
+          </div>
+
+          <div class="today-star-member">
+            <div class="avatar"></div>
+            <div class="member-info">
+              <div class="name">娛樂</div>
+              <div class="date">16:15-16:30</div>
+            </div>
+            <div class="coin">抽中<span>316</span>金幣</div>
+          </div>
+        </div>
+
+
+      </div>
+    </transition>
+
 
     <transition name="fade">
-      <div class="maske" @click="handleClick" v-if="display"></div>
+      <div class="maske" @click="handleClick" v-if="display && !white_maske"></div>
     </transition>
+
+    <transition name="fade">
+      <div class="maske white-maske" @click="handleClick" v-if="display && white_maske"></div>
+    </transition>
+
   </div>
 </template>
 
@@ -83,6 +135,8 @@
       return {
         index: true,
         record: false,
+        ranking: false,
+        white_maske: false,
       };
     },
     methods: {
@@ -91,6 +145,8 @@
       handleClick(evt) {
         this.index = true;
         this.record = false;
+        this.ranking = false;
+        this.white_maske = false;
         this.$emit('click', !this.display);
       },
     },
@@ -113,6 +169,9 @@
       right: 0;
       z-index: 99;
       background: rgba(0, 0, 0, 0.5);
+    }
+    .white-maske {
+      background-color: inherit;
     }
     .starbox {
       .border-radius(15*@px);
@@ -336,6 +395,153 @@
           }
         }
       }
+    }
+
+    .starbox-ranking {
+      background: #fff;
+      position: fixed;
+      width: 690*@px;
+      bottom: 30*@px;
+      left: 50%;
+      z-index: 999;
+      -webkit-transform: translate(-50%, 0);
+      -moz-transform: translate(-50%, 0);
+      -ms-transform: translate(-50%, 0);
+      -o-transform: translate(-50%, 0);
+      transform: translate(-50%, 0);
+      .border-radius(15*@px);
+      overflow: hidden;
+      .ranking-header {
+        height: 90*@px;
+        padding: 0 17*@px;
+        background: @bg-header;
+        color: #fff;
+        line-height: 90*@px;
+        font-size: 30*@px;
+        i {
+          margin-right: 10*@px;
+        }
+        span {
+          color: #CD91F9;
+          margin-left: 18*@px;
+        }
+        .date {
+          float: right;
+          color: #F2B556;
+        }
+      }
+      .ranking-top {
+        height: 227*@px;
+        background: #170175;
+        padding-left: 30*@px;
+        .top-icon {
+          width: 75*@px;
+          float: left;
+          background: url("../../assets/image/B6/icon_cup_1@3x.png") 50% 50% no-repeat;
+          background-size: 75*@px;
+          margin-right: 20*@px;
+          height: 100%;
+        }
+        .avatar-bg {
+          height: 100%;
+          width: 180*@px;
+          background: url("../../assets/image/B6/bg_decorate@3x.png") 50% 50% no-repeat;
+          background-size: 180*@px;
+          float: left;
+          position: relative;
+          .avatar {
+            position: absolute;
+            width: 120*@px;
+            height: 120*@px;
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            background: 50% 50% no-repeat #ccc;
+            background-size: cover;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+          }
+        }
+        .top-member {
+          height: 100%;
+          padding-top: 70*@px;
+          box-sizing: border-box;
+          color: #fff;
+          font-size: 32*@px;
+          margin-left: 15*@px;
+          float: left;
+          .name {
+            height: 32*@px;
+            line-height: 32*@px;
+          }
+          .top-coin {
+            margin-top: 17*@px;
+            height: 32*@px;
+            line-height: 32*@px;
+            span {
+              color: #F8F800;
+            }
+          }
+        }
+      }
+      .today-star {
+        padding: 30*@px 20*@px 0 20*@px;
+        .title {
+          font-size: 26*@px;
+          color: #B0B0B0;
+          margin-bottom: 30*@px;
+        }
+        .today-star-member {
+          padding: 0 0 15*@px 136*@px;
+          border-bottom: 1px solid @color-border;
+          position: relative;
+          margin-bottom: 15*@px;
+          &:last-child {
+            margin-bottom: 0;
+            border-bottom: 0;
+          }
+          .avatar {
+            width: 120*@px;
+            height: 120*@px;
+            border-radius: 50%;
+            background: 50% 50% no-repeat #ccc;
+            background-size: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+          .member-info {
+            box-sizing: border-box;
+            padding-top: 30*@px;
+            height: 120*@px;
+            font-size: 28*@px;
+            div {
+              height: 25*@px;
+              line-height: 25*@px;
+            }
+            .date {
+              margin-top: 18*@px;
+              color: #8D8D8D;
+            }
+          }
+          .coin {
+            position: absolute;
+            font-size: 28*@px;
+            color: #8D8D8D;
+            padding-top: 40*@px;
+            top: 0;
+            right: 0;
+            span {
+              color: #5338F1;
+              margin: 0 10*@px;
+            }
+          }
+        }
+      }
+
     }
 
     // 弹出效果

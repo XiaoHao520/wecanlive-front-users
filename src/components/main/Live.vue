@@ -29,8 +29,7 @@
         <div class="icon-caret"></div>
       </div>
       <div class="starlight-block">
-        <div class="icon-warpper">
-        </div>
+        <div class="icon-warpper"></div>
         <div class="percent-block">
           <div class="percent"></div>
           <div class="num">205/500</div>
@@ -101,12 +100,12 @@
           <li class="btn-item btn-item-right btn-item-like" @click="showHearts">
             <div class="like-num">6.3K</div>
           </li>
-          <li class="btn-item btn-item-right btn-item-gift"></li>
+          <li class="btn-item btn-item-right btn-item-gift" @click="redbag_display=true"></li>
           <li class="btn-item btn-item-right btn-item-vidio"></li>
           <li class="btn-item btn-item-right btn-item-audio"></li>
         </template>
 
-        <li class="btn-item btn-item-right btn-item-share"></li>
+        <li class="btn-item btn-item-right btn-item-share" @click="share"></li>
       </ul>
       <!--底部右邊按鈕 END-->
 
@@ -129,6 +128,8 @@
 
 
     <live-starbox :display="starbox_display" @click="starbox()"></live-starbox>
+
+    <live-giftbag :display="redbag_display" @click="redbag()"></live-giftbag>
   </div>
 </template>
 
@@ -146,6 +147,7 @@
         ],
         audioBox: false,
         starbox_display: false,
+        redbag_display: false,
       };
     },
     methods: {
@@ -170,6 +172,9 @@
       },
       starbox(value) {
         this.starbox_display = value;
+      },
+      redbag(value) {
+        this.redbag_display = value;
       },
     },
   };
@@ -367,7 +372,6 @@
           left: 0;
           top: 0;
           z-index: 1;
-
         }
         .percent-block {
           float: right;

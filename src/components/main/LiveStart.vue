@@ -10,7 +10,10 @@
         <a class="btn-cancel" @click="goBack()"></a>
       </div>
       <div class="avatar"></div>
-      <div class="live-title">新增有 # 標籤的標題</div>
+      <div class="live-title">
+        <span>新增有 # 標籤的標題</span>
+        <div class="warn-tips">你輸入了不符合 wecanlive 規範的文字</div>
+      </div>
       <div class="form">
         <div class="row-input">
           <div class="icon icon-password"></div>
@@ -34,6 +37,7 @@
           <li>聊聊</li>
           <li>大冒險</li>
         </ul>
+        <div class="warn-tips">至少要選擇一種類別</div>
       </div>
       <a class="btn-start-live" @click="startLive">
         <div class="icon"></div>
@@ -131,10 +135,19 @@
         background-size: cover;
       }
       .live-title {
+        position: relative;
         font-size: 38*@px;
         color: #FFFFFF;
         text-align: center;
         margin: 30*@px 0 70*@px;
+        .warn-tips {
+          position: absolute;
+          text-align: center;
+          width: 100%;
+          bottom: -39*@px;
+          font-size: 23*@px;
+          color: #E9363B;
+        }
       }
       .form {
         width: 388*@px;
@@ -150,7 +163,25 @@
           margin-bottom: 20*@px;
           .icon {
             float: left;
-            /*TODO: */
+            width: 44*@px;
+            height: 44*@px;
+            margin-top: 9.5*@px;
+            margin-left: 27*@px;
+            &.icon-password {
+              background: url("../../assets/image/D/d_icon_password@3x.png") 50% 50% no-repeat;
+              -webkit-background-size: 100%;
+              background-size: 100%;
+            }
+            &.icon-coin {
+              background: url("../../assets/image/D/d_icon_$@3x.png") 50% 50% no-repeat;
+              -webkit-background-size: 100%;
+              background-size: 100%;
+            }
+            &.icon-member {
+              background: url("../../assets/image/D/d_icon_numberlim@3x.png") 50% 50% no-repeat;
+              -webkit-background-size: 100%;
+              background-size: 100%;
+            }
           }
           .text {
             float: right;
@@ -169,10 +200,18 @@
         }
       }
       .tag-block {
+        position: relative;
         width: 100%;
         background: rgba(0, 0, 0, 0.3);
         .rounded-corners(10*@px);
-        overflow: hidden;
+        .warn-tips {
+          position: absolute;
+          text-align: center;
+          width: 100%;
+          bottom: -39*@px;
+          font-size: 23*@px;
+          color: #E9363B;
+        }
         .title {
           font-size: 30*@px;
           color: #FFFFFF;
@@ -206,13 +245,16 @@
         height: 90*@px;
         .rounded-corners(90*@px);
         width: 388*@px;
-        margin: 40*@px auto 19*@px;
+        margin: 68*@px auto 19*@px;
         background: #00C6BF;
         .icon {
-          /*TODO */
           float: left;
-          width: 140*@px;
-          height: 90*@px;
+          width: 65*@px;
+          height: 65*@px;
+          margin: 12.5*@px 44*@px 0;
+          background: url("../../assets/image/D/d_icon_live@3x.png") 50% 50% no-repeat;
+          -webkit-background-size: 100%;
+          background-size: 100%;
         }
         .text {
           float: left;
@@ -233,10 +275,13 @@
         margin: 0 auto;
         background: #00429D;
         .icon {
-          /*TODO */
           float: left;
-          width: 140*@px;
-          height: 90*@px;
+          width: 65*@px;
+          height: 65*@px;
+          margin: 12.5*@px 44*@px 0;
+          background: url("../../assets/image/D/d_icon_share-@3x.png") 50% 50% no-repeat;
+          -webkit-background-size: 100%;
+          background-size: 100%;
         }
         .text {
           float: left;
@@ -245,7 +290,6 @@
           height: 90*@px;
           line-height: 90*@px;
           text-align: center;
-
         }
       }
     }

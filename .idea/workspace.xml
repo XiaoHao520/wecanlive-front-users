@@ -1,8 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4f4bd95f-7c85-4987-9347-a2175dafbe9e" name="Default" comment="merge bin">
+    <list default="true" id="4f4bd95f-7c85-4987-9347-a2175dafbe9e" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/bg_selectfile@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/bg_selectfile@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_bg_familylv@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_bg_familylv@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_bg_pop@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_bg_pop@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_btn_share@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_btn_share@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_btn_track_1@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_btn_track_1@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_btn_track_nor@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_btn_track_nor@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_btn_track_pred@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_btn_track_pred@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_box@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_box@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_champion@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_champion@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_changecam@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_changecam@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_closed@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_closed@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_coin_b@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_coin_b@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_coin_s@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_coin_s@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_diamonds@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_diamonds@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_event@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_event@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_eye@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_eye@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_failed@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_failed@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_gift@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_gift@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_love@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_love@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_message@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_message@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_mic@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_mic@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_next_b@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_next_b@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_redpocket@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_redpocket@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_redpocket_b@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_redpocket_b@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_share_b@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_share_b@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_share_s@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_share_s@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_success@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_success@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_tag@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_tag@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_video@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_video@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_yuanqi@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_icon_yuanqi@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_label_sys@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_label_sys@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_pic_family@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_pic_family@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_pic_head_b@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_pic_head_b@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_pic_head_s@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d1_pic_head_s@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_bg_input@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_bg_input@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_bg_leibie@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_bg_leibie@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_bg_pop@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_bg_pop@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_btn_leibie_nor@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_btn_leibie_nor@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_btn_leibie_selected@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_btn_leibie_selected@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_btn_live@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_btn_live@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_btn_share@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_btn_share@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_icon_$@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_icon_$@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_icon_closed@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_icon_closed@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_icon_live@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_icon_live@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_icon_location@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_icon_location@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_icon_numberlim@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_icon_numberlim@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_icon_password@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_icon_password@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_icon_share-@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_icon_share-@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_icon_warning@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_icon_warning@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_pic_head@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_pic_head@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_radio_nor@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_radio_nor@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_radio_selected@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d_radio_selected@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/icon_star@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/icon_star@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/icon_triangle@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/icon_triangle@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/radio_nor@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/radio_nor@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/radio_selected@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/radio_selected@3x.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/Live.vue" afterPath="$PROJECT_DIR$/src/components/main/Live.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/LiveStart.vue" afterPath="$PROJECT_DIR$/src/components/main/LiveStart.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,50 +139,33 @@
           <file leaf-file-name="Live.vue" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/main/Live.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="465">
-                  <caret line="142" column="39" lean-forward="true" selection-start-line="142" selection-start-column="39" selection-end-line="142" selection-end-column="39" />
+                <state relative-caret-position="200">
+                  <caret line="426" column="14" lean-forward="true" selection-start-line="426" selection-start-column="14" selection-end-line="426" selection-end-column="14" />
                   <folding>
                     <element signature="n#section#0;n#section#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+                    <element signature="e#5459#8722#0" expanded="false" />
+                    <element signature="e#5519#7306#0" expanded="false" />
+                    <element signature="e#6067#6973#0" expanded="false" />
+                    <element signature="e#7320#8433#0" expanded="false" />
+                    <element signature="e#8743#11390#0" expanded="false" />
+                    <element signature="e#11412#12015#0" expanded="false" />
+                    <element signature="e#14893#19286#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="readme.md" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/_popup/readme.md">
+          <file leaf-file-name="LiveStart.vue" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/components/main/LiveStart.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="76">
-                  <caret line="4" column="8" lean-forward="false" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="LiveStarBox.vue" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="19">
-                  <caret line="1" column="20" lean-forward="false" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="MemberCard.vue" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/_popup/MemberCard.vue">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="361">
-                  <caret line="51" column="20" lean-forward="false" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
+                <state relative-caret-position="436">
+                  <caret line="229" column="37" lean-forward="true" selection-start-line="229" selection-start-column="37" selection-end-line="229" selection-end-column="37" />
                   <folding>
-                    <element signature="n#div#1;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-                    <element signature="n#div#2;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-                    <element signature="e#2322#2471#0" expanded="false" />
-                    <element signature="e#2956#4087#0" expanded="false" />
-                    <element signature="e#3139#3256#0" expanded="false" />
-                    <element signature="e#3276#3582#0" expanded="false" />
-                    <element signature="e#3599#3842#0" expanded="false" />
-                    <element signature="e#4117#4723#0" expanded="false" />
-                    <element signature="e#4757#5592#0" expanded="false" />
+                    <element signature="e#2010#2274#0" expanded="false" />
+                    <element signature="e#2564#3458#0" expanded="false" />
+                    <element signature="e#3473#3749#0" expanded="false" />
+                    <element signature="e#4126#5632#0" expanded="false" />
+                    <element signature="e#4464#5277#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -108,11 +205,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/vue2-front/plugins/notifier/index.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="56">
-                  <caret line="180" column="18" lean-forward="false" selection-start-line="180" selection-start-column="8" selection-end-line="180" selection-end-column="18" />
+                <state relative-caret-position="683">
+                  <caret line="180" column="62" lean-forward="true" selection-start-line="180" selection-start-column="62" selection-end-line="180" selection-end-column="62" />
                   <folding>
                     <element signature="e#0#36#0" expanded="true" />
                     <element signature="e#3126#3509#0" expanded="false" />
@@ -122,11 +219,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="defines.less" pinned="false" current-in-tab="false">
+          <file leaf-file-name="defines.less" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/assets/css/defines.less">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2717">
-                  <caret line="143" column="29" lean-forward="true" selection-start-line="143" selection-start-column="29" selection-end-line="143" selection-end-column="29" />
+                <state relative-caret-position="209">
+                  <caret line="11" column="52" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="52" />
                   <folding />
                 </state>
               </provider>
@@ -148,23 +245,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>扫楼神器</find>
-      <find>editor</find>
-      <find>v-icon</find>
-      <find>config.action_before_mixin</find>
-      <find>F</find>
-      <find>Notifier</find>
-      <find>Notfi</find>
-      <find>context.abc</find>
-      <find>btn-send</find>
-      <find>images</find>
-      <find>nearby</find>
-      <find>btn-add</find>
-      <find>footer-btn-popup</find>
-      <find>mask-block</find>
-      <find>nav-other</find>
       <find>image-library</find>
-      <find>live-title</find>
       <find>bottom-block</find>
       <find>live-member-num</find>
       <find>owner-nickname</find>
@@ -175,7 +256,25 @@
       <find>text</find>
       <find>showHearts</find>
       <find>block-choices</find>
+      <find>icon-password</find>
+      <find>row-input</find>
+      <find>btn-start-live</find>
+      <find>live-title</find>
+      <find>tag-block</find>
+      <find>percent</find>
+      <find>icon-warpper</find>
+      <find>avatar-container</find>
+      <find>icon-diamond</find>
+      <find>btn-jewel-box</find>
+      <find>btn-activity</find>
+      <find>btn-tracking</find>
+      <find>member-num</find>
+      <find>btn-item-tag</find>
+      <find>btn-item</find>
+      <find>section-messages</find>
+      <find>black-mask</find>
       <find>btn-lists</find>
+      <find>btn-item-like</find>
     </findStrings>
     <replaceStrings>
       <replace>*@px</replace>
@@ -234,15 +333,15 @@
         <option value="$PROJECT_DIR$/src/components/_common/RankItem.vue" />
         <option value="$PROJECT_DIR$/src/components/main/RatingsDiamond.vue" />
         <option value="$PROJECT_DIR$/src/components/_common/FooterCommon.vue" />
-        <option value="$PROJECT_DIR$/src/components/main/LiveStart.vue" />
         <option value="$PROJECT_DIR$/src/components/main/Discover.vue" />
         <option value="$PROJECT_DIR$/src/vue2-front/plugins/notifier/index.js" />
         <option value="$PROJECT_DIR$/src/vue2-front/plugins/notifier/NotifierRegistry.vue" />
         <option value="$PROJECT_DIR$/src/vue2-front/components/App.vue" />
         <option value="$PROJECT_DIR$/src/assets/css/defines.less" />
         <option value="$PROJECT_DIR$/src/components/_popup/MemberCard.vue" />
-        <option value="$PROJECT_DIR$/src/components/main/Live.vue" />
         <option value="$PROJECT_DIR$/src/components/routes.js" />
+        <option value="$PROJECT_DIR$/src/components/main/LiveStart.vue" />
+        <option value="$PROJECT_DIR$/src/components/main/Live.vue" />
       </list>
     </option>
   </component>
@@ -277,7 +376,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -428,28 +526,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="_popup" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wecanlive-front" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wecanlive-front" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="_common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -501,11 +577,12 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../aifabiao-front" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="editor.config.accepted" value="true" />
     <property name="nodejs_interpreter_path" value="/usr/bin/node" />
@@ -516,11 +593,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets/image/D" />
       <recent name="$PROJECT_DIR$/src/assets/image" />
       <recent name="$PROJECT_DIR$/src/components/_popup" />
       <recent name="$PROJECT_DIR$/src/assets/image/B1" />
       <recent name="$PROJECT_DIR$/src/components/_common" />
-      <recent name="$PROJECT_DIR$/src/components/main" />
     </key>
   </component>
   <component name="RunManager">
@@ -630,7 +707,8 @@
       <workItem from="1498698945553" duration="30518000" />
       <workItem from="1498784468610" duration="35261000" />
       <workItem from="1498882126910" duration="12182000" />
-      <workItem from="1498900300192" duration="298000" />
+      <workItem from="1498900300192" duration="533000" />
+      <workItem from="1499062730578" duration="6509000" />
     </task>
     <task id="LOCAL-00001" summary="頭部">
       <created>1498446946309</created>
@@ -709,11 +787,18 @@
       <option name="project" value="LOCAL" />
       <updated>1498900576645</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="merge bin">
+      <created>1498900599839</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1498900599839</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="207588000" />
+    <option name="totallyTimeSpent" value="214332000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -728,12 +813,12 @@
     <frame x="0" y="24" width="1920" height="993" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15559071" sideWeight="0.6898305" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15559071" sideWeight="0.6814921" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32997763" sideWeight="0.4978903" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34004474" sideWeight="0.431962" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22035794" sideWeight="0.43407172" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17673378" sideWeight="0.4957806" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15559071" sideWeight="0.3101695" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34004474" sideWeight="0.568038" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15559071" sideWeight="0.31850788" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22035794" sideWeight="0.5659283" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22371365" sideWeight="0.49156117" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -835,10 +920,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
           <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding>
-            <element signature="e#5733#6585#0" expanded="false" />
-            <element signature="e#7355#7678#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -846,10 +927,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="81" column="21" lean-forward="false" selection-start-line="81" selection-start-column="8" selection-end-line="81" selection-end-column="21" />
-          <folding>
-            <element signature="e#4990#5591#0" expanded="false" />
-            <element signature="e#5902#7364#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1124,13 +1201,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/main/LiveStart.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="120" column="32" lean-forward="false" selection-start-line="115" selection-start-column="10" selection-end-line="120" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/assets/image/B6/pic_user@3x.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1161,13 +1231,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-131">
           <caret line="82" column="43" lean-forward="false" selection-start-line="82" selection-start-column="43" selection-end-line="82" selection-end-column="43" />
-          <folding>
-            <element signature="n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#transition#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#transition#4;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#transition#5;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#7965#9356#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1175,15 +1238,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
           <caret line="101" column="0" lean-forward="false" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/css/defines.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2717">
-          <caret line="143" column="29" lean-forward="true" selection-start-line="143" selection-start-column="29" selection-end-line="143" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1211,21 +1265,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/vue2-front/plugins/notifier/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="180" column="18" lean-forward="false" selection-start-line="180" selection-start-column="8" selection-end-line="180" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-            <element signature="e#3126#3509#0" expanded="false" />
-            <element signature="e#4241#6290#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/_popup/MemberCard.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
+        <state relative-caret-position="589">
           <caret line="51" column="20" lean-forward="false" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
           <folding>
             <element signature="n#div#1;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
@@ -1241,12 +1283,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/vue2-front/plugins/notifier/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="683">
+          <caret line="180" column="62" lean-forward="true" selection-start-line="180" selection-start-column="62" selection-end-line="180" selection-end-column="62" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+            <element signature="e#3126#3509#0" expanded="false" />
+            <element signature="e#4241#6290#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/main/LiveStart.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="229" column="37" lean-forward="true" selection-start-line="229" selection-start-column="37" selection-end-line="229" selection-end-column="37" />
+          <folding>
+            <element signature="e#2010#2274#0" expanded="false" />
+            <element signature="e#2564#3458#0" expanded="false" />
+            <element signature="e#3473#3749#0" expanded="false" />
+            <element signature="e#4126#5632#0" expanded="false" />
+            <element signature="e#4464#5277#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/css/defines.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="52" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/main/Live.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="142" column="39" lean-forward="true" selection-start-line="142" selection-start-column="39" selection-end-line="142" selection-end-column="39" />
+        <state relative-caret-position="200">
+          <caret line="426" column="14" lean-forward="true" selection-start-line="426" selection-start-column="14" selection-end-line="426" selection-end-column="14" />
           <folding>
             <element signature="n#section#0;n#section#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#5459#8722#0" expanded="false" />
+            <element signature="e#5519#7306#0" expanded="false" />
+            <element signature="e#6067#6973#0" expanded="false" />
+            <element signature="e#7320#8433#0" expanded="false" />
+            <element signature="e#8743#11390#0" expanded="false" />
+            <element signature="e#11412#12015#0" expanded="false" />
+            <element signature="e#14893#19286#0" expanded="false" />
           </folding>
         </state>
       </provider>

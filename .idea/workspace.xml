@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f4bd95f-7c85-4987-9347-a2175dafbe9e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/_popup/LiveGiftBag.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/_popup/LiveRedBag.vue" afterPath="$PROJECT_DIR$/src/components/_popup/LiveRedBag.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/_popup/index.js" afterPath="$PROJECT_DIR$/src/components/_popup/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/_popup/readme.md" afterPath="$PROJECT_DIR$/src/components/_popup/readme.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/Live.vue" afterPath="$PROJECT_DIR$/src/components/main/Live.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/_common/HeaderCommon.vue" afterPath="$PROJECT_DIR$/src/components/_common/HeaderCommon.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/MemberFriends.vue" afterPath="$PROJECT_DIR$/src/components/main/MemberFriends.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -30,21 +27,12 @@
     <splitter split-orientation="horizontal" split-proportion="0.48785165">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="LiveGiftBag.vue" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveGiftBag.vue">
+          <file leaf-file-name="MemberFriends.vue" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/components/main/MemberFriends.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="117">
-                  <caret line="451" column="40" lean-forward="false" selection-start-line="451" selection-start-column="40" selection-end-line="451" selection-end-column="40" />
-                  <folding>
-                    <element signature="n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-                    <element signature="n#transition#0;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-                    <element signature="n#ul#0;n#div#0;n#transition#0;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-                    <element signature="n#transition#1;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-                    <element signature="n#transition#2;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-                    <element signature="n#transition#1;n#div#0;n#transition#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-                    <element signature="n#transition#2;n#div#0;n#transition#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-                    <element signature="n#transition#3;n#div#0;n#transition#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-                  </folding>
+                <state relative-caret-position="198">
+                  <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -56,18 +44,18 @@
           <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/routes.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="18">
-                  <caret line="87" column="75" lean-forward="false" selection-start-line="87" selection-start-column="75" selection-end-line="87" selection-end-column="75" />
+                <state relative-caret-position="216">
+                  <caret line="122" column="101" lean-forward="false" selection-start-line="122" selection-start-column="101" selection-end-line="122" selection-end-column="101" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="defines.less" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/assets/css/defines.less">
+          <file leaf-file-name="MemberFriends.vue" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/components/main/MemberFriends.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="126">
-                  <caret line="7" column="1" lean-forward="false" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+                <state relative-caret-position="540">
+                  <caret line="30" column="18" lean-forward="false" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
                   <folding />
                 </state>
               </provider>
@@ -79,8 +67,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>over</find>
-      <find>date</find>
       <find>tabTo</find>
       <find>passport_</find>
       <find>,</find>
@@ -109,6 +95,8 @@
       <find>active-gift</find>
       <find>starbox-record</find>
       <find>gift-list</find>
+      <find>gift-exp</find>
+      <find>/member/:id/fr</find>
     </findStrings>
     <replaceStrings>
       <replace>'',</replace>
@@ -124,7 +112,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/vue2-front/index.js" />
         <option value="$PROJECT_DIR$/src/config/config.js" />
         <option value="$PROJECT_DIR$/src/mixins.js" />
         <option value="$PROJECT_DIR$/src/components/_common/index.js" />
@@ -156,7 +143,6 @@
         <option value="$PROJECT_DIR$/src/components/main/MemberFans.vue" />
         <option value="$PROJECT_DIR$/src/components/main/MemberFollows.vue" />
         <option value="$PROJECT_DIR$/src/components/main/MemberDetail.vue" />
-        <option value="$PROJECT_DIR$/src/components/_common/HeaderCommon.vue" />
         <option value="$PROJECT_DIR$/src/components/main/PersonalDiamondTransactions.vue" />
         <option value="$PROJECT_DIR$/src/components/main/PersonalDiamond.vue" />
         <option value="$PROJECT_DIR$/src/components/main/PersonalDiamondExchangeCoin.vue" />
@@ -175,6 +161,8 @@
         <option value="$PROJECT_DIR$/src/components/_popup/index.js" />
         <option value="$PROJECT_DIR$/src/components/main/Live.vue" />
         <option value="$PROJECT_DIR$/src/components/_popup/LiveGiftBag.vue" />
+        <option value="$PROJECT_DIR$/src/components/_common/HeaderCommon.vue" />
+        <option value="$PROJECT_DIR$/src/components/main/MemberFriends.vue" />
       </list>
     </option>
   </component>
@@ -313,7 +301,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="_popup" />
+              <option name="myItemId" value="_common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -452,7 +440,7 @@
       <workItem from="1498871280509" duration="10734000" />
       <workItem from="1498889241977" duration="10013000" />
       <workItem from="1498900705555" duration="134000" />
-      <workItem from="1499044713413" duration="17191000" />
+      <workItem from="1499044713413" duration="18635000" />
     </task>
     <task id="LOCAL-00001" summary="頭部">
       <created>1498446946309</created>
@@ -650,11 +638,18 @@
       <option name="project" value="LOCAL" />
       <updated>1499065292597</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="揹包 改">
+      <created>1499068338349</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1499068338349</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="186290000" />
+    <option name="totallyTimeSpent" value="187734000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="24" width="1920" height="993" extended-state="6" />
@@ -707,7 +702,8 @@
     <MESSAGE value="星光寶盒" />
     <MESSAGE value="直播 揹包" />
     <MESSAGE value="揹包 星光寶盒" />
-    <option name="LAST_COMMIT_MESSAGE" value="揹包 星光寶盒" />
+    <MESSAGE value="揹包 改" />
+    <option name="LAST_COMMIT_MESSAGE" value="揹包 改" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -820,13 +816,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/main/MemberFriends.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/main/MemberFans.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -848,6 +837,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="13" column="18" lean-forward="false" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -869,13 +861,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
           <caret line="67" column="18" lean-forward="false" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/_common/HeaderCommon.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1782">
-          <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1026,14 +1011,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="87" column="75" lean-forward="false" selection-start-line="87" selection-start-column="75" selection-end-line="87" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/_popup/readme.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -1102,6 +1079,30 @@
             <element signature="n#transition#2;n#div#0;n#transition#1;n#div#0;n#template#0;n#!!top" expanded="false" />
             <element signature="n#transition#3;n#div#0;n#transition#1;n#div#0;n#template#0;n#!!top" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="122" column="101" lean-forward="false" selection-start-line="122" selection-start-column="101" selection-end-line="122" selection-end-column="101" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/_common/HeaderCommon.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="101" column="25" lean-forward="true" selection-start-line="101" selection-start-column="25" selection-end-line="101" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/main/MemberFriends.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="30" column="18" lean-forward="false" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>

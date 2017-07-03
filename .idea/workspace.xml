@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4f4bd95f-7c85-4987-9347-a2175dafbe9e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/_common/HeaderCommon.vue" afterPath="$PROJECT_DIR$/src/components/_common/HeaderCommon.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/MemberFriends.vue" afterPath="$PROJECT_DIR$/src/components/main/MemberFriends.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -440,7 +438,7 @@
       <workItem from="1498871280509" duration="10734000" />
       <workItem from="1498889241977" duration="10013000" />
       <workItem from="1498900705555" duration="134000" />
-      <workItem from="1499044713413" duration="18635000" />
+      <workItem from="1499044713413" duration="18851000" />
     </task>
     <task id="LOCAL-00001" summary="頭部">
       <created>1498446946309</created>
@@ -645,23 +643,30 @@
       <option name="project" value="LOCAL" />
       <updated>1499068338349</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="我的朋友">
+      <created>1499070181884</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1499070181884</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="187734000" />
+    <option name="totallyTimeSpent" value="187950000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="24" width="1920" height="993" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17510548" sideWeight="0.67027026" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17510548" sideWeight="0.67027026" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32997763" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32997763" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17510548" sideWeight="0.32972974" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17225951" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17225951" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277405" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17510548" sideWeight="0.31756756" order="3" side_tool="true" content_ui="tabs" />
@@ -703,7 +708,8 @@
     <MESSAGE value="直播 揹包" />
     <MESSAGE value="揹包 星光寶盒" />
     <MESSAGE value="揹包 改" />
-    <option name="LAST_COMMIT_MESSAGE" value="揹包 改" />
+    <MESSAGE value="我的朋友" />
+    <option name="LAST_COMMIT_MESSAGE" value="我的朋友" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />

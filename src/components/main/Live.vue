@@ -87,30 +87,28 @@
       </section>
       <!--底部右邊按鈕-->
       <ul class="btn-lists">
-        <div class="hearts">
-          <transition name="heart-up">
-            <div class="heart" v-show="heart_1"></div>
-          </transition>
-        </div>
-        <div class="like-num">6.3K</div>
-        <li class="btn-item btn-item-like" @click="showHearts"></li>
-        <li class="btn-item btn-item-camera"></li>
-        <li class="btn-item btn-item-bag" @click="redbag_display=true"></li>
-        <li class="btn-item btn-item-video"></li>
-        <li class="btn-item btn-item-tag"></li>
-        <li class="btn-item btn-item-share" @click="share"></li>
+
+        <li class="btn-item btn-item-left btn-item-text"></li>
+
+        <template v-if="is_owner">
+          <li class="btn-item btn-item-right btn-item-redbag"></li>
+          <li class="btn-item btn-item-right btn-item-tag">#</li>
+          <li class="btn-item btn-item-right btn-item-camera"></li>
+        </template>
+
+        <template v-else>
+          <li class="btn-item btn-item-right btn-item-like" @click="showHearts">
+            <div class="like-num">6.3K</div>
+          </li>
+          <li class="btn-item btn-item-right btn-item-gift" @click="redbag_display=true"></li>
+          <li class="btn-item btn-item-right btn-item-vidio"></li>
+          <li class="btn-item btn-item-right btn-item-audio"></li>
+        </template>
+
+        <li class="btn-item btn-item-right btn-item-share" @click="share"></li>
       </ul>
       <!--底部右邊按鈕 END-->
 
-      <!--最底部輸入框-->
-      <div class="bottom-input">
-        <a class="btn-more">+</a>
-        <div class="input-box">
-          <div class="icon"></div>
-          <input type="text" placeholder="說些什麼...">
-        </div>
-      </div>
-      <!--最底部輸入框 END-->
       <div class="audio-box" v-if="audioBox">
         <div class="percent-box">
           <div class="percent"></div>
@@ -131,7 +129,7 @@
 
     <live-starbox :display="starbox_display" @click="starbox()"></live-starbox>
 
-    <live-redbag :display="redbag_display" @click="redbag()"></live-redbag>
+    <live-giftbag :display="redbag_display" @click="redbag()"></live-giftbag>
   </div>
 </template>
 
@@ -139,6 +137,7 @@
   export default {
     data() {
       return {
+        is_owner: false,
         memberCard: false,
         heart_1: false,
         choice: [
@@ -230,10 +229,14 @@
             line-height: 36*@px;
             overflow: hidden;
             .icon {
-              /*TODO*/
               float: left;
-              width: 36*@px;
-              height: 36*@px;
+              margin-top: 3*@px;
+              margin-right: 5*@px;
+              width: 30*@px;
+              height: 20*@px;
+              background: url("../../assets/image/D/d1_icon_eye@3x.png") 50% 50% no-repeat;
+              -webkit-background-size: 100%;
+              background-size: 100%;
             }
             .num {
               float: left;
@@ -254,19 +257,31 @@
           color: #FFFFFF;
           background: @bg-header;
           .rounded-corners(70*@px);
-          font-size: 37*@px;
+          font-size: 30*@px;
         }
       }
       .users {
         float: left;
         height: 60*@px;
         margin-top: 14*@px;
+        margin-left: 15*@px;
         .avatar-container {
           float: left;
           position: relative;
           /*TODO*/
           width: 60*@px;
           height: 60*@px;
+          .decoration {
+            position: absolute;
+            left: 50%;
+            .transform(translate(-50%, -20%));
+            width: 61*@px;
+            height: 78*@px;
+            z-index: 1;
+            background: url("../../assets/image/D/d1_icon_champion@3x.png") 50% 50% no-repeat;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+          }
           .user-avatar {
             .block-center();
             margin: 0;
@@ -325,7 +340,13 @@
         }
         .icon-caret {
           float: right;
-          /*TODO */
+          width: 11*@px;
+          height: 16*@px;
+          margin-top: 15.5*@px;
+          margin-right: 16*@px;
+          background: url("../../assets/image/D/d1_icon_next_b@3x.png") 50% 50% no-repeat;
+          -webkit-background-size: 100%;
+          background-size: 100%;
         }
       }
       .starlight-block {
@@ -342,30 +363,42 @@
           height: 47*@px;
           width: 47*@px;
           .rounded-corners(47*@px);
-          background: #736A63;
+          background-image: url('../../assets/image/D/icon_star@2x.png');
+          background-position: 50% 50%;
+          background-repeat: no-repeat;
+          -webkit-background-size: 80%;
+          background-size: 80%;
+          background-color: #000;
           left: 0;
           top: 0;
           z-index: 1;
         }
         .percent-block {
           float: right;
-          height: 47*@px;
-          width: 137*@px;
+          height: 41*@px;
+          width: 134*@px;
           line-height: 47*@px;
           text-align: center;
           .border-box();
           position: relative;
-          padding: 3*@px 3*@px 3*@px 0;
+          margin-right: 3*@px;
+          margin-top: 3*@px;
+          overflow: hidden;
+          border-top-right-radius: 41*@px;
+          border-bottom-right-radius: 41*@px;
           .num {
             .block-center();
             font-size: 32*@px;
           }
           .percent {
-            width: 60%;
+            width: 95%;
             height: 100%;
             background: #FFA940;
-            border-bottom-right-radius: 41*@px;
-            border-top-right-radius: 41*@px;
+            -webkit-transition: all .3s;
+            -moz-transition: all .3s;
+            -ms-transition: all .3s;
+            -o-transition: all .3s;
+            transition: all .3s;
           }
         }
       }
@@ -375,14 +408,19 @@
       margin-top: 30*@px;
       a {
         float: left;
-        width: 95*@px;
-        height: 95*@px;
+        width: 94*@px;
+        height: 94*@px;
         .rounded-corners(50%);
-        background: url("../../assets/image/B6/pic_user@2x.png") 50% 50% no-repeat;
-        -webkit-background-size: cover;
-        background-size: cover;
         &.btn-activity {
           margin-right: 30*@px;
+          background: url("../../assets/image/D/d1_icon_event@3x.png") 50% 50% no-repeat;
+          -webkit-background-size: cover;
+          background-size: cover;
+        }
+        &.btn-jewel-box {
+          background: url("../../assets/image/D/d1_icon_box@3x.png") 50% 50% no-repeat;
+          -webkit-background-size: cover;
+          background-size: cover;
         }
       }
     }
@@ -392,81 +430,81 @@
       bottom: 0;
       left: 0;
       right: 0;
-      .bottom-input {
-        height: 140*@px;
-        .border-box();
-        padding: 30*@px;
-        clear: both;
-        .btn-more {
-          float: left;
-          width: 80*@px;
-          height: 80*@px;
-          .rounded-corners(50%);
-          background: #00E0E8;
-          line-height: 80*@px;
-          text-align: center;
-          color: #FFFFFF;
-          font-size: 105*@px;
-          /*TODO*/
-        }
-        .input-box {
-          float: right;
-          width: 580*@px;
-          height: 80*@px;
-          .rounded-corners(80*@px);
-          background: rgba(0, 0, 0, 0.4);
-          .icon {
-            float: left;
-            /*TODO*/
-          }
-          input {
-            margin-top: 20*@px;
-            height: 40*@px;
-            line-height: 40*@px;
-            font-size: 38*@px;
-            float: right;
-            .placeholder-color(#9A9C9E);
-            color: #FFFFFF;
-            width: 473*@px;
-          }
-        }
-      }
+      background: svg-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.5));
       .btn-lists {
-        position: absolute;
-        -webkit-transform: translateY(-100%);
-        -moz-transform: translateY(-100%);
-        -ms-transform: translateY(-100%);
-        -o-transform: translateY(-100%);
-        transform: translateY(-100%);
-        right: 30*@px;
-        width: 95*@px;
-        .like-num {
-          font-size: 23*@px;
-          color: #FFFFFF;
-          width: 95*@px;
-          text-align: center;
-          text-shadow: 1px 1px 1px #000;
-          margin-bottom: 10*@px;
+        width: 100%;
+        height: 144*@px;
+        padding: 20*@px 30*@px 30*@px;
+        .border-box();
+        position: relative;
+        .black-mask {
+          position: absolute;
+          left: 0;
+          top: -30*@px;
+          width: 100%;
+          height: 30*@px;
+          z-index: 1;
         }
         .btn-item {
-          width: 95*@px;
-          height: 95*@px;
+          position: relative;
+          width: 94*@px;
+          height: 94*@px;
           .rounded-corners(50%);
           background: #000;
-          margin-bottom: 10*@px;
-          &:last-child {
-            margin-bottom: 0;
+          color: #FFFFFF;
+          line-height: 94*@px;
+          text-align: center;
+          &.btn-item-right {
+            float: right;
+            margin-left: 20*@px;
           }
-          /*TODO*/
+          &.btn-item-left {
+            float: left;
+          }
+          &.btn-item-text {
+            background: url("../../assets/image/D/d1_icon_message@3x.png") 50% 50% no-repeat;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+          }
           &.btn-item-like {
+            background: url("../../assets/image/D/d1_icon_love@3x.png") 50% 50% no-repeat;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+            .like-num {
+              position: absolute;
+              height: auto;
+              line-height: 25*@px;
+              left: 50%;
+              .transform(translateX(-50%));
+              top: -30*@px;
+              font-size: 23*@px;
+              color: #FFFFFF;
+              width: 95*@px;
+              text-align: center;
+              text-shadow: 1px 1px 1px #000;
+            }
           }
           &.btn-item-camera {
+            background: url("../../assets/image/D/d1_icon_changecam@3x.png") 50% 50% no-repeat;
+            -webkit-background-size: 100%;
+            background-size: 100%;
           }
           &.btn-item-video {
           }
           &.btn-item-tag {
+            font-size: 63*@px;
+            font-weight: bold;
+            background: svg-gradient(to bottom right, #FF1B38, #AE1DD8);
           }
           &.btn-item-share {
+            background: url("../../assets/image/D/d1_icon_share_b@3x.png") 50% 50% no-repeat;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+          }
+          &.btn-item-redbag {
+            background: url("../../assets/image/D/d1_icon_redpocket@3x.png") 50% 50% no-repeat;
+            -webkit-background-size: 100%;
+            background-size: 100%;
           }
         }
         .hearts {

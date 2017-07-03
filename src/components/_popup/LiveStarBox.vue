@@ -71,7 +71,7 @@
       </div>
     </transition>
 
-    <transition name="popin">
+    <transition name="slide-down-up">
       <div v-if="display && ranking" class="starbox-ranking">
         <div class="ranking-header">
           <i class="fa fa-star" aria-hidden="true"></i>
@@ -558,6 +558,23 @@
       -o-transform: translate(-50%, -50%) scale3d(0.5, 0.5, 1);
       transform: translate(-50%, -50%) scale3d(0.5, 0.5, 1);
       opacity: 0;
+    }
+
+    // 由下往上移动
+    .slide-down-up-enter-active {
+      transition: all .5s cubic-bezier(.55, 0, .1, 1);
+    }
+
+    .slide-down-up-leave-active {
+      transition: all .5s cubic-bezier(.55, 0, .1, 1);
+    }
+
+    .slide-down-up-enter, .slide-down-up-leave-active {
+      -webkit-transform: translate3d(-50%, 100%, 0);
+      -moz-transform: translate3d(-50%, 100%, 0);
+      -ms-transform: translate3d(-50%, 100%, 0);
+      -o-transform: translate3d(-50%, 100%, 0);
+      transform: translate3d(-50%, 100%, 0);
     }
   }
 

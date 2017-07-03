@@ -1,6 +1,6 @@
 <template>
   <div id="live-giftbag">
-    <transition name="popin">
+    <transition name="slide-down-up">
       <div class="bag-block" v-if="display && bag">
         <div class="vip-header">
           享要與衆不同？馬上升級VIP
@@ -203,7 +203,7 @@
       </div>
     </transition>
 
-    <transition name="popin">
+    <transition name="slide-down-up">
       <div class="bag-block" v-if="display && shop">
         <div class="vip-header">
           享要與衆不同？馬上升級VIP
@@ -734,20 +734,21 @@
       }
     }
 
-    // 弹出效果
-    .popin-enter-active {
-      transition: all .3s cubic-bezier(.55, 0, .1, 1);
+    // 由下往上移动
+    .slide-down-up-enter-active {
+      transition: all .5s cubic-bezier(.55, 0, .1, 1);
     }
-    .popin-leave-active {
-      transition: all .4s cubic-bezier(.55, 0, .1, 1);
+
+    .slide-down-up-leave-active {
+      transition: all .5s cubic-bezier(.55, 0, .1, 1);
     }
-    .popin-enter, .popin-leave-active {
-      -webkit-transform: translate(-50%, -50%) scale3d(0.5, 0.5, 1);
-      -moz-transform: translate(-50%, -50%) scale3d(0.5, 0.5, 1);
-      -ms-transform: translate(-50%, -50%) scale3d(0.5, 0.5, 1);
-      -o-transform: translate(-50%, -50%) scale3d(0.5, 0.5, 1);
-      transform: translate(-50%, -50%) scale3d(0.5, 0.5, 1);
-      opacity: 0;
+
+    .slide-down-up-enter, .slide-down-up-leave-active {
+      -webkit-transform: translate3d(-50%, 100%, 0);
+      -moz-transform: translate3d(-50%, 100%, 0);
+      -ms-transform: translate3d(-50%, 100%, 0);
+      -o-transform: translate3d(-50%, 100%, 0);
+      transform: translate3d(-50%, 100%, 0);
     }
   }
 </style>

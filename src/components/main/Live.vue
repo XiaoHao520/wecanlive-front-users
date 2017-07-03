@@ -131,7 +131,7 @@
 
     <live-starbox :display="starbox_display" @click="starbox()"></live-starbox>
 
-    <live-redbag :display="redbag_display" @click="redbag()"></live-redbag>
+    <live-giftbag :display="redbag_display" @click="redbag()"></live-giftbag>
   </div>
 </template>
 

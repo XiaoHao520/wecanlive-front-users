@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f4bd95f-7c85-4987-9347-a2175dafbe9e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/main/PersonalDiamondWithdrawAccount.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/main/PersonalDiamondWithdrawDeal.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/_popup/LiveRedBag.vue" afterPath="$PROJECT_DIR$/src/components/_popup/LiveRedBag.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue" afterPath="$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/Live.vue" afterPath="$PROJECT_DIR$/src/components/main/Live.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/MemberDetail.vue" afterPath="$PROJECT_DIR$/src/components/main/MemberDetail.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/MemberFriends.vue" afterPath="$PROJECT_DIR$/src/components/main/MemberFriends.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/PersonalDiamondWithdraw.vue" afterPath="$PROJECT_DIR$/src/components/main/PersonalDiamondWithdraw.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/routes.js" afterPath="$PROJECT_DIR$/src/components/routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vue2-front/mixins.js" afterPath="$PROJECT_DIR$/src/vue2-front/mixins.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -31,28 +24,17 @@
     <favorites_list name="wecanlive-front" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5044757">
+    <splitter split-orientation="horizontal" split-proportion="0.64705884">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="PersonalDiamondWithdraw.vue" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/main/PersonalDiamondWithdraw.vue">
+          <file leaf-file-name="MemberFriends.vue" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/components/main/MemberFriends.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="270">
-                  <caret line="62" column="54" lean-forward="false" selection-start-line="62" selection-start-column="54" selection-end-line="62" selection-end-column="54" />
+                <state relative-caret-position="504">
+                  <caret line="28" column="42" lean-forward="false" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
                   <folding>
-                    <element signature="e#2005#3171#0" expanded="false" />
-                    <element signature="e#3994#5303#0" expanded="false" />
+                    <element signature="n#style#0;n#!!top" expanded="false" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="PersonalDiamondWithdrawAccount.vue" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/components/main/PersonalDiamondWithdrawAccount.vue">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="607">
-                  <caret line="84" column="30" lean-forward="false" selection-start-line="84" selection-start-column="30" selection-end-line="84" selection-end-column="30" />
-                  <folding />
                 </state>
               </provider>
             </entry>
@@ -89,8 +71,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>dynamic-list</find>
-      <find>意</find>
       <find>feedback</find>
       <find>checkMember</find>
       <find>$emit</find>
@@ -119,6 +99,8 @@
       <find>.b</find>
       <find>is_staff</find>
       <find>red-header</find>
+      <find>personal-sign</find>
+      <find>message-btn</find>
     </findStrings>
     <replaceStrings>
       <replace>'',</replace>
@@ -159,7 +141,6 @@
         <option value="$PROJECT_DIR$/src/components/main/PersonalChangePassword.vue" />
         <option value="$PROJECT_DIR$/src/components/main/MemberFans.vue" />
         <option value="$PROJECT_DIR$/src/components/main/MemberFollows.vue" />
-        <option value="$PROJECT_DIR$/src/components/main/MemberDetail.vue" />
         <option value="$PROJECT_DIR$/src/components/main/PersonalDiamondTransactions.vue" />
         <option value="$PROJECT_DIR$/src/components/main/PersonalDiamond.vue" />
         <option value="$PROJECT_DIR$/src/components/main/PersonalDiamondExchangeCoin.vue" />
@@ -176,7 +157,6 @@
         <option value="$PROJECT_DIR$/src/components/_popup/LiveGiftBag.vue" />
         <option value="$PROJECT_DIR$/src/components/_common/HeaderCommon.vue" />
         <option value="$PROJECT_DIR$/src/assets/css/defines.less" />
-        <option value="$PROJECT_DIR$/src/components/main/MemberFriends.vue" />
         <option value="$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue" />
         <option value="$PROJECT_DIR$/src/components/main/Live.vue" />
         <option value="$PROJECT_DIR$/src/components/_popup/LiveRedBag.vue" />
@@ -185,6 +165,8 @@
         <option value="$PROJECT_DIR$/src/components/routes.js" />
         <option value="$PROJECT_DIR$/src/components/main/PersonalDiamondWithdraw.vue" />
         <option value="$PROJECT_DIR$/src/components/main/PersonalDiamondWithdrawAccount.vue" />
+        <option value="$PROJECT_DIR$/src/components/main/MemberDetail.vue" />
+        <option value="$PROJECT_DIR$/src/components/main/MemberFriends.vue" />
       </list>
     </option>
   </component>
@@ -486,7 +468,7 @@
       <workItem from="1498900705555" duration="134000" />
       <workItem from="1499044713413" duration="18851000" />
       <workItem from="1499070421858" duration="6150000" />
-      <workItem from="1499130196581" duration="5866000" />
+      <workItem from="1499130196581" duration="14963000" />
     </task>
     <task id="LOCAL-00001" summary="頭部">
       <created>1498446946309</created>
@@ -705,11 +687,18 @@
       <option name="project" value="LOCAL" />
       <updated>1499131992822</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="兌換金幣頁面">
+      <created>1499136089507</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1499136089507</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="199966000" />
+    <option name="totallyTimeSpent" value="209063000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="24" width="1920" height="993" extended-state="6" />
@@ -785,7 +774,8 @@
     <MESSAGE value="揹包 改" />
     <MESSAGE value="我的朋友" />
     <MESSAGE value="紅包彈窗" />
-    <option name="LAST_COMMIT_MESSAGE" value="紅包彈窗" />
+    <MESSAGE value="兌換金幣頁面" />
+    <option name="LAST_COMMIT_MESSAGE" value="兌換金幣頁面" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -887,16 +877,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/choices.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="18" lean-forward="false" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/main/PersonalDiamond.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -987,6 +967,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="236">
           <caret line="2188" column="2" lean-forward="false" selection-start-line="2188" selection-start-column="2" selection-end-line="2188" selection-end-column="2" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1039,16 +1020,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/main/MemberDetail.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2772">
-          <caret line="154" column="38" lean-forward="true" selection-start-line="154" selection-start-column="16" selection-end-line="154" selection-end-column="38" />
-          <folding>
-            <element signature="e#12209#13474#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/_popup/readme.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -1095,16 +1066,6 @@
         <state relative-caret-position="198">
           <caret line="11" column="53" lean-forward="true" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="53" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/main/MemberFriends.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="79" column="26" lean-forward="false" selection-start-line="79" selection-start-column="26" selection-end-line="79" selection-end-column="26" />
-          <folding>
-            <element signature="n#div#3;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1166,22 +1127,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/main/PersonalDiamondWithdraw.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="62" column="54" lean-forward="false" selection-start-line="62" selection-start-column="54" selection-end-line="62" selection-end-column="54" />
-          <folding>
-            <element signature="e#2005#3171#0" expanded="false" />
-            <element signature="e#3994#5303#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/main/PersonalDiamondWithdrawAccount.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="607">
           <caret line="84" column="30" lean-forward="false" selection-start-line="84" selection-start-column="30" selection-end-line="84" selection-end-column="30" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/main/PersonalDiamondWithdraw.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="24" column="12" lean-forward="false" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/choices.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="13" column="15" lean-forward="false" selection-start-line="13" selection-start-column="2" selection-end-line="13" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/main/MemberDetail.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="27" column="54" lean-forward="false" selection-start-line="27" selection-start-column="54" selection-end-line="27" selection-end-column="54" />
+          <folding>
+            <element signature="e#893#899#0" expanded="false" />
+            <element signature="n#style#0;n#!!top" expanded="false" />
+            <element signature="e#12496#13761#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/main/MemberFriends.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="28" column="42" lean-forward="false" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
+          <folding>
+            <element signature="n#style#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

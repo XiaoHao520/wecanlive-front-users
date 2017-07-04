@@ -9,65 +9,46 @@
 
     <div class="member-friends">
       <div class="member-info">
-        <div class="avatar"></div>
+        <div class="avatar" :style="{backgroundImage: 'url('+ me.avatar_url +')'}"></div>
         <div class="member">
-          <div class="name">Kevin</div>
-          <div class="id">ID :Kevin669</div>
+          <div class="name">{{ me.nickname }}</div>
+          <div class="id">ID :{{ me.id }}</div>
         </div>
       </div>
 
       <div class="friend-block">
         <div class="friends-type">
-          交友邀請 (2)
+          交友邀請 ({{ friends_invite_count }})
           <a href="javascript:;" @click="invite=!invite" class="open-icon"></a>
         </div>
 
         <div :class="{'hide' : !invite}" class="member-list">
           <ul>
-            <li class="member-item">
-              <div class="avatar"></div>
-              <div class="name">Wale</div>
+            <li v-for="invite in friends_invite" class="member-item">
+              <div class="avatar" :style="{backgroundImage: 'url('+ invite.avatar_url +')'}"></div>
+              <div class="name">{{ invite.nickname }}</div>
               <div class="action">
-                <a href="javascript:;" class="btn cancel-btn">忽略</a>
-                <a href="javascript:;" class="btn confirm-btn" @click="add_friend_success=true">確認</a>
-              </div>
-            </li>
-
-            <li class="member-item">
-              <div class="avatar"></div>
-              <div class="name">Wale</div>
-              <div class="action">
-                <a href="javascript:;" class="btn cancel-btn">忽略</a>
-                <a href="javascript:;" class="btn confirm-btn" @click="add_friend_success=true">確認</a>
+                <a href="javascript:;" class="btn cancel-btn" @click="refuse(invite)">忽略</a>
+                <a href="javascript:;" class="btn confirm-btn" @click="agree(invite)">確認</a>
               </div>
             </li>
           </ul>
         </div>
 
         <div class="friends-type">
-          朋友 (3)
+          朋友 ({{ friends_list_count }})
           <a href="javascript:;" @click="friend=!friend" class="open-icon"></a>
         </div>
 
 
         <div :class="{'hide' : !friend}" class="member-list">
           <ul>
-            <li class="member-item">
-              <div class="avatar"></div>
-              <div class="name">Wale</div>
+            <li v-for="friend in friends_list" class="member-item">
+              <div class="avatar" :style="{backgroundImage: 'url('+ friend.avatar_url +')'}"></div>
+              <div class="name">{{ friend.nickname }}</div>
               <div class="action">
                 <a href="javascript:;" class="message-btn">
-                  <div class="unread-count">20</div>
-                </a>
-              </div>
-            </li>
-
-            <li class="member-item">
-              <div class="avatar"></div>
-              <div class="name">Wale</div>
-              <div class="action">
-                <a href="javascript:;" class="message-btn">
-                  <div class="unread-count">20</div>
+                  <div class="unread-count" v-if="friend.unread">{{ friend.unread }}</div>
                 </a>
               </div>
             </li>
@@ -78,9 +59,9 @@
     </div>
 
     <transition name="fade">
-      <div v-if="add_friend_success" class="add-success" @click="add_friend_success=false">
+      <div v-if="add_friend_success" class="add-success" @click="reload()">
         <div class="add-warn">
-          您已成功添加Wecanlive爲好友
+          您已成功添加{{ add_friend_name }}爲好友
         </div>
       </div>
     </transition>
@@ -95,10 +76,56 @@
         invite: true,
         friend: true,
         add_friend_success: false,
+        add_friend_name: '',
+        friends_list: [],
+        friends_list_count: 0,
+        friends_invite: [],
+        friends_invite_count: 0,
       };
     },
     methods: {
       reload() {
+        const vm = this;
+        vm.add_friend_success = false;
+//      我的好友
+        vm.api('Member').get({
+          action: 'get_contact_list',
+        }).then((resp) => {
+          vm.friends_list = resp.data;
+          vm.friends_list_count = resp.data.length;
+        });
+//      申请加我
+        vm.api('Member').get({
+          invite: 'True',
+        }).then((resp) => {
+          vm.friends_invite = resp.data.results;
+          vm.friends_invite_count = resp.data.count;
+        });
+      },
+      agree(user) {
+        const vm = this;
+        vm.api('Contact').save({
+          author: vm.me.id,
+          user: user.user,
+          type: 'OPEN',
+        }).then(() => {
+          vm.add_friend_name = user.nickname;
+          vm.add_friend_success = true;
+        });
+      },
+      refuse(user) {
+        const vm = this;
+        vm.api('Contact').get({
+          author: user.user,
+          user: vm.me.id,
+        }).then((resp) => {
+          vm.api('Contact').delete({
+            id: resp.data.results[0].id,
+          }).then(() => {
+            vm.notify('已經拒絕對方的邀請');
+            vm.reload();
+          });
+        });
       },
     },
   };
@@ -190,7 +217,7 @@
           .avatar {
             width: 120*@px;
             height: 120*@px;
-            background: 50% 50% no-repeat #ccc;
+            background: 50% 50% no-repeat;
             background-size: cover;
             border-radius: 50%;
             float: left;
@@ -249,6 +276,7 @@
                 right: -15*@px;
                 font-size: 16*@px;
                 color: #fff;
+                text-align: center;
               }
             }
 
@@ -257,6 +285,7 @@
       }
     }
   }
+
   .add-success {
     position: fixed;
     top: 0;
@@ -269,7 +298,8 @@
       position: fixed;
       top: 50%;
       color: #fff;
-      left: 0; right: 0;
+      left: 0;
+      right: 0;
       font-size: 34*@px;
       text-align: center;
       -webkit-transform: translate(0, -50%);
@@ -280,13 +310,16 @@
       z-index: 999;
     }
   }
+
   // 弹出效果
   .popin-enter-active {
     transition: all .3s cubic-bezier(.55, 0, .1, 1);
   }
+
   .popin-leave-active {
     transition: all .4s cubic-bezier(.55, 0, .1, 1);
   }
+
   .popin-enter, .popin-leave-active {
     -webkit-transform: translate(-50%, -50%) scale3d(0.5, 0.5, 1);
     -moz-transform: translate(-50%, -50%) scale3d(0.5, 0.5, 1);

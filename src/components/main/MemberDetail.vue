@@ -12,24 +12,26 @@
         </div>
         <div class="member-info">
           <div class="member-name">
-            <div class="name">Chris Lin</div>
+            <div class="name">{{ me.nickname }}</div>
             <a href="javascript:;" class="vip-level">VIP</a>
             <a href="javascript:;" class="code-btn"></a>
           </div>
 
-          <div class="member-sex">男 &bull; 29歲 &bull; 金牛座</div>
+          <div class="member-sex">
+            {{ choices.gender[me.gender] }} &bull; {{ me.age }}歲 &bull; {{ choices.constellation[me.constellation] }}
+          </div>
 
           <div class="member-follow">
             <div class="follow-type">
               <router-link :to="{name: 'main_member_fans'}">
                 <div class="type">粉絲</div>
-                <div class="num">2868</div>
+                <div class="num">{{ me.count_followed }}</div>
               </router-link>
             </div>
             <div class="follow-type follow">
               <router-link :to="{name: 'main_member_follows'}">
                 <div class="type">追蹤</div>
-                <div class="num">876546</div>
+                <div class="num">{{ me.count_follow }}</div>
               </router-link>
             </div>
             <div class="follow-type">
@@ -42,21 +44,21 @@
       </div>
 
       <div class="personal-sign">
-        <p>任何想法,都能產生的圓圈這就對和錯</p>
-        <p>心本體體會陷入到對自己本體不能理解的狀態中</p>
+        <p>{{ me.signature }}</p>
+        <!--<p>心本體體會陷入到對自己本體不能理解的狀態中</p>-->
       </div>
 
       <div class="member-balance">
         <div class="balance-type">
           <router-link :to="{name: 'main_personal_diamond'}">
             <div class="icon icon-zuan"></div>
-            <div class="balance-num">8695</div>
+            <div class="balance-num">{{ me.diamond_balance }}</div>
           </router-link>
         </div>
         <div class="balance-type">
           <router-link :to="{name: 'main_personal_coin'}">
             <div class="icon icon-gold"></div>
-            <div class="balance-num">236</div>
+            <div class="balance-num">{{ me.coin_balance }}</div>
           </router-link>
         </div>
         <div class="balance-type">
@@ -291,6 +293,8 @@
             margin-bottom: 12*@px;
             .name {
               font-size: 32*@px;
+              height: 35*@px;
+              line-height: 35*@px;
               float: left;
             }
             .vip-level {
@@ -358,6 +362,7 @@
         padding-top: 30*@px;
         text-align: center;
         margin-bottom: 47*@px;
+        min-height: 68*@px;
         p {
           margin: 0;
         }

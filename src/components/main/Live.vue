@@ -206,7 +206,7 @@
     data() {
       return {
         transitionNameLive: 'slide-left',
-        is_owner: false,
+        is_owner: true,
         memberCard: false,
         heart_1: false,
         choice: [
@@ -220,7 +220,7 @@
         redbag_display: false,
         live: [],
         live_author: [],
-        notice: true,
+        notice: false,
         inputBox: false,
         inputBarrage: false,
         placeholder: '說點什麼...',

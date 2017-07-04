@@ -169,5 +169,20 @@
         }
       }
     }
+    // 弹出效果
+    .popin-enter-active {
+      transition: all .3s cubic-bezier(.55, 0, .1, 1);
+    }
+    .popin-leave-active {
+      transition: all .4s cubic-bezier(.55, 0, .1, 1);
+    }
+    .popin-enter, .popin-leave-active {
+      -webkit-transform: translate(-50%, -50%) scale3d(0.5, 0.5, 1);
+      -moz-transform: translate(-50%, -50%) scale3d(0.5, 0.5, 1);
+      -ms-transform: translate(-50%, -50%) scale3d(0.5, 0.5, 1);
+      -o-transform: translate(-50%, -50%) scale3d(0.5, 0.5, 1);
+      transform: translate(-50%, -50%) scale3d(0.5, 0.5, 1);
+      opacity: 0;
+    }
   }
 </style>

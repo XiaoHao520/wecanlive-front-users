@@ -11,7 +11,7 @@
             <div class="num">1025600</div>
           </div>
         </div>
-        <a class="btn-tracking">追蹤</a>
+        <a class="btn-tracking is-tracked">已追蹤</a>
       </div>
       <div class="users">
         <div class="avatar-container">
@@ -24,11 +24,11 @@
       <a class="btn-close"></a>
     </section>
     <div class="top-left-block">
-      <div class="diamond-block">
+      <router-link class="diamond-block" :to="{name: 'main_live_diamond', params: {id:0}}">
         <div class="icon-diamond"></div>
         <div class="num">10945685</div>
         <div class="icon-caret"></div>
-      </div>
+      </router-link>
       <div class="starlight-block">
         <div class="icon-warpper"></div>
         <div class="percent-block">
@@ -37,59 +37,114 @@
         </div>
       </div>
     </div>
-    <div class="top-right-block">
+    <div class="top-right-block" v-if="!notice">
       <a class="btn-activity"></a>
       <a class="btn-jewel-box" @click="starbox_display=true"></a>
+
+      <!--观众头像-->
+      <div class="audience-avatar-warpper" v-if="!is_owner">
+        <a class="audience-avatar">
+          <div class="level">Lv 1</div>
+        </a>
+      </div>
+      <!--观众头像 END-->
     </div>
 
 
+    <!--弹幕-->
+    <section class="section-popup-comment">
+      <!--TODO notice內容過多處理-->
+      <transition name="fade">
+        <div class="notice" v-if="notice">
+          恭喜 Chris，Denka，Kelly，Trina，丫丫抽中 30 金幣
+        </div>
+      </transition>
+
+      <!--普通弹幕-->
+      <div class="popup-normal">
+        <div class="avatar"></div>
+        <div class="right">
+          <div class="nickname">
+            <span class="name">用户名用户名</span>
+            <span class="level">LV.20</span>
+            <span class="vip">2</span>
+          </div>
+          <div class="content">
+            弹幕内容弹幕内容
+          </div>
+        </div>
+      </div>
+      <!--普通弹幕 END-->
+    </section>
+    <!--弹幕 END-->
+
+
     <section class="section-bottom">
+      <!--評論文字區-->
       <section class="section-messages">
-        <section class="messages-box">
-          <div class="message-item">
-            <div class="nickname-block">
-              <div class="tag tag-level">20</div>
-              <div class="tag tag-vip">VIP0</div>
-              <div class="name yellow">Kevin Chiu</div>
-            </div>
-            <div class="content">你好可愛喔！</div>
-          </div>
-          <div class="message-item">
-            <div class="nickname-block">
-              <div class="name blue">Kevin Chiu</div>
-            </div>
-            <div class="content">你好可愛喔！</div>
-          </div>
-          <div class="message-item">
-            <div class="nickname-block">
-              <div class="name gray">Kevin Chiu</div>
-            </div>
-            <div class="content gray">已加入</div>
-          </div>
-        </section>
 
-        <a class="btn-tracking">
-          <span class="icon">+</span>
-          <span class="text">追蹤 Denkaaaerxdzxc</span>
-        </a>
+        <div class="message-item">
+          <span class="tag-system">系统</span>
+          <span class="content">
+            我們倡導清新綠色直播，
+            任何違反wecanleve規範的行爲都將收到相應的懲罰。
+          </span>
+        </div>
 
-        <a class="btn-share">
-          <div class="icon"></div>
-          <div class="text">分享到</div>
-        </a>
+        <div class="message-item">
+          <span class="nickname-block">
+            <span class="name blue">Kevin Chiu</span>
+            <span class="tag tag-level">LV.20</span>
+            <span class="tag tag-vip">2</span>
+          </span>
+          <span class="content">已追蹤主播</span>
 
-        <div class="share-message-item">
-          <div class="nickname-block">
-            <div class="name blue">Sho</div>
-          </div>
-          <div class="content">已分享直播並獲得 5 枚金幣！</div>
+          <a class="btn-tracking">
+            <span class="icon">+</span>
+            追蹤
+          </a>
+
+        </div>
+
+        <div class="message-item">
+          <span class="nickname-block">
+            <span class="name red">Kevin Chiu</span>
+            <span class="tag tag-level">LV.20</span>
+            <span class="tag tag-vip">2</span>
+          </span>
+          <span class="content">已分享主播</span>
+
+          <a class="btn-share">
+            <span class="icon"></span>
+            分享
+          </a>
+        </div>
+
+        <div class="message-item">
+          <span class="nickname-block">
+            <span class="name purple">Kevin Chiu</span>
+            <span class="tag tag-level">LV.20</span>
+            <span class="tag tag-vip">2</span>
+          </span>
+          <span class="content">你好可愛喔！</span>
+        </div>
+
+        <div class="message-item">
+          <span class="nickname-block">
+            <span class="name ">Kevin Chiu</span>
+            <span class="tag tag-level">LV.20</span>
+            <span class="tag tag-vip">2</span>
+          </span>
+          <span class="content">你好可愛喔！</span>
         </div>
 
       </section>
-      <!--底部右邊按鈕-->
-      <ul class="btn-lists">
+      <!--評論文字區 END-->
 
-        <li class="btn-item btn-item-left btn-item-text"></li>
+      <!--底部右邊按鈕-->
+      <ul class="btn-lists" v-if="!inputBox && !audioBox">
+
+        <li class="btn-item btn-item-left btn-item-text" @click="openInputBox"></li>
 
         <template v-if="is_owner">
           <li class="btn-item btn-item-right btn-item-redbag" @click="redbag_display=true"></li>
@@ -103,19 +158,24 @@
           </li>
           <li class="btn-item btn-item-right btn-item-gift" @click="giftbag_display=true"></li>
           <li class="btn-item btn-item-right btn-item-vidio"></li>
-          <li class="btn-item btn-item-right btn-item-audio"></li>
+          <li class="btn-item btn-item-right btn-item-audio"
+              @click="toggleAudioBox"></li>
         </template>
 
         <li class="btn-item btn-item-right btn-item-share" @click="share"></li>
       </ul>
       <!--底部右邊按鈕 END-->
 
+      <input-item :display="inputBox"></input-item>
+
       <div class="audio-box" v-if="audioBox">
+        <div class="text">按住至少3秒</div>
         <div class="percent-box">
           <div class="percent"></div>
         </div>
         <div class="audio-body">
           <a class="btn-record"></a>
+          <a class="btn-cancel">取消</a>
         </div>
       </div>
 
@@ -133,6 +193,11 @@
     <live-giftbag :display="giftbag_display" @click="giftbag()"></live-giftbag>
 
     <live-redbag :display="redbag_display" @click="redbag()"></live-redbag>
+
+
+    <transition :name="transitionNameLive">
+      <router-view class="live-child-view"></router-view>
+    </transition>
   </div>
 </template>
 
@@ -140,7 +205,8 @@
   export default {
     data() {
       return {
-        is_owner: true,
+        transitionNameLive: 'slide-left',
+        is_owner: false,
         memberCard: false,
         heart_1: false,
         choice: [
@@ -154,7 +220,17 @@
         redbag_display: false,
         live: [],
         live_author: [],
+        notice: true,
+        inputBox: false,
+        inputBarrage: false,
+        placeholder: '說點什麼...',
       };
+    },
+    beforeRouteUpdate(to, from, next) {
+      const toDepth = to.path.split('/')[3] ? to.path.split('/')[3].length : 0;
+      const fromDepth = from.path.split('/')[3] ? from.path.split('/')[3].length : 0;
+      this.transitionNameLive = toDepth < fromDepth ? 'slide-right' : 'slide-left';
+      next();
     },
     methods: {
       reload() {
@@ -180,9 +256,22 @@
         // TODO 根據返回的值執行
         console.log(value);
       },
+      openInputBox() {
+        const vm = this;
+        vm.inputBox = true;
+      },
       showHearts() {
         const vm = this;
         vm.heart_1 = !vm.heart_1;
+      },
+      switchBarrage() {
+        const vm = this;
+        vm.inputBarrage = !vm.inputBarrage;
+        if (vm.inputBarrage) {
+          vm.placeholder = '發送彈幕需要扣除xx金幣';
+        } else {
+          vm.placeholder = '說點什麼...';
+        }
       },
       toggleAudioBox() {
         this.audioBox = !this.audioBox;
@@ -208,14 +297,16 @@
     background: url("../../assets/image/example/avatar.png") 50% 50% no-repeat;
     -webkit-background-size: cover;
     background-size: cover;
-    padding: @height-status-bar 30*@px 0;
+    padding: @height-status-bar 0 0;
     .border-box();
     &.not-status-bar {
       padding-top: 0;
     }
     .section-top {
+      padding: 0 30*@px;
       height: 88*@px;
       overflow: hidden;
+      .border-box();
       .left {
         float: left;
         height: 88*@px;
@@ -278,6 +369,9 @@
           background: @bg-header;
           .rounded-corners(70*@px);
           font-size: 30*@px;
+          &.is-tracked {
+            background: #00BBEC;
+          }
         }
       }
       .users {
@@ -336,6 +430,8 @@
       color: #FFFFFF;
       font-size: 27*@px;
       margin-top: 30*@px;
+      padding-left: 30*@px;
+      .border-box();
       .diamond-block {
         float: left;
         width: 220*@px;
@@ -352,6 +448,7 @@
           margin: 5.5*@px 5*@px 0 15*@px;
         }
         .num {
+          color: #FFFFFF;
           float: left;
           height: 47*@px;
           line-height: 47*@px;
@@ -424,13 +521,14 @@
       }
     }
     .top-right-block {
+      margin-right: 30*@px;
+      position: relative;
       float: right;
       margin-top: 30*@px;
       a {
         float: left;
         width: 94*@px;
         height: 94*@px;
-        .rounded-corners(50%);
         &.btn-activity {
           margin-right: 30*@px;
           background: url("../../assets/image/D/d1_icon_event@3x.png") 50% 50% no-repeat;
@@ -443,8 +541,121 @@
           background-size: cover;
         }
       }
+      .audience-avatar-warpper {
+        position: absolute;
+        right: 0;
+        bottom: -120*@px;
+        width: 94*@px;
+        height: 94*@px;
+        .audience-avatar {
+          position: relative;
+          width: 94*@px;
+          height: 94*@px;
+          .rounded-corners(50%);
+          background: #000 50% 50% no-repeat;
+          -webkit-background-size: cover;
+          background-size: cover;
+          .level {
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            height: 24*@px;
+            line-height: 24*@px;
+            width: 66*@px;
+            .rounded-corners(24*@px);
+            .transform(translateX(-50%));
+            text-align: center;
+            color: #FFFFFF;
+            font-size: 18*@px;
+            background: svg-gradient(to right, #F4A246, #FF8534);
+          }
+        }
+      }
     }
 
+    .section-popup-comment {
+      width: 100%;
+      height: 540*@px;
+      margin-top: 95*@px;
+      position: relative;
+      overflow: hidden;
+      .notice {
+        clear: both;
+        height: 47*@px;
+        width: 100%;
+        line-height: 47*@px;
+        text-align: center;
+        overflow: hidden;
+        color: #FFFFFF;
+        font-size: 25*@px;
+        background: rgba(238, 144, 99, 0.7);
+      }
+      .popup-normal {
+        position: absolute;
+        height: 72*@px;
+        overflow: hidden;
+        color: #FFFFFF;
+        padding-right: 28*@px;
+        background: rgba(0, 0, 0, 0.4);
+        .rounded-corners(72*@px);
+        -webkit-transition: all 1.5s;
+        -moz-transition: all 1.5s;
+        -ms-transition: all 1.5s;
+        -o-transition: all 1.5s;
+        transition: all 1.5s;
+        .avatar {
+          float: left;
+          height: 68*@px;
+          width: 68*@px;
+          margin: 2*@px 0 0 2*@px;
+          .rounded-corners(50%);
+          background: #000 50% 50% no-repeat;
+          -webkit-background-size: cover;
+          background-size: cover;
+        }
+        .right {
+          float: left;
+          margin-left: 8*@px;
+          padding-top: 3*@px;
+          .nickname {
+            height: 32*@px;
+            line-height: 32*@px;
+            font-size: 24*@px;
+            .level {
+              display: inline-block;
+              width: 86*@px;
+              height: 32*@px;
+              line-height: 32*@px;
+              background: url("../../assets/image/B1/icon_crown@3x.png") 50% 50% no-repeat;
+              -webkit-background-size: 100%;
+              background-size: 100%;
+              color: #0928DF;
+              font-size: 18*@px;
+              text-indent: 36*@px;
+              vertical-align: text-bottom;
+            }
+            .vip {
+              display: inline-block;
+              vertical-align: text-bottom;
+              height: 32*@px;
+              line-height: 32*@px;
+              width: 62*@px;
+              color: #5E21EE;
+              font-size: 20*@px;
+              text-indent: 43*@px;
+              background: url("../../assets/image/B1/icon_vip@3x.png") 50% 50% no-repeat;
+              -webkit-background-size: 100%;
+              background-size: 100%;
+              .border-box();
+              padding-top: 2*@px;
+            }
+          }
+          .content {
+            font-size: 22*@px;
+          }
+        }
+      }
+    }
     .section-bottom {
       position: fixed;
       bottom: 0;
@@ -504,6 +715,21 @@
               text-shadow: 1px 1px 1px #000;
             }
           }
+          &.btn-item-gift {
+            background: url("../../assets/image/D/d1_icon_gift@3x.png") 50% 50% no-repeat;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+          }
+          &.btn-item-vidio {
+            background: url("../../assets/image/D/d1_icon_video@3x.png") 50% 50% no-repeat;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+          }
+          &.btn-item-audio {
+            background: url("../../assets/image/D/d1_icon_mic@3x.png") 50% 50% no-repeat;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+          }
           &.btn-item-camera {
             background: url("../../assets/image/D/d1_icon_changecam@3x.png") 50% 50% no-repeat;
             -webkit-background-size: 100%;
@@ -546,10 +772,14 @@
         -o-transform: translateY(-100%);
         transform: translateY(-100%);
         left: 30*@px;
-        height: 350*@px;
-        width: 560*@px;
+        height: 400*@px;
+        width: 550*@px;
         color: #FFFFFF;
-        font-size: 31*@px;
+        font-size: 28*@px;
+        .app-scroll();
+        &::-webkit-scrollbar {
+          display: none;
+        }
         .yellow {
           color: #FFF446;
         }
@@ -559,144 +789,105 @@
         .gray {
           color: #BABDBE;
         }
-        .messages-box {
-          .app-scroll();
-          width: 100%;
-          .message-item {
-            overflow: hidden;
-            margin-bottom: 10*@px;
-            height: 37*@px;
-            .nickname-block {
-              overflow: hidden;
-              float: left;
-              height: 37*@px;
-              .tag {
-                float: left;
-                height: 37*@px;
-                line-height: 37*@px;
-                .rounded-corners(5*@px);
-                margin-right: 5*@px;
-                font-size: 28*@px;
-                .border-box();
-                &.tag-vip {
-                  padding: 2*@px 5*@px 0;
-                  background: #8B8B8B;
-                }
-                &.tag-level {
-                  /*TODO*/
-                  padding: 0 3.5*@px;
-                  background: #FEC83B;
-                }
-              }
-              .name {
-                float: left;
-                height: 37*@px;
-                line-height: 37*@px;
-                text-shadow: 1px 1px 1px #000;
-              }
-            }
-            .content {
-              float: left;
-              height: 37*@px;
-              line-height: 37*@px;
-              text-shadow: 1px 1px 1px #000;
-              margin-left: 15*@px;
-            }
-            &:last-child {
-              margin-bottom: 0;
-            }
-          }
+        .red {
+          color: #FF0017;
         }
-        .btn-tracking {
-          display: block;
-          height: 66*@px;
-          line-height: 66*@px;
-          text-align: center;
-          text-shadow: 1px 1px 1px #000;
-          font-size: 37*@px;
-          .rounded-corners(66*@px);
-          background: @bg-header;
-          width: 395*@px;
-          padding-left: 30*@px;
-          .border-box();
-          margin-top: 20*@px;
-          .icon {
-            float: left;
-            margin-right: 28*@px;
-            height: 66*@px;
-            line-height: 66*@px;
-            font-size: 40*@px;
-          }
-          .text {
-            float: left;
-            height: 66*@px;
-            line-height: 66*@px;
-            width: 280*@px;
-            .nowrap();
-          }
+        .purple {
+          color: #A41AC7;
         }
-        .btn-share {
-          display: block;
-          height: 66*@px;
-          line-height: 66*@px;
-          text-align: center;
-          text-shadow: 1px 1px 1px #000;
-          font-size: 37*@px;
-          .rounded-corners(66*@px);
-          background: rgba(74, 182, 220, 0.8);
-          width: 228*@px;
-          .border-box();
-          margin-top: 20*@px;
+        .message-item {
           margin-bottom: 10*@px;
-          .icon {
-            float: left;
-            margin-right: 28*@px;
-            height: 66*@px;
+          line-height: 44*@px;
+          .tag-system {
+            display: inline-block;
+            height: 44*@px;
+            width: 80*@px;
+            line-height: 44*@px;
+            text-align: center;
+            color: #000;
+            font-size: 24*@px;
+            background: #FFFFFF;
+            .rounded-corners(44*@px);
           }
-          .text {
-            float: left;
-            height: 66*@px;
-            line-height: 66*@px;
-          }
-        }
-        .share-message-item {
-          overflow: hidden;
-          height: 37*@px;
           .nickname-block {
-            overflow: hidden;
-            float: left;
-            height: 37*@px;
             .tag {
-              float: left;
-              height: 37*@px;
-              line-height: 37*@px;
-              .rounded-corners(5*@px);
-              margin-right: 5*@px;
-              font-size: 28*@px;
+              display: inline-block;
+              height: 32*@px;
+              line-height: 32*@px;
               .border-box();
+              vertical-align: middle;
               &.tag-vip {
-                padding: 2*@px 5*@px 0;
-                background: #8B8B8B;
+                width: 62*@px;
+                color: #5E21EE;
+                font-size: 22*@px;
+                background: url("../../assets/image/B1/icon_vip@3x.png") 50% 50% no-repeat;
+                background-size: 100%;
+                padding-left: 40*@px;
               }
               &.tag-level {
-                /*TODO*/
-                padding: 0 3.5*@px;
-                background: #FEC83B;
+                width: 86*@px;
+                font-size: 16*@px;
+                color: #0021E6;
+                padding-left: 38*@px;
+                padding-top: 2*@px;
+                background: url("../../assets/image/B1/icon_huangguan@3x.png") 50% 50% no-repeat;
+                background-size: 100%;
               }
             }
             .name {
-              float: left;
-              height: 37*@px;
-              line-height: 37*@px;
               text-shadow: 1px 1px 1px #000;
             }
           }
           .content {
-            float: left;
-            height: 37*@px;
-            line-height: 37*@px;
             text-shadow: 1px 1px 1px #000;
-            margin-left: 15*@px;
+            margin-left: 5*@px;
+          }
+          &:last-child {
+            margin-bottom: 0;
+          }
+          .btn-tracking {
+            display: block;
+            height: 50*@px;
+            line-height: 50*@px;
+            text-align: center;
+            font-size: 29*@px;
+            .rounded-corners(50*@px);
+            width: 160*@px;
+            .border-box();
+            background: url("../../assets/image/D/d1_btn_track_1@3x.png") 50% 50% no-repeat;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+            margin-top: 5*@px;
+            .icon {
+              .border-box();
+              display: inline-block;
+              height: 50*@px;
+              line-height: 50*@px;
+              font-size: 40*@px;
+              vertical-align: middle;
+            }
+          }
+          .btn-share {
+            display: block;
+            height: 50*@px;
+            line-height: 50*@px;
+            text-align: center;
+            font-size: 29*@px;
+            .rounded-corners(50*@px);
+            width: 160*@px;
+            .border-box();
+            margin-top: 5*@px;
+            background: url("../../assets/image/D/d1_btn_share@3x.png") 50% 50% no-repeat;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+            .icon {
+              display: inline-block;
+              width: 26*@px;
+              height: 26*@px;
+              background: url("../../assets/image/D/d1_icon_share_s@3x.png") 50% 50% no-repeat;
+              -webkit-background-size: 100%;
+              background-size: 100%;
+            }
           }
         }
       }
@@ -704,6 +895,16 @@
         height: 239*@px;
         padding-top: 37*@px;
         .border-box();
+        position: relative;
+        .text {
+          width: 100%;
+          position: absolute;
+          font-size: 30*@px;
+          color: #FFFFFF;
+          text-align: center;
+          left: 0;
+          top: -15*@px;
+        }
         .percent-box {
           position: relative;
           height: 6*@px;
@@ -719,6 +920,18 @@
           height: 196*@px;
           background: rgba(0, 0, 0, 0.5);
           position: relative;
+          .btn-cancel {
+            position: absolute;
+            font-size: 38*@px;
+            color: #FFFFFF;
+            left: 103*@px;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            transform: translateY(-50%);
+          }
           .btn-record {
             display: block;
             .block-center();
@@ -730,6 +943,17 @@
           }
         }
       }
+    }
+
+    .live-child-view {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #FFFFFF;
+      z-index: 9;
+      transition: all .5s cubic-bezier(.55, 0, .1, 1);
     }
     // 弹出效果
     .heart-up-enter-active {
@@ -745,6 +969,17 @@
       -ms-transform: translate3d(0, 100%, 0);
       -o-transform: translate3d(0, 100%, 0);
       transform: translate3d(0, 100%, 0);
+    }
+
+    .slide-left-enter,
+    .slide-right-leave-active {
+      opacity: 0;
+      .transform(translate3d(50%, 0, 0));
+    }
+    .slide-left-leave-active,
+    .slide-right-enter {
+      opacity: 0;
+      .transform(translate3d(-50%, 0, 0));
     }
   }
 </style>

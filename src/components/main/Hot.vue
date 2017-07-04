@@ -69,6 +69,25 @@
   };
 </script>
 
+
+<style rel="stylesheet/less" type="text/less" lang="less">
+  @import (once) '../../vue2-front/assets/css/less-template/template';
+  @import (once) '../../assets/css/defines';
+  .swiper-pagination,
+  .swiper-pagination-bullets {
+    bottom: 21*@px;
+  }
+  .swiper-pagination-bullet {
+    width: 8*@px;
+    height: 8*@px;
+    margin: 0 6*@px;
+    background: #FFFFFF;
+    &.swiper-pagination-bullet-active {
+      background: #9A20F6;
+    }
+  }
+</style>
+
 <style rel="stylesheet/less" type="text/less" lang="less" scoped>
   @import (once) '../../vue2-front/assets/css/less-template/template';
   @import (once) '../../assets/css/defines';
@@ -86,19 +105,6 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-      }
-      .swiper-pagination,
-      .swiper-pagination-bullets {
-        bottom: 21*@px;
-      }
-      .swiper-pagination-bullet {
-        width: 8*@px;
-        height: 8*@px;
-        margin: 0 6*@px;
-        background: #FFFFFF;
-        &.swiper-pagination-bullet-active {
-          background: #9A20F6;
-        }
       }
     }
     .section-btn-bar {

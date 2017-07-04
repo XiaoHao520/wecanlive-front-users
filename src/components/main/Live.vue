@@ -2,9 +2,10 @@
   <div id="app-main-live">
     <section class="section-top">
       <div class="left">
-        <div class="avatar" @click="showMemberCard"></div>
+        <div class="avatar" :style="{backgroundImage: 'url('+ vm.live_author.avatar_url +')'}"
+             @click="showMemberCard"></div>
         <div class="owner-info">
-          <div class="nickname">Denkaaaopenyss</div>
+          <div class="nickname">{{ vm.live_author.nickname }}</div>
           <div class="member-num">
             <div class="icon"></div>
             <div class="num">1025600</div>
@@ -151,10 +152,23 @@
         starbox_display: false,
         giftbag_display: false,
         redbag_display: false,
+        live: [],
+        live_author: [],
       };
     },
     methods: {
       reload() {
+        const vm = this;
+        vm.api('Live').get({
+          id: vm.$route.params.id,
+        }).then((resp) => {
+          vm.live = resp.data;
+          vm.api('Member').get({
+            id: vm.live.author,
+          }).then((m) => {
+            vm.live_author = m.date;
+          });
+        });
       },
       showMemberCard() {
         this.memberCard = true;

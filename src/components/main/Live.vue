@@ -2,10 +2,10 @@
   <div id="app-main-live">
     <section class="section-top">
       <div class="left">
-        <div class="avatar" :style="{backgroundImage: 'url('+ vm.live_author.avatar_url +')'}"
+        <div class="avatar" :style="{backgroundImage: 'url('+ live_author.avatar_url +')'}"
              @click="showMemberCard"></div>
         <div class="owner-info">
-          <div class="nickname">{{ vm.live_author.nickname }}</div>
+          <div class="nickname">{{ live_author.nickname }}</div>
           <div class="member-num">
             <div class="icon"></div>
             <div class="num">1025600</div>
@@ -166,7 +166,7 @@
           vm.api('Member').get({
             id: vm.live.author,
           }).then((m) => {
-            vm.live_author = m.date;
+            vm.live_author = m.data;
           });
         });
       },

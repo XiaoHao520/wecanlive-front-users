@@ -85,11 +85,11 @@ export default [
       { path: '/live/start', name: 'main_live_start', component: require('./main/LiveStart.vue') },
       // D1 - !!先别做，要做原生遮罩!! 直播画面（主播和观众共用）
       {
-        path: '/live/:id', name: 'main_live', component: require('./main/Live.vue'),
+        path: '/live/:id/', name: 'main_live', component: require('./main/Live.vue'),
         children: [
           // （里面所有东西都做在这个页面）
           // D - 鑽石貢獻榜
-          { path: '/live/:id/diamond', name: 'main_live_diamond', component: require('./main/LiveStart.vue') },
+          { path: '/live/:id/diamond', name: 'main_live_diamond', component: require('./main/LiveDiamond.vue') },
         ]
       },
       // D3 - 结束直播

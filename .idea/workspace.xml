@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f4bd95f-7c85-4987-9347-a2175dafbe9e" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/main/PersonalDiamondWithdrawAccount.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/main/PersonalDiamondWithdrawDeal.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/_popup/LiveRedBag.vue" afterPath="$PROJECT_DIR$/src/components/_popup/LiveRedBag.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue" afterPath="$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/Live.vue" afterPath="$PROJECT_DIR$/src/components/main/Live.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/MemberFriends.vue" afterPath="$PROJECT_DIR$/src/components/main/MemberFriends.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/PersonalDiamondWithdraw.vue" afterPath="$PROJECT_DIR$/src/components/main/PersonalDiamondWithdraw.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/routes.js" afterPath="$PROJECT_DIR$/src/components/routes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vue2-front/mixins.js" afterPath="$PROJECT_DIR$/src/vue2-front/mixins.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,14 +31,27 @@
     <favorites_list name="wecanlive-front" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.48785165">
+    <splitter split-orientation="horizontal" split-proportion="0.5044757">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="MemberFriends.vue" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/components/main/MemberFriends.vue">
+          <file leaf-file-name="PersonalDiamondWithdraw.vue" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/components/main/PersonalDiamondWithdraw.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="198">
-                  <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+                <state relative-caret-position="270">
+                  <caret line="62" column="54" lean-forward="false" selection-start-line="62" selection-start-column="54" selection-end-line="62" selection-end-column="54" />
+                  <folding>
+                    <element signature="e#2005#3171#0" expanded="false" />
+                    <element signature="e#3994#5303#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="PersonalDiamondWithdrawAccount.vue" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/components/main/PersonalDiamondWithdrawAccount.vue">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="607">
+                  <caret line="84" column="30" lean-forward="false" selection-start-line="84" selection-start-column="30" selection-end-line="84" selection-end-column="30" />
                   <folding />
                 </state>
               </provider>
@@ -39,22 +61,24 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="routes.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/routes.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="216">
-                  <caret line="122" column="101" lean-forward="false" selection-start-line="122" selection-start-column="101" selection-end-line="122" selection-end-column="101" />
+                <state relative-caret-position="379">
+                  <caret line="155" column="21" lean-forward="true" selection-start-line="155" selection-start-column="21" selection-end-line="155" selection-end-column="21" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="MemberFriends.vue" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/components/main/MemberFriends.vue">
+          <file leaf-file-name="PersonalDiamondWithdraw.vue" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/components/main/PersonalDiamondWithdraw.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="540">
-                  <caret line="30" column="18" lean-forward="false" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
-                  <folding />
+                <state relative-caret-position="270">
+                  <caret line="24" column="12" lean-forward="false" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
+                  <folding>
+                    <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -65,17 +89,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>tabTo</find>
-      <find>passport_</find>
-      <find>,</find>
-      <find>select-block-select</find>
-      <find>selectGender</find>
-      <find>code-btn</find>
-      <find>icon</find>
-      <find>contribution-item</find>
-      <find>three-style</find>
-      <find>updateAvatar</find>
-      <find>add-btn</find>
       <find>dynamic-list</find>
       <find>意</find>
       <find>feedback</find>
@@ -95,6 +108,17 @@
       <find>gift-list</find>
       <find>gift-exp</find>
       <find>/member/:id/fr</find>
+      <find>.3</find>
+      <find>maske</find>
+      <find>border-bottom</find>
+      <find>starbox-action</find>
+      <find>.star</find>
+      <find>redbag</find>
+      <find>is_owner</find>
+      <find>redbag_display</find>
+      <find>.b</find>
+      <find>is_staff</find>
+      <find>red-header</find>
     </findStrings>
     <replaceStrings>
       <replace>'',</replace>
@@ -110,9 +134,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/config/config.js" />
-        <option value="$PROJECT_DIR$/src/mixins.js" />
-        <option value="$PROJECT_DIR$/src/components/_common/index.js" />
         <option value="$PROJECT_DIR$/src/components/passport/App.vue" />
         <option value="$PROJECT_DIR$/src/components/main/Hot.vue" />
         <option value="$PROJECT_DIR$/src/components/main/App.vue" />
@@ -131,12 +152,10 @@
         <option value="$PROJECT_DIR$/src/components/main/LikeList.vue" />
         <option value="$PROJECT_DIR$/src/components/main/MemberOfficial.vue" />
         <option value="$PROJECT_DIR$/src/components/main/Ratings.vue" />
-        <option value="$PROJECT_DIR$/src/vue2-front/mixins.js" />
         <option value="$PROJECT_DIR$/src/config/choices.js" />
         <option value="$PROJECT_DIR$/src/components/main/PersonalAccount.vue" />
         <option value="$PROJECT_DIR$/src/components/main/PersonalProfile.vue" />
         <option value="$PROJECT_DIR$/src/components/main/PersonalChangeMobile.vue" />
-        <option value="$PROJECT_DIR$/src/assets/css/defines.less" />
         <option value="$PROJECT_DIR$/src/components/main/PersonalChangePassword.vue" />
         <option value="$PROJECT_DIR$/src/components/main/MemberFans.vue" />
         <option value="$PROJECT_DIR$/src/components/main/MemberFollows.vue" />
@@ -150,17 +169,22 @@
         <option value="$PROJECT_DIR$/src/components/main/PersonalFeedback.vue" />
         <option value="$PROJECT_DIR$/src/components/main/PersonalIcoin.vue" />
         <option value="$PROJECT_DIR$/src/components/main/PersonalBlacklist.vue" />
-        <option value="$PROJECT_DIR$/src/components/routes.js" />
         <option value="$PROJECT_DIR$/src/components/main/FindFriendDetail.vue" />
         <option value="$PROJECT_DIR$/src/components/main/FindFriend.vue" />
-        <option value="$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue" />
         <option value="$PROJECT_DIR$/src/components/_popup/readme.md" />
-        <option value="$PROJECT_DIR$/src/components/_popup/LiveRedBag.vue" />
         <option value="$PROJECT_DIR$/src/components/_popup/index.js" />
-        <option value="$PROJECT_DIR$/src/components/main/Live.vue" />
         <option value="$PROJECT_DIR$/src/components/_popup/LiveGiftBag.vue" />
         <option value="$PROJECT_DIR$/src/components/_common/HeaderCommon.vue" />
+        <option value="$PROJECT_DIR$/src/assets/css/defines.less" />
         <option value="$PROJECT_DIR$/src/components/main/MemberFriends.vue" />
+        <option value="$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue" />
+        <option value="$PROJECT_DIR$/src/components/main/Live.vue" />
+        <option value="$PROJECT_DIR$/src/components/_popup/LiveRedBag.vue" />
+        <option value="$PROJECT_DIR$/src/vue2-front/mixins.js" />
+        <option value="$PROJECT_DIR$/src/components/main/PersonalDiamondWithdrawDeal.vue" />
+        <option value="$PROJECT_DIR$/src/components/routes.js" />
+        <option value="$PROJECT_DIR$/src/components/main/PersonalDiamondWithdraw.vue" />
+        <option value="$PROJECT_DIR$/src/components/main/PersonalDiamondWithdrawAccount.vue" />
       </list>
     </option>
   </component>
@@ -196,6 +220,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -299,13 +324,34 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="_popup" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wecanlive-front" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wecanlive-front" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="_common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -320,8 +366,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/components/_popup" />
       <recent name="$PROJECT_DIR$/src/components/main" />
+      <recent name="$PROJECT_DIR$/src/components/_popup" />
       <recent name="$PROJECT_DIR$/src/components/_common" />
       <recent name="$PROJECT_DIR$/src/assets/image" />
       <recent name="$PROJECT_DIR$/src" />
@@ -439,6 +485,8 @@
       <workItem from="1498889241977" duration="10013000" />
       <workItem from="1498900705555" duration="134000" />
       <workItem from="1499044713413" duration="18851000" />
+      <workItem from="1499070421858" duration="6150000" />
+      <workItem from="1499130196581" duration="5866000" />
     </task>
     <task id="LOCAL-00001" summary="頭部">
       <created>1498446946309</created>
@@ -650,23 +698,30 @@
       <option name="project" value="LOCAL" />
       <updated>1499070181884</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="紅包彈窗">
+      <created>1499131992822</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1499131992822</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="187950000" />
+    <option name="totallyTimeSpent" value="199966000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="24" width="1920" height="993" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17510548" sideWeight="0.67027026" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17510548" sideWeight="0.6494565" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32997763" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32997763" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17510548" sideWeight="0.32972974" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17225951" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17510548" sideWeight="0.35054347" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17673378" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277405" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17510548" sideWeight="0.31756756" order="3" side_tool="true" content_ui="tabs" />
@@ -679,6 +734,26 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32997763" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17510548" sideWeight="0.34324324" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17225951" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277405" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17510548" sideWeight="0.65675676" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32997763" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17510548" sideWeight="0.31756756" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
@@ -709,41 +784,14 @@
     <MESSAGE value="揹包 星光寶盒" />
     <MESSAGE value="揹包 改" />
     <MESSAGE value="我的朋友" />
-    <option name="LAST_COMMIT_MESSAGE" value="我的朋友" />
+    <MESSAGE value="紅包彈窗" />
+    <option name="LAST_COMMIT_MESSAGE" value="紅包彈窗" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/passport/ForgotConfirm.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="12" lean-forward="true" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/vue2-front/mixins.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="94" column="4" lean-forward="false" selection-start-line="94" selection-start-column="4" selection-end-line="94" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/vue2-front/mixins.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="44" column="4" lean-forward="false" selection-start-line="44" selection-start-column="4" selection-end-line="44" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/vue2-front/plugins/vue-html5-editor/modules/image/dashboard.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="46" column="12" lean-forward="false" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/vue2-front/plugins/geo-picker/GeoPicker.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
@@ -863,13 +911,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/main/PersonalDiamondExchangeCoin.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="67" column="18" lean-forward="false" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/main/PersonalCoin.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -946,7 +987,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="236">
           <caret line="2188" column="2" lean-forward="false" selection-start-line="2188" selection-start-column="2" selection-end-line="2188" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -987,18 +1027,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveBackPack.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveBackPack.vue" />
     <entry file="file://$PROJECT_DIR$/src/components/main/Discover.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -1021,23 +1053,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="9" column="23" lean-forward="false" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveRedBag.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/main/Live.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="120" column="12" lean-forward="true" selection-start-line="120" selection-start-column="12" selection-end-line="120" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1045,53 +1060,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="11" column="54" lean-forward="false" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="96" column="41" lean-forward="false" selection-start-line="96" selection-start-column="41" selection-end-line="96" selection-end-column="41" />
-          <folding>
-            <element signature="n#div#0;n#transition#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#5111#8905#0" expanded="false" />
-            <element signature="e#5507#6622#0" expanded="false" />
-            <element signature="e#7941#8898#0" expanded="false" />
-            <element signature="e#8927#11080#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/css/defines.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="1" lean-forward="false" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveGiftBag.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="451" column="40" lean-forward="false" selection-start-line="451" selection-start-column="40" selection-end-line="451" selection-end-column="40" />
-          <folding>
-            <element signature="n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#transition#0;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#ul#0;n#div#0;n#transition#0;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#transition#1;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#transition#2;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#transition#1;n#div#0;n#transition#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#transition#2;n#div#0;n#transition#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#transition#3;n#div#0;n#transition#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="122" column="101" lean-forward="false" selection-start-line="122" selection-start-column="101" selection-end-line="122" selection-end-column="101" />
           <folding />
         </state>
       </provider>
@@ -1104,10 +1072,115 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveGiftBag.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="205" column="3" lean-forward="false" selection-start-line="205" selection-start-column="3" selection-end-line="205" selection-end-column="3" />
+          <folding>
+            <element signature="n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#transition#0;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#ul#0;n#div#0;n#transition#0;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#transition#1;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#transition#2;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#transition#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#transition#1;n#div#0;n#transition#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#transition#2;n#div#0;n#transition#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#transition#3;n#div#0;n#transition#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/css/defines.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="53" lean-forward="true" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/main/MemberFriends.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="30" column="18" lean-forward="false" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+        <state relative-caret-position="270">
+          <caret line="79" column="26" lean-forward="false" selection-start-line="79" selection-start-column="26" selection-end-line="79" selection-end-column="26" />
+          <folding>
+            <element signature="n#div#3;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/main/Live.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2430">
+          <caret line="135" column="11" lean-forward="false" selection-start-line="135" selection-start-column="11" selection-end-line="135" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="178" column="21" lean-forward="false" selection-start-line="178" selection-start-column="21" selection-end-line="178" selection-end-column="21" />
+          <folding>
+            <element signature="n#div#0;n#transition#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/vue2-front/mixins.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="138" column="0" lean-forward="false" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveRedBag.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="36" column="30" lean-forward="false" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/main/PersonalDiamondExchangeCoin.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="67" column="18" lean-forward="true" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/main/PersonalDiamondWithdrawDeal.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="39" column="22" lean-forward="false" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="155" column="21" lean-forward="true" selection-start-line="155" selection-start-column="21" selection-end-line="155" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/main/PersonalDiamondWithdraw.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="62" column="54" lean-forward="false" selection-start-line="62" selection-start-column="54" selection-end-line="62" selection-end-column="54" />
+          <folding>
+            <element signature="e#2005#3171#0" expanded="false" />
+            <element signature="e#3994#5303#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/main/PersonalDiamondWithdrawAccount.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="607">
+          <caret line="84" column="30" lean-forward="false" selection-start-line="84" selection-start-column="30" selection-end-line="84" selection-end-column="30" />
           <folding />
         </state>
       </provider>

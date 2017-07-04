@@ -91,7 +91,7 @@
         <li class="btn-item btn-item-left btn-item-text"></li>
 
         <template v-if="is_owner">
-          <li class="btn-item btn-item-right btn-item-redbag"></li>
+          <li class="btn-item btn-item-right btn-item-redbag" @click="redbag_display=true"></li>
           <li class="btn-item btn-item-right btn-item-tag">#</li>
           <li class="btn-item btn-item-right btn-item-camera"></li>
         </template>
@@ -100,7 +100,7 @@
           <li class="btn-item btn-item-right btn-item-like" @click="showHearts">
             <div class="like-num">6.3K</div>
           </li>
-          <li class="btn-item btn-item-right btn-item-gift" @click="redbag_display=true"></li>
+          <li class="btn-item btn-item-right btn-item-gift" @click="giftbag_display=true"></li>
           <li class="btn-item btn-item-right btn-item-vidio"></li>
           <li class="btn-item btn-item-right btn-item-audio"></li>
         </template>
@@ -129,7 +129,9 @@
 
     <live-starbox :display="starbox_display" @click="starbox()"></live-starbox>
 
-    <live-giftbag :display="redbag_display" @click="redbag()"></live-giftbag>
+    <live-giftbag :display="giftbag_display" @click="giftbag()"></live-giftbag>
+
+    <live-redbag :display="redbag_display" @click="redbag()"></live-redbag>
   </div>
 </template>
 
@@ -137,7 +139,7 @@
   export default {
     data() {
       return {
-        is_owner: false,
+        is_owner: true,
         memberCard: false,
         heart_1: false,
         choice: [
@@ -147,6 +149,7 @@
         ],
         audioBox: false,
         starbox_display: false,
+        giftbag_display: false,
         redbag_display: false,
       };
     },
@@ -172,6 +175,9 @@
       },
       starbox(value) {
         this.starbox_display = value;
+      },
+      giftbag(value) {
+        this.giftbag_display = value;
       },
       redbag(value) {
         this.redbag_display = value;
@@ -430,7 +436,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: svg-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.5));
+      background: svg-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5));
       .btn-lists {
         width: 100%;
         height: 144*@px;

@@ -6,8 +6,7 @@
           <a class="close-icon" href="javascript:;" @click="handleClick"></a>
           <div class="avatar"></div>
           <div class="star">
-            <div class="star-total">總星光指數 : 2000</div>
-            <div class="unused-star">未小號星光指數 : 0</div>
+            <div class="star-total">總元氣數 : 2000</div>
           </div>
         </div>
         <div class="starbox-content">
@@ -206,20 +205,20 @@
           width: 160*@px;
           height: 160*@px;
           position: absolute;
-          background: 50% 50% no-repeat #ccc;
+          background: url("../../assets/image/D/icon_star@3x.png") 50% 50% no-repeat;
+          border-radius: 50%;
           background-size: 100%;
           left: 45*@px;
         }
         .star {
           height: 160*@px;
-          padding-top: 30*@px;
-
           .star-total {
             font-size: 45*@px;
             height: 45*@px;
-            line-height: 45*@px;
             color: #fff;
             margin-bottom: 30*@px;
+            line-height: 160*@px;
+            font-weight: bold;
           }
           .unused-star {
             color: #fff;
@@ -232,7 +231,7 @@
       .starbox-content {
         height: 492*@px;
         background: #fff;
-        border: 1px solid @color-border;
+        border: 1px solid #BCBEC0;
         .starbox-null {
           display: none;
           box-sizing: border-box;

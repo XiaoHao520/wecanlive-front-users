@@ -1,7 +1,7 @@
 <template>
   <div id="app-main-live-start">
     <div class="background-avatar mask"
-         :style="{backgroundImage:'url('+ '' +')'}"></div>
+         :style="{backgroundImage: !!me && 'url('+ me.avatar_url +')'}"></div>
     <div class="wrapper">
       <div class="top-bar">
         <div class="location">
@@ -10,7 +10,8 @@
         </div>
         <a class="btn-cancel" @click="goBack()"></a>
       </div>
-      <div class="avatar"></div>
+      <div class="avatar"
+           :style="{backgroundImage: !!me && 'url('+ me.avatar_url +')'}"></div>
       <div class="live-title">
         <input type="text" placeholder="新增有 # 標籤的標題">
         <div class="warn-tips">你輸入了不符合 wecanlive 規範的文字</div>
@@ -56,12 +57,23 @@
   export default {
     methods: {
       reload() {
+        console.log(this.me);
       },
       setLive(type) {
         const vm = this;
-        vm.prompt('', '設置上限人數', '', '進入直播間的上限人數').then((value) => {
-          console.log(value);
-        });
+        if (type === 0) {
+          vm.prompt('', '設置密碼', '', '輸入6-8位字母數字組合的密碼').then((value) => {
+            console.log(value);
+          });
+        } else if (type === 1) {
+          vm.prompt('', '設置收費', '', '輸入需要的金幣數量').then((value) => {
+            console.log(value);
+          });
+        } else if (type === 2) {
+          vm.prompt('', '設置上限人數', '', '進入直播間的上限人數').then((value) => {
+            console.log(value);
+          });
+        }
       },
       startLive() {
         const vm = this;

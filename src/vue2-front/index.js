@@ -13,6 +13,8 @@ import mixins from './mixins';
 
 import AwesomeSwiper from 'vue-awesome-swiper';
 
+import VueTouch from 'vue-touch';
+
 import notifier from './plugins/notifier';
 
 // 应用内配置文件
@@ -45,6 +47,8 @@ export default {
     Vue.use(notifier);
 
     Vue.use(AwesomeSwiper);
+
+    Vue.use(VueTouch, { name: 'v-touch' });
 
     // -------------------------
     // Vue resource config

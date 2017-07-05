@@ -20,7 +20,7 @@
         </div>
         <a class="btn-more" @click="toggleMoreBox">+</a>
         <input type="text" :placeholder="placeholder" ref="input" v-model="content">
-        <a class="btn-submit">發送</a>
+        <a class="btn-submit" @click="handleSubmit">發送</a>
       </div>
       <!--输入框 END-->
 
@@ -155,6 +155,15 @@
     },
     methods: {
       reload() {
+      },
+      handleSubmit() {
+        const vm = this;
+        const valObj = {
+          content: vm.content,
+          isBarrage: vm.inputBarrage,
+        };
+        vm.$emit('input', valObj);
+        vm.content = '';
       },
       toggleMoreBox() {
         this.moreBox = !this.moreBox;

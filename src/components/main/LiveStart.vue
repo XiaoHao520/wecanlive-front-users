@@ -1,6 +1,7 @@
 <template>
   <div id="app-main-live-start">
-    <div class="background-avatar mask"></div>
+    <div class="background-avatar mask"
+         :style="{backgroundImage:'url('+ '' +')'}"></div>
     <div class="wrapper">
       <div class="top-bar">
         <div class="location">
@@ -11,19 +12,19 @@
       </div>
       <div class="avatar"></div>
       <div class="live-title">
-        <span>新增有 # 標籤的標題</span>
+        <input type="text" placeholder="新增有 # 標籤的標題">
         <div class="warn-tips">你輸入了不符合 wecanlive 規範的文字</div>
       </div>
       <div class="form">
-        <div class="row-input">
+        <div class="row-input" @click="setLive(0)">
           <div class="icon icon-password"></div>
           <div class="text no-text">設置密碼</div>
         </div>
-        <div class="row-input">
+        <div class="row-input" @click="setLive(1)">
           <div class="icon icon-coin"></div>
           <div class="text no-text">設置收費</div>
         </div>
-        <div class="row-input">
+        <div class="row-input" @click="setLive(2)">
           <div class="icon icon-member"></div>
           <div class="text no-text">設置上限人數</div>
         </div>
@@ -55,6 +56,12 @@
   export default {
     methods: {
       reload() {
+      },
+      setLive(type) {
+        const vm = this;
+        vm.prompt('', '設置上限人數', '', '進入直播間的上限人數').then((value) => {
+          console.log(value);
+        });
       },
       startLive() {
         const vm = this;
@@ -136,10 +143,16 @@
       }
       .live-title {
         position: relative;
-        font-size: 38*@px;
-        color: #FFFFFF;
-        text-align: center;
         margin: 30*@px 0 70*@px;
+        input {
+          font-size: 38*@px;
+          color: #FFFFFF;
+          text-align: center;
+          height: 40*@px;
+          line-height: 40*@px;
+          .placeholder-color(#fff);
+          width: 100%;
+        }
         .warn-tips {
           position: absolute;
           text-align: center;

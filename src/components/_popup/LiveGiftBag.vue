@@ -47,13 +47,13 @@
               <li class="gift-item">
                 <div class="gift-icon"></div>
                 <div class="gift-name">超值禮物</div>
-                <div class="gift-num">7000 </div>
+                <div class="gift-num">7000</div>
               </li>
 
               <li class="gift-item">
                 <div class="gift-icon"></div>
                 <div class="gift-name">超值禮物</div>
-                <div class="gift-num">7000 </div>
+                <div class="gift-num">7000</div>
               </li>
 
 
@@ -184,11 +184,11 @@
 
         <div class="gift-footer">
           <a href="javascript:;" class="gift-bag-type" @click="BagShop()">
-            <div class="type-icon"></div>
+            <div class="type-icon shop-icon-nor"></div>
             <div class="type">商店</div>
           </a>
           <a href="javascript:;" class="gift-bag-type">
-            <div class="type-icon"></div>
+            <div class="type-icon bag-icon"></div>
             <div class="type">背包</div>
           </a>
 
@@ -214,98 +214,64 @@
         </div>
 
         <div class="gift-menu ">
-          <a href="javascript:;"
-             :class="{'tab-active' : shoptab==0}"
-             @click="shoptabTo(0)"
-             class="gift-type shop-type">xx禮物</a>
+          <a v-for="(category, i) in prize_category.results" href="javascript:;"
+             :class="{'tab-active' : shoptab==i}"
+             @click="shoptabTo(i)"
+             :style="{width: (1 / prize_category.count) * 100 + '%'}"
+             class="gift-type shop-type">{{ category.name }}</a>
 
-          <a href="javascript:;"
-             @click="shoptabTo(1)"
-             :class="{'tab-active' : shoptab==1}"
-             class="gift-type shop-type">xx禮物</a>
-
-          <a href="javascript:;"
-             @click="shoptabTo(2)"
-             :class="{'tab-active' : shoptab==2}"
-             class="gift-type shop-type">xx禮物</a>
-
-          <a href="javascript:;"
-             @click="shoptabTo(3)"
-             :class="{'tab-active' : shoptab==3}"
-             class="gift-type shop-type">xx禮物</a>
+          <!--<a href="javascript:;"-->
+          <!--@click="shoptabTo(1)"-->
+          <!--:class="{'tab-active' : shoptab==1}"-->
+          <!--class="gift-type shop-type">xx禮物</a>-->
+          <!---->
+          <!--<a href="javascript:;"-->
+          <!--@click="shoptabTo(2)"-->
+          <!--:class="{'tab-active' : shoptab==2}"-->
+          <!--class="gift-type shop-type">xx禮物</a>-->
+          <!---->
+          <!--<a href="javascript:;"-->
+          <!--@click="shoptabTo(3)"-->
+          <!--:class="{'tab-active' : shoptab==3}"-->
+          <!--class="gift-type shop-type">xx禮物</a>-->
 
           <div class="show-underline"
+               :style="{width: (1 / prize_category.count) * 100 + '%'}"
                :class="{
              'position-1': shoptab==0,
              'position-2': shoptab==1,
              'position-3': shoptab==2,
              'position-4': shoptab==3,
+             'position-5': shoptab==4,
+             'position-6': shoptab==5,
+             'position-7': shoptab==6,
               }"></div>
         </div>
 
-        <transition :name="shpptransition">
-          <div v-if="shoptab==0" class="active-gift gift-list">
-            <ul>
-              <li class="gift-item">
-                <div class="gift-icon"></div>
-                <div class="gift-name">超值禮物</div>
-                <div class="gift-num">700</div>
-                <div class="gift-exp">+300 經驗</div>
-              </li>
-
-              <li class="gift-item">
-                <div class="gift-icon"></div>
-                <div class="gift-name">超值禮物</div>
-                <div class="gift-num">700</div>
-                <div class="gift-exp">+300 經驗</div>
-              </li>
-
-              <li class="gift-item">
-                <div class="gift-icon"></div>
-                <div class="gift-name">超值禮物</div>
-                <div class="gift-num">700</div>
-                <div class="gift-exp">+300 經驗</div>
-              </li>
-
-
-              <li class="gift-item">
-                <div class="gift-icon"></div>
-                <div class="gift-name">超值禮物</div>
-                <div class="gift-num">700</div>
-                <div class="gift-exp">+300 經驗</div>
-              </li>
-            </ul>
-          </div>
-        </transition>
-
-        <transition :name="shpptransition">
-          <div v-if="shoptab==1" class="box-gift gift-list">
-            <ul></ul>
-          </div>
-        </transition>
-
-        <transition :name="shpptransition">
-          <div v-if="shoptab==2" class="active-gift gift-list">
-            <ul>
-            </ul>
-          </div>
-        </transition>
-
-        <transition :name="shpptransition">
-          <div v-if="shoptab==3" class="active-gift gift-list">
-            <ul>
-              </li>
-            </ul>
-          </div>
-        </transition>
+        <template v-for="(category, i) in prize_category.results">
+          <transition :name="shpptransition">
+            <div v-if="shoptab==i" class="active-gift gift-list">
+              <ul>
+                <li v-for="prize in category.prizes_item"
+                    @click="gift=prize.id"
+                    class="gift-item">
+                  <div class="gift-icon" :style="{backgroundImage: 'url('+ prize.icon +')'}"></div>
+                  <div class="gift-name">{{ prize.name }}</div>
+                  <div class="gift-num">{{ prize.price }}</div>
+                  <div class="gift-exp">+300 經驗</div>
+                </li>
+              </ul>
+            </div>
+          </transition>
+        </template>
 
         <div class="gift-footer">
           <a href="javascript:;" class="gift-bag-type">
-            <div class="type-icon"></div>
+            <div class="type-icon shop-icon"></div>
             <div class="type">商店</div>
           </a>
           <a href="javascript:;" class="gift-bag-type" @click="BagShop()">
-            <div class="type-icon"></div>
+            <div class="type-icon bag-icon-nor"></div>
             <div class="type">背包</div>
           </a>
 
@@ -315,7 +281,7 @@
               1</a>
           </div>
 
-          <div class="send-btn">贈送</div>
+          <div class="send-btn" @click="buyGift">贈送</div>
         </div>
       </div>
     </transition>
@@ -336,10 +302,18 @@
         shop: false,
         transitionName: 'slide-left',
         shpptransition: 'slide-left',
+        prize_category: [],
+        gift: 0,
       };
     },
     methods: {
       reload() {
+        const vm = this;
+        vm.api('PrizeCategory').get({
+          is_active: 'True',
+        }).then((resp) => {
+          vm.prize_category = resp.data;
+        });
       },
       handleClick(evt) {
         const vm = this;
@@ -369,8 +343,18 @@
       },
       BagShop() {
         const vm = this;
+        vm.gift = 0;
         vm.bag = !vm.bag;
         vm.shop = !vm.shop;
+      },
+      buyGift() {
+        //
+        const vm = this;
+        console.log(vm.gift);
+        vm.api('PrizeOrder').save({
+          action: 'buy_prize',
+        }, {}).then(() => {
+        });
       },
     },
     props: {
@@ -442,7 +426,7 @@
             position: absolute;
             left: 23*@px;
             top: 17*@px;
-            background: 50% 50% no-repeat #ccc;
+            background: url("../../assets/image/D/d2_4_icon_upvip@3x.png") 50% 50% no-repeat;
             background-size: 100%;
           }
         }
@@ -539,6 +523,27 @@
             -o-transform: translate3d(300%, 0, 0);
             transform: translate3d(300%, 0, 0);
           }
+          &.position-5 {
+            -webkit-transform: translate3d(400%, 0, 0);
+            -moz-transform: translate3d(400%, 0, 0);
+            -ms-transform: translate3d(400%, 0, 0);
+            -o-transform: translate3d(400%, 0, 0);
+            transform: translate3d(400%, 0, 0);
+          }
+          &.position-6 {
+            -webkit-transform: translate3d(500%, 0, 0);
+            -moz-transform: translate3d(500%, 0, 0);
+            -ms-transform: translate3d(500%, 0, 0);
+            -o-transform: translate3d(500%, 0, 0);
+            transform: translate3d(500%, 0, 0);
+          }
+          &.position-7 {
+            -webkit-transform: translate3d(600%, 0, 0);
+            -moz-transform: translate3d(600%, 0, 0);
+            -ms-transform: translate3d(600%, 0, 0);
+            -o-transform: translate3d(600%, 0, 0);
+            transform: translate3d(600%, 0, 0);
+          }
         }
       }
 
@@ -594,7 +599,7 @@
               height: 120*@px;
               background: 50% 50% no-repeat #ccc;
               background-size: 100%;
-              margin:0 95*@px 0 0;
+              margin: 0 95*@px 0 0;
               &:last-child {
                 margin: 0;
               }
@@ -617,8 +622,8 @@
           .gift-icon {
             width: 100*@px;
             height: 106*@px;
-            background: 50% 50% no-repeat #ccc;
-            background-size: 100%;
+            background: 50% 50% no-repeat;
+            background-size: cover;
             margin: 0 auto;
             position: relative;
             .num {
@@ -680,9 +685,21 @@
           .type-icon {
             height: 44*@px;
             width: 47*@px;
-            background: 50% 50% no-repeat #ccc;
+            background: 50% 50% no-repeat;
             background-size: 100%;
             margin: 0 auto;
+            &.shop-icon {
+              background-image: url('../../assets/image/D/d2_4_icon_selected@3x.png');
+            }
+            &.shop-icon-nor {
+              background-image: url('../../assets/image/D/d2_4_icon_nor@3x.png');
+            }
+            &.bag-icon {
+              background-image: url('../../assets/image/D/d2_4_icon_bag_selected@3x.png');
+            }
+            &.bag-icon-nor {
+              background-image: url('../../assets/image/D/d2_4_icon_bag_nor@3x.png');
+            }
           }
           .type {
             font-size: 16*@px;
@@ -716,7 +733,7 @@
             -ms-transform: translate(0, -50%);
             -o-transform: translate(0, -50%);
             transform: translate(0, -50%);
-            background: 50% 50% no-repeat #ccc;
+            background: url("../../assets/image/D/d2_4_icon_retan@3x.png") 50% 50% no-repeat;
             background-size: 25*@px;
           }
         }

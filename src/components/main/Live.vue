@@ -25,7 +25,7 @@
             <div class="user-avatar"></div>
             <div class="user-avatar"></div>
           </div>
-          <a class="btn-close"></a>
+          <a class="btn-close" @click="leaveLive()"></a>
         </section>
       </transition>
       <transition name="fade">
@@ -161,7 +161,7 @@
             <li class="btn-item btn-item-left btn-item-text" @click="openInputBox"></li>
 
             <template v-if="is_owner">
-              <li class="btn-item btn-item-right btn-item-redbag"></li>
+              <li class="btn-item btn-item-right btn-item-redbag" @click="redbag_display=true"></li>
               <li class="btn-item btn-item-right btn-item-tag">#</li>
               <li class="btn-item btn-item-right btn-item-camera"></li>
             </template>
@@ -170,7 +170,7 @@
               <li class="btn-item btn-item-right btn-item-like" @click="showHearts">
                 <div class="like-num">6.3K</div>
               </li>
-              <li class="btn-item btn-item-right btn-item-gift" @click="redbag_display=true"></li>
+              <li class="btn-item btn-item-right btn-item-gift" @click="giftbag_display=true"></li>
               <li class="btn-item btn-item-right btn-item-vidio"></li>
               <li class="btn-item btn-item-right btn-item-audio"
                   @click="toggleAudioBox"></li>
@@ -213,9 +213,9 @@
 
       <live-starbox :display="starbox_display" @click="starbox()"></live-starbox>
 
-    <live-giftbag :display="giftbag_display" @click="giftbag()"></live-giftbag>
+      <live-giftbag :display="giftbag_display" @click="giftbag()"></live-giftbag>
 
-    <live-redbag :display="redbag_display" @click="redbag()"></live-redbag>
+      <live-redbag :display="redbag_display" @click="redbag()"></live-redbag>
 
     </v-touch>
 
@@ -249,9 +249,10 @@
         giftbag_display: false,
         redbag_display: false,
         notice: true,
-        inputBox: true,
+        inputBox: false,
         live: [],
         live_author: [],
+        live_watch_log: [],
       };
     },
     beforeRouteUpdate(to, from, next) {
@@ -272,6 +273,14 @@
           }).then((m) => {
             vm.live_author = m.data;
           });
+        });
+        //
+        vm.api('LiveWatchLog').save({
+          action: 'start_watch_log',
+        }, {
+          live: vm.$route.params.id,
+        }).then((resp) => {
+          vm.live_watch_log = resp.data;
         });
       },
       submit(valObj) {
@@ -341,6 +350,18 @@
       },
       redbag(value) {
         this.redbag_display = value;
+      },
+      leaveLive() {
+        const vm = this;
+        if (vm.live_watch_log.length !== 0) {
+          vm.api('LiveWatchLog').save({
+            action: 'leave_live',
+          }, {
+            live: vm.$route.params.id,
+          }).then(() => {
+            // todo
+          });
+        }
       },
     },
   };

@@ -124,28 +124,12 @@
         </div>
         <div class="dynamic">
           <ul>
-            <li class="dynamic-item" :class="{'big-photo': big_dynamic}">
-              <a href="javascript:;"></a>
+            <li v-for="event in active_event"
+                class="dynamic-item" :class="{'big-photo': big_dynamic}">
+              <a href="javascript:;"
+                 :style="{backgroundImage: 'url(' + event.images_item[0].image +')'}"></a>
               <!--:style="{backgroundImage: 'url('+ item.images_item[0].image +')'}"-->
-              <img src="../../assets/image/B5/pic_hotbanner@3x.png"/>
-              <!--item.images_item[0].image-->
-            </li>
-            <li class="dynamic-item" :class="{'big-photo': big_dynamic}">
-              <a href="javascript:;"></a>
-              <!--:style="{backgroundImage: 'url('+ item.images_item[0].image +')'}"-->
-              <img src="../../assets/image/B5/pic_banner@3x.png"/>
-              <!--item.images_item[0].image-->
-            </li>
-            <li class="dynamic-item" :class="{'big-photo': big_dynamic}">
-              <a href="javascript:;"></a>
-              <!--:style="{backgroundImage: 'url('+ item.images_item[0].image +')'}"-->
-              <img src="../../assets/image/B5/pic_hotbanner@3x.png"/>
-              <!--item.images_item[0].image-->
-            </li>
-            <li class="dynamic-item" :class="{'big-photo': big_dynamic}">
-              <a href="javascript:;"></a>
-              <!--:style="{backgroundImage: 'url('+ item.images_item[0].image +')'}"-->
-              <img src="../../assets/image/B5/pic_hotbanner@3x.png"/>
+              <img :src="event.images_item[0].image"/>
               <!--item.images_item[0].image-->
             </li>
           </ul>
@@ -200,6 +184,8 @@
         big_dynamic: false,
         dynamic_items: [],
         avatar: '',
+        active_event: [],
+        live: [],
       };
     },
     methods: {
@@ -207,6 +193,18 @@
         const vm = this;
         vm.authenticate(true).then(() => {
           vm.avatar = vm.me.avatar_url;
+          //
+          vm.api('ActiveEvent').get({
+            author: vm.me.id,
+          }).then((resp) => {
+            vm.active_event = resp.data.results;
+          });
+          //
+          vm.api('Live').get({
+            author: vm.me.id,
+          }).then((resp) => {
+            vm.live = resp.data.results;
+          });
         });
       },
       tabTo(pos) {
@@ -551,7 +549,7 @@
               a {
                 display: block;
                 height: 100%;
-                background: url("../../assets/image/B5/pic_hotbanner@3x.png") 50% 50% no-repeat;
+                background: 50% 50% no-repeat;
                 background-size: cover;
               }
               img {

@@ -1,199 +1,223 @@
 <template>
   <div id="app-main-live">
-    <section class="section-top">
-      <div class="left">
-        <div class="avatar" :style="{backgroundImage: 'url('+ live_author.avatar_url +')'}"
-             @click="showMemberCard"></div>
-        <div class="owner-info">
-          <div class="nickname">{{ live_author.nickname }}</div>
-          <div class="member-num">
-            <div class="icon"></div>
-            <div class="num">1025600</div>
-          </div>
-        </div>
-        <a class="btn-tracking is-tracked">已追蹤</a>
-      </div>
-      <div class="users">
-        <div class="avatar-container">
-          <div class="user-avatar"></div>
-          <div class="decoration"></div>
-        </div>
-        <div class="user-avatar"></div>
-        <div class="user-avatar"></div>
-      </div>
-      <a class="btn-close"></a>
-    </section>
-    <div class="top-left-block">
-      <router-link class="diamond-block" :to="{name: 'main_live_diamond', params: {id:0}}">
-        <div class="icon-diamond"></div>
-        <div class="num">10945685</div>
-        <div class="icon-caret"></div>
-      </router-link>
-      <div class="starlight-block">
-        <div class="icon-warpper"></div>
-        <div class="percent-block">
-          <div class="percent"></div>
-          <div class="num">205/500</div>
-        </div>
-      </div>
-    </div>
-    <div class="top-right-block" v-if="!notice">
-      <a class="btn-activity"></a>
-      <a class="btn-jewel-box" @click="starbox_display=true"></a>
-
-      <!--观众头像-->
-      <div class="audience-avatar-warpper" v-if="!is_owner">
-        <a class="audience-avatar">
-          <div class="level">Lv 1</div>
-        </a>
-      </div>
-      <!--观众头像 END-->
-    </div>
-
-
-    <!--弹幕-->
-    <section class="section-popup-comment">
-      <!--TODO notice內容過多處理-->
+    <v-touch class="swift-block"
+             :swipeOptions="swipeOptions"
+             @swiperight="swiperight($event)"
+             @swipeleft="swipeleft($event)">
       <transition name="fade">
-        <div class="notice" v-if="notice">
-          恭喜 Chris，Denka，Kelly，Trina，丫丫抽中 30 金幣
+        <section class="section-top" v-show="!is_hide_all">
+          <div class="left">
+            <div class="avatar" @click="showMemberCard"></div>
+            <div class="owner-info">
+              <div class="nickname">Denkaaaopenyss</div>
+              <div class="member-num">
+                <div class="icon"></div>
+                <div class="num">1025600</div>
+              </div>
+            </div>
+            <a class="btn-tracking is-tracked">已追蹤</a>
+          </div>
+          <div class="users">
+            <div class="avatar-container">
+              <div class="user-avatar"></div>
+              <div class="decoration"></div>
+            </div>
+            <div class="user-avatar"></div>
+            <div class="user-avatar"></div>
+          </div>
+          <a class="btn-close"></a>
+        </section>
+      </transition>
+      <transition name="fade">
+        <div class="top-left-block" v-show="!is_hide_all">
+          <router-link class="diamond-block" :to="{name: 'main_live_diamond', params: {id:0}}">
+            <div class="icon-diamond"></div>
+            <div class="num">10945685</div>
+            <div class="icon-caret"></div>
+          </router-link>
+          <div class="starlight-block">
+            <div class="icon-warpper"></div>
+            <div class="percent-block">
+              <div class="percent"></div>
+              <div class="num">205/500</div>
+            </div>
+          </div>
         </div>
       </transition>
 
-      <!--普通弹幕-->
-      <div class="popup-normal">
-        <div class="avatar"></div>
-        <div class="right">
-          <div class="nickname">
-            <span class="name">用户名用户名</span>
-            <span class="level">LV.20</span>
-            <span class="vip">2</span>
+      <transition name="fade">
+        <div class="top-right-block" v-show="!is_hide_all">
+          <a class="btn-activity"></a>
+          <a class="btn-jewel-box" @click="starbox_display=true"></a>
+
+          <!--观众头像-->
+          <div class="audience-avatar-warpper" v-if="!is_owner">
+            <a class="audience-avatar">
+              <div class="level">Lv 1</div>
+            </a>
           </div>
-          <div class="content">
-            弹幕内容弹幕内容
-          </div>
+          <!--观众头像 END-->
         </div>
-      </div>
-      <!--普通弹幕 END-->
-    </section>
-    <!--弹幕 END-->
+      </transition>
 
+      <!--弹幕-->
+      <transition name="fade">
+        <section class="section-popup-comment" v-show="!is_hide_all">
+          <!--TODO notice內容過多處理-->
+          <transition name="fade">
+            <div class="notice" v-if="notice">
+              恭喜 Chris，Denka，Kelly，Trina，丫丫抽中 30 金幣
+            </div>
+          </transition>
+          <!--普通弹幕-->
+          <div class="popup-normal"
+               v-for="barrage in barrages"
+               :key="barrage"
+               :style="{top: barrage.positionTop}" :ref="barrage.ref">
+            <div class="avatar"
+                 :style="{backgroundImage: !!barrage && 'url('+barrage.senderAvatarUrl+')'}"></div>
+            <div class="right">
+              <div class="nickname">
+                <span class="name">{{barrage.senderNickname}}</span>
+                <span class="level">LV.{{barrage.senderLevel}}</span>
+                <span class="vip">{{barrage.senderVip}}</span>
+              </div>
+              <div class="content">
+                {{barrage.content}}
+              </div>
+            </div>
+          </div>
+          <!--普通弹幕 END-->
+        </section>
+      </transition>
+      <!--弹幕 END-->
 
-    <section class="section-bottom">
-      <!--評論文字區-->
-      <section class="section-messages">
+      <transition name="fade">
+        <section class="section-bottom" v-show="!is_hide_all">
+          <!--評論文字區-->
+          <section class="section-messages">
 
-        <div class="message-item">
-          <span class="tag-system">系统</span>
-          <span class="content">
+            <div class="message-item">
+              <span class="tag-system">系统</span>
+              <span class="content">
             我們倡導清新綠色直播，
             任何違反wecanleve規範的行爲都將收到相應的懲罰。
           </span>
-        </div>
+            </div>
 
-        <div class="message-item">
+            <div class="message-item">
           <span class="nickname-block">
             <span class="name blue">Kevin Chiu</span>
             <span class="tag tag-level">LV.20</span>
             <span class="tag tag-vip">2</span>
           </span>
-          <span class="content">已追蹤主播</span>
+              <span class="content">已追蹤主播</span>
 
-          <a class="btn-tracking">
-            <span class="icon">+</span>
-            追蹤
-          </a>
+              <a class="btn-tracking">
+                <span class="icon">+</span>
+                追蹤
+              </a>
 
-        </div>
+            </div>
 
-        <div class="message-item">
+            <div class="message-item">
           <span class="nickname-block">
             <span class="name red">Kevin Chiu</span>
             <span class="tag tag-level">LV.20</span>
             <span class="tag tag-vip">2</span>
           </span>
-          <span class="content">已分享主播</span>
+              <span class="content">已分享主播</span>
 
-          <a class="btn-share">
-            <span class="icon"></span>
-            分享
-          </a>
-        </div>
+              <a class="btn-share">
+                <span class="icon"></span>
+                分享
+              </a>
+            </div>
 
-        <div class="message-item">
+            <div class="message-item">
           <span class="nickname-block">
             <span class="name purple">Kevin Chiu</span>
             <span class="tag tag-level">LV.20</span>
             <span class="tag tag-vip">2</span>
           </span>
-          <span class="content">你好可愛喔！</span>
-        </div>
+              <span class="content">你好可愛喔！</span>
+            </div>
 
-        <div class="message-item">
+            <div class="message-item">
           <span class="nickname-block">
             <span class="name ">Kevin Chiu</span>
             <span class="tag tag-level">LV.20</span>
             <span class="tag tag-vip">2</span>
           </span>
-          <span class="content">你好可愛喔！</span>
+              <span class="content">你好可愛喔！</span>
+            </div>
+
+          </section>
+          <!--評論文字區 END-->
+
+          <!--底部右邊按鈕-->
+          <ul class="btn-lists" v-if="!inputBox && !audioBox">
+
+            <li class="btn-item btn-item-left btn-item-text" @click="openInputBox"></li>
+
+            <template v-if="is_owner">
+              <li class="btn-item btn-item-right btn-item-redbag"></li>
+              <li class="btn-item btn-item-right btn-item-tag">#</li>
+              <li class="btn-item btn-item-right btn-item-camera"></li>
+            </template>
+
+            <template v-else>
+              <li class="btn-item btn-item-right btn-item-like" @click="showHearts">
+                <div class="like-num">6.3K</div>
+              </li>
+              <li class="btn-item btn-item-right btn-item-gift" @click="redbag_display=true"></li>
+              <li class="btn-item btn-item-right btn-item-vidio"></li>
+              <li class="btn-item btn-item-right btn-item-audio"
+                  @click="toggleAudioBox"></li>
+            </template>
+
+            <li class="btn-item btn-item-right btn-item-share" @click="share"></li>
+          </ul>
+          <!--底部右邊按鈕 END-->
+
+          <input-item :display="inputBox" @input="submit"></input-item>
+
+          <div class="audio-box" v-if="audioBox">
+            <div class="text">按住至少3秒</div>
+            <div class="percent-box">
+              <div class="percent"></div>
+            </div>
+            <div class="audio-body">
+              <a class="btn-record"></a>
+              <a class="btn-cancel">取消</a>
+            </div>
+          </div>
+
+        </section>
+      </transition>
+
+      <transition name="slide-down-up">
+        <div class="bottom-nav-open"
+             v-show="is_hide_all && !bottom_nav"
+             @click="toggleBottomNav">
+          <span class="icon"></span>
         </div>
-
-      </section>
-      <!--評論文字區 END-->
-
-      <!--底部右邊按鈕-->
-      <ul class="btn-lists" v-if="!inputBox && !audioBox">
-
-        <li class="btn-item btn-item-left btn-item-text" @click="openInputBox"></li>
-
-        <template v-if="is_owner">
-          <li class="btn-item btn-item-right btn-item-redbag" @click="redbag_display=true"></li>
-          <li class="btn-item btn-item-right btn-item-tag">#</li>
-          <li class="btn-item btn-item-right btn-item-camera"></li>
-        </template>
-
-        <template v-else>
-          <li class="btn-item btn-item-right btn-item-like" @click="showHearts">
-            <div class="like-num">6.3K</div>
-          </li>
-          <li class="btn-item btn-item-right btn-item-gift" @click="giftbag_display=true"></li>
-          <li class="btn-item btn-item-right btn-item-vidio"></li>
-          <li class="btn-item btn-item-right btn-item-audio"
-              @click="toggleAudioBox"></li>
-        </template>
-
-        <li class="btn-item btn-item-right btn-item-share" @click="share"></li>
-      </ul>
-      <!--底部右邊按鈕 END-->
-
-      <input-item :display="inputBox"></input-item>
-
-      <div class="audio-box" v-if="audioBox">
-        <div class="text">按住至少3秒</div>
-        <div class="percent-box">
-          <div class="percent"></div>
-        </div>
-        <div class="audio-body">
-          <a class="btn-record"></a>
-          <a class="btn-cancel">取消</a>
-        </div>
-      </div>
-
-    </section>
+      </transition>
 
 
-    <member-card :display="memberCard"
-                 :choice="choice"
-                 @click="toggleMemberCard"
-                 @pick="choicePick"></member-card>
+      <member-card :display="memberCard"
+                   :choice="choice"
+                   @click="toggleMemberCard"
+                   @pick="choicePick"></member-card>
 
 
-    <live-starbox :display="starbox_display" @click="starbox()"></live-starbox>
+      <live-starbox :display="starbox_display" @click="starbox()"></live-starbox>
 
     <live-giftbag :display="giftbag_display" @click="giftbag()"></live-giftbag>
 
     <live-redbag :display="redbag_display" @click="redbag()"></live-redbag>
 
+    </v-touch>
 
     <transition :name="transitionNameLive">
       <router-view class="live-child-view"></router-view>
@@ -206,24 +230,28 @@
     data() {
       return {
         transitionNameLive: 'slide-left',
-        is_owner: true,
-        memberCard: false,
-        heart_1: false,
+        swipeOptions: {
+          direction: 'horizontal',
+        },
         choice: [
           { text: '禁言', value: 0 },
           { text: '加入封鎖清單', value: 1 },
           { text: '舉報', value: 2 },
         ],
+        is_hide_all: false,
+        is_owner: false,
+        memberCard: false,
+        heart_1: false,
+        bottom_nav: false,
+        barrages: [],
         audioBox: false,
         starbox_display: false,
         giftbag_display: false,
         redbag_display: false,
+        notice: true,
+        inputBox: true,
         live: [],
         live_author: [],
-        notice: false,
-        inputBox: false,
-        inputBarrage: false,
-        placeholder: '說點什麼...',
       };
     },
     beforeRouteUpdate(to, from, next) {
@@ -246,6 +274,44 @@
           });
         });
       },
+      submit(valObj) {
+        const vm = this;
+        if (valObj.isBarrage) {
+          const top = Math.random() * 12.48;
+          const barrageid = Math.random() * 10000;
+          const barrage = {
+            content: valObj.content,
+            positionTop: `${top}rem`,
+            senderAvatarUrl: '',
+            senderNickname: '哈哈哈哈',
+            senderLevel: 15,
+            senderVip: 2,
+            ref: `barrage${barrageid}`,
+          };
+          vm.barrages.push(barrage);
+          vm.$nextTick(() => {
+            setTimeout(() => {
+              vm.$refs[barrage.ref][0].style.transform = 'translate3d(-20rem,0,0)';
+              /* 监听 transition! */
+              vm.$refs[barrage.ref][0].addEventListener('webkitTransitionEnd', () => {
+                vm.barrages.splice(vm.barrages.indexOf(barrage), 1);
+              });
+              vm.$refs[barrage.ref][0].addEventListener('transitionend', () => {
+                vm.barrages.splice(vm.barrages.indexOf(barrage), 1);
+              });
+            }, 0);
+          });
+        }
+      },
+      swiperight(e) {
+        this.is_hide_all = true;
+      },
+      swipeleft(e) {
+        this.is_hide_all = false;
+      },
+      toggleBottomNav() {
+        this.bottom_nav = !this.bottom_nav;
+      },
       showMemberCard() {
         this.memberCard = true;
       },
@@ -263,15 +329,6 @@
       showHearts() {
         const vm = this;
         vm.heart_1 = !vm.heart_1;
-      },
-      switchBarrage() {
-        const vm = this;
-        vm.inputBarrage = !vm.inputBarrage;
-        if (vm.inputBarrage) {
-          vm.placeholder = '發送彈幕需要扣除xx金幣';
-        } else {
-          vm.placeholder = '說點什麼...';
-        }
       },
       toggleAudioBox() {
         this.audioBox = !this.audioBox;
@@ -301,6 +358,9 @@
     .border-box();
     &.not-status-bar {
       padding-top: 0;
+    }
+    .swift-block {
+      height: 100%-@height-status-bar;
     }
     .section-top {
       padding: 0 30*@px;
@@ -595,14 +655,20 @@
         height: 72*@px;
         overflow: hidden;
         color: #FFFFFF;
+        right: 0;
         padding-right: 28*@px;
         background: rgba(0, 0, 0, 0.4);
         .rounded-corners(72*@px);
-        -webkit-transition: all 1.5s;
-        -moz-transition: all 1.5s;
-        -ms-transition: all 1.5s;
-        -o-transition: all 1.5s;
-        transition: all 1.5s;
+        -webkit-transform: translate3d(100%, 0, 0);
+        -moz-transform: translate3d(100%, 0, 0);
+        -ms-transform: translate3d(100%, 0, 0);
+        -o-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+        -webkit-transition: all 4s linear;
+        -moz-transition: all 4s linear;
+        -ms-transition: all 4s linear;
+        -o-transition: all 4s linear;
+        transition: all 4s linear;
         .avatar {
           float: left;
           height: 68*@px;
@@ -945,6 +1011,24 @@
       }
     }
 
+    .bottom-nav-open {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 70*@px;
+      line-height: 70*@px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.3);
+      .icon {
+        display: inline-block;
+        width: 66*@px;
+        height: 66*@px;
+        background: url("../../assets/image/D/d2_1_icon_retanup@3x.png") 50% 50% no-repeat;
+        -webkit-background-size: 100%;
+        background-size: 100%;
+      }
+    }
     .live-child-view {
       position: absolute;
       top: 0;
@@ -981,5 +1065,21 @@
       opacity: 0;
       .transform(translate3d(-50%, 0, 0));
     }
+
+    .list-enter-active, .list-leave-active {
+      -webkit-transition: all 1.5s;
+      -moz-transition: all 1.5s;
+      -ms-transition: all 1.5s;
+      -o-transition: all 1.5s;
+      transition: all 1.5s;
+    }
+    .list-enter {
+      -webkit-transform: translate3d(300%, 0, 0);
+      -moz-transform: translate3d(300%, 0, 0);
+      -ms-transform: translate3d(300%, 0, 0);
+      -o-transform: translate3d(300%, 0, 0);
+      transform: translate3d(300%, 0, 0);
+    }
+
   }
 </style>

@@ -2,7 +2,144 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f4bd95f-7c85-4987-9347-a2175dafbe9e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_1_bg1@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_1_bg1@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_1_bg@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_1_bg@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_1_bg_lv@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_1_bg_lv@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_1_btn_apply@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_1_btn_apply@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_1_icon_moredown@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_1_icon_moredown@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_1_icon_moreup@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_1_icon_moreup@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_1_icon_retandown@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_1_icon_retandown@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_1_icon_retanup@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_1_icon_retanup@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_1_icon_？@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_1_icon_？@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_1_pic_head_family@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_1_pic_head_family@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_2_bg_pop@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_2_bg_pop@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_2_btn_addfriend@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_2_btn_addfriend@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_2_btn_message1@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_2_btn_message1@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_2_btn_message@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_2_btn_message@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_2_btn_track@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_2_btn_track@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_2_icon_addfriend@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_2_icon_addfriend@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_2_icon_closed@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_2_icon_closed@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_2_icon_friend@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_2_icon_friend@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_2_icon_message@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_2_icon_message@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_2_pic_head_pop@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_2_pic_head_pop@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_3_btn_send@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_3_btn_send@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_3_icon_add@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_3_icon_add@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_3_icon_delete@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_3_icon_delete@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_3_switch_danmu_off@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_3_switch_danmu_off@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_3_switch_danmu_on@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_3_switch_danmu_on@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_3_tab_time@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_3_tab_time@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_bg_bottom@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_bg_bottom@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_bg_top@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_bg_top@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_gift1@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_gift1@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_gift2@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_gift2@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_gift3@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_gift3@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_gift4@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_gift4@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_gift5@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_gift5@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_gift6@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_gift6@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_icon_bag_nor@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_icon_bag_nor@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_icon_bag_selected@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_icon_bag_selected@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_icon_giftbox@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_icon_giftbox@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_icon_none@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_icon_none@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_icon_nor@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_icon_nor@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_icon_retan@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_icon_retan@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_icon_selected@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_icon_selected@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_icon_upvip@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_4_icon_upvip@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_8_icon_time@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_8_icon_time@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_8_icon_yuanqi_b@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_8_icon_yuanqi_b@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_8_icon_yuanqi_s@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_8_icon_yuanqi_s@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_8_pic_head1@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_8_pic_head1@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_8_pic_head2@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_8_pic_head2@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_9_icon_notice@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d2_9_icon_notice@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d3_switch_down@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d3_switch_down@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d3_switch_on@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d3_switch_on@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d4_1_bg_search@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d4_1_bg_search@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d4_1_icon_search@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d4_1_icon_search@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d5_icon_down@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d5_icon_down@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d5_icon_up@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d5_icon_up@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d6_1_bg_star@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d6_1_bg_star@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d6_1_icon_diamonds@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d6_1_icon_diamonds@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d6_1_icon_honor1@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d6_1_icon_honor1@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d6_1_icon_honor2@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d6_1_icon_honor2@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d6_1_icon_honor3@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d6_1_icon_honor3@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d6_1_icon_honor4@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d6_1_icon_honor4@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d6_1_icon_honor5@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d6_1_icon_honor5@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d6_1_icon_honor6@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d6_1_icon_honor6@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d6_1_icon_honor7@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d6_1_icon_honor7@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d6_1_icon_honor8@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d6_1_icon_honor8@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d6_1_icon_star@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/image/D/d6_1_icon_star@3x.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/css/defines.less" afterPath="$PROJECT_DIR$/src/assets/css/defines.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/_common/InputItem.vue" afterPath="$PROJECT_DIR$/src/components/_common/InputItem.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/Live.vue" afterPath="$PROJECT_DIR$/src/components/main/Live.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/LiveStart.vue" afterPath="$PROJECT_DIR$/src/components/main/LiveStart.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vue2-front/index.js" afterPath="$PROJECT_DIR$/src/vue2-front/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vue2-front/plugins/notifier/NotifierRegistry.vue" afterPath="$PROJECT_DIR$/src/vue2-front/plugins/notifier/NotifierRegistry.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vue2-front/plugins/notifier/index.js" afterPath="$PROJECT_DIR$/src/vue2-front/plugins/notifier/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,7 +166,7 @@
             <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveGiftBag.vue">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="409">
-                  <caret line="361" column="22" lean-forward="true" selection-start-line="361" selection-start-column="22" selection-end-line="361" selection-end-column="22" />
+                  <caret line="361" column="22" lean-forward="false" selection-start-line="361" selection-start-column="22" selection-end-line="361" selection-end-column="22" />
                   <folding>
                     <element signature="n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
                     <element signature="n#transition#0;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
@@ -219,7 +356,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -351,6 +487,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -488,6 +625,7 @@
       <workItem from="1499130196581" duration="18635000" />
       <workItem from="1499159736153" duration="3081000" />
       <workItem from="1499217251224" duration="4907000" />
+      <workItem from="1499223886731" duration="7000" />
     </task>
     <task id="LOCAL-00001" summary="頭部">
       <created>1498446946309</created>
@@ -759,19 +897,18 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="220723000" />
+    <option name="totallyTimeSpent" value="220730000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="24" width="1920" height="993" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17510548" sideWeight="0.63722825" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17510548" sideWeight="0.6304348" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32997763" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32997763" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17510548" sideWeight="0.36277175" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17673378" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17510548" sideWeight="0.36956522" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17673378" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277405" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17510548" sideWeight="0.31756756" order="3" side_tool="true" content_ui="tabs" />
@@ -782,6 +919,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32997763" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1083,7 +1221,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
           <caret line="138" column="0" lean-forward="false" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1138,7 +1275,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="31">
           <caret line="158" column="23" lean-forward="false" selection-start-line="158" selection-start-column="23" selection-end-line="158" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1146,9 +1282,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="543" column="5" lean-forward="false" selection-start-line="543" selection-start-column="5" selection-end-line="543" selection-end-column="5" />
-          <folding>
-            <element signature="n#div#0;n#transition#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1166,13 +1299,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="183" column="0" lean-forward="true" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
-          <folding>
-            <element signature="n#section#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#section#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#section#2;n#div#0;n#template#0;n#!!top" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1180,7 +1307,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="244">
           <caret line="115" column="21" lean-forward="false" selection-start-line="115" selection-start-column="21" selection-end-line="115" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1188,9 +1314,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="643">
           <caret line="76" column="64" lean-forward="false" selection-start-line="76" selection-start-column="64" selection-end-line="76" selection-end-column="64" />
-          <folding>
-            <element signature="n#style#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1198,9 +1321,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
-          <folding>
-            <element signature="n#style#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1217,7 +1337,7 @@
     <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveGiftBag.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="409">
-          <caret line="361" column="22" lean-forward="true" selection-start-line="361" selection-start-column="22" selection-end-line="361" selection-end-column="22" />
+          <caret line="361" column="22" lean-forward="false" selection-start-line="361" selection-start-column="22" selection-end-line="361" selection-end-column="22" />
           <folding>
             <element signature="n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
             <element signature="n#transition#0;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />

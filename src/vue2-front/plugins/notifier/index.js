@@ -102,9 +102,6 @@ export default {
             deferred,
             value: defaultValue,
           });
-          vm.$nextTick(() => {
-            vm.$refs.promptInput[0].focus();
-          });
           return deferred.promise;
         },
         // pickFile() {

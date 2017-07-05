@@ -48,7 +48,7 @@
       <div class="block-dialog block-prompt modal fade in"
            tabindex="-1" role="dialog"
            style="display: block;" v-for="(item, index) in itemsPrompt">
-        <transition name="slide-fade" appear>
+        <transition name="popup" appear>
           <div class="modal-dialog modal-sm">
             <div class="modal-content">
               <div class="modal-header" v-if="item.title">
@@ -57,7 +57,7 @@
                 <h4 class="modal-title">{{item.title}}</h4>
               </div>
               <div class="modal-body">
-                <div class="prompt-content">{{item.content}}</div>
+                <div class="prompt-content" v-if="item.content">{{item.content}}</div>
                 <input class="prompt-input" type="text"
                        :placeholder="item.placeholder" ref="promptInput"
                        title v-model="item.value"/>
@@ -65,7 +65,7 @@
               <div class="modal-footer">
                 <a @click.stop="promptAction(true, index)"
                    href="javascript:"
-                   type="button" class="btn btn-sm btn-confirm">确定
+                   type="button" class="btn btn-sm btn-confirm">確定
                 </a>
                 <a @click.stop="promptAction(false, index)"
                    href="javascript:"

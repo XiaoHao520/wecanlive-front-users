@@ -35,12 +35,16 @@
       return {
         image_items: [],
         content: '',
+        items: [],
       };
     },
     methods: {
       reload() {
         const vm = this;
         vm.image_items = vm.getContext('images');
+        vm.image_items.forEach((image) => {
+          vm.items.push(image.id);
+        });
       },
       submit() {
         const vm = this;
@@ -48,7 +52,7 @@
           author: vm.me.id,
           type: 'IMAGE',
           content: vm.content,
-//          images: vm.image_items,
+          images: vm.items,
         }).then(() => {
           vm.setContext('images', '');
           vm.$router.push({ name: 'main_index' });

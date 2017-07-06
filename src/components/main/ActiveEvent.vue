@@ -19,7 +19,7 @@
 
 
     <div class="all-file">
-      <a class="all-file-btn" href="javascript:;">
+      <a class="all-file-btn" @click="uploadImage()" href="javascript:;">
         所有文件
         <div class="down-icon"></div>
       </a>
@@ -42,6 +42,12 @@
           author: vm.me.id,
         }).then((resp) => {
           vm.items = resp.data.results;
+        });
+      },
+      uploadImage() {
+        const vm = this;
+        vm.pickImage().then(() => {
+          vm.reload();
         });
       },
       choiceImage(item) {

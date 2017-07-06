@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4f4bd95f-7c85-4987-9347-a2175dafbe9e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/ActiveEvent.vue" afterPath="$PROJECT_DIR$/src/components/main/ActiveEvent.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/MemberDetail.vue" afterPath="$PROJECT_DIR$/src/components/main/MemberDetail.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -26,14 +27,24 @@
     <splitter split-orientation="horizontal" split-proportion="0.5420326">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="ActiveEvent.vue" pinned="false" current-in-tab="false">
+          <file leaf-file-name="ActiveEvent.vue" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/main/ActiveEvent.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="36">
-                  <caret line="2" column="61" lean-forward="false" selection-start-line="2" selection-start-column="61" selection-end-line="2" selection-end-column="61" />
+                <state relative-caret-position="128">
+                  <caret line="42" column="27" lean-forward="true" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
                   <folding>
-                    <element signature="e#1782#3474#0" expanded="false" />
+                    <element signature="e#1932#3624#0" expanded="false" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/vue2-front/plugins/notifier/index.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="699">
+                  <caret line="155" column="35" lean-forward="false" selection-start-line="155" selection-start-column="35" selection-end-line="155" selection-end-column="35" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -41,18 +52,18 @@
           <file leaf-file-name="ActiveEventWrite.vue" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/main/ActiveEventWrite.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="654">
-                  <caret line="50" column="36" lean-forward="true" selection-start-line="50" selection-start-column="36" selection-end-line="50" selection-end-column="36" />
+                <state relative-caret-position="-324">
+                  <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="MemberDetail.vue" pinned="false" current-in-tab="true">
+          <file leaf-file-name="MemberDetail.vue" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/main/MemberDetail.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1246">
-                  <caret line="124" column="29" lean-forward="false" selection-start-line="124" selection-start-column="29" selection-end-line="124" selection-end-column="29" />
+                <state relative-caret-position="319">
+                  <caret line="142" column="0" lean-forward="false" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
                   <folding>
                     <element signature="n#style#0;n#!!top" expanded="false" />
                   </folding>
@@ -232,10 +243,10 @@
         <option value="$PROJECT_DIR$/src/components/_common/InputItem.vue" />
         <option value="$PROJECT_DIR$/src/components/_common/HeaderCommon.vue" />
         <option value="$PROJECT_DIR$/src/assets/css/defines.less" />
-        <option value="$PROJECT_DIR$/src/components/main/ActiveEvent.vue" />
         <option value="$PROJECT_DIR$/src/components/_common/FooterCommon.vue" />
         <option value="$PROJECT_DIR$/src/components/main/ActiveEventWrite.vue" />
         <option value="$PROJECT_DIR$/src/components/main/MemberDetail.vue" />
+        <option value="$PROJECT_DIR$/src/components/main/ActiveEvent.vue" />
       </list>
     </option>
   </component>
@@ -541,7 +552,7 @@
       <workItem from="1499159736153" duration="3081000" />
       <workItem from="1499217251224" duration="4907000" />
       <workItem from="1499223886731" duration="12965000" />
-      <workItem from="1499303621927" duration="17497000" />
+      <workItem from="1499303621927" duration="18240000" />
     </task>
     <task id="LOCAL-00001" summary="頭部">
       <created>1498446946309</created>
@@ -879,11 +890,18 @@
       <option name="project" value="LOCAL" />
       <updated>1499332495868</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="12">
+      <created>1499332547921</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1499332547921</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="251185000" />
+    <option name="totallyTimeSpent" value="251928000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="24" width="1920" height="993" extended-state="6" />
@@ -936,7 +954,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="評論列表，修改忘記密碼" />
     <MESSAGE value="贊列表" />
     <MESSAGE value="找朋友" />
     <MESSAGE value="個人中心" />
@@ -961,25 +978,14 @@
     <MESSAGE value="发动态" />
     <MESSAGE value="发个人动态" />
     <MESSAGE value="个人主页 动态" />
-    <option name="LAST_COMMIT_MESSAGE" value="个人主页 动态" />
+    <MESSAGE value="12" />
+    <option name="LAST_COMMIT_MESSAGE" value="12" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/assets/image/f-f4/f_icon_crown@2x.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/main/MemberFans.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="15" column="38" lean-forward="false" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/main/MemberFollows.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="429">
@@ -1307,16 +1313,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/main/ActiveEvent.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="61" lean-forward="false" selection-start-line="2" selection-start-column="61" selection-end-line="2" selection-end-column="61" />
-          <folding>
-            <element signature="e#1782#3474#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/vue2-front/mixins.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="587">
@@ -1357,20 +1353,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/main/MemberDetail.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="142" column="0" lean-forward="false" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/main/ActiveEventWrite.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="654">
-          <caret line="50" column="36" lean-forward="true" selection-start-line="50" selection-start-column="36" selection-end-line="50" selection-end-column="36" />
+        <state relative-caret-position="-324">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/main/MemberDetail.vue">
+    <entry file="file://$PROJECT_DIR$/node_modules/vue2-front/plugins/notifier/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1246">
-          <caret line="124" column="29" lean-forward="false" selection-start-line="124" selection-start-column="29" selection-end-line="124" selection-end-column="29" />
+        <state relative-caret-position="231">
+          <caret line="101" column="8" lean-forward="false" selection-start-line="101" selection-start-column="8" selection-end-line="101" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/vue2-front/plugins/notifier/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="699">
+          <caret line="155" column="35" lean-forward="false" selection-start-line="155" selection-start-column="35" selection-end-line="155" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/main/ActiveEvent.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="42" column="27" lean-forward="true" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
           <folding>
-            <element signature="n#style#0;n#!!top" expanded="false" />
+            <element signature="e#1932#3624#0" expanded="false" />
           </folding>
         </state>
       </provider>

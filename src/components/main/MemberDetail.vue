@@ -141,7 +141,7 @@
     <transition :name="transitionName">
       <section class="section-list live-list" v-if="tab == 1">
         <!--todo 隱藏一些控件-->
-        <live-item></live-item>
+        <live-item :showInfo="false" :review="true"></live-item>
       </section>
     </transition>
 

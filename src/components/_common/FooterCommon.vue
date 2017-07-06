@@ -18,7 +18,7 @@
       <div class="btn-live" @click="startLive" v-show="btnBar"></div>
     </transition>
     <transition name="quick-slide">
-      <div class="btn-image" v-show="btnBar"></div>
+      <div class="btn-image" @click="writeEvent" v-show="btnBar"></div>
     </transition>
     <!--<transition name="quick-slide-down">-->
     <!--<div class="btn-video" v-show="btnBar"></div>-->
@@ -49,6 +49,10 @@
       toggleBtn() {
         const vm = this;
         vm.btnBar = !vm.btnBar;
+      },
+      writeEvent() {
+        const vm = this;
+        vm.$router.push({ name: 'main_active_event' });
       },
     },
     props: {},

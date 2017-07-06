@@ -120,5 +120,18 @@
         transform: translate(-50%, -50%);
       }
     }
+    .submit-btn {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      height: @height-header;
+      font-size: 32*@px;
+      a {
+        line-height: @height-header;
+        display: block;
+        color: #fff;
+        padding-right: 30*@px;
+      }
+    }
   }
 </style>

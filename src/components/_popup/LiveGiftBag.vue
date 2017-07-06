@@ -350,10 +350,14 @@
       buyGift() {
         //
         const vm = this;
-        console.log(vm.gift);
+        console.log(vm.$route.params.id);
         vm.api('PrizeOrder').save({
           action: 'buy_prize',
-        }, {}).then(() => {
+        }, {
+          live: vm.$route.params.id,
+          prize: vm.gift,
+          count: 1,
+        }).then(() => {
         });
       },
     },

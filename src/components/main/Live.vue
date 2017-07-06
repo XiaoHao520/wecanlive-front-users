@@ -239,7 +239,7 @@
           { text: '舉報', value: 2 },
         ],
         is_hide_all: false,
-        is_owner: false,
+        is_owner: true,
         memberCard: false,
         heart_1: false,
         bottom_nav: false,

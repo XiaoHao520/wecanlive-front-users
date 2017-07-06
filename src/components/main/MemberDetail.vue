@@ -125,12 +125,10 @@
         <div class="dynamic">
           <ul>
             <li v-for="event in active_event"
-                class="dynamic-item" :class="{'big-photo': big_dynamic}">
+                class="dynamic-item" v-if="event.images_item[0]" :class="{'big-photo': big_dynamic}">
               <a href="javascript:;"
                  :style="{backgroundImage: 'url(' + event.images_item[0].image +')'}"></a>
-              <!--:style="{backgroundImage: 'url('+ item.images_item[0].image +')'}"-->
               <img :src="event.images_item[0].image"/>
-              <!--item.images_item[0].image-->
             </li>
           </ul>
         </div>

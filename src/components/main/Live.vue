@@ -213,7 +213,9 @@
 
       <live-starbox :display="starbox_display" @click="starbox()"></live-starbox>
 
-      <live-giftbag :display="redbag_display" @click="redbag()"></live-giftbag>
+    <live-giftbag :display="giftbag_display" @click="giftbag()"></live-giftbag>
+
+    <live-redbag :display="redbag_display" @click="redbag()"></live-redbag>
 
     </v-touch>
 
@@ -244,9 +246,12 @@
         barrages: [],
         audioBox: false,
         starbox_display: false,
+        giftbag_display: false,
         redbag_display: false,
         notice: true,
         inputBox: true,
+        live: [],
+        live_author: [],
       };
     },
     beforeRouteUpdate(to, from, next) {
@@ -257,6 +262,17 @@
     },
     methods: {
       reload() {
+        const vm = this;
+        vm.api('Live').get({
+          id: vm.$route.params.id,
+        }).then((resp) => {
+          vm.live = resp.data;
+          vm.api('Member').get({
+            id: vm.live.author,
+          }).then((m) => {
+            vm.live_author = m.data;
+          });
+        });
       },
       submit(valObj) {
         const vm = this;
@@ -319,6 +335,9 @@
       },
       starbox(value) {
         this.starbox_display = value;
+      },
+      giftbag(value) {
+        this.giftbag_display = value;
       },
       redbag(value) {
         this.redbag_display = value;

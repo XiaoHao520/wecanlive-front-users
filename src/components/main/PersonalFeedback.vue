@@ -3,13 +3,12 @@
     <header-common title="意見反饋"></header-common>
 
     <div class="feedback-block">
-      <textarea class="feedback-text"
+      <textarea class="feedback-text" v-model="content"
                 placeholder="有什麼意見可以反饋給我們，如採納，有重賞～"></textarea>
       <div class="limit">限 50 字</div>
 
-      <a href="javascript:;" class="submit-btn">確定</a>
+      <a href="javascript:;" @click="submit()" class="submit-btn">確定</a>
     </div>
-
 
 
   </div>
@@ -17,8 +16,31 @@
 
 <script type="text/babel" lang="babel">
   export default {
+    data() {
+      return {
+        content: '',
+      };
+    },
     methods: {
       reload() {
+      },
+      submit() {
+        const vm = this;
+        if (vm.content.length === 0) {
+          vm.notify('請輸入內容');
+          return;
+        }
+        if (vm.content.length > 50) {
+          vm.notify('內容不能超過50個字');
+          return;
+        }
+        vm.api('Feedback').save({
+          author: vm.me.id,
+          content: vm.content,
+        }).then(() => {
+          vm.notify('反饋提交成功，我們會儘快處理');
+          vm.goBack();
+        });
       },
     },
   };
@@ -40,7 +62,8 @@
         height: 292*@px;
         box-sizing: border-box;
         border-radius: 20*@px;
-        border: 0; padding: 40*@px;
+        border: 0;
+        padding: 40*@px;
         font-size: 32*@px;
       }
       .limit {

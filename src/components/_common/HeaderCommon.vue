@@ -39,6 +39,7 @@
 <style rel="stylesheet/less" type="text/less" lang="less" scoped>
   @import (once) '../../vue2-front/assets/css/less-template/template';
   @import (once) '../../assets/css/defines';
+
   .component-header-common {
     background: @bg-header;
     position: relative;
@@ -96,6 +97,28 @@
       position: absolute;
       right: 25*@px;
       bottom: 18*@px;
+    }
+    .scan-btn {
+      position: absolute;
+      width: @height-header;
+      right: 0;
+      bottom: 0;
+      height: @height-header;
+      .scan-icon {
+        display: block;
+        width: 60*@px;
+        height: 60*@px;
+        background: url("../../assets/image/f-f4/f_icon_scan@3x.png");
+        background-size: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
     }
   }
 </style>

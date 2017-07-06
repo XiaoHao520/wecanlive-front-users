@@ -2,6 +2,7 @@
   <div>
     <header-common title="朋友(10)">
       <div slot="right" class="scan-btn">
+        <!--todo-->
         <a href="javascript:;" class="scan-icon"></a>
       </div>
     </header-common>

@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4f4bd95f-7c85-4987-9347-a2175dafbe9e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/_popup/LiveRedBag.vue" afterPath="$PROJECT_DIR$/src/components/_popup/LiveRedBag.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/MemberFriends.vue" afterPath="$PROJECT_DIR$/src/components/main/MemberFriends.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -43,8 +42,8 @@
           <file leaf-file-name="MemberFriends.vue" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/main/MemberFriends.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="382">
-                  <caret line="203" column="80" lean-forward="false" selection-start-line="203" selection-start-column="80" selection-end-line="203" selection-end-column="80" />
+                <state relative-caret-position="72">
+                  <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
                   <folding />
                 </state>
               </provider>
@@ -512,7 +511,7 @@
       <workItem from="1499159736153" duration="3081000" />
       <workItem from="1499217251224" duration="4907000" />
       <workItem from="1499223886731" duration="12965000" />
-      <workItem from="1499303621927" duration="4437000" />
+      <workItem from="1499303621927" duration="4472000" />
     </task>
     <task id="LOCAL-00001" summary="頭部">
       <created>1498446946309</created>
@@ -801,11 +800,18 @@
       <option name="project" value="LOCAL" />
       <updated>1499306776570</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="完成我的朋友">
+      <created>1499308308732</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1499308308733</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="238125000" />
+    <option name="totallyTimeSpent" value="238160000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="24" width="1920" height="993" extended-state="6" />
@@ -858,7 +864,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="修改頭部" />
     <MESSAGE value="模糊效果" />
     <MESSAGE value="登錄頁面" />
     <MESSAGE value="pinglunliebiao" />
@@ -883,7 +888,8 @@
     <MESSAGE value="Merge branch 'jie' of https://gitlab.com/easecloud/wecanlive-front into bin&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/components/main/Live.vue&#10;" />
     <MESSAGE value="live watch log" />
     <MESSAGE value="發紅包後續" />
-    <option name="LAST_COMMIT_MESSAGE" value="發紅包後續" />
+    <MESSAGE value="完成我的朋友" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成我的朋友" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1270,8 +1276,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/main/MemberFriends.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="203" column="80" lean-forward="false" selection-start-line="203" selection-start-column="80" selection-end-line="203" selection-end-column="80" />
+        <state relative-caret-position="72">
+          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
           <folding />
         </state>
       </provider>

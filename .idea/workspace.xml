@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4f4bd95f-7c85-4987-9347-a2175dafbe9e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/ActiveEvent.vue" afterPath="$PROJECT_DIR$/src/components/main/ActiveEvent.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/ActiveEventWrite.vue" afterPath="$PROJECT_DIR$/src/components/main/ActiveEventWrite.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,11 +26,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.5420326">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="ActiveEvent.vue" pinned="false" current-in-tab="true">
+          <file leaf-file-name="ActiveEvent.vue" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/main/ActiveEvent.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="290">
-                  <caret line="42" column="25" lean-forward="false" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
+                <state relative-caret-position="90">
+                  <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
                   <folding>
                     <element signature="e#1958#3650#0" expanded="false" />
                   </folding>
@@ -48,11 +48,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ActiveEventWrite.vue" pinned="false" current-in-tab="false">
+          <file leaf-file-name="ActiveEventWrite.vue" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/main/ActiveEventWrite.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-324">
-                  <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+                <state relative-caret-position="360">
+                  <caret line="51" column="29" lean-forward="false" selection-start-line="51" selection-start-column="29" selection-end-line="51" selection-end-column="29" />
                   <folding />
                 </state>
               </provider>
@@ -243,9 +243,9 @@
         <option value="$PROJECT_DIR$/src/components/_common/HeaderCommon.vue" />
         <option value="$PROJECT_DIR$/src/assets/css/defines.less" />
         <option value="$PROJECT_DIR$/src/components/_common/FooterCommon.vue" />
-        <option value="$PROJECT_DIR$/src/components/main/ActiveEventWrite.vue" />
         <option value="$PROJECT_DIR$/src/components/main/MemberDetail.vue" />
         <option value="$PROJECT_DIR$/src/components/main/ActiveEvent.vue" />
+        <option value="$PROJECT_DIR$/src/components/main/ActiveEventWrite.vue" />
       </list>
     </option>
   </component>
@@ -551,14 +551,7 @@
       <workItem from="1499159736153" duration="3081000" />
       <workItem from="1499217251224" duration="4907000" />
       <workItem from="1499223886731" duration="12965000" />
-      <workItem from="1499303621927" duration="18512000" />
-    </task>
-    <task id="LOCAL-00002" summary="頭部">
-      <created>1498447000099</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1498447000099</updated>
+      <workItem from="1499303621927" duration="19135000" />
     </task>
     <task id="LOCAL-00003" summary="12">
       <created>1498448500298</created>
@@ -896,11 +889,18 @@
       <option name="project" value="LOCAL" />
       <updated>1499333314016</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="相册图片上限">
+      <created>1499333571459</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1499333571459</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="252200000" />
+    <option name="totallyTimeSpent" value="252823000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="24" width="1920" height="993" extended-state="6" />
@@ -953,7 +953,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="找朋友" />
     <MESSAGE value="個人中心" />
     <MESSAGE value="Merge branch 'jie' of https://gitlab.com/easecloud/wecanlive-front into bin&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;" />
     <MESSAGE value="鑽石，金幣頁面" />
@@ -978,7 +977,8 @@
     <MESSAGE value="个人主页 动态" />
     <MESSAGE value="12" />
     <MESSAGE value="发布动态上传图片" />
-    <option name="LAST_COMMIT_MESSAGE" value="发布动态上传图片" />
+    <MESSAGE value="相册图片上限" />
+    <option name="LAST_COMMIT_MESSAGE" value="相册图片上限" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1362,14 +1362,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/vue2-front/plugins/notifier/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="699">
-          <caret line="155" column="35" lean-forward="false" selection-start-line="155" selection-start-column="35" selection-end-line="155" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/routes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="319">
@@ -1378,21 +1370,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/main/ActiveEventWrite.vue">
+    <entry file="file://$PROJECT_DIR$/src/vue2-front/plugins/notifier/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-324">
-          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state relative-caret-position="699">
+          <caret line="155" column="35" lean-forward="false" selection-start-line="155" selection-start-column="35" selection-end-line="155" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/main/ActiveEvent.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="42" column="25" lean-forward="false" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
+        <state relative-caret-position="90">
+          <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
           <folding>
             <element signature="e#1958#3650#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/main/ActiveEventWrite.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="51" column="29" lean-forward="false" selection-start-line="51" selection-start-column="29" selection-end-line="51" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>

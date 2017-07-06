@@ -48,6 +48,15 @@
       },
       submit() {
         const vm = this;
+        if (vm.content.length < 0) {
+          vm.notify('請輸入內容');
+          return;
+        }
+        if (vm.content.length > 100) {
+          vm.notify('內容不能超過100字');
+          return
+        }
+
         vm.api('ActiveEvent').save({
           author: vm.me.id,
           type: 'IMAGE',

@@ -19,7 +19,9 @@
       <div class="friend-block">
         <div class="friends-type">
           交友邀請 ({{ friends_invite_count }})
-          <a href="javascript:;" @click="invite=!invite" class="open-icon"></a>
+          <a href="javascript:;" @click="invite=!invite"
+             :class="{'hide-icon': !invite}"
+             class="open-icon"></a>
         </div>
 
         <div :class="{'hide' : !invite}" class="member-list">
@@ -37,7 +39,9 @@
 
         <div class="friends-type">
           朋友 ({{ friends_list_count }})
-          <a href="javascript:;" @click="friend=!friend" class="open-icon"></a>
+          <a href="javascript:;"
+             :class="{'hide-icon': !friend}"
+             @click="friend=!friend" class="open-icon"></a>
         </div>
 
 
@@ -193,9 +197,12 @@
           right: 30*@px;
           top: 0;
           bottom: 0;
-          background: 50% 50% no-repeat #ccc;
-          background-size: 27*@px;
-          width: 27*@px;
+          background:url("../../assets/image/D/d2_1_icon_retandown@3x.png") 50% 50% no-repeat ;
+          background-size: 44*@px;
+          width: 44*@px;
+          &.hide-icon {
+            background-image: url("../../assets/image/D/d2_1_icon_retanup@3x.png");
+          }
         }
       }
 

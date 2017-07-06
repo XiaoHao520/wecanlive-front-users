@@ -105,6 +105,9 @@
         const vm = this;
         vm.red_confirm = false;
         vm.fail = true;
+        setTimeout(() => {
+          vm.handleClick();
+        }, 1500);
       },
     },
     props: {

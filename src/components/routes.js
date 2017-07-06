@@ -85,11 +85,11 @@ export default [
       { path: '/live/start', name: 'main_live_start', component: require('./main/LiveStart.vue') },
       // D1 - !!先别做，要做原生遮罩!! 直播画面（主播和观众共用）
       {
-        path: '/live/:id', name: 'main_live', component: require('./main/Live.vue'),
+        path: '/live/:id/', name: 'main_live', component: require('./main/Live.vue'),
         children: [
           // （里面所有东西都做在这个页面）
           // D - 鑽石貢獻榜
-          { path: '/live/:id/diamond', name: 'main_live_diamond', component: require('./main/LiveStart.vue') },
+          { path: '/live/:id/diamond', name: 'main_live_diamond', component: require('./main/LiveDiamond.vue') },
         ]
       },
       // D3 - 结束直播
@@ -155,6 +155,10 @@ export default [
       { path: '/personal/diamond/exchange/coin', name: 'main_personal_diamond_exchange_coin', component: require('./main/PersonalDiamondExchangeCoin.vue') },
       // F6-2 - 兑换成现金
       { path: '/personal/diamond/withdraw', name: 'main_personal_diamond_withdraw', component: require('./main/PersonalDiamondWithdraw.vue') },
+      // F6-2 - 输入账号
+      { path: '/personal/diamond/withdraw/account', name: 'main_personal_diamond_withdraw_account', component: require('./main/PersonalDiamondWithdrawAccount.vue') },
+      // F6-2 - 提款协议
+      { path: '/personal/diamond/withdraw/deal', name: 'main_personal_diamond_withdraw_deal', component: require('./main/PersonalDiamondWithdrawDeal.vue') },
       // F6-3 - 交易明细
       { path: '/personal/diamond/transactions', name: 'main_personal_diamond_transactions', component: require('./main/PersonalDiamondTransactions.vue') },
       // F7 - 我的金币

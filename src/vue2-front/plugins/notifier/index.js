@@ -92,18 +92,16 @@ export default {
           console.log(`notifyConfirm: ${content}`);
           return deferred.promise;
         },
-        prompt(content, title = '', defaultValue = '', placeholder = '') {
+        prompt(content, title = '', defaultValue = '', placeholder = '', checkBoxText = '') {
           const vm = this.vmNotifier;
           const deferred = new Deferred();
           vm.itemsPrompt.push({
             content,
             title,
             placeholder,
+            checkBoxText,
             deferred,
             value: defaultValue,
-          });
-          vm.$nextTick(() => {
-            vm.$refs.promptInput[0].focus();
           });
           return deferred.promise;
         },

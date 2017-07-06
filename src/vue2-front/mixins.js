@@ -136,7 +136,7 @@ export default {
         { username, password }
       ).then(resp => {
         vm.current_user = resp.data;
-        if (!vm.me.is_staff) {
+        if (!vm.current_user.is_staff) {
           vm.$router.push({ name: 'main' });
         }
         return vm.me;

@@ -7,3 +7,4 @@ export const DynamicItem = require('./DynamicItem.vue');
 export const HeaderMember = require('./HeaderMember.vue');
 export const MovieItem = require('./MovieItem.vue');
 export const RankItem = require('./RankItem.vue');
+export const InputItem = require('./InputItem.vue');

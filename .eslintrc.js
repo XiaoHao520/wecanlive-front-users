@@ -38,5 +38,19 @@ module.exports = {
     'space-before-function-paren': ["error", "never"],
     'comma-dangle': ["error", "always-multiline"],
     'no-throw-literal': ['error'],
+    "no-mixed-operators": [
+      "error",
+      {
+        "groups": [
+          ["+", "-"],
+          ["*", "/", "%", "**"],
+          ["&", "|", "^", "~", "<<", ">>", ">>>"],
+          ["==", "!=", "===", "!==", ">", ">=", "<", "<="],
+          ["&&", "||"],
+          ["in", "instanceof"],
+        ],
+        "allowSamePrecedence": true,
+      }
+    ]
   }
 }

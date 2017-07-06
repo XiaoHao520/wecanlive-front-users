@@ -5,8 +5,15 @@
       <div class="avatar-warpper">
         <div class="avatar" @click="member()"></div>
       </div>
-      <div class="mid-block">
-        <div class="nickname">Chris Lin</div>
+      <div class="mid-block" :class="{'no-track-btn': !showTrackBtn}">
+        <div class="nickname">
+          <span class="name">Chris Lin</span>
+          <template v-if="!showTrackBtn">
+            <span class="gender-female"></span>
+            <span class="level">LV.20</span>
+            <span class="vip">2</span>
+          </template>
+        </div>
         <div class="bot">
           <template v-if="action == 'diamond' || action == 'gift'">
             <div class="action" v-if="action == 'diamond'">貢獻</div>
@@ -19,11 +26,11 @@
           </template>
         </div>
       </div>
-      <!--<a class="btn-track">-->
+      <!--<a class="btn-track" v-if="showTrackBtn">-->
       <!--<span class="icon"></span>-->
       <!--追蹤-->
       <!--</a>-->
-      <a class="btn-tracked">
+      <a class="btn-tracked" v-if="showTrackBtn">
         <span class="icon"></span>
         已追蹤
       </a>
@@ -42,8 +49,15 @@
         </template>
       </div>
       <div class="avatar" @click="member()"></div>
-      <div class="mid-block">
-        <div class="nickname">Wecan Live娛樂</div>
+      <div class="mid-block" :class="{'no-track-btn': !showTrackBtn}">
+        <div class="nickname">
+          <span class="name">Wecan Live</span>
+          <template v-if="!showTrackBtn">
+            <span class="gender-male"></span>
+            <span class="level">LV.20</span>
+            <span class="vip">2</span>
+          </template>
+        </div>
         <div class="bot">
           <template v-if="action == 'diamond' || action == 'gift'">
             <div class="action" v-if="action == 'diamond'">貢獻</div>
@@ -56,10 +70,14 @@
           </template>
         </div>
       </div>
-      <a class="btn-track">
+      <a class="btn-track" v-if="showTrackBtn">
         <span class="icon"></span>
         追蹤
       </a>
+      <!--<a class="btn-tracked" v-if="showTrackBtn">-->
+      <!--<span class="icon"></span>-->
+      <!--已追蹤-->
+      <!--</a>-->
     </div>
   </div>
 </template>
@@ -100,6 +118,14 @@
       },
       action: {
         type: String,
+      },
+      showTrackBtn: {
+        type: Boolean,
+        default: true,
+      },
+      showTag: {
+        type: Boolean,
+        default: false,
       },
     },
   };
@@ -158,13 +184,50 @@
         margin-left: 12*@px;
         margin-top: 86*@px;
         width: 245*@px;
+        &.no-track-btn {
+          width: 350*@px;
+        }
         .nickname {
           color: #FFFFFF;
           font-size: 35*@px;
-          height: 35*@px;
-          line-height: 35*@px;
+          height: 36*@px;
+          line-height: 36*@px;
           width: 100%;
           .nowrap();
+          .gender-male {
+            display: inline-block;
+            width: 36*@px;
+            height: 36*@px;
+            background: url("../../assets/image/B3/icon_male@3x.png") 50% 50% no-repeat;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+            vertical-align: text-top;
+          }
+          .gender-female {
+            display: inline-block;
+            width: 36*@px;
+            height: 36*@px;
+            background: url("../../assets/image/B3/icon_female@3x.png") 50% 50% no-repeat;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+            vertical-align: text-top;
+          }
+          .level {
+            display: inline-block;
+            width: 86*@px;
+            height: 32*@px;
+            line-height: 32*@px;
+            background: url("../../assets/image/B1/icon_crown@3x.png") 50% 50% no-repeat;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+            color: #0928DF;
+            font-size: 18*@px;
+            text-indent: 36*@px;
+            vertical-align: text-top;
+          }
+          .vip {
+            vertical-align: middle;
+          }
         }
         .bot {
           overflow: hidden;
@@ -300,11 +363,60 @@
         margin-left: 13*@px;
         margin-top: 34.5*@px;
         width: 270*@px;
+        &.no-track-btn {
+          width: 400*@px;
+        }
         .nickname {
           width: 100%;
           font-size: 30*@px;
           margin-bottom: 5*@px;
           .nowrap();
+          .gender-male {
+            display: inline-block;
+            width: 36*@px;
+            height: 36*@px;
+            background: url("../../assets/image/B3/icon_male@3x.png") 50% 50% no-repeat;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+            vertical-align: text-top;
+          }
+          .gender-female {
+            display: inline-block;
+            width: 36*@px;
+            height: 36*@px;
+            background: url("../../assets/image/B3/icon_female@3x.png") 50% 50% no-repeat;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+            vertical-align: text-top;
+          }
+          .level {
+            display: inline-block;
+            width: 86*@px;
+            height: 32*@px;
+            line-height: 32*@px;
+            background: url("../../assets/image/B1/icon_crown@3x.png") 50% 50% no-repeat;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+            color: #0928DF;
+            font-size: 18*@px;
+            text-indent: 36*@px;
+            vertical-align: text-top;
+          }
+          .vip {
+            display: inline-block;
+            vertical-align: text-top;
+            height: 32*@px;
+            line-height: 32*@px;
+            width: 62*@px;
+            color: #5E21EE;
+            font-size: 20*@px;
+            text-indent: 43*@px;
+            background: url("../../assets/image/B1/icon_vip@3x.png") 50% 50% no-repeat;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+            .border-box();
+            padding-top: 2*@px;
+          }
         }
         .bot {
           height: 36*@px;

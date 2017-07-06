@@ -40,6 +40,7 @@
         const vm = this;
         vm.api('Image').get({
           author: vm.me.id,
+          page_size: 999,
         }).then((resp) => {
           vm.items = resp.data.results;
         });

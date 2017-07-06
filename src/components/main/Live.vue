@@ -7,15 +7,24 @@
       <transition name="fade">
         <section class="section-top" v-show="!is_hide_all">
           <div class="left">
-            <div class="avatar" @click="showMemberCard"></div>
+            <div class="avatar"
+                 :style="{backgroundImage: !!live && 'url('+ live.author_avatar +')'}"
+                 @click="showMemberCard"></div>
             <div class="owner-info">
-              <div class="nickname">Denkaaaopenyss</div>
+              <div class="nickname">{{live ? live.nickname : ''}}</div>
               <div class="member-num">
                 <div class="icon"></div>
-                <div class="num">1025600</div>
+                <div class="num">{{live ? live.count_view : 0}}</div>
               </div>
             </div>
-            <a class="btn-tracking is-tracked">已追蹤</a>
+            <template v-if="live">
+              <a class="btn-tracking"
+                 v-if="!live.author_is_following"
+                 @click="toggleFollow">追蹤</a>
+              <a class="btn-tracking is-tracked"
+                 v-if="live.author_is_following"
+                 @click="toggleFollow">已追蹤</a>
+            </template>
           </div>
           <div class="users">
             <div class="avatar-container">
@@ -25,21 +34,23 @@
             <div class="user-avatar"></div>
             <div class="user-avatar"></div>
           </div>
-          <a class="btn-close"></a>
+          <a class="btn-close" @click="leaveLive"></a>
         </section>
       </transition>
       <transition name="fade">
         <div class="top-left-block" v-show="!is_hide_all">
-          <router-link class="diamond-block" :to="{name: 'main_live_diamond', params: {id:0}}">
+          <router-link class="diamond-block"
+                       :to="{name: 'main_live_diamond', params: {id:$route.params.id}}">
             <div class="icon-diamond"></div>
-            <div class="num">10945685</div>
+            <div class="num">{{live ? live.count_author_diamond : 0}}</div>
             <div class="icon-caret"></div>
           </router-link>
           <div class="starlight-block">
             <div class="icon-warpper"></div>
             <div class="percent-block">
-              <div class="percent"></div>
-              <div class="num">205/500</div>
+              <div class="percent" v-if="live"
+                   :style="{width: ((live.count_author_starlight % 500) / 5)+'%'}"></div>
+              <div class="num">{{live ? live.count_author_starlight % 500 : 0}}/500</div>
             </div>
           </div>
         </div>
@@ -92,132 +103,158 @@
       </transition>
       <!--弹幕 END-->
 
-      <transition name="fade">
-        <section class="section-bottom" v-show="!is_hide_all">
-          <!--評論文字區-->
-          <section class="section-messages">
 
-            <div class="message-item">
-              <span class="tag-system">系统</span>
-              <span class="content">
+      <div class="inout-mask"
+           v-if="inputBox"
+           @click="toggleInputBox"></div>
+    </v-touch>
+
+
+    <transition name="fade">
+      <section class="section-bottom" v-show="!is_hide_all">
+        <!--評論文字區-->
+        <section class="section-messages">
+
+          <div class="message-item">
+            <span class="tag-system">系统</span>
+            <span class="content">
             我們倡導清新綠色直播，
             任何違反wecanleve規範的行爲都將收到相應的懲罰。
           </span>
-            </div>
+          </div>
 
-            <div class="message-item">
+          <div class="message-item">
           <span class="nickname-block">
             <span class="name blue">Kevin Chiu</span>
             <span class="tag tag-level">LV.20</span>
             <span class="tag tag-vip">2</span>
           </span>
-              <span class="content">已追蹤主播</span>
+            <span class="content">已追蹤主播</span>
 
-              <a class="btn-tracking">
-                <span class="icon">+</span>
-                追蹤
-              </a>
+            <a class="btn-tracking">
+              <span class="icon">+</span>
+              追蹤
+            </a>
 
-            </div>
+          </div>
 
-            <div class="message-item">
+          <div class="message-item">
           <span class="nickname-block">
             <span class="name red">Kevin Chiu</span>
             <span class="tag tag-level">LV.20</span>
             <span class="tag tag-vip">2</span>
           </span>
-              <span class="content">已分享主播</span>
+            <span class="content">已分享主播</span>
 
-              <a class="btn-share">
-                <span class="icon"></span>
-                分享
-              </a>
-            </div>
+            <a class="btn-share" @click="share">
+              <span class="icon"></span>
+              分享
+            </a>
+          </div>
 
-            <div class="message-item">
+          <div class="message-item">
           <span class="nickname-block">
             <span class="name purple">Kevin Chiu</span>
             <span class="tag tag-level">LV.20</span>
             <span class="tag tag-vip">2</span>
           </span>
-              <span class="content">你好可愛喔！</span>
-            </div>
+            <span class="content">你好可愛喔！</span>
+          </div>
 
-            <div class="message-item">
+          <div class="message-item">
           <span class="nickname-block">
             <span class="name ">Kevin Chiu</span>
             <span class="tag tag-level">LV.20</span>
             <span class="tag tag-vip">2</span>
           </span>
-              <span class="content">你好可愛喔！</span>
-            </div>
-
-          </section>
-          <!--評論文字區 END-->
-
-          <!--底部右邊按鈕-->
-          <ul class="btn-lists" v-if="!inputBox && !audioBox">
-
-            <li class="btn-item btn-item-left btn-item-text" @click="openInputBox"></li>
-
-            <template v-if="is_owner">
-              <li class="btn-item btn-item-right btn-item-redbag"></li>
-              <li class="btn-item btn-item-right btn-item-tag">#</li>
-              <li class="btn-item btn-item-right btn-item-camera"></li>
-            </template>
-
-            <template v-else>
-              <li class="btn-item btn-item-right btn-item-like" @click="showHearts">
-                <div class="like-num">6.3K</div>
-              </li>
-              <li class="btn-item btn-item-right btn-item-gift" @click="redbag_display=true"></li>
-              <li class="btn-item btn-item-right btn-item-vidio"></li>
-              <li class="btn-item btn-item-right btn-item-audio"
-                  @click="toggleAudioBox"></li>
-            </template>
-
-            <li class="btn-item btn-item-right btn-item-share" @click="share"></li>
-          </ul>
-          <!--底部右邊按鈕 END-->
-
-          <input-item :display="inputBox" @input="submit"></input-item>
-
-          <div class="audio-box" v-if="audioBox">
-            <div class="text">按住至少3秒</div>
-            <div class="percent-box">
-              <div class="percent"></div>
-            </div>
-            <div class="audio-body">
-              <a class="btn-record"></a>
-              <a class="btn-cancel">取消</a>
-            </div>
+            <span class="content">你好可愛喔！</span>
           </div>
 
         </section>
-      </transition>
+        <!--評論文字區 END-->
 
-      <transition name="slide-down-up">
-        <div class="bottom-nav-open"
-             v-show="is_hide_all && !bottom_nav"
+
+        <!--底部右邊按鈕-->
+        <ul class="btn-lists" v-if="!inputBox && !audioBox">
+
+          <li class="btn-item btn-item-left btn-item-text" @click="toggleInputBox"></li>
+
+          <template v-if="is_owner">
+            <li class="btn-item btn-item-right btn-item-redbag" @click="redbag_display=true"></li>
+            <li class="btn-item btn-item-right btn-item-tag">#</li>
+            <li class="btn-item btn-item-right btn-item-camera"></li>
+          </template>
+
+          <template v-else>
+            <li class="btn-item btn-item-right btn-item-like" @click="showHearts">
+              <div class="like-num">6.3K</div>
+            </li>
+            <li class="btn-item btn-item-right btn-item-gift" @click="giftbag_display=true"></li>
+            <li class="btn-item btn-item-right btn-item-vidio"></li>
+            <li class="btn-item btn-item-right btn-item-audio"
+                @click="toggleAudioBox"></li>
+          </template>
+
+          <li class="btn-item btn-item-right btn-item-share" @click="share"></li>
+        </ul>
+        <!--底部右邊按鈕 END-->
+
+        <input-item :display="inputBox" @input="submit"></input-item>
+
+        <div class="audio-box" v-if="audioBox">
+          <div class="text">按住至少3秒</div>
+          <div class="percent-box">
+            <div class="percent"></div>
+          </div>
+          <div class="audio-body">
+            <v-touch tag="a" class="btn-record"></v-touch>
+            <a class="btn-cancel" @click="toggleAudioBox">取消</a>
+          </div>
+        </div>
+
+      </section>
+    </transition>
+
+    <transition name="slide-down-up">
+      <div class="bottom-nav-open"
+           v-show="is_hide_all && !bottom_nav"
+           @click="toggleBottomNav">
+        <span class="icon"></span>
+      </div>
+    </transition>
+
+    <transition name="slide-down-up">
+      <div class="bottom-nav" v-if="bottom_nav">
+        <div class="btn-hide-bottom-nav"
              @click="toggleBottomNav">
           <span class="icon"></span>
         </div>
-      </transition>
+        <div class="nav-container">
+          <div class="nav-item">
+            <div class="avatar"></div>
+            <div class="right">
+              <div class="nickname">ICEKING</div>
+              <div class="account">wecanlive賬號：2342342342</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
+
+    <member-card :display="memberCard"
+                 :choice="choice"
+                 :item="authorMember"
+                 v-if="authorMember"
+                 @click="toggleMemberCard"
+                 @pick="choicePick"></member-card>
 
 
-      <member-card :display="memberCard"
-                   :choice="choice"
-                   @click="toggleMemberCard"
-                   @pick="choicePick"></member-card>
-
-
-      <live-starbox :display="starbox_display" @click="starbox()"></live-starbox>
+    <live-starbox :display="starbox_display" @click="starbox()"></live-starbox>
 
     <live-giftbag :display="giftbag_display" @click="giftbag()"></live-giftbag>
 
     <live-redbag :display="redbag_display" @click="redbag()"></live-redbag>
 
-    </v-touch>
 
     <transition :name="transitionNameLive">
       <router-view class="live-child-view"></router-view>
@@ -239,7 +276,6 @@
           { text: '舉報', value: 2 },
         ],
         is_hide_all: false,
-        is_owner: false,
         memberCard: false,
         heart_1: false,
         bottom_nav: false,
@@ -249,9 +285,9 @@
         giftbag_display: false,
         redbag_display: false,
         notice: true,
-        inputBox: true,
-        live: [],
-        live_author: [],
+        inputBox: false,
+        live: null,
+        authorMember: null,
       };
     },
     beforeRouteUpdate(to, from, next) {
@@ -260,18 +296,44 @@
       this.transitionNameLive = toDepth < fromDepth ? 'slide-right' : 'slide-left';
       next();
     },
+    mounted() {
+    },
+    computed: {
+      is_owner() {
+        const vm = this;
+        return vm.live ? Number(vm.me.id) === Number(vm.live.author_id) : false;
+      },
+    },
     methods: {
       reload() {
         const vm = this;
         vm.api('Live').get({
           id: vm.$route.params.id,
+          fields: 'author_id,nickname,author_avatar,signature,' +
+          'count_view,count_following_author,push_url,play_url,' +
+          'author_is_following,count_author_diamond,count_author_starlight,' +
+          'count_author_followed',
         }).then((resp) => {
-          vm.live = resp.data;
-          vm.api('Member').get({
-            id: vm.live.author,
-          }).then((m) => {
-            vm.live_author = m.data;
-          });
+          console.log(resp.body);
+          vm.live = resp.body;
+          vm.authorMember = {
+            id: vm.live.author_id,
+            nickname: vm.live.nickname,
+            avatar_url: vm.live.author_avatar,
+            signature: vm.live.signature,
+            following_count: vm.live.count_following_author,
+            followed_count: vm.live.count_author_followed,
+            is_followed: vm.live.author_is_following,
+          };
+          if (window.TencentMLVB) {
+            if (vm.is_owner) {
+              // 主播的話開啓推流
+              window.TencentMLVB.startPush(vm.live.push_url);
+            } else {
+              // 觀衆的話開啓播放
+              window.TencentMLVB.startPlay(vm.live.play_url);
+            }
+          }
         });
       },
       submit(valObj) {
@@ -303,11 +365,37 @@
           });
         }
       },
+      toggleFollow() {
+        const vm = this;
+        if (vm.live) {
+          vm.api('Member').save({
+            action: 'follow',
+            id: vm.live.author_id,
+          }, {}).then(() => {
+            vm.live.is_followed = !vm.live.is_followed;
+          }, () => {
+          });
+        }
+      },
+      leaveLive() {
+        const vm = this;
+        if (vm.me.id === vm.live.author_id) {
+          vm.confirm('是否結束直播？').then(() => {
+            vm.$router.push({ name: 'main_index' });
+          });
+        } else {
+          vm.confirm('是否離開當前直播間？').then(() => {
+            vm.$router.push({ name: 'main_index' });
+          });
+        }
+      },
       swiperight(e) {
         this.is_hide_all = true;
       },
       swipeleft(e) {
         this.is_hide_all = false;
+        this.bottom_nav = false;
+        this.inputBox = false;
       },
       toggleBottomNav() {
         this.bottom_nav = !this.bottom_nav;
@@ -322,16 +410,17 @@
         // TODO 根據返回的值執行
         console.log(value);
       },
-      openInputBox() {
+      toggleInputBox() {
         const vm = this;
-        vm.inputBox = true;
+        vm.inputBox = !vm.inputBox;
       },
       showHearts() {
         const vm = this;
         vm.heart_1 = !vm.heart_1;
       },
       toggleAudioBox() {
-        this.audioBox = !this.audioBox;
+        const vm = this;
+        vm.audioBox = !vm.audioBox;
       },
       starbox(value) {
         this.starbox_display = value;
@@ -351,9 +440,9 @@
   @import (once) '../../assets/css/defines';
 
   #app-main-live {
-    background: url("../../assets/image/example/avatar.png") 50% 50% no-repeat;
-    -webkit-background-size: cover;
-    background-size: cover;
+    /*background: url("../../assets/image/example/avatar.png") 50% 50% no-repeat;*/
+    /*-webkit-background-size: cover;*/
+    /*background-size: cover;*/
     padding: @height-status-bar 0 0;
     .border-box();
     &.not-status-bar {
@@ -361,6 +450,14 @@
     }
     .swift-block {
       height: 100%-@height-status-bar;
+    }
+    .inout-mask {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 1;
     }
     .section-top {
       padding: 0 30*@px;
@@ -392,7 +489,7 @@
           margin-top: 10*@px;
           margin-left: 8*@px;
           .nickname {
-            font-size: 32*@px;
+            font-size: 25*@px;
             .nowrap();
           }
           .member-num {
@@ -728,6 +825,7 @@
       left: 0;
       right: 0;
       background: svg-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5));
+      z-index: 2;
       .btn-lists {
         width: 100%;
         height: 144*@px;
@@ -1012,7 +1110,7 @@
     }
 
     .bottom-nav-open {
-      position: absolute;
+      position: fixed;
       left: 0;
       right: 0;
       bottom: 0;
@@ -1020,6 +1118,7 @@
       line-height: 70*@px;
       text-align: center;
       background: rgba(0, 0, 0, 0.3);
+      z-index: 2;
       .icon {
         display: inline-block;
         width: 66*@px;
@@ -1027,6 +1126,68 @@
         background: url("../../assets/image/D/d2_1_icon_retanup@3x.png") 50% 50% no-repeat;
         -webkit-background-size: 100%;
         background-size: 100%;
+      }
+    }
+    .bottom-nav {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      .btn-hide-bottom-nav {
+        height: 70*@px;
+        line-height: 70*@px;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.3);
+        .icon {
+          display: inline-block;
+          width: 66*@px;
+          height: 66*@px;
+          background: url("../../assets/image/D/d2_1_icon_retandown@3x.png") 50% 50% no-repeat;
+          -webkit-background-size: 100%;
+          background-size: 100%;
+        }
+      }
+      .nav-container {
+        padding-left: 30*@px;
+        max-height: 400*@px;
+        .app-scroll();
+        .border-box();
+        background: rgba(0, 0, 0, 0.5);
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        .nav-item {
+          height: 160*@px;
+          .border-box();
+          border-bottom: 1px solid #8C8C8C;
+          overflow: hidden;
+          .avatar {
+            float: left;
+            width: 120*@px;
+            height: 120*@px;
+            .rounded-corners(50%);
+            margin: 20*@px 20*@px 0 0;
+            background: #000 50% 50% no-repeat;
+            -webkit-background-size: cover;
+            background-size: cover;
+          }
+          .right {
+            float: left;
+            width: 550*@px;
+            margin-top: 45*@px;
+            .nickname {
+              color: #FFFFFF;
+              font-size: 30*@px;
+              .nowrap();
+            }
+            .account {
+              font-size: 30*@px;
+              color: #B6B9BA;
+              .nowrap();
+            }
+          }
+        }
       }
     }
     .live-child-view {

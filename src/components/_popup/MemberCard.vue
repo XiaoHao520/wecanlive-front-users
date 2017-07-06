@@ -5,9 +5,10 @@
         <div class="popup-member-card-header">
           <a class="btn-manage" @click="handlePick">管理</a>
           <a class="btn-close" @click="handleClick"></a>
-          <div class="avatar"></div>
-          <div class="nickname">Denka</div>
-          <div class="description">今天天氣很好，有誰要跟我出去玩</div>
+          <div class="avatar"
+               :style="{backgroundImage: !!item && 'url('+ item.avatar_url +')'}"></div>
+          <div class="nickname">{{item.nickname}}</div>
+          <div class="description">{{item.signature}}</div>
         </div>
         <div class="popup-member-card-btn">
           <a class="btn-find-friend"></a>
@@ -16,11 +17,11 @@
         <div class="popup-member-card-content">
           <div class="row">
             <div class="title">追蹤</div>
-            <div class="content">18</div>
+            <div class="content">{{item.following_count}}</div>
           </div>
           <div class="row">
             <div class="title">粉絲</div>
-            <div class="content">54286233</div>
+            <div class="content">{{item.followed_count}}</div>
           </div>
           <div class="row">
             <div class="title">貢獻榜</div>
@@ -32,7 +33,11 @@
           </div>
         </div>
         <div class="popup-member-card-footer">
-          <a class="btn-footer btn-like"><span class="icon">+</span>追蹤</a>
+          <a class="btn-footer btn-like" v-if="!item.is_followed">
+            <span class="icon">+</span>追蹤
+          </a>
+          <a class="btn-footer btn-like btn-liked"
+             v-if="item.is_followed">已追蹤</a>
           <a class="btn-footer btn-aboutme">關於我</a>
         </div>
       </div>
@@ -144,6 +149,7 @@
           width: 630*@px;
           text-align: center;
           font-size: 25*@px;
+          margin: 0 auto;
         }
       }
       .popup-member-card-btn {
@@ -218,6 +224,9 @@
               font-size: 40*@px;
               margin-right: 5*@px;
             }
+          }
+          &.btn-liked {
+            background: #00BBEC;
           }
           &.btn-aboutme {
             background: #0021E6;

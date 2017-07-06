@@ -28,10 +28,12 @@
 body {
   margin: 0;
   padding: 0;
+  background: transparent;
 }
 
 html {
   font-size: 5vw;
+  background: transparent;
 }
 
 ol, ul {
@@ -195,10 +197,10 @@ a {
   right: 0;
   height: 275*@px;
   z-index: 200;
-  background: rgba(176, 173, 172, 0.85);
+  background: rgba(255, 255, 255, 0.85);
   .title {
     padding: 30*@px 0;
-    color: #FFFFFF;
+    color: #949494;
     font-size: 26*@px;
     text-align: center;
   }
@@ -395,6 +397,51 @@ a {
         &.btn-confirm {
           color: #0021E6;
           border-left: 1px solid #e9e9e9;
+        }
+      }
+    }
+  }
+}
+
+.block-confirm {
+  .fill-fixed();
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 0.8rem;
+  z-index: 99999;
+  .modal-dialog {
+    .block-center();
+    background: #FFFFFF;
+    .border-radius(10*@px);
+    width: 570*@px;
+    .border-box();
+    font-size: 30*@px;
+    .modal-header {
+      display: none;
+    }
+    .modal-body {
+      padding: 42*@px 60*@px;
+      text-align: center;
+    }
+    .modal-footer {
+      height: 82*@px;
+      border-top: 1px solid #e9e9e9;
+      width: 100%;
+      .btn-sm {
+        float: right;
+        width: 50%;
+        .border-box();
+        text-align: center;
+        height: 82*@px;
+        line-height: 82*@px;
+        &.btn-cancel {
+          border-right: 1px solid #e9e9e9;
+          color: #8B8B8B;
+        }
+        &.btn-confirm {
+          color: #0021E6;
+        }
+        &:active {
+          background: #E3E3EA;
         }
       }
     }

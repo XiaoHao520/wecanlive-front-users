@@ -53,7 +53,7 @@
       },
       userLogout() {
         const vm = this;
-        vm.confirm('确定要退出当前用户？').then(() => {
+        vm.notifyConfirm('确定要退出当前用户？', '取消', '確定').then(() => {
           vm.logout();
         });
       },

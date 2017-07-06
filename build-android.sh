@@ -7,7 +7,7 @@ cd dist/assets/css/assets
 ln -s ../../img
 ln -s ../../fonts
 cd -
-rm -r ../fabiaoba-cordova/www/*
-cp -r dist/* ../fabiaoba-cordova/www
-cd ../fabiaoba-cordova
+rm -r ../wecanlive-cordova/www/*
+cp -r dist/* ../wecanlive-cordova/www
+cd ../wecanlive-cordova
 ./sign.sh

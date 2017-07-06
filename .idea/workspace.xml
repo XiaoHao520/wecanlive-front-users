@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="4f4bd95f-7c85-4987-9347-a2175dafbe9e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/_popup/LiveGiftBag.vue" afterPath="$PROJECT_DIR$/src/components/_popup/LiveGiftBag.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue" afterPath="$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/Live.vue" afterPath="$PROJECT_DIR$/src/components/main/Live.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/MemberFriends.vue" afterPath="$PROJECT_DIR$/src/components/main/MemberFriends.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -29,8 +32,8 @@
           <file leaf-file-name="LiveRedBag.vue" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveRedBag.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="524">
-                  <caret line="107" column="26" lean-forward="true" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="26" />
+                <state relative-caret-position="164">
+                  <caret line="87" column="16" lean-forward="true" selection-start-line="87" selection-start-column="16" selection-end-line="87" selection-end-column="16" />
                   <folding>
                     <element signature="e#3392#6416#0" expanded="false" />
                     <element signature="e#6441#8228#0" expanded="false" />
@@ -39,26 +42,47 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="MemberFriends.vue" pinned="false" current-in-tab="true">
+          <file leaf-file-name="MemberFriends.vue" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/main/MemberFriends.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="72">
-                  <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+                <state relative-caret-position="18">
+                  <caret line="2" column="31" lean-forward="false" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/routes.js">
+          <file leaf-file-name="LiveStarBox.vue" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="659">
-                  <caret line="192" column="106" lean-forward="false" selection-start-line="192" selection-start-column="106" selection-end-line="192" selection-end-column="106" />
+                <state relative-caret-position="238">
+                  <caret line="257" column="30" lean-forward="true" selection-start-line="257" selection-start-column="30" selection-end-line="257" selection-end-column="30" />
                   <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Live.vue" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/components/main/Live.vue">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="146">
+                  <caret line="229" column="12" lean-forward="true" selection-start-line="229" selection-start-column="12" selection-end-line="229" selection-end-column="12" />
+                  <folding>
+                    <element signature="e#9358#10403#0" expanded="false" />
+                    <element signature="e#10425#10467#0" expanded="false" />
+                    <element signature="e#10488#10531#0" expanded="false" />
+                    <element signature="e#10557#10610#0" expanded="false" />
+                    <element signature="e#10635#10676#0" expanded="false" />
+                    <element signature="e#10708#10750#0" expanded="false" />
+                    <element signature="e#10776#10838#0" expanded="false" />
+                    <element signature="e#10861#10923#0" expanded="false" />
+                    <element signature="e#10944#11012#0" expanded="false" />
+                    <element signature="e#11037#11086#0" expanded="false" />
+                    <element signature="e#11109#11156#0" expanded="false" />
+                    <element signature="e#11179#11226#0" expanded="false" />
+                    <element signature="e#11248#11294#0" expanded="false" />
+                    <element signature="n#style#0;n#!!top" expanded="false" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -66,8 +90,8 @@
           <file leaf-file-name="LiveGiftBag.vue" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveGiftBag.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="4608">
-                  <caret line="457" column="10" lean-forward="false" selection-start-line="457" selection-start-column="10" selection-end-line="457" selection-end-column="10" />
+                <state relative-caret-position="256">
+                  <caret line="628" column="67" lean-forward="false" selection-start-line="628" selection-start-column="67" selection-end-line="628" selection-end-column="67" />
                   <folding>
                     <element signature="n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
                     <element signature="n#transition#0;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
@@ -79,27 +103,16 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Live.vue" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/components/main/Live.vue">
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="routes.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/components/routes.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2802">
-                  <caret line="245" column="21" lean-forward="false" selection-start-line="245" selection-start-column="21" selection-end-line="245" selection-end-column="21" />
-                  <folding>
-                    <element signature="e#9357#10402#0" expanded="false" />
-                    <element signature="e#10424#10466#0" expanded="false" />
-                    <element signature="e#10487#10530#0" expanded="false" />
-                    <element signature="e#10556#10609#0" expanded="false" />
-                    <element signature="e#10634#10675#0" expanded="false" />
-                    <element signature="e#10707#10749#0" expanded="false" />
-                    <element signature="e#10775#10837#0" expanded="false" />
-                    <element signature="e#10860#10922#0" expanded="false" />
-                    <element signature="e#10943#11011#0" expanded="false" />
-                    <element signature="e#11036#11085#0" expanded="false" />
-                    <element signature="e#11108#11155#0" expanded="false" />
-                    <element signature="e#11178#11225#0" expanded="false" />
-                    <element signature="e#11247#11293#0" expanded="false" />
-                    <element signature="n#style#0;n#!!top" expanded="false" />
-                  </folding>
+                <state relative-caret-position="659">
+                  <caret line="192" column="106" lean-forward="false" selection-start-line="192" selection-start-column="106" selection-end-line="192" selection-end-column="106" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -110,7 +123,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>live-list</find>
       <find>section-list</find>
       <find>bag-block</find>
       <find>gift-type</find>
@@ -137,9 +149,10 @@
       <find>gift-bag-type</find>
       <find>shop-icon</find>
       <find>position-1</find>
-      <find>gift-icon</find>
       <find>shop-type</find>
       <find>open-icon</find>
+      <find>starbox-null</find>
+      <find>gift-icon</find>
     </findStrings>
     <replaceStrings>
       <replace>'',</replace>
@@ -193,7 +206,6 @@
         <option value="$PROJECT_DIR$/src/components/_popup/index.js" />
         <option value="$PROJECT_DIR$/src/components/_common/HeaderCommon.vue" />
         <option value="$PROJECT_DIR$/src/assets/css/defines.less" />
-        <option value="$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue" />
         <option value="$PROJECT_DIR$/src/vue2-front/mixins.js" />
         <option value="$PROJECT_DIR$/src/components/main/PersonalDiamondWithdrawDeal.vue" />
         <option value="$PROJECT_DIR$/src/components/routes.js" />
@@ -202,10 +214,11 @@
         <option value="$PROJECT_DIR$/src/components/main/PersonalFeedback.vue" />
         <option value="$PROJECT_DIR$/src/config/choices.js" />
         <option value="$PROJECT_DIR$/src/components/main/MemberDetail.vue" />
+        <option value="$PROJECT_DIR$/src/components/_popup/LiveRedBag.vue" />
+        <option value="$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue" />
+        <option value="$PROJECT_DIR$/src/components/main/MemberFriends.vue" />
         <option value="$PROJECT_DIR$/src/components/_popup/LiveGiftBag.vue" />
         <option value="$PROJECT_DIR$/src/components/main/Live.vue" />
-        <option value="$PROJECT_DIR$/src/components/_popup/LiveRedBag.vue" />
-        <option value="$PROJECT_DIR$/src/components/main/MemberFriends.vue" />
       </list>
     </option>
   </component>
@@ -511,7 +524,7 @@
       <workItem from="1499159736153" duration="3081000" />
       <workItem from="1499217251224" duration="4907000" />
       <workItem from="1499223886731" duration="12965000" />
-      <workItem from="1499303621927" duration="4472000" />
+      <workItem from="1499303621927" duration="6722000" />
     </task>
     <task id="LOCAL-00001" summary="頭部">
       <created>1498446946309</created>
@@ -807,11 +820,18 @@
       <option name="project" value="LOCAL" />
       <updated>1499308308733</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="完成我的朋友">
+      <created>1499308333480</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1499308333480</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="238160000" />
+    <option name="totallyTimeSpent" value="240410000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="24" width="1920" height="993" extended-state="6" />
@@ -1163,13 +1183,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="543" column="5" lean-forward="false" selection-start-line="543" selection-start-column="5" selection-end-line="543" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/_common/InputItem.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="244">
@@ -1218,17 +1231,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveGiftBag.vue">
+    <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveRedBag.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4608">
-          <caret line="457" column="10" lean-forward="false" selection-start-line="457" selection-start-column="10" selection-end-line="457" selection-end-column="10" />
+        <state relative-caret-position="164">
+          <caret line="87" column="16" lean-forward="true" selection-start-line="87" selection-start-column="16" selection-end-line="87" selection-end-column="16" />
           <folding>
-            <element signature="n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#transition#0;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#ul#0;n#div#0;n#transition#0;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#transition#1;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#transition#2;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#3392#6416#0" expanded="false" />
+            <element signature="e#6441#8228#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/main/MemberFriends.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="2" column="31" lean-forward="false" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="257" column="30" lean-forward="true" selection-start-line="257" selection-start-column="30" selection-end-line="257" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1240,45 +1266,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveGiftBag.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="628" column="67" lean-forward="false" selection-start-line="628" selection-start-column="67" selection-end-line="628" selection-end-column="67" />
+          <folding>
+            <element signature="n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#transition#0;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#ul#0;n#div#0;n#transition#0;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#transition#1;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#transition#2;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/main/Live.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2802">
-          <caret line="245" column="21" lean-forward="false" selection-start-line="245" selection-start-column="21" selection-end-line="245" selection-end-column="21" />
+        <state relative-caret-position="146">
+          <caret line="229" column="12" lean-forward="true" selection-start-line="229" selection-start-column="12" selection-end-line="229" selection-end-column="12" />
           <folding>
-            <element signature="e#9357#10402#0" expanded="false" />
-            <element signature="e#10424#10466#0" expanded="false" />
-            <element signature="e#10487#10530#0" expanded="false" />
-            <element signature="e#10556#10609#0" expanded="false" />
-            <element signature="e#10634#10675#0" expanded="false" />
-            <element signature="e#10707#10749#0" expanded="false" />
-            <element signature="e#10775#10837#0" expanded="false" />
-            <element signature="e#10860#10922#0" expanded="false" />
-            <element signature="e#10943#11011#0" expanded="false" />
-            <element signature="e#11036#11085#0" expanded="false" />
-            <element signature="e#11108#11155#0" expanded="false" />
-            <element signature="e#11178#11225#0" expanded="false" />
-            <element signature="e#11247#11293#0" expanded="false" />
+            <element signature="e#9358#10403#0" expanded="false" />
+            <element signature="e#10425#10467#0" expanded="false" />
+            <element signature="e#10488#10531#0" expanded="false" />
+            <element signature="e#10557#10610#0" expanded="false" />
+            <element signature="e#10635#10676#0" expanded="false" />
+            <element signature="e#10708#10750#0" expanded="false" />
+            <element signature="e#10776#10838#0" expanded="false" />
+            <element signature="e#10861#10923#0" expanded="false" />
+            <element signature="e#10944#11012#0" expanded="false" />
+            <element signature="e#11037#11086#0" expanded="false" />
+            <element signature="e#11109#11156#0" expanded="false" />
+            <element signature="e#11179#11226#0" expanded="false" />
+            <element signature="e#11248#11294#0" expanded="false" />
             <element signature="n#style#0;n#!!top" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveRedBag.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="107" column="26" lean-forward="true" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="26" />
-          <folding>
-            <element signature="e#3392#6416#0" expanded="false" />
-            <element signature="e#6441#8228#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/main/MemberFriends.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>

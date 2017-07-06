@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header-common title="朋友(10)">
+    <header-common :title="'朋友 ('+friends_list_count+')'">
       <div slot="right" class="scan-btn">
         <!--todo-->
         <a href="javascript:;" class="scan-icon"></a>
@@ -198,7 +198,7 @@
           right: 30*@px;
           top: 0;
           bottom: 0;
-          background:url("../../assets/image/D/d2_1_icon_retandown@3x.png") 50% 50% no-repeat ;
+          background: url("../../assets/image/D/d2_1_icon_retandown@3x.png") 50% 50% no-repeat;
           background-size: 44*@px;
           width: 44*@px;
           &.hide-icon {

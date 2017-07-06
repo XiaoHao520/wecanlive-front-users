@@ -601,7 +601,7 @@
               display: block;
               width: 132*@px;
               height: 120*@px;
-              background: 50% 50% no-repeat #ccc;
+              background:url("../../assets/image/D/d2_4_gift2@3x.png") 50% 50% no-repeat ;
               background-size: 100%;
               margin: 0 95*@px 0 0;
               &:last-child {
@@ -626,7 +626,7 @@
           .gift-icon {
             width: 100*@px;
             height: 106*@px;
-            background: 50% 50% no-repeat;
+            background:url("../../assets/image/D/d2_4_gift2@3x.png") 50% 50% no-repeat;
             background-size: cover;
             margin: 0 auto;
             position: relative;

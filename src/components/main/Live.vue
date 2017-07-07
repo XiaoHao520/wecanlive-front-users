@@ -394,7 +394,15 @@
           });
         } else {
           vm.confirm('是否離開當前直播間？').then(() => {
-            vm.$router.push({ name: 'main_index' });
+            if (vm.live_watch_log.length !== 0) {
+              vm.api('LiveWatchLog').save({
+                action: 'leave_live',
+              }, {
+                live: vm.$route.params.id,
+              }).then(() => {
+                vm.$router.push({ name: 'main_index' });
+              });
+            }
           });
         }
       },
@@ -439,18 +447,6 @@
       },
       redbag(value) {
         this.redbag_display = value;
-      },
-      leaveLive() {
-        const vm = this;
-        if (vm.live_watch_log.length !== 0) {
-          vm.api('LiveWatchLog').save({
-            action: 'leave_live',
-          }, {
-            live: vm.$route.params.id,
-          }).then(() => {
-            // todo
-          });
-        }
       },
     },
   };

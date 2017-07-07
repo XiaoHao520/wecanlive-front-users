@@ -105,7 +105,7 @@
 
 
       <div class="inout-mask"
-           v-if="inputBox"
+           v-if="inputBox_display"
            @click="toggleInputBox"></div>
     </v-touch>
 
@@ -175,7 +175,7 @@
 
 
         <!--底部右邊按鈕-->
-        <ul class="btn-lists" v-if="!inputBox && !audioBox">
+        <ul class="btn-lists" v-if="!inputBox_display && !audioBox_display">
 
           <li class="btn-item btn-item-left btn-item-text" @click="toggleInputBox"></li>
 
@@ -199,15 +199,20 @@
         </ul>
         <!--底部右邊按鈕 END-->
 
-        <input-item :display="inputBox" @input="submit"></input-item>
+        <input-item :display="inputBox_display" @input="submit"></input-item>
 
-        <div class="audio-box" v-if="audioBox">
+        <div class="audio-box" v-if="audioBox_display">
           <div class="text">按住至少3秒</div>
           <div class="percent-box">
             <div class="percent"></div>
           </div>
           <div class="audio-body">
-            <v-touch tag="a" class="btn-record"></v-touch>
+            <v-touch tag="a"
+                     @press="beginRecord($event)"
+                     @pressup="stopRecord()"
+                     @panend="stopRecord()"
+                     @panup="stopRecord()"
+                     class="btn-record"></v-touch>
             <a class="btn-cancel" @click="toggleAudioBox">取消</a>
           </div>
         </div>
@@ -217,14 +222,14 @@
 
     <transition name="slide-down-up">
       <div class="bottom-nav-open"
-           v-show="is_hide_all && !bottom_nav"
+           v-show="is_hide_all && !bottom_nav_display"
            @click="toggleBottomNav">
         <span class="icon"></span>
       </div>
     </transition>
 
     <transition name="slide-down-up">
-      <div class="bottom-nav" v-if="bottom_nav">
+      <div class="bottom-nav" v-if="bottom_nav_display">
         <div class="btn-hide-bottom-nav"
              @click="toggleBottomNav">
           <span class="icon"></span>
@@ -241,7 +246,7 @@
       </div>
     </transition>
 
-    <member-card :display="memberCard"
+    <member-card :display="memberCard_display"
                  :choice="choice"
                  :item="authorMember"
                  v-if="authorMember"
@@ -275,17 +280,16 @@
           { text: '加入封鎖清單', value: 1 },
           { text: '舉報', value: 2 },
         ],
-        is_hide_all: false,
-        memberCard: false,
-        heart_1: false,
-        bottom_nav: false,
         barrages: [],
-        audioBox: false,
+        is_hide_all: false,
+        memberCard_display: false,
+        bottom_nav_display: false,
+        audioBox_display: false,
         starbox_display: false,
         giftbag_display: false,
         redbag_display: false,
         notice: true,
-        inputBox: false,
+        inputBox_display: false,
         live: null,
         authorMember: null,
       };
@@ -377,6 +381,11 @@
           });
         }
       },
+      beginRecord(e) {
+        e.preventDefault();
+      },
+      stopRecord() {
+      },
       leaveLive() {
         const vm = this;
         if (vm.me.id === vm.live.author_id) {
@@ -394,17 +403,17 @@
       },
       swipeleft(e) {
         this.is_hide_all = false;
-        this.bottom_nav = false;
-        this.inputBox = false;
+        this.bottom_nav_display = false;
+        this.inputBox_display = false;
       },
       toggleBottomNav() {
-        this.bottom_nav = !this.bottom_nav;
+        this.bottom_nav_display = !this.bottom_nav_display;
       },
       showMemberCard() {
-        this.memberCard = true;
+        this.memberCard_display = true;
       },
       toggleMemberCard(value) {
-        this.memberCard = value;
+        this.memberCard_display = value;
       },
       choicePick(value) {
         // TODO 根據返回的值執行
@@ -412,15 +421,13 @@
       },
       toggleInputBox() {
         const vm = this;
-        vm.inputBox = !vm.inputBox;
+        vm.inputBox_display = !vm.inputBox_display;
       },
       showHearts() {
-        const vm = this;
-        vm.heart_1 = !vm.heart_1;
       },
       toggleAudioBox() {
         const vm = this;
-        vm.audioBox = !vm.audioBox;
+        vm.audioBox_display = !vm.audioBox_display;
       },
       starbox(value) {
         this.starbox_display = value;

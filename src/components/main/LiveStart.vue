@@ -1,44 +1,62 @@
 <template>
   <div id="app-main-live-start">
     <div class="background-avatar mask"
-         :style="{backgroundImage:'url('+ '' +')'}"></div>
+         :style="{backgroundImage: !!me && 'url('+ me.avatar_url +')'}"></div>
     <div class="wrapper">
       <div class="top-bar">
         <div class="location">
           <div class="icon"></div>
           <div class="text">地區</div>
         </div>
-        <a class="btn-cancel" @click="goBack()"></a>
+        <a class="btn-cancel" @click="cancelLive"></a>
       </div>
-      <div class="avatar"></div>
+      <div class="avatar"
+           :style="{backgroundImage: !!me && 'url('+ me.avatar_url +')'}"></div>
       <div class="live-title">
-        <input type="text" placeholder="新增有 # 標籤的標題">
-        <div class="warn-tips">你輸入了不符合 wecanlive 規範的文字</div>
+        <input type="text" placeholder="新增有 # 標籤的標題" v-model="liveTitle">
+
+        <transition name="fade">
+          <div class="warn-tips"
+               v-if="title_warn">你輸入了不符合 wecanlive 規範的文字
+          </div>
+        </transition>
+
       </div>
       <div class="form">
         <div class="row-input" @click="setLive(0)">
           <div class="icon icon-password"></div>
-          <div class="text no-text">設置密碼</div>
+          <div class="text"
+               :class="{'no-text': !password}">{{password ? password : '設置密碼'}}
+          </div>
         </div>
         <div class="row-input" @click="setLive(1)">
           <div class="icon icon-coin"></div>
-          <div class="text no-text">設置收費</div>
+          <div class="text"
+               :class="{'no-text': !paid}">{{paid ? paid_diaplay : '設置收費'}}
+          </div>
         </div>
         <div class="row-input" @click="setLive(2)">
           <div class="icon icon-member"></div>
-          <div class="text no-text">設置上限人數</div>
+          <div class="text"
+               :class="{'no-text': !quota}">{{quota ? quota_diaplay : '設置上限人數'}}
+          </div>
         </div>
       </div>
       <div class="tag-block">
         <div class="title">選擇一個類別來描述您的視頻直播</div>
         <ul>
-          <li>大聲唱</li>
-          <li>運動健身</li>
-          <li class="selected">真心話</li>
-          <li>聊聊</li>
-          <li>大冒險</li>
+          <li v-for="item in live_categories"
+              @click="category=item.id"
+              :class="{selected: category == item.id}">{{item.name}}
+          </li>
         </ul>
-        <div class="warn-tips">至少要選擇一種類別</div>
+
+        <transition name="fade">
+          <div class="warn-tips"
+               v-if="category_warn">{{category_warn}}
+          </div>
+        </transition>
+
       </div>
       <a class="btn-start-live" @click="startLive">
         <div class="icon"></div>
@@ -54,18 +72,117 @@
 
 <script type="text/babel" lang="babel">
   export default {
+    data() {
+      return {
+        liveTitle: '',
+        password: '',
+        paid: 0,
+        quota: 0,
+        category: 0,
+        live_categories: [],
+        category_warn: '',
+        title_warn: '',
+      };
+    },
+    computed: {
+      paid_diaplay() {
+        return `${this.paid} 金幣`;
+      },
+      quota_diaplay() {
+        return `${this.quota} 人`;
+      },
+    },
+    mounted() {
+      this.getLocate().then((location) => {
+        console.log(location);
+      });
+    },
     methods: {
       reload() {
+        const vm = this;
+        vm.api('LiveCategory').get().then((resp) => {
+          vm.live_categories = resp.body.results;
+        });
       },
       setLive(type) {
         const vm = this;
-        vm.prompt('', '設置上限人數', '', '進入直播間的上限人數').then((value) => {
-          console.log(value);
+        if (type === 0) {
+          vm.prompt('', '設置密碼', '', '輸入6-8位字母數字組合的密碼').then((value) => {
+            const reg = /^[a-zA-Z0-9]{6,10}$/;
+            if (!reg.test(value)) {
+              vm.notify('密碼格式不正確！');
+              return;
+            }
+            vm.password = value;
+          });
+        } else if (type === 1) {
+          vm.prompt('', '設置收費', '', '輸入需要的金幣數量').then((value) => {
+            const reg = /^([1-9]\d*|[0]{1,1})$/;
+            if (!reg.test(value)) {
+              vm.notify('金幣數量要大於或等於零！');
+              return;
+            }
+            vm.paid = value;
+          });
+        } else if (type === 2) {
+          vm.prompt('', '設置上限人數', '', '進入直播間的上限人數').then((value) => {
+            const reg = /^([1-9]\d*|[0]{1,1})$/;
+            if (!reg.test(value)) {
+              vm.notify('人數要大於或等於零！');
+              return;
+            }
+            vm.quota = value;
+          });
+        }
+      },
+      cancelLive() {
+        const vm = this;
+        vm.confirm('是否取消直播？').then(() => {
+          vm.goBack();
         });
       },
       startLive() {
         const vm = this;
-        vm.$router.push({ name: 'main_live', params: { id: 0 } });
+        if (!vm.category) {
+          vm.category_warn = '至少要選擇一種類別';
+          return;
+        }
+        vm.api('Live').save({
+          action: 'start_live',
+        }, {
+          name: vm.liveTitle,
+          password: vm.password,
+          paid: vm.paid,
+          quota: vm.quota,
+          category: vm.category,
+        }).then((resp) => {
+          vm.$router.push({ name: 'main_live', params: { id: resp.data.id } });
+        }, () => {
+        });
+      },
+      getLocate() {
+        return new Promise((resolve, reject) => {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+              const locationBD09 = this.wgs_bd(position.coords.latitude, position.coords.longitude);
+              console.log('gps fetched', position);
+              resolve({
+                lat: locationBD09.lat,
+                lng: locationBD09.lon,
+                update: true,
+              });
+            }, (msg) => {
+              console.log('gps fail', msg.message);
+              reject(false);
+            }, {
+              maximumAge: 3000,
+              timeout: 5000,
+              enableHighAccuracy: true,
+            });
+          } else {
+            reject(false);
+          }
+        });
       },
     },
   };

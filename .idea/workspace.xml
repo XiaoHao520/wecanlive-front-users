@@ -2,8 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f4bd95f-7c85-4987-9347-a2175dafbe9e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/ActiveEventWrite.vue" afterPath="$PROJECT_DIR$/src/components/main/ActiveEventWrite.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build-android.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build-ios.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.eslintrc.js" afterPath="$PROJECT_DIR$/.eslintrc.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/index.js" afterPath="$PROJECT_DIR$/config/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/css/defines.less" afterPath="$PROJECT_DIR$/src/assets/css/defines.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/_common/LiveItem.vue" afterPath="$PROJECT_DIR$/src/components/_common/LiveItem.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/_popup/MemberCard.vue" afterPath="$PROJECT_DIR$/src/components/_popup/MemberCard.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/Index.vue" afterPath="$PROJECT_DIR$/src/components/main/Index.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/Live.vue" afterPath="$PROJECT_DIR$/src/components/main/Live.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/LiveStart.vue" afterPath="$PROJECT_DIR$/src/components/main/LiveStart.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/PersonalSettings.vue" afterPath="$PROJECT_DIR$/src/components/main/PersonalSettings.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/passport/SignInMobile.vue" afterPath="$PROJECT_DIR$/src/components/passport/SignInMobile.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config/config.js" afterPath="$PROJECT_DIR$/src/config/config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.js" afterPath="$PROJECT_DIR$/src/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mixins.js" afterPath="$PROJECT_DIR$/src/mixins.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vue2-front/components/App.vue" afterPath="$PROJECT_DIR$/src/vue2-front/components/App.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vue2-front/index.js" afterPath="$PROJECT_DIR$/src/vue2-front/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vue2-front/plugins/notifier/NotifierRegistry.vue" afterPath="$PROJECT_DIR$/src/vue2-front/plugins/notifier/NotifierRegistry.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vue2-front/plugins/notifier/index.js" afterPath="$PROJECT_DIR$/src/vue2-front/plugins/notifier/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -42,17 +59,27 @@
             <entry file="file://$PROJECT_DIR$/src/vue2-front/plugins/notifier/index.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="2736">
-                  <caret line="155" column="35" lean-forward="false" selection-start-line="155" selection-start-column="35" selection-end-line="155" selection-end-column="35" />
+                  <caret line="155" column="18" lean-forward="false" selection-start-line="155" selection-start-column="18" selection-end-line="155" selection-end-column="18" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ActiveEventWrite.vue" pinned="false" current-in-tab="true">
+          <file leaf-file-name="ActiveEventWrite.vue" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/main/ActiveEventWrite.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="180">
-                  <caret line="56" column="17" lean-forward="false" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
+                <state relative-caret-position="198">
+                  <caret line="57" column="9" lean-forward="true" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="9" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Live.vue" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/components/main/Live.vue">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="94">
+                  <caret line="382" column="12" lean-forward="false" selection-start-line="382" selection-start-column="12" selection-end-line="382" selection-end-column="12" />
                   <folding />
                 </state>
               </provider>
@@ -61,7 +88,7 @@
           <file leaf-file-name="PersonalSettings.vue" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/main/PersonalSettings.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="456">
+                <state relative-caret-position="1620">
                   <caret line="90" column="20" lean-forward="false" selection-start-line="90" selection-start-column="20" selection-end-line="90" selection-end-column="20" />
                   <folding />
                 </state>
@@ -127,7 +154,7 @@
           <file leaf-file-name="routes.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/routes.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="319">
+                <state relative-caret-position="535">
                   <caret line="96" column="13" lean-forward="true" selection-start-line="96" selection-start-column="13" selection-end-line="96" selection-end-column="13" />
                   <folding />
                 </state>
@@ -160,7 +187,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>starbox-record</find>
       <find>gift-list</find>
       <find>gift-exp</find>
       <find>/member/:id/fr</find>
@@ -190,6 +216,7 @@
       <find>发布</find>
       <find>inputBox</find>
       <find>image</find>
+      <find>leaveLive</find>
     </findStrings>
     <replaceStrings>
       <replace>'',</replace>
@@ -247,7 +274,6 @@
         <option value="$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue" />
         <option value="$PROJECT_DIR$/src/components/main/MemberFriends.vue" />
         <option value="$PROJECT_DIR$/src/components/_popup/LiveGiftBag.vue" />
-        <option value="$PROJECT_DIR$/src/components/main/Live.vue" />
         <option value="$PROJECT_DIR$/src/components/main/LikeList.vue" />
         <option value="$PROJECT_DIR$/src/components/_common/InputItem.vue" />
         <option value="$PROJECT_DIR$/src/components/_common/HeaderCommon.vue" />
@@ -256,6 +282,7 @@
         <option value="$PROJECT_DIR$/src/components/main/MemberDetail.vue" />
         <option value="$PROJECT_DIR$/src/components/main/ActiveEvent.vue" />
         <option value="$PROJECT_DIR$/src/components/main/ActiveEventWrite.vue" />
+        <option value="$PROJECT_DIR$/src/components/main/Live.vue" />
       </list>
     </option>
   </component>
@@ -291,6 +318,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -421,8 +450,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -563,6 +590,7 @@
       <workItem from="1499223886731" duration="12965000" />
       <workItem from="1499303621927" duration="20270000" />
       <workItem from="1499389732703" duration="790000" />
+      <workItem from="1499392900539" duration="381000" />
     </task>
     <task id="LOCAL-00005" summary="Merge branch 'jie' of https://gitlab.com/easecloud/wecanlive-front into bin&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/components/main/Index.vue&#10;">
       <created>1498448653506</created>
@@ -911,17 +939,17 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="254748000" />
+    <option name="totallyTimeSpent" value="255129000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="24" width="1920" height="993" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1592827" sideWeight="0.6193103" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1592827" sideWeight="0.61241376" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32997763" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1592827" sideWeight="0.38068965" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1592827" sideWeight="0.3875862" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18903804" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277405" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1223,13 +1251,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/main/Live.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="182" column="40" lean-forward="false" selection-start-line="182" selection-start-column="32" selection-end-line="182" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/_common/HeaderCommon.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1944">
@@ -1317,7 +1338,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/routes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
+        <state relative-caret-position="535">
           <caret line="96" column="13" lean-forward="true" selection-start-line="96" selection-start-column="13" selection-end-line="96" selection-end-column="13" />
           <folding />
         </state>
@@ -1326,7 +1347,7 @@
     <entry file="file://$PROJECT_DIR$/src/vue2-front/plugins/notifier/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2736">
-          <caret line="155" column="35" lean-forward="false" selection-start-line="155" selection-start-column="35" selection-end-line="155" selection-end-column="35" />
+          <caret line="155" column="18" lean-forward="false" selection-start-line="155" selection-start-column="18" selection-end-line="155" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -1343,7 +1364,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/main/PersonalSettings.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
+        <state relative-caret-position="1620">
           <caret line="90" column="20" lean-forward="false" selection-start-line="90" selection-start-column="20" selection-end-line="90" selection-end-column="20" />
           <folding />
         </state>
@@ -1351,8 +1372,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/main/ActiveEventWrite.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="56" column="17" lean-forward="false" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
+        <state relative-caret-position="198">
+          <caret line="57" column="9" lean-forward="true" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/main/Live.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="94">
+          <caret line="382" column="12" lean-forward="false" selection-start-line="382" selection-start-column="12" selection-end-line="382" selection-end-column="12" />
           <folding />
         </state>
       </provider>

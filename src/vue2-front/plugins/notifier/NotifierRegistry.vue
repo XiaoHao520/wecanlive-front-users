@@ -17,7 +17,7 @@
       <div class="block-dialog block-confirm modal fade in"
            tabindex="-1" role="dialog"
            style="display: block;" v-for="(item, index) in itemsConfirm">
-        <transition name="slide-fade" appear>
+        <transition name="popup" appear>
           <div class="modal-dialog modal-sm">
             <div class="modal-content">
               <div class="modal-header">

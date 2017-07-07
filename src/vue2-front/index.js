@@ -164,8 +164,41 @@ export default {
       config.action_init_router(Vue, router);
     }
 
-    const AppConstructor = Vue.extend(require('./components/App.vue'));  // eslint-disable-line
-    window.app = new AppConstructor({ router, el: '#app' });
+// --------------------------------------
+// Cordova Initialize Before Router Start
+// --------------------------------------
+    let cordovaReady = Promise.resolve();
+
+    if (/Cordova/.test(window.navigator.userAgent)) {
+      console.log('Cordova environment detected, trying to import the script.');
+      cordovaReady = new Promise((resolve, reject) => {
+        const timeout = setTimeout(() => {
+          // alert('cordova timed out!!!!!');  // eslint-disable-line
+          reject('cordova timed out!!!!!');
+        }, 500000);
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        if (!/^http/.test(window.location.href || '')) {
+          script.src = 'cordova.js';
+        } else if (/Android/.test(window.navigator.userAgent)) {
+          script.src = 'cordova/android/cordova.js';
+        } else if (/iPhone/.test(window.navigator.userAgent)) {
+          script.src = 'cordova/ios/cordova.js';
+        }
+        script.onload = () => {
+          document.addEventListener('deviceready', () => {
+            clearTimeout(timeout);
+            resolve();
+          }, false);
+        };
+        document.body.appendChild(script);
+      });
+    }
+
+    cordovaReady.then(() => {
+      const AppConstructor = Vue.extend(require('./components/App.vue'));  // eslint-disable-line
+      window.app = new AppConstructor({ router, el: '#app' });
+    });
   },
 };
 

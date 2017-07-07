@@ -1,36 +1,40 @@
 <template>
   <div id="main-index" @scroll="handleScroll($event)">
-    <section class="section-recommend-body">
+    <section class="section-recommend-body"
+             ref="user_recommend"
+             v-if="users_recommended.length">
       <div class="title">你可能會喜歡</div>
       <div class="image-library">
         <swiper :options="swiperImageOption">
-          <swiper-slide>
-            <div class="slide-item">
-              <div class="member-block">
-                <div class="member-nickname">55開</div>
+          <template v-for="(item, index) in users_recommended">
+            <swiper-slide>
+              <div class="slide-item">
+                <div class="member-block"
+                     @click="showMemberCard(item)"
+                     :style="{backgroundImage: !!item && 'url('+ item.avatar_url +')'}">
+                  <div class="member-nickname">{{item.nickname}}</div>
+                </div>
+                <a class="btn-like"
+                   @click="toggleFollow(item.user, index)"
+                   v-if="!item.is_following">
+                  <span class="icon"></span>
+                  追蹤
+                </a>
+                <a class="btn-like btn-like-active"
+                   @click="toggleFollow(item.user, index)"
+                   v-if="item.is_following">
+                  <span class="icon"></span>
+                  已追蹤
+                </a>
               </div>
-              <a class="btn-like">
-                <span class="icon"></span>
-                追蹤
-              </a>
-            </div>
-          </swiper-slide>
-          <swiper-slide>
-            <div class="slide-item">
-              <div class="member-block">
-                <div class="member-nickname">MIKE</div>
-              </div>
-              <a class="btn-like btn-like-active">
-                <span class="icon"></span>
-                已追蹤
-              </a>
-            </div>
-          </swiper-slide>
+            </swiper-slide>
+          </template>
         </swiper>
       </div>
     </section>
 
-    <ul class="tab-index">
+    <ul class="tab-index"
+        :class="{'tab-absolute': tab_absolute}">
       <li class="tab-item"
           :class="{'tab-active': tab == 0}"
           @click="tabTo(0)">我關注的直播
@@ -47,18 +51,22 @@
     </ul>
 
     <transition name="fade">
-      <section class="section-live-list" v-if="tab == 0">
+      <section class="section-live-list"
+               :class="{'tab-absolute': tab_absolute}"
+               v-if="tab == 0">
         <transition name="fade" appear>
           <div class="tips">5 個新直播～</div>
         </transition>
-        <live-item></live-item>
-        <live-item></live-item>
-        <live-item></live-item>
+        <template v-for="item in live_list">
+          <live-item :item="item"></live-item>
+        </template>
       </section>
     </transition>
 
     <transition name="fade">
-      <section class="section-live-list" v-if="tab == 1">
+      <section class="section-live-list"
+               :class="{'tab-absolute': tab_absolute}"
+               v-if="tab == 1">
         <transition name="fade" appear>
           <div class="tips">5 個新動態～</div>
         </transition>
@@ -80,19 +88,54 @@
         },
         tab: 0,
         transitionName: 'slide-left',
+        live_list: [],
+        active_event_list: [],
+        users_recommended: [],
+        tab_absolute: false,
       };
     },
     methods: {
       reload() {
         const vm = this;
-        console.log(vm.me);
+        vm.api('Member').get({
+          is_follow_recommended: 'True',
+          fields: 'user,nickname,avatar_url,is_following',
+        }).then((resp) => {
+          if (resp.body.results.length) vm.users_recommended = resp.body.results;
+        });
+        vm.api('Live').get({
+          followed_by: vm.me.id,
+          live_status: 'ACTION',
+          fields: 'id,nickname,author_avatar,count_view,paid',
+        }).then((resp) => {
+          if (resp.body.results.length) vm.live_list = resp.body.results;
+        });
+        vm.api('ActiveEvent').get({
+          followed_by: vm.me.id,
+          fields: 'id',
+        }).then((resp) => {
+          if (resp.body.results.length) vm.active_event_list = resp.body.results;
+        });
+      },
+      showMemberCard(item) {
+      },
+      toggleFollow(id, index) {
+        const vm = this;
+        vm.api('Member').save({
+          action: 'follow',
+          id,
+        }, {}).then(() => {
+          vm.users_recommended[index].is_following = !vm.users_recommended[index].is_following;
+        }, () => {
+        });
       },
       tabTo(pos) {
         const vm = this;
         vm.tab = pos;
       },
       handleScroll(evt) {
-//        console.log(evt.target.scrollTop);
+        const vm = this;
+        vm.tab_absolute = evt.target.scrollTop >= vm.$refs.user_recommend.offsetHeight;
       },
     },
   };
@@ -131,6 +174,7 @@
           height: 100%;
           .border-box();
           .member-block {
+            display: block;
             position: relative;
             width: 144*@px;
             height: 144*@px;
@@ -195,6 +239,13 @@
       width: 100%;
       overflow: hidden;
       .border-box();
+      &.tab-absolute {
+        position: fixed;
+        top: 128*@px;
+        left: 0;
+        right: 0;
+        z-index: 1;
+      }
       .tab-item {
         float: left;
         width: 50%;
@@ -237,7 +288,9 @@
     }
     .section-live-list {
       background: #E3E3EA;
-      transition: all .5s cubic-bezier(.55, 0, .1, 1);
+      &.tab-absolute {
+        padding-top: 75*@px;
+      }
       .tips {
         text-align: center;
         font-size: 23*@px;

@@ -99,57 +99,7 @@
     }
   }
 
-  .block-confirm {
-    .fill-fixed();
-    background: rgba(0, 0, 0, 0.2);
-    font-size: 0.8rem;
-    z-index: 99999;
-    .modal-dialog {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 15rem;
-      font-size: 40*@px;
-      /*<!--.translate('-50%', '-50%');-->*/
-      background: white;
-      color: @color-text-fade;
-      .rounded-corners(0.4rem);
 
-      transform: translate(-50%, -50%);
-      -webkit-transform: translate(-50%, -50%);
-      -moz-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      -o-transform: translate(-50%, -50%);
-
-      .modal-header {
-        display: none;
-      }
-      .modal-body {
-        padding: 90*@px;
-        line-height: 48*@px;
-        /*text-align: center;*/
-        white-space: pre-wrap;
-      }
-      .modal-footer {
-        border-top: 1px solid @color-bg;
-        height: 120*@px;
-        line-height: 120*@px;
-        width: 100%;
-        .clearfix();
-        .btn {
-          display: block;
-          float: left;
-          width: 50%;
-          text-align: center;
-          .border-box();
-        }
-        .btn-confirm {
-          color: #4580ED;
-          border-right: 1px solid @color-bg;
-        }
-      }
-    }
-  }
 
 </style>
 

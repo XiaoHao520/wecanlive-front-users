@@ -48,6 +48,7 @@
       submit() {
         const vm = this;
         vm.login(vm.mobile, vm.password).then(() => {
+          vm.$router.push({ name: 'main_index' });
           vm.notify('登錄成功');
         });
       },

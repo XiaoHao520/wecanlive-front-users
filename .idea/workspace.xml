@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f4bd95f-7c85-4987-9347-a2175dafbe9e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/_popup/BlinkStar.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/_popup/LiveMission.vue" afterPath="$PROJECT_DIR$/src/components/_popup/LiveMission.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/_popup/index.js" afterPath="$PROJECT_DIR$/src/components/_popup/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/Live.vue" afterPath="$PROJECT_DIR$/src/components/main/Live.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -82,8 +81,8 @@
           <file leaf-file-name="LiveStarBox.vue" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="437">
-                  <caret line="72" column="35" lean-forward="false" selection-start-line="72" selection-start-column="22" selection-end-line="72" selection-end-column="35" />
+                <state relative-caret-position="185">
+                  <caret line="58" column="17" lean-forward="true" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="17" />
                   <folding>
                     <element signature="n#div#0;n#transition#2;n#div#0;n#template#0;n#!!top" expanded="false" />
                   </folding>
@@ -536,14 +535,7 @@
       <workItem from="1499303621927" duration="20270000" />
       <workItem from="1499389732703" duration="790000" />
       <workItem from="1499392900539" duration="9640000" />
-      <workItem from="1499413482416" duration="5435000" />
-    </task>
-    <task id="LOCAL-00007" summary="模糊效果">
-      <created>1498449397436</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1498449397436</updated>
+      <workItem from="1499413482416" duration="6652000" />
     </task>
     <task id="LOCAL-00008" summary="登錄頁面">
       <created>1498460559104</created>
@@ -881,17 +873,24 @@
       <option name="project" value="LOCAL" />
       <updated>1499393373671</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="live 任務彈窗">
+      <created>1499418934102</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1499418934102</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="269823000" />
+    <option name="totallyTimeSpent" value="271040000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="24" width="1920" height="993" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1592827" sideWeight="0.60551727" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1592827" sideWeight="0.60551727" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32997763" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -938,7 +937,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="tu" />
     <MESSAGE value="尋找好友詳情" />
     <MESSAGE value="星光寶盒" />
     <MESSAGE value="直播 揹包" />
@@ -963,7 +961,8 @@
     <MESSAGE value="發佈動態字數限制" />
     <MESSAGE value="hebing" />
     <MESSAGE value="離開直播" />
-    <option name="LAST_COMMIT_MESSAGE" value="離開直播" />
+    <MESSAGE value="live 任務彈窗" />
+    <option name="LAST_COMMIT_MESSAGE" value="live 任務彈窗" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1252,6 +1251,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="12" column="54" lean-forward="false" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1317,20 +1317,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="72" column="35" lean-forward="false" selection-start-line="72" selection-start-column="22" selection-end-line="72" selection-end-column="35" />
-          <folding>
-            <element signature="n#div#0;n#transition#2;n#div#0;n#template#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveMission.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="35" lean-forward="false" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
+        <state relative-caret-position="164">
+          <caret line="27" column="40" lean-forward="false" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
           <folding>
             <element signature="e#1185#1191#0" expanded="true" />
             <element signature="e#1195#1201#0" expanded="true" />
@@ -1352,6 +1342,16 @@
             <element signature="e#14505#14754#0" expanded="false" />
             <element signature="e#14775#15097#0" expanded="false" />
             <element signature="n#style#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveStarBox.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="58" column="17" lean-forward="true" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="17" />
+          <folding>
+            <element signature="n#div#0;n#transition#2;n#div#0;n#template#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -58,56 +58,64 @@
 
       <transition name="fade">
         <div class="top-right-block" v-show="!is_hide_all">
-          <a class="btn-activity"></a>
-          <a class="btn-jewel-box" @click="starbox_display=true"></a>
+          <div class="right">
+            <a class="btn-jewel-box" @click="starbox_display=true"></a>
 
-          <!--观众头像-->
-          <div class="audience-avatar-warpper" v-if="!is_owner">
-            <a class="audience-avatar">
-              <div class="level">Lv 1</div>
-            </a>
-
-            <a class="mission" @click="mission_display=true"></a>
+            <a class="btn-mission" @click="starbox_display=true"></a>
+            <!--家族头像-->
+            <div class="audience-avatar-warpper">
+              <a class="audience-avatar">
+                <div class="level">Lv 1</div>
+              </a>
+            </div>
+            <!--家族头像 END-->
           </div>
-          <!--观众头像 END-->
+
+          <a class="btn-activity"></a>
+
         </div>
       </transition>
 
       <!--弹幕-->
       <transition name="fade">
         <section class="section-popup-comment" v-show="!is_hide_all">
-          <!--TODO notice內容過多處理-->
-          <transition name="fade">
-            <div class="notice" v-if="notice">
-              恭喜 Chris，Denka，Kelly，Trina，丫丫抽中 30 金幣
-            </div>
-          </transition>
-          <!--普通弹幕-->
-          <div class="popup-normal"
-               v-for="barrage in barrages"
-               :key="barrage"
-               :style="{top: barrage.positionTop}" :ref="barrage.ref">
-            <div class="avatar"
-                 :style="{backgroundImage: !!barrage && 'url('+barrage.senderAvatarUrl+')'}"></div>
-            <div class="right">
-              <div class="nickname">
-                <span class="name">{{barrage.senderNickname}}</span>
-                <span class="level">LV.{{barrage.senderLevel}}</span>
-                <span class="vip">{{barrage.senderVip}}</span>
+          <div class="container">
+            <!--TODO notice內容過多處理-->
+            <transition name="fade">
+              <div class="notice" v-if="notice">
+                恭喜 Chris，Denka，Kelly，Trina，丫丫抽中 30 金幣
               </div>
-              <div class="content">
-                {{barrage.content}}
+            </transition>
+            <!--普通弹幕-->
+            <div class="popup-normal"
+                 v-for="barrage in barrages"
+                 :key="barrage"
+                 :style="{top: barrage.positionTop}" :ref="barrage.ref">
+              <div class="avatar"
+                   :style="{backgroundImage: !!barrage && 'url('+barrage.senderAvatarUrl+')'}"></div>
+              <div class="right">
+                <div class="nickname">
+                  <span class="name">{{barrage.senderNickname}}</span>
+                  <span class="level">LV.{{barrage.senderLevel}}</span>
+                  <span class="vip">{{barrage.senderVip}}</span>
+                </div>
+                <div class="content">
+                  {{barrage.content}}
+                </div>
               </div>
             </div>
+            <!--普通弹幕 END-->
           </div>
-          <!--普通弹幕 END-->
         </section>
       </transition>
       <!--弹幕 END-->
 
 
+      <blink-star :display="blinkStar_display"
+                  @click="toggleBlinkStar"></blink-star>
+
       <div class="inout-mask"
-           v-if="inputBox"
+           v-if="inputBox_display"
            @click="toggleInputBox"></div>
     </v-touch>
 
@@ -177,7 +185,7 @@
 
 
         <!--底部右邊按鈕-->
-        <ul class="btn-lists" v-if="!inputBox && !audioBox">
+        <ul class="btn-lists" v-if="!inputBox_display && !audioBox_display">
 
           <li class="btn-item btn-item-left btn-item-text" @click="toggleInputBox"></li>
 
@@ -201,15 +209,20 @@
         </ul>
         <!--底部右邊按鈕 END-->
 
-        <input-item :display="inputBox" @input="submit"></input-item>
+        <input-item :display="inputBox_display" @input="submit"></input-item>
 
-        <div class="audio-box" v-if="audioBox">
+        <div class="audio-box" v-if="audioBox_display">
           <div class="text">按住至少3秒</div>
           <div class="percent-box">
             <div class="percent"></div>
           </div>
           <div class="audio-body">
-            <v-touch tag="a" class="btn-record"></v-touch>
+            <v-touch tag="a"
+                     @press="beginRecord($event)"
+                     @pressup="stopRecord()"
+                     @panend="stopRecord()"
+                     @panup="stopRecord()"
+                     class="btn-record"></v-touch>
             <a class="btn-cancel" @click="toggleAudioBox">取消</a>
           </div>
         </div>
@@ -219,14 +232,14 @@
 
     <transition name="slide-down-up">
       <div class="bottom-nav-open"
-           v-show="is_hide_all && !bottom_nav"
+           v-show="bottom_nav_btn_display && !bottom_nav_display"
            @click="toggleBottomNav">
         <span class="icon"></span>
       </div>
     </transition>
 
     <transition name="slide-down-up">
-      <div class="bottom-nav" v-if="bottom_nav">
+      <div class="bottom-nav" v-if="bottom_nav_display">
         <div class="btn-hide-bottom-nav"
              @click="toggleBottomNav">
           <span class="icon"></span>
@@ -243,7 +256,7 @@
       </div>
     </transition>
 
-    <member-card :display="memberCard"
+    <member-card :display="memberCard_display"
                  :choice="choice"
                  :item="authorMember"
                  v-if="authorMember"
@@ -277,18 +290,20 @@
           { text: '加入封鎖清單', value: 1 },
           { text: '舉報', value: 2 },
         ],
-        is_hide_all: false,
-        memberCard: false,
-        heart_1: false,
-        bottom_nav: false,
         barrages: [],
-        audioBox: false,
+        is_hide_all: false,
+        memberCard_display: false,
+        bottom_nav_btn_display: false,
+        bottom_nav_display: false,
+        audioBox_display: false,
         starbox_display: false,
         giftbag_display: false,
         redbag_display: false,
         mission_display: true,
         notice: true,
         inputBox: false,
+        blinkStar_display: false,
+        inputBox_display: false,
         live: null,
         authorMember: null,
         live_watch_log: [],
@@ -389,6 +404,11 @@
           });
         }
       },
+      beginRecord(e) {
+        e.preventDefault();
+      },
+      stopRecord() {
+      },
       leaveLive() {
         const vm = this;
         if (vm.me.id === vm.live.author_id) {
@@ -410,21 +430,35 @@
         }
       },
       swiperight(e) {
-        this.is_hide_all = true;
+        const vm = this;
+        if (!vm.blinkStar_display) {
+          vm.is_hide_all = true;
+          vm.bottom_nav_btn_display = true;
+        } else {
+          vm.blinkStar_display = false;
+          vm.is_hide_all = false;
+        }
       },
       swipeleft(e) {
-        this.is_hide_all = false;
-        this.bottom_nav = false;
-        this.inputBox = false;
+        const vm = this;
+        if (vm.is_hide_all) {
+          vm.is_hide_all = false;
+          vm.bottom_nav_btn_display = false;
+          vm.bottom_nav_display = false;
+          vm.inputBox_display = false;
+        } else {
+          vm.blinkStar_display = true;
+          vm.is_hide_all = true;
+        }
       },
       toggleBottomNav() {
-        this.bottom_nav = !this.bottom_nav;
+        this.bottom_nav_display = !this.bottom_nav_display;
       },
       showMemberCard() {
-        this.memberCard = true;
+        this.memberCard_display = true;
       },
       toggleMemberCard(value) {
-        this.memberCard = value;
+        this.memberCard_display = value;
       },
       choicePick(value) {
         // TODO 根據返回的值執行
@@ -432,15 +466,16 @@
       },
       toggleInputBox() {
         const vm = this;
-        vm.inputBox = !vm.inputBox;
+        vm.inputBox_display = !vm.inputBox_display;
+      },
+      toggleBlinkStar(value) {
+        this.blinkStar_display = value;
       },
       showHearts() {
-        const vm = this;
-        vm.heart_1 = !vm.heart_1;
       },
       toggleAudioBox() {
         const vm = this;
-        vm.audioBox = !vm.audioBox;
+        vm.audioBox_display = !vm.audioBox_display;
       },
       starbox(value) {
         this.starbox_display = value;
@@ -463,9 +498,9 @@
   @import (once) '../../assets/css/defines';
 
   #app-main-live {
-    /*background: url("../../assets/image/example/avatar.png") 50% 50% no-repeat;*/
-    /*-webkit-background-size: cover;*/
-    /*background-size: cover;*/
+    background: url("../../assets/image/example/avatar.png") 50% 50% no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
     padding: @height-status-bar 0 0;
     .border-box();
     &.not-status-bar {
@@ -480,7 +515,6 @@
       left: 0;
       right: 0;
       top: 0;
-      z-index: 1;
     }
     .section-top {
       padding: 0 30*@px;
@@ -704,13 +738,19 @@
       margin-right: 30*@px;
       position: relative;
       float: right;
+      width: 220*@px;
       margin-top: 30*@px;
+      .right {
+        float: right;
+        margin-left: 30*@px;
+        width: 94*@px;
+      }
       a {
-        float: left;
+        float: right;
         width: 94*@px;
         height: 94*@px;
+        margin-bottom: 26*@px;
         &.btn-activity {
-          margin-right: 30*@px;
           background: url("../../assets/image/D/d1_icon_event@3x.png") 50% 50% no-repeat;
           -webkit-background-size: cover;
           background-size: cover;
@@ -720,15 +760,19 @@
           -webkit-background-size: cover;
           background-size: cover;
         }
+        &.btn-mission {
+          width: 94*@px;
+          height: 101*@px;
+          background: url("../../assets/image/D/d1_icon_yuanqi@3x.png") 50% 50% no-repeat;
+          -webkit-background-size: cover;
+          background-size: cover;
+        }
       }
       .audience-avatar-warpper {
-        position: absolute;
-        right: 0;
-        bottom: -120*@px;
-        /*<!--width: 94*@px;-->*/
+        float: right;
+        width: 94*@px;
         height: 94*@px;
         .audience-avatar {
-          float: left;
           position: relative;
           width: 94*@px;
           height: 94*@px;
@@ -739,7 +783,7 @@
           .level {
             position: absolute;
             left: 50%;
-            bottom: -5*@px;
+            bottom: 0;
             height: 24*@px;
             line-height: 24*@px;
             width: 66*@px;
@@ -751,26 +795,22 @@
             background: svg-gradient(to right, #F4A246, #FF8534);
           }
         }
-        .mission {
-          float: left;
-          width: 94*@px;
-          height: 101*@px;
-          -webkit-background-size: cover;
-          margin-left: 30*@px;
-          background: url("../../assets/image/D/d1_icon_yuanqi@3x.png") 50% 50% no-repeat;
-          background-size: 100%;
-        }
       }
     }
 
     .section-popup-comment {
+      position: absolute;
+      top: 220*@px;
+      left: 0;
       width: 100%;
       height: 540*@px;
-      margin-top: 95*@px;
-      position: relative;
       overflow: hidden;
+      .container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
       .notice {
-        clear: both;
         height: 47*@px;
         width: 100%;
         line-height: 47*@px;

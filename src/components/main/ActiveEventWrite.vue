@@ -54,7 +54,7 @@
         }
         if (vm.content.length > 100) {
           vm.notify('內容不能超過100字');
-          return
+          return;
         }
 
         vm.api('ActiveEvent').save({

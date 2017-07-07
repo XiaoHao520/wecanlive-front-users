@@ -205,7 +205,7 @@
           width: 160*@px;
           height: 160*@px;
           position: absolute;
-          background: url("../../assets/image/D/icon_star@3x.png") 50% 50% no-repeat;
+          background: url("../../assets/image/D/d2_8_icon_yuanqi_b@3x.png") 50% 50% no-repeat;
           border-radius: 50%;
           background-size: 100%;
           left: 45*@px;
@@ -253,6 +253,7 @@
           }
         }
         .box-list {
+          /*display: none;*/
           .clearfix();
           padding-top: 10*@px;
           .box-item {

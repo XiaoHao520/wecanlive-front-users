@@ -6,12 +6,12 @@
     <div class="like-list">
       <ul>
         <li v-for="item in items" class="like-item">
-          <div class="avatar"
-               :style="{backgroundImage: 'url(' + item.author_avatar + ')'}"></div>
+          <div class="avatar"></div>
           <div class="item-info">
             <div class="like-header">
-              <div class="name">{{ item.author_nickname }}</div>
-              <div class="date">{{ item.date_created | date('mm/dd HH:MM') }}</div>
+              <div class="name">123</div>
+              <div class="date">07/24 12:00</div>
+              <!--{{ item.date_created | date('mm/dd HH:MM') }}-->
             </div>
             <div class="content">給你點了一個贊</div>
           </div>
@@ -33,14 +33,9 @@
     },
     methods: {
       reload() {
-        const vm = this;
-        if (vm.model === 'activeevent') {
-          vm.api('UserMark').get({
-            activeevent: vm.id,
-          }).then((resp) => {
-            vm.items = resp.data.results;
-          });
-        }
+//        const vm = this;
+//        if (vm.model === 'activeevent') {
+//        }
       },
     },
   };

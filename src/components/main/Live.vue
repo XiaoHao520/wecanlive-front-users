@@ -34,7 +34,7 @@
             <div class="user-avatar"></div>
             <div class="user-avatar"></div>
           </div>
-          <a class="btn-close" @click="leaveLive"></a>
+          <a class="btn-close" @click="leaveLive()"></a>
         </section>
       </transition>
       <transition name="fade">
@@ -292,6 +292,7 @@
         inputBox_display: false,
         live: null,
         authorMember: null,
+        live_watch_log: [],
       };
     },
     beforeRouteUpdate(to, from, next) {
@@ -338,6 +339,14 @@
               window.TencentMLVB.startPlay(vm.live.play_url);
             }
           }
+        });
+        //
+        vm.api('LiveWatchLog').save({
+          action: 'start_watch_log',
+        }, {
+          live: vm.$route.params.id,
+        }).then((resp) => {
+          vm.live_watch_log = resp.data;
         });
       },
       submit(valObj) {
@@ -394,7 +403,15 @@
           });
         } else {
           vm.confirm('是否離開當前直播間？').then(() => {
-            vm.$router.push({ name: 'main_index' });
+            if (vm.live_watch_log.length !== 0) {
+              vm.api('LiveWatchLog').save({
+                action: 'leave_live',
+              }, {
+                live: vm.$route.params.id,
+              }).then(() => {
+                vm.$router.push({ name: 'main_index' });
+              });
+            }
           });
         }
       },
@@ -832,7 +849,6 @@
       left: 0;
       right: 0;
       background: svg-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5));
-      z-index: 2;
       .btn-lists {
         width: 100%;
         height: 144*@px;

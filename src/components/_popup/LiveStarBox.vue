@@ -19,7 +19,7 @@
             <a href="javascript:;" class="box-item"></a>
             <a href="javascript:;" class="box-item"></a>
             <a href="javascript:;" class="box-item"></a>
-            <a href="javascript:;" class="box-item"></a>
+            <a href="javascript:;" class="box-item box-item-open"></a>
           </div>
 
 
@@ -245,9 +245,9 @@
             margin-bottom: 17*@px;
           }
           .starbox-null-icon {
-            width: 275*@px;
+            width: 285*@px;
             height: 285*@px;
-            background: 50% 50% no-repeat #ccc;
+            background:url("../../assets/image/D1-1/d1_1_icon_box_none@3x.png") 50% 50% no-repeat ;
             background-size: 100%;
             margin: 0 auto;
           }
@@ -261,9 +261,12 @@
             margin: 50*@px 50*@px 0 50*@px;
             display: block;
             float: left;
-            width: 129*@px;
-            background: 50% 100% no-repeat #ccc;
+            width: 125*@px;
+            background:url("../../assets/image/D1-1/d1_1_icon_box_nor@3x.png") 50% 100% no-repeat ;
             background-size: 132*@px;
+            &.box-item-open {
+              background-image: url("../../assets/image/D1-1/d1_1_icon_box_opened@3x.png");
+            }
           }
         }
         .starbox-warn {

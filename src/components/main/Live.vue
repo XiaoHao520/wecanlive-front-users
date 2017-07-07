@@ -66,6 +66,8 @@
             <a class="audience-avatar">
               <div class="level">Lv 1</div>
             </a>
+
+            <a class="mission" @click="mission_display=true"></a>
           </div>
           <!--观众头像 END-->
         </div>
@@ -284,6 +286,7 @@
         starbox_display: false,
         giftbag_display: false,
         redbag_display: false,
+        mission_display: true,
         notice: true,
         inputBox: false,
         live: null,
@@ -447,6 +450,9 @@
       },
       redbag(value) {
         this.redbag_display = value;
+      },
+      mission(value) {
+        this.mission_display = value;
       },
     },
   };
@@ -719,9 +725,10 @@
         position: absolute;
         right: 0;
         bottom: -120*@px;
-        width: 94*@px;
+        /*<!--width: 94*@px;-->*/
         height: 94*@px;
         .audience-avatar {
+          float: left;
           position: relative;
           width: 94*@px;
           height: 94*@px;
@@ -732,7 +739,7 @@
           .level {
             position: absolute;
             left: 50%;
-            bottom: 0;
+            bottom: -5*@px;
             height: 24*@px;
             line-height: 24*@px;
             width: 66*@px;
@@ -743,6 +750,15 @@
             font-size: 18*@px;
             background: svg-gradient(to right, #F4A246, #FF8534);
           }
+        }
+        .mission {
+          float: left;
+          width: 94*@px;
+          height: 101*@px;
+          -webkit-background-size: cover;
+          margin-left: 30*@px;
+          background: url("../../assets/image/D/d1_icon_yuanqi@3x.png") 50% 50% no-repeat;
+          background-size: 100%;
         }
       }
     }

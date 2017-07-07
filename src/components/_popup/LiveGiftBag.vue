@@ -78,9 +78,9 @@
               </div>
 
               <div class="gift-choose">
-                <a href="javascript:;" class="gift-item"></a>
-                <a href="javascript:;" class="gift-item"></a>
-                <a href="javascript:;" class="gift-item"></a>
+                <a href="javascript:;" class="gift-item box-icon"></a>
+                <a href="javascript:;" class="gift-item box-icon"></a>
+                <a href="javascript:;" class="gift-item box-icon open-box-icon"></a>
               </div>
             </div>
 
@@ -134,50 +134,17 @@
 
         <transition :name="transitionName">
           <div v-if="tab==2" class="box-gift gift-list">
-            <ul>
-              <li class="gift-item">
-                <div class="gift-icon"></div>
-                <div class="gift-name">超值禮物</div>
-              </li>
+            <!--<ul>-->
+              <!--<li class="gift-item">-->
+                <!--<div class="gift-icon"></div>-->
+                <!--<div class="gift-name">超值禮物</div>-->
+              <!--</li>-->
+            <!--</ul>-->
 
-              <li class="gift-item">
-                <div class="gift-icon">
-                  <div class="num">3</div>
-                </div>
-                <div class="gift-name">超值禮物</div>
-              </li>
-
-              <li class="gift-item">
-                <div class="gift-icon"></div>
-                <div class="gift-name">超值禮物</div>
-              </li>
-
-
-              <li class="gift-item">
-                <div class="gift-icon"></div>
-                <div class="gift-name">超值禮物</div>
-              </li>
-              <li class="gift-item">
-                <div class="gift-icon"></div>
-                <div class="gift-name">超值禮物</div>
-              </li>
-
-              <li class="gift-item">
-                <div class="gift-icon"></div>
-                <div class="gift-name">超值禮物</div>
-              </li>
-
-              <li class="gift-item">
-                <div class="gift-icon"></div>
-                <div class="gift-name">超值禮物</div>
-              </li>
-
-
-              <li class="gift-item">
-                <div class="gift-icon"></div>
-                <div class="gift-name">超值禮物</div>
-              </li>
-            </ul>
+            <div class="null-block">
+              <div class="null-icon"></div>
+              <div class="null-warn">背包是空的～</div>
+            </div>
           </div>
         </transition>
 
@@ -600,10 +567,16 @@
               float: left;
               display: block;
               width: 132*@px;
-              height: 120*@px;
-              background:url("../../assets/image/D/d2_4_gift2@3x.png") 50% 50% no-repeat ;
+              height: 132*@px;
+              background: url("../../assets/image/D/d2_4_gift2@3x.png") 50% 50% no-repeat;
               background-size: 100%;
               margin: 0 95*@px 0 0;
+              &.box-icon {
+                background-image: url('../../assets/image/D1-1/d1_1_icon_box_nor@3x.png');
+              }
+              &.open-box-icon {
+                background-image: url('../../assets/image/D1-1/d1_1_icon_box_opened@3x.png');
+              }
               &:last-child {
                 margin: 0;
               }
@@ -626,7 +599,7 @@
           .gift-icon {
             width: 100*@px;
             height: 106*@px;
-            background:url("../../assets/image/D/d2_4_gift2@3x.png") 50% 50% no-repeat;
+            background: url("../../assets/image/D/d2_4_gift2@3x.png") 50% 50% no-repeat;
             background-size: cover;
             margin: 0 auto;
             position: relative;
@@ -666,6 +639,20 @@
             color: #A201FD;
             margin-top: 10*@px;
 
+          }
+        }
+        .null-block {
+          .null-icon {
+            background: url("../../assets/image/D/d2_4_icon_none@3x.png");
+            width: 400*@px;
+            height: 320*@px;
+            background-size: 100%;
+            margin: 0 auto;
+          }
+          .null-warn {
+            font-size: 30*@px;
+            text-align: center;
+            color: #C6C7C9;
           }
         }
       }

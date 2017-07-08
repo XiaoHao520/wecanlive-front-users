@@ -8,3 +8,4 @@ LiveCoinGet - D1-2发红包，E1-1-官方送出虚宝卡
 FamilyQrcode - D2-1家族详情
 PersonalQrcode - F11-个人二维码
 LiveGiftBag - D2-4 礼物背包
+LiveMission - 元气任务

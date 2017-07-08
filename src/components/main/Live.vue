@@ -61,7 +61,7 @@
           <div class="right">
             <a class="btn-jewel-box" @click="starbox_display=true"></a>
 
-            <a class="btn-mission" @click="starbox_display=true"></a>
+            <a class="btn-mission" @click="mission_display=true"></a>
             <!--家族头像-->
             <div class="audience-avatar-warpper">
               <a class="audience-avatar">
@@ -270,6 +270,9 @@
 
     <live-redbag :display="redbag_display" @click="redbag()"></live-redbag>
 
+    <live-mission :display="mission_display" @click="mission()"></live-mission>
+
+
 
     <transition :name="transitionNameLive">
       <router-view class="live-child-view"></router-view>
@@ -299,8 +302,10 @@
         starbox_display: false,
         giftbag_display: false,
         redbag_display: false,
+        mission_display: false,
+        notice: true,
+        inputBox: false,
         blinkStar_display: false,
-        notice: false,
         inputBox_display: false,
         live: null,
         authorMember: null,
@@ -483,6 +488,9 @@
       },
       redbag(value) {
         this.redbag_display = value;
+      },
+      mission(value) {
+        this.mission_display = value;
       },
     },
   };

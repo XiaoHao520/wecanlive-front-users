@@ -248,7 +248,7 @@
               1</a>
           </div>
 
-          <div class="send-btn" @click="buyGift">贈送</div>
+          <div class="send-btn" @click="buyPrize">贈送</div>
         </div>
       </div>
     </transition>
@@ -314,7 +314,7 @@
         vm.bag = !vm.bag;
         vm.shop = !vm.shop;
       },
-      buyGift() {
+      buyPrize() {
         //
         const vm = this;
         console.log(vm.$route.params.id);

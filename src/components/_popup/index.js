@@ -10,3 +10,4 @@ export const LiveStarbox = require('./LiveStarBox.vue');
 export const PersonalQrcode = require('./PersonalQrcode.vue');
 export const ShareBox = require('./Share.vue');
 export const LiveGiftbag = require('./LiveGiftBag.vue');
+export const BlinkStar = require('./BlinkStar.vue');

@@ -1,7 +1,7 @@
 <template>
   <div id="live-red-bag">
     <transition name="popin">
-      <div class="red-block" v-if="display">
+      <div class="red-block" v-if="display && red_choice">
         <div class="red-header" :class="{'diamond-header' : diamond}">
           點擊選擇紅包大小
           <!--todo-->
@@ -13,7 +13,7 @@
 
         <div class="red-list">
           <ul>
-            <li class="red-item">
+            <li class="red-item" @click="redChoice()">
               <div class="red-icon"></div>
               <div class="red-recharge">
                 <div class="icon"></div>
@@ -21,7 +21,7 @@
               </div>
             </li>
 
-            <li class="red-item">
+            <li class="red-item" @click="redChoice()">
               <div class="red-icon"></div>
               <div class="red-recharge diamond-icon">
                 500
@@ -29,6 +29,40 @@
             </li>
           </ul>
         </div>
+      </div>
+    </transition>
+
+    <transition name="popin">
+      <div v-if="display && red_confirm" class="red-confirm-block">
+        <div class="red-confirm-header">
+          <div class="title">提示</div>
+        </div>
+
+        <div class="red-confirm-content">
+          是否發送價值爲
+          <div class="price"><span>500</span>金幣</div>
+          的紅包
+        </div>
+
+
+        <div class="red-action">
+          <a href="javascript:;" @click="handleClick" class="btn btn-cancel">取消</a>
+          <a href="javascript:;" @click="submitRed()" class="btn btn-submit">送出</a>
+        </div>
+      </div>
+    </transition>
+
+    <transition name="popin">
+      <div class="send-success" @click="handleClick" v-if="display && success">
+        <div class="icon"></div>
+        <div class="success">發送成功</div>
+      </div>
+    </transition>
+
+    <transition name="popin">
+      <div class="send-success" @click="handleClick" v-if="display && fail">
+        <div class="icon fail-icon"></div>
+        <div class="success">金幣不足，請多多修煉</div>
       </div>
     </transition>
 
@@ -44,13 +78,36 @@
     data() {
       return {
         diamond: true,
+        red_choice: true,
+        red_confirm: false,
+        success: false,
+        fail: false,
       };
     },
     methods: {
       reload() {
       },
       handleClick(evt) {
+        const vm = this;
+        vm.diamond = true;
+        vm.red_choice = true;
+        vm.red_confirm = false;
+        vm.success = false;
+        vm.fail = false;
         this.$emit('click', !this.display);
+      },
+      redChoice() {
+        const vm = this;
+        vm.red_choice = false;
+        vm.red_confirm = true;
+      },
+      submitRed() {
+        const vm = this;
+        vm.red_confirm = false;
+        vm.fail = true;
+        setTimeout(() => {
+          vm.handleClick();
+        }, 1500);
       },
     },
     props: {
@@ -167,6 +224,107 @@
             }
           }
         }
+      }
+    }
+
+    .red-confirm-block {
+      position: fixed;
+      .border-radius(15*@px);
+      overflow: hidden;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      width: 590*@px;
+      z-index: 999;
+      .red-confirm-header {
+        height: 100*@px;
+        background: @bg-header;
+        text-align: center;
+        .title {
+          line-height: 100*@px;
+          height: 100*@px;
+          color: #fff;
+          font-size: 36*@px;
+          display: inline-block;
+          padding-left: 56*@px;
+          background: url("../../assets/image/D/d_icon_warning@3x.png") 0 50% no-repeat;
+          background-size: 42*@px;
+        }
+      }
+      .red-confirm-content {
+        height: 200*@px;
+        line-height: 200*@px;
+        font-size: 28*@px;
+        background: #fff;
+        text-align: center;
+        .price {
+          font-size: 36*@px;
+          color: #A927FD;
+          display: inline-block;
+          span {
+            margin: 0 13*@px;
+          }
+        }
+      }
+      .red-action {
+        border-top: 1px solid @color-border;
+        background: #fff;
+        position: relative;
+        .btn {
+          display: inline-block;
+          width: 50%;
+          box-sizing: border-box;
+          height: 90*@px;
+          line-height: 90*@px;
+          text-align: center;
+          font-size: 38*@px;
+          color: #8D8D8D;
+          &.btn-cancel {
+            border-right: 1px solid @color-border;
+          }
+          &.btn-submit {
+            color: #2D02ED;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+          }
+        }
+      }
+    }
+
+    .send-success {
+      position: fixed;
+      .border-radius(15*@px);
+      overflow: hidden;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      z-index: 999;
+      width: 570*@px;
+      background: #fff;
+      padding: 36*@px 0;
+      .icon {
+        width: 150*@px;
+        height: 150*@px;
+        background: url("../../assets/image/D/d1_icon_success@3x.png") 50% 50% no-repeat;
+        background-size: 100%;
+        margin: 0 auto;
+        &.fail-icon {
+          background-image: url('../../assets/image/D/d1_icon_failed@3x.png');
+        }
+      }
+      .success {
+        margin-top: 30*@px;
+        font-size: 28*@px;
+        text-align: center;
       }
     }
     // 弹出效果

@@ -8,8 +8,8 @@
         <section class="section-top" v-show="!is_hide_all">
           <div class="left">
             <div class="avatar"
-                 :style="{backgroundImage: !!live && 'url('+ live.author_avatar +')'}"
                  @click="showMemberCard"></div>
+            <!--:style="{backgroundImage: !!live && !$cordova && 'url('+ live.author_avatar +')'}"-->
             <div class="owner-info">
               <div class="nickname">{{live ? live.nickname : ''}}</div>
               <div class="member-num">
@@ -272,8 +272,6 @@
 
     <live-mission :display="mission_display" @click="mission()"></live-mission>
 
-
-
     <transition :name="transitionNameLive">
       <router-view class="live-child-view"></router-view>
     </transition>
@@ -318,6 +316,26 @@
       this.transitionNameLive = toDepth < fromDepth ? 'slide-right' : 'slide-left';
       next();
     },
+    destroyed() {
+      if (window.TencentMLVB) {
+        window.TencentMLVB.stopPush(
+//          success => {
+//            alert(success);
+//          },
+//          error => {
+//            alert(error);
+//          }
+        );
+        window.TencentMLVB.stopPlay(
+//          success => {
+//            alert(success);
+//          },
+//          error => {
+//            alert(error);
+//          }
+        );
+      }
+    },
     mounted() {
     },
     computed: {
@@ -350,10 +368,26 @@
           if (window.TencentMLVB) {
             if (vm.is_owner) {
               // 主播的話開啓推流
-              window.TencentMLVB.startPush(vm.live.push_url);
+              window.TencentMLVB.startPush(
+                vm.live.push_url,
+//                success => {
+//                  alert(success);
+//                },
+//                error => {
+//                  alert(error);
+//                }
+              );
             } else {
               // 觀衆的話開啓播放
-              window.TencentMLVB.startPlay(vm.live.play_url);
+              window.TencentMLVB.startPlay(
+                vm.live.play_url,
+//                success => {
+//                  alert(success);
+//                },
+//                error => {
+//                  alert(error);
+//                }
+              );
             }
           }
         });
@@ -501,7 +535,7 @@
   @import (once) '../../assets/css/defines';
 
   #app-main-live {
-    background: url("../../assets/image/example/avatar.png") 50% 50% no-repeat;
+    /*background: url("../../assets/image/example/avatar.png") 50% 50% no-repeat;*/
     -webkit-background-size: cover;
     background-size: cover;
     padding: @height-status-bar 0 0;

@@ -7,7 +7,7 @@ export default {
   project: 'myproject',
   // API Root，指定后台地址
   // api_root: (process.env.NODE_ENV === 'production') ? 'http://wecanlive.local.puahzj.com/api' : 'http://127.0.0.1:8000/api',
-  api_root: (process.env.NODE_ENV === 'production') ? 'http://wecanlive.vpsx.easecloud.cn:10080/api' : 'http://127.0.0.1:8000/api',
+  api_root: (process.env.NODE_ENV === 'production') ? 'http://app.local.easecloud.cn/api' : 'http://127.0.0.1:8000/api',
   // 多套 API
   // api: {
   //   site_a: 'http://a.example.com/api',
@@ -55,6 +55,11 @@ export default {
   // },
   action_init_mixins(Vue) {
     Vue.mixin(mixins);
+  },
+  action_cordova_ready(Vue) {
+    if (window.TencentMLVB) {
+      window.TencentMLVB.getVersion();
+    }
   },
 };
 

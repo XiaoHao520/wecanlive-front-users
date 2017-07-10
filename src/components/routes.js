@@ -83,6 +83,8 @@ export default [
       { path: '/search', name: 'main_search', component: require('./main/Search.vue') },
       // D - 开始直播
       { path: '/live/start', name: 'main_live_start', component: require('./main/LiveStart.vue') },
+      // D3 - 结束直播
+      { path: '/live/end', name: 'main_live_end', component: require('./main/LiveEnd.vue') },
       // D1 - !!先别做，要做原生遮罩!! 直播画面（主播和观众共用）
       {
         path: '/live/:id/', name: 'main_live', component: require('./main/Live.vue'),
@@ -92,8 +94,6 @@ export default [
           { path: '/live/:id/diamond', name: 'main_live_diamond', component: require('./main/LiveDiamond.vue') },
         ]
       },
-      // D3 - 结束直播
-      { path: '/live/end', name: 'main_live_end', component: require('./main/LiveEnd.vue') },
       // 发布图片
       { path: '/active/event', name: 'main_active_event', component: require('./main/ActiveEvent.vue') },
       // 发布图片 - 分享动态

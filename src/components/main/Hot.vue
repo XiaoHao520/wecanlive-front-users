@@ -1,52 +1,28 @@
 <template>
   <div id="app-main-hot">
     <!--banner-->
-    <section class="section-banner">
+    <section class="section-banner" v-if="banner.length">
       <swiper :options="swiperOption">
-        <swiper-slide>
-          <div class="slide-item"></div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="slide-item"></div>
-        </swiper-slide>
+        <template v-for="item in banner">
+          <swiper-slide>
+            <div class="slide-item"
+                 :style="{backgroundImage: !!item && 'url('+ item.image_url +')'}"></div>
+          </swiper-slide>
+        </template>
         <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
     </section>
     <!--banner end-->
 
     <section class="section-btn-bar">
-      <a class="btn-find-friend"></a>
+      <router-link to="/find/friend" class="btn-find-friend"></router-link>
       <a class="btn-scan"></a>
     </section>
 
     <section class="item-list">
-      <div class="hot-item">
-        <div class="top-bar">
-          <div class="member-num">10086</div>
-          <div class="location">
-            <div class="icon"></div>
-            <div class="text">臺北市</div>
-          </div>
-        </div>
-        <div class="bottom-bar">
-          <div class="title">直播間</div>
-          <div class="owner-nickname">陳一發兒</div>
-        </div>
-      </div>
-
-      <div class="hot-item">
-        <div class="top-bar">
-          <div class="member-num">10086</div>
-          <div class="location">
-            <div class="icon"></div>
-            <div class="text">臺北市</div>
-          </div>
-        </div>
-        <div class="bottom-bar">
-          <div class="title">直播間</div>
-          <div class="owner-nickname">陳一發兒</div>
-        </div>
-      </div>
+      <template v-for="item in lives">
+        <live-item :item="item"></live-item>
+      </template>
     </section>
 
   </div>
@@ -60,10 +36,26 @@
           pagination: '.swiper-pagination',
           loop: true,
         },
+        lives: [],
+        banner: [],
       };
     },
     methods: {
       reload() {
+        const vm = this;
+        vm.api('Banner').get({
+          subject: 'HOT',
+        }).then((resp) => {
+          if (resp.body.results.length) vm.banner = resp.body.results;
+        });
+        // TODO 修改排序规则
+        vm.api('Live').get({
+          live_status: 'ACTION',
+          ordering: '-hot_rating',
+          fields: 'id,author_avatar,count_view,nickname',
+        }).then((resp) => {
+          if (resp.body.results.length) vm.lives = resp.body.results;
+        });
       },
     },
   };
@@ -103,7 +95,7 @@
         height: 360*@px;
         width: 100%;
         background-size: cover;
-        background-position: center;
+        background-position: center center;
         background-repeat: no-repeat;
       }
     }

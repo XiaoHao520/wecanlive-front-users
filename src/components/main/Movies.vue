@@ -2,12 +2,12 @@
   <div id="app-main-movies">
     <section class="banner">
       <swiper :options="swiperOption">
-        <swiper-slide>
-          <div class="slide-item"></div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="slide-item"></div>
-        </swiper-slide>
+        <template v-for="item in banner">
+          <swiper-slide>
+            <div class="slide-item"
+                 :style="{backgroundImage: !!item && 'url('+ item.image_url +')'}"></div>
+          </swiper-slide>
+        </template>
         <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
     </section>
@@ -40,7 +40,8 @@
         </swiper>
       </div>
       <router-link class="btn-more-movies"
-                   to="/member/official">更多影片</router-link>
+                   to="/member/official">更多影片
+      </router-link>
     </section>
   </div>
 </template>
@@ -57,14 +58,39 @@
           slidesPerView: 'auto',
           freeMode: true,
         },
+        banner: [],
       };
     },
     methods: {
       reload() {
+        const vm = this;
+        vm.api('Banner').get({
+          subject: 'VIDEO',
+        }).then((resp) => {
+          if (resp.body.results.length) vm.banner = resp.body.results;
+        });
       },
     },
   };
 </script>
+
+<style rel="stylesheet/less" type="text/less" lang="less" scoped>
+  @import (once) '../../vue2-front/assets/css/less-template/template';
+  @import (once) '../../assets/css/defines';
+  .swiper-pagination,
+  .swiper-pagination-bullets {
+    bottom: 21*@px;
+  }
+  .swiper-pagination-bullet {
+    width: 8*@px;
+    height: 8*@px;
+    margin: 0 6*@px;
+    background: #FFFFFF;
+    &.swiper-pagination-bullet-active {
+      background: #9A20F6;
+    }
+  }
+</style>
 
 <style rel="stylesheet/less" type="text/less" lang="less" scoped>
   @import (once) '../../vue2-front/assets/css/less-template/template';
@@ -82,19 +108,6 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-      }
-      .swiper-pagination,
-      .swiper-pagination-bullets {
-        bottom: 21*@px;
-      }
-      .swiper-pagination-bullet {
-        width: 8*@px;
-        height: 8*@px;
-        margin: 0 6*@px;
-        background: #FFFFFF;
-        &.swiper-pagination-bullet-active {
-          background: #9A20F6;
-        }
       }
     }
     .section-hot-movie {

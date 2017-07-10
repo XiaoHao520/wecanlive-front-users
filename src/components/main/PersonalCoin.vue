@@ -41,7 +41,7 @@
 
   .personal-coin {
     position: absolute;
-    top: 126*@px;
+    top: @height-header;
     bottom: 0;
     left: 0;
     right: 0;

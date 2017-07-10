@@ -49,7 +49,7 @@
   .page-personal-diamond {
     .personal-diamond {
       position: absolute;
-      top: 126*@px;
+      top: @height-header;
       left: 0; right: 0; bottom: 0;
       overflow-y: scroll;
       .app-scroll();

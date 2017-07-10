@@ -104,7 +104,7 @@
           if (resp.body.results.length) vm.users_recommended = resp.body.results;
         });
         vm.api('Live').get({
-          followed_by: vm.me.id,
+//          followed_by: vm.me.id,
           live_status: 'ACTION',
           fields: 'id,nickname,author_avatar,count_view,paid',
         }).then((resp) => {
@@ -135,7 +135,9 @@
       },
       handleScroll(evt) {
         const vm = this;
-        vm.tab_absolute = evt.target.scrollTop >= vm.$refs.user_recommend.offsetHeight;
+        if (vm.$refs.user_recommend) {
+          vm.tab_absolute = evt.target.scrollTop >= vm.$refs.user_recommend.offsetHeight;
+        }
       },
     },
   };

@@ -381,12 +381,13 @@
               // 觀衆的話開啓播放
               window.TencentMLVB.startPlay(
                 vm.live.play_url,
-//                success => {
-//                  alert(success);
-//                },
-//                error => {
-//                  alert(error);
-//                }
+                window.TencentMLVB.PLAY_URL_TYPE.PLAY_TYPE_LIVE_FLV,
+                success => {
+                  alert(success);
+                },
+                error => {
+                  alert(error);
+                }
               );
             }
           }

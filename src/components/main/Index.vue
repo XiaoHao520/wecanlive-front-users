@@ -70,9 +70,9 @@
         <transition name="fade" appear>
           <div class="tips">5 個新動態～</div>
         </transition>
-        <dynamic-item></dynamic-item>
-        <dynamic-item></dynamic-item>
-        <dynamic-item></dynamic-item>
+        <template v-for="item in active_event_list">
+          <dynamic-item :item="item"></dynamic-item>
+        </template>
       </section>
     </transition>
   </div>
@@ -104,7 +104,7 @@
           if (resp.body.results.length) vm.users_recommended = resp.body.results;
         });
         vm.api('Live').get({
-//          followed_by: vm.me.id,
+          followed_by: vm.me.id,
           live_status: 'ACTION',
           fields: 'id,nickname,author_avatar,count_view,paid',
         }).then((resp) => {
@@ -112,7 +112,8 @@
         });
         vm.api('ActiveEvent').get({
           followed_by: vm.me.id,
-          fields: 'id',
+          fields: 'id,age,author_is_following,avatar_url,constellation,content,count_comment,' +
+          'count_like,date_created,nickname,gender,is_like,author,images_item',
         }).then((resp) => {
           if (resp.body.results.length) vm.active_event_list = resp.body.results;
         });
@@ -135,9 +136,7 @@
       },
       handleScroll(evt) {
         const vm = this;
-        if (vm.$refs.user_recommend) {
-          vm.tab_absolute = evt.target.scrollTop >= vm.$refs.user_recommend.offsetHeight;
-        }
+        vm.tab_absolute = vm.$refs.user_recommend ? evt.target.scrollTop >= vm.$refs.user_recommend.offsetHeight : false;
       },
     },
   };

@@ -1,51 +1,67 @@
 <template>
   <div class="component-dynamic-item">
-    <div class="top-view">
-      <div class="bottom-block">
-        <div class="owner-pop">
-          <div class="avatar"></div>
-          <div class="left-info">
+    <template v-if="item">
+      <div class="top-view"
+           :style="{backgroundImage: !!item.images_item.length && 'url('+ item.images_item[0].image +')'}">
+        <div class="bottom-block">
+          <div class="owner-pop">
+            <div class="avatar"
+                 :style="{backgroundImage: !!item && 'url('+ item.avatar_url +')'}"></div>
+            <div class="left-info">
 
-            <div class="top">
-              <div class="owner-nickname">
-                <div class="nickname">VAMP Im. BROTERTFG</div>
-                <div class="tag"></div>
-                <div class="vip">2</div>
+              <div class="top">
+                <div class="owner-nickname">
+                  <div class="nickname">{{item.nickname}}</div>
+                  <div class="level">LV.20</div>
+                  <div class="vip">2</div>
+                </div>
+                <div class="time">{{item.date_created | date('mm/dd HH:MM')}}</div>
               </div>
-              <div class="time">4/20 16:00</div>
-            </div>
 
-            <div class="bottom">
-              <span class="gender gender-female"></span>
-              23 歲 白羊座
-              <a class="btn-add">
-                <span class="icon"></span>
-                追蹤
-              </a>
-              <a class="btn-add btn-added">
-                <span class="icon"></span>
-                已追蹤
-              </a>
-            </div>
+              <div class="bottom">
+                <span class="gender"
+                      :class="{
+                      'gender-female': item.gender == 'F',
+                      'gender-male': item.gender == 'M',
+                      }"></span>
+                {{item.age}} 歲 {{choices.constellation[item.constellation]}}
+                <a class="btn-add"
+                   @click="follow"
+                   v-if="!item.author_is_following">
+                  <span class="icon"></span>
+                  追蹤
+                </a>
+                <a class="btn-add btn-added"
+                   @click="follow"
+                   v-if="item.author_is_following">
+                  <span class="icon"></span>
+                  已追蹤
+                </a>
+              </div>
 
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="bottom-view">
-      <div class="content">
-        這是一個快樂，都比，熱血的遊戲家族～一起開黑，一起組隊玩遊戲！
-      </div>
-      <div class="btn-bar">
-        <a class="bot-btn bot-btn-like-grey bot-btn-like"></a>
-        <a class="bot-btn bot-btn-comment"></a>
-        <a class="bot-btn bot-btn-share" @click="share"></a>
-        <div class="comment-bar">
-          <span class="comment">0 評論</span>
-          <span class="comment">11 贊</span>
+      <div class="bottom-view">
+        <div class="content">
+          {{item.content}}
+        </div>
+        <div class="btn-bar">
+          <a class="bot-btn bot-btn-like-grey"
+             :class="{'bot-btn-like': item.is_like}"
+             @click="like"></a>
+          <a class="bot-btn bot-btn-comment"></a>
+          <a class="bot-btn bot-btn-share" @click="share"></a>
+          <div class="comment-bar">
+            <router-link :to="{name: 'main_comment_list', params: {model: 'activeevent', id: item.id}}"
+                         class="comment">{{item.count_comment}} 評論</router-link>
+            <router-link :to="{name: 'main_like_list', params: {model: 'activeevent', id: item.id}}"
+                         class="comment">{{item.count_like}} 贊</router-link>
+          </div>
         </div>
       </div>
-    </div>
+    </template>
   </div>
 </template>
 
@@ -57,8 +73,32 @@
     methods: {
       reload() {
       },
+      like() {
+        const vm = this;
+        if (vm.item) {
+          vm.api('ActiveEvent').save({
+            action: 'like',
+            id: vm.item.id,
+          }, {}).then((resp) => {
+            vm.item.is_like = resp.body.is_like;
+            vm.item.count_like = resp.body.count_like;
+          }, () => {
+            vm.notify('點贊失敗');
+          });
+        }
+      },
+      follow() {
+        const vm = this;
+        vm.api('Member').save({
+          action: 'follow',
+          id: vm.item.author,
+        }, {}).then(() => {
+        }, () => {});
+      },
     },
-    props: {},
+    props: {
+      item: Object,
+    },
   };
 </script>
 
@@ -115,23 +155,37 @@
                 .nickname {
                   float: left;
                   color: #FFFFFF;
-                  width: 255*@px;
+                  max-width: 255*@px;
                   .single-text-overflow();
                   font-size: 30*@px;
+                  height: 32*@px;
+                  line-height: 32*@px;
                 }
-                .tag {
+                .level {
                   float: left;
-                  width: 35*@px;
-                  height: 35*@px;
+                  width: 86*@px;
+                  height: 32*@px;
+                  line-height: 32*@px;
+                  background: url("../../assets/image/B1/icon_crown@3x.png") 50% 50% no-repeat;
+                  -webkit-background-size: 100%;
+                  background-size: 100%;
+                  color: #0928DF;
+                  font-size: 18*@px;
+                  text-indent: 36*@px;
                 }
                 .vip {
-                  height: 21*@px;
-                  line-height: 21*@px;
-                  width: 45*@px;
                   float: left;
-                  text-indent: 31*@px;
+                  height: 32*@px;
+                  line-height: 32*@px;
+                  width: 62*@px;
                   color: #5E21EE;
-                  font-size: 15*@px;
+                  font-size: 20*@px;
+                  text-indent: 43*@px;
+                  background: url("../../assets/image/B1/icon_vip@3x.png") 50% 50% no-repeat;
+                  -webkit-background-size: 100%;
+                  background-size: 100%;
+                  .border-box();
+                  padding-top: 2*@px;
                 }
               }
               .time {
@@ -206,6 +260,7 @@
         color: #000;
         line-height: 44*@px;
         font-size: 30*@px;
+        word-break: break-all;
       }
       .btn-bar {
         height: 80*@px;
@@ -228,6 +283,29 @@
             background: url("../../assets/image/B1/icon_like_pred@3x.png") 50% 50% no-repeat;
             -webkit-background-size: 100%;
             background-size: 100%;
+            .animation(zoom-in, .4s);
+            @keyframes zoom-in {
+              0% {
+                .transform(scale3d(1, 1, 1));
+              }
+              50% {
+                .transform(scale3d(1.5, 1.5, 1));
+              }
+              100% {
+                .transform(scale3d(1, 1, 1));
+              }
+            }
+            @-webkit-keyframes zoom-in {
+              0% {
+                .transform(scale3d(1, 1, 1));
+              }
+              50% {
+                .transform(scale3d(1.5, 1.5, 1));
+              }
+              100% {
+                .transform(scale3d(1, 1, 1));
+              }
+            }
           }
           &.bot-btn-comment {
             background: url("../../assets/image/B1/icon_comment_gray@3x.png") 50% 50% no-repeat;
@@ -244,9 +322,10 @@
           float: right;
           height: 80*@px;
           line-height: 80*@px;
-          font-size: 26*@px;
-          color: #8C8C8C;
           .comment {
+            font-size: 26*@px;
+            color: #8C8C8C;
+            display: inline-block;
             margin-left: 10*@px;
           }
         }

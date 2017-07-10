@@ -2,7 +2,6 @@
   <div id="popup-blink-star">
     <transition name="slide-left">
       <div class="blink-star-warpper"
-           :class="{mask: popup_display}"
            v-if="display">
 
         <div class="top-block">
@@ -22,7 +21,7 @@
             </div>
 
             <div class="top-2">
-              <div class="next-target">下個目標</div>
+              <div class="next-target" @click="togglePopup">下個目標</div>
               <div class="blink-star">
                 <div class="icon"></div>
                 閃亮新星
@@ -68,24 +67,28 @@
           </li>
         </ul>
 
-        <div class="pop-up-block" v-show="popup_display">
-          <header class="pop-up-header">
-            魔法師
-            <a class="btn-close"></a>
-          </header>
-          <div class="content">
-            <div class="con">
-              <div class="row">獲取資格條件：</div>
-              <div class="row">累計鑽石數達 500 個</div>
-            </div>
-            <div class="con">
-              <div class="row">徽章有限期：</div>
-              <div class="row">30 天</div>
+        <transition name="popup" appear>
+          <div class="pop-up-block" v-show="popup_display">
+            <header class="pop-up-header">
+              魔法師
+              <div class="warpper" @click="togglePopup">
+                <a class="btn-close"></a>
+              </div>
+            </header>
+            <div class="content">
+              <div class="con">
+                <div class="row">獲取資格條件：</div>
+                <div class="row">累計鑽石數達 500 個</div>
+              </div>
+              <div class="con">
+                <div class="row">徽章有限期：</div>
+                <div class="row">30 天</div>
+              </div>
             </div>
           </div>
-        </div>
+        </transition>
 
-        <div class="masked" v-show="popup_display"></div>
+        <div class="masked" @click="togglePopup" v-show="popup_display"></div>
 
       </div>
     </transition>
@@ -97,11 +100,14 @@
     data() {
       return {
         tab: 1,
-        popup_display: true,
+        popup_display: false,
       };
     },
     methods: {
       reload() {
+      },
+      togglePopup() {
+        this.popup_display = !this.popup_display;
       },
       tabTo(tab) {
         this.tab = tab;
@@ -407,6 +413,8 @@
         width: 530*@px;
         .rounded-corners(10*@px);
         overflow: hidden;
+        background: #FFFFFF;
+        z-index: 100;
         .pop-up-header {
           position: relative;
           height: 90*@px;
@@ -414,9 +422,35 @@
           text-align: center;
           color: #FFFFFF;
           font-size: 35*@px;
-          a {
+          background: @bg-header;
+          .warpper {
             position: absolute;
             right: 0;
+            top: 0;
+            height: 90*@px;
+            width: 90*@px;
+            line-height: 90*@px;
+            text-align: center;
+            a {
+              display: inline-block;
+              width: 44*@px;
+              height: 44*@px;
+              margin-top: 23*@px;
+              background: url("../../assets/image/D/d1_1_icon_closed@3x.png") 50% 50% no-repeat;
+              -webkit-background-size: 100%;
+              background-size: 100%;
+            }
+          }
+        }
+        .content {
+          padding: 66*@px 46*@px 50*@px;
+          color: #000;
+          font-size: 30*@px;
+          .con {
+            margin-bottom: 50*@px;
+            &:last-child {
+              margin-bottom: 0;
+            }
           }
         }
       }
@@ -434,20 +468,6 @@
       -webkit-transform: translate3d(100%, 0, 0);
       transform: translate3d(100%, 0, 0);
     }
-    // 弹出效果
-    .popin-enter-active {
-      transition: all .3s cubic-bezier(.55, 0, .1, 1);
-    }
-    .popin-leave-active {
-      transition: all .3s cubic-bezier(.55, 0, .1, 1);
-    }
-    .popin-enter, .popin-leave-active {
-      -webkit-transform: translate(-50%, -50%) scale3d(0.5, 0.5, 1);
-      -moz-transform: translate(-50%, -50%) scale3d(0.5, 0.5, 1);
-      -ms-transform: translate(-50%, -50%) scale3d(0.5, 0.5, 1);
-      -o-transform: translate(-50%, -50%) scale3d(0.5, 0.5, 1);
-      transform: translate(-50%, -50%) scale3d(0.5, 0.5, 1);
-      opacity: 0;
-    }
+
   }
 </style>

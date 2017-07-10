@@ -126,10 +126,11 @@ export default {
          * @returns {global.Promise}
          */
         pickImage(size = 1080, defaultSourceType = false) {
-          const vm = this.vmNotifier;
+          const vm = window.app;
+          const vmNotifier = this.vmNotifier;
           const deferred = new Deferred();
-          vm.imagepicker.size = size;
-          vm.imagepicker.deferred = deferred;
+          vmNotifier.imagepicker.size = size;
+          vmNotifier.imagepicker.deferred = deferred;
 
           if (navigator.camera && !/Android 4/.test(window.navigator.userAgent)) {
             const chooseSourceType = defaultSourceType === false
@@ -155,12 +156,12 @@ export default {
               //   return deferred.promise;
               // }
               navigator.camera.getPicture(imageURI => { // on success
-                vm.imagepicker.image_uri = `data:image/jpeg;base64,${imageURI}`;
+                vmNotifier.imagepicker.image_uri = `data:image/jpeg;base64,${imageURI}`;
+                vmNotifier.pickImageAction();
                 vm.resetStatusBar();
-                vm.pickImageAction();
               }, message => { // on fail
-                vm.resetStatusBar();
-                vm.notify(`获取图片失败：${message}`);
+                vmNotifier.notify(`获取图片失败：${message}`);
+                vmNotifier.resetStatusBar();
               }, { // options
                 destinationType: 0, // 0:DATAURL(base64), 1:FILE_URI, 2:NATIVE_URI
                 allowEdit: false,
@@ -172,7 +173,7 @@ export default {
               });
             });
           } else { // normal browser
-            vm.$refs.imageUploader.click();
+            vmNotifier.$refs.imageUploader.click();
           }
           return deferred.promise;
         },

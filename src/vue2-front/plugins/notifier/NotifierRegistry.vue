@@ -247,7 +247,7 @@
         if (/base64/.test(imageURI)) {
           // formdata.append('image', imageURI, files[0].name);
           formdata.append('image', imageURI);
-          return api.Image.save(formdata).then(
+          return window.app.api('Image').save(formdata).then(
             resp => deferred.resolve(resp.data)
           );
         }

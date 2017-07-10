@@ -78,7 +78,7 @@
 
     .photo-list {
       position: absolute;
-      top: 126*@px;
+      top: @height-header;
       bottom: 85*@px;
       left: 0;
       right: 0;

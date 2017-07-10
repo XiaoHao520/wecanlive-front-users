@@ -37,7 +37,7 @@
       padding: 30*@px;
       .content {
         position: absolute;
-        top: 126*@px;
+        top: @header-height;
         bottom: 120*@px;
         left: 0;
         right: 0;

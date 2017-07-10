@@ -240,7 +240,7 @@
       background: @bg-header;
       padding: 62*@px 30*@px 45*@px 30*@px;
       &.not-status-bar {
-        padding: 26*@px 30*@px 0 30*@px;
+        padding: 26*@px 30*@px 45*@px 30*@px;
       }
       .header-action {
         height: 52*@px;
@@ -506,7 +506,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      top: 780*@px;
+      top: 825*@px;
       background: #E3E3EA;
       .app-scroll();
       transition: all .5s cubic-bezier(.55, 0, .1, 1);

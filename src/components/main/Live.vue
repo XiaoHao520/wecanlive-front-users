@@ -386,10 +386,10 @@
                 vm.live.play_url,
                 window.TencentMLVB.PLAY_URL_TYPE.PLAY_TYPE_LIVE_FLV,
                 (success) => {
-                  alert(success);
+//                  alert(success);
                 },
                 (error) => {
-                  alert(error);
+//                  alert(error);
                 },
               );
             }

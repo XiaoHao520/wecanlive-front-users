@@ -189,6 +189,10 @@ export default {
           document.addEventListener('deviceready', () => {
             clearTimeout(timeout);
             resolve();
+            // [config] action_cordova_ready 钩子
+            if (config.action_cordova_ready) {
+              config.action_cordova_ready(Vue);
+            }
           }, false);
         };
         document.body.appendChild(script);
@@ -196,6 +200,11 @@ export default {
     }
 
     cordovaReady.then(() => {
+      // [config] action_before_launch 钩子
+      if (config.action_before_launch) {
+        config.action_before_launch(Vue);
+      }
+      config.action_cordova_ready(Vue, router);
       const AppConstructor = Vue.extend(require('./components/App.vue'));  // eslint-disable-line
       window.app = new AppConstructor({ router, el: '#app' });
     });

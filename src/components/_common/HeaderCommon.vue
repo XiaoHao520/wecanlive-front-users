@@ -1,5 +1,6 @@
 <template>
-  <header class="component-header-common ">
+  <header class="component-header-common"
+          :class="{'not-status-bar': !overlapStatusBar}">
     <slot name="left">
       <div class="btn-back-warpper" @click="back">
         <a class="btn btn-back"></a>

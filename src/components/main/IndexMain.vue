@@ -1,7 +1,8 @@
 <template>
   <!--<router-view></router-view>-->
   <div>
-    <header class="component-header-index">
+    <header class="component-header-index"
+            :class="{'not-status-bar': !overlapStatusBar}">
       <ul class="tab-list">
         <li class="tab-item active">
           <router-link to="/">追蹤</router-link>
@@ -23,7 +24,8 @@
     </header>
 
     <transition :name="transitionName">
-      <router-view class="child-view-container"></router-view>
+      <router-view class="child-view-container"
+                   :class="{'not-status-bar': !overlapStatusBar}"></router-view>
     </transition>
 
     <footer-common></footer-common>
@@ -61,6 +63,7 @@
 <style rel="stylesheet/less" type="text/less" lang="less" scoped>
   @import (once) '../../vue2-front/assets/css/less-template/template';
   @import (once) '../../assets/css/defines';
+
   .child-view-container {
     position: absolute;
     top: 128*@px;
@@ -68,17 +71,19 @@
     left: 0;
     right: 0;
     z-index: 1;
-    transition: all .5s cubic-bezier(.55,0,.1,1);
+    transition: all .5s cubic-bezier(.55, 0, .1, 1);
     &.not-status-bar {
       top: 92*@px;
     }
   }
+
   .slide-left-enter,
   .slide-right-leave-active {
     opacity: 0;
     -webkit-transform: translate3d(50%, 0, 0);
     transform: translate3d(50%, 0, 0);
   }
+
   .slide-left-leave-active,
   .slide-right-enter {
     opacity: 0;

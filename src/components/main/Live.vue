@@ -17,7 +17,7 @@
                 <div class="num">{{live ? live.count_view : 0}}</div>
               </div>
             </div>
-            <template v-if="live">
+            <template v-if="live && !is_owner">
               <a class="btn-tracking"
                  v-if="!live.author_is_following"
                  @click="toggleFollow">追蹤</a>
@@ -130,18 +130,20 @@
             <span class="content">
             我們倡導清新綠色直播，
             任何違反wecanleve規範的行爲都將收到相應的懲罰。
-          </span>
+            </span>
           </div>
 
           <div class="message-item">
-          <span class="nickname-block">
-            <span class="name blue">Kevin Chiu</span>
-            <span class="tag tag-level">LV.20</span>
-            <span class="tag tag-vip">2</span>
-          </span>
+            <span class="nickname-block">
+              <span class="name blue">Kevin Chiu</span>
+              <span class="tag tag-level">LV.20</span>
+              <span class="tag tag-vip">2</span>
+            </span>
             <span class="content">已追蹤主播</span>
 
-            <a class="btn-tracking">
+            <a class="btn-tracking"
+               v-if="!is_owner"
+               @click="toggleFollow">
               <span class="icon">+</span>
               追蹤
             </a>
@@ -149,11 +151,11 @@
           </div>
 
           <div class="message-item">
-          <span class="nickname-block">
-            <span class="name red">Kevin Chiu</span>
-            <span class="tag tag-level">LV.20</span>
-            <span class="tag tag-vip">2</span>
-          </span>
+            <span class="nickname-block">
+              <span class="name red">Kevin Chiu</span>
+              <span class="tag tag-level">LV.20</span>
+              <span class="tag tag-vip">2</span>
+            </span>
             <span class="content">已分享主播</span>
 
             <a class="btn-share" @click="share">
@@ -163,20 +165,20 @@
           </div>
 
           <div class="message-item">
-          <span class="nickname-block">
-            <span class="name purple">Kevin Chiu</span>
-            <span class="tag tag-level">LV.20</span>
-            <span class="tag tag-vip">2</span>
-          </span>
+            <span class="nickname-block">
+              <span class="name purple">Kevin Chiu</span>
+              <span class="tag tag-level">LV.20</span>
+              <span class="tag tag-vip">2</span>
+            </span>
             <span class="content">你好可愛喔！</span>
           </div>
 
           <div class="message-item">
-          <span class="nickname-block">
-            <span class="name ">Kevin Chiu</span>
-            <span class="tag tag-level">LV.20</span>
-            <span class="tag tag-vip">2</span>
-          </span>
+            <span class="nickname-block">
+              <span class="name ">Kevin Chiu</span>
+              <span class="tag tag-level">LV.20</span>
+              <span class="tag tag-vip">2</span>
+            </span>
             <span class="content">你好可愛喔！</span>
           </div>
 
@@ -331,7 +333,6 @@
           'author_is_following,count_author_diamond,count_author_starlight,' +
           'count_author_followed',
         }).then((resp) => {
-          console.log(resp.body);
           vm.live = resp.body;
           vm.authorMember = {
             id: vm.live.author_id,
@@ -409,9 +410,16 @@
       },
       leaveLive() {
         const vm = this;
-        if (vm.me.id === vm.live.author_id) {
+        if (vm.is_owner) {
           vm.confirm('是否結束直播？').then(() => {
-            vm.$router.push({ name: 'main_index' });
+            vm.api('Live').save({
+              action: 'live_end',
+              id: vm.$route.params.id,
+            }, {}).then((resp) => {
+              if (resp.data) {
+                vm.$router.replace({ name: 'main_live_end' });
+              }
+            });
           });
         } else {
           vm.confirm('是否離開當前直播間？').then(() => {
@@ -421,7 +429,7 @@
               }, {
                 live: vm.$route.params.id,
               }).then(() => {
-                vm.$router.push({ name: 'main_index' });
+                vm.$router.replace({ name: 'main_index' });
               });
             }
           });

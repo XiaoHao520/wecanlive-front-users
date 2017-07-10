@@ -24,7 +24,7 @@
       </div>
       <!--输入框 END-->
 
-      <div class="more-box-warpper" v-if="moreBox">
+      <div class="more-box-warpper" v-if="moreBox_display">
         <div class="top">
           <template v-if="bottomTab == 0">
             <swiper :options="swiperOption">
@@ -39,6 +39,7 @@
                             @click="emojiInput(e)">
                         </li>
                       </template>
+                      <div class="btn-delete"></div>
                     </ul>
                   </div>
                 </swiper-slide>
@@ -48,31 +49,33 @@
           </template>
           <template v-if="bottomTab == 1">
             <swiper :options="swiperOption">
-              <template v-for="page in Math.ceil(emoji_item.length / 25)">
-                <swiper-slide>
-                  <div class="slide-item">
-                    <ul class="gift-box">
-                      <li class="gift-item">
-                      </li>
-                    </ul>
-                  </div>
-                </swiper-slide>
-              </template>
+              <swiper-slide>
+                <div class="slide-item">
+                  <ul class="gift-box">
+                    <li class="gift-item" v-for="i in 9">
+                      <div class="gift-image"></div>
+                      <div class="deadline">15天</div>
+                    </li>
+                    <div class="btn-delete"></div>
+                  </ul>
+                </div>
+              </swiper-slide>
               <div class="swiper-pagination" slot="pagination"></div>
             </swiper>
           </template>
           <template v-if="bottomTab == 2">
             <swiper :options="swiperOption">
-              <template v-for="page in Math.ceil(emoji_item.length / 25)">
-                <swiper-slide>
-                  <div class="slide-item">
-                    <ul class="gift-box">
-                      <li class="gift-item">
-                      </li>
-                    </ul>
-                  </div>
-                </swiper-slide>
-              </template>
+              <swiper-slide>
+                <div class="slide-item">
+                  <ul class="gift-box">
+                    <li class="gift-item" v-for="i in 9">
+                      <div class="gift-image"></div>
+                      <div class="deadline">15天</div>
+                    </li>
+                    <div class="btn-delete"></div>
+                  </ul>
+                </div>
+              </swiper-slide>
               <div class="swiper-pagination" slot="pagination"></div>
             </swiper>
           </template>
@@ -104,7 +107,7 @@
       return {
         inputBarrage: false,
         placeholder: '說點什麼...',
-        moreBox: false,
+        moreBox_display: false,
         caret_pos: 0,
         content: '',
         swiperOption: {
@@ -150,7 +153,7 @@
           '1f648',
           '1f31a',
         ],
-        bottomTab: 0,
+        bottomTab: 1,
       };
     },
     methods: {
@@ -172,7 +175,7 @@
         vm.content = '';
       },
       toggleMoreBox() {
-        this.moreBox = !this.moreBox;
+        this.moreBox_display = !this.moreBox_display;
       },
       switchBarrage() {
         const vm = this;
@@ -381,21 +384,68 @@
             width: 100%;
           }
           .emoji-box {
+            position: relative;
             overflow: hidden;
             padding: 40*@px 30*@px 0;
+            height: 100%;
+            .border-box();
             .emoji-item {
               float: left;
               width: 76.5*@px;
               height: 76.5*@px;
               position: relative;
             }
+            .btn-delete {
+              position: absolute;
+              right: 30*@px;
+              bottom: 30*@px;
+              width: 100*@px;
+              height: 100*@px;
+              background: url("../../assets/image/D/d2_3_icon_delete@3x.png") 50% 50% no-repeat;
+              background-size: 100%;
+            }
           }
           .gift-box {
+            position: relative;
             overflow: hidden;
-            padding: 40*@px 30*@px 0;
-            .emoji-item {
+            padding: 44*@px 15*@px 0;
+            li {
               float: left;
               position: relative;
+              width: 110*@px;
+              height: 110*@px;
+              margin: 0 15*@px 15*@px;
+              .gift-image {
+                width: 100*@px;
+                height: 100*@px;
+                margin: 0 auto;
+                background: url("../../assets/image/D/d2_4_gift3@3x.png") 50% 50% no-repeat;
+                -webkit-background-size: cover;
+                background-size: cover;
+              }
+              .deadline {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 28*@px;
+                width: 48*@px;
+                line-height: 28*@px;
+                text-align: center;
+                color: #FFFFFF;
+                font-size: 14*@px;
+                background: url("../../assets/image/D/d2_3_tab_time@3x.png") 50% 50% no-repeat;
+                -webkit-background-size: cover;
+                background-size: cover;
+              }
+            }
+            .btn-delete {
+              position: absolute;
+              right: 40*@px;
+              bottom: 30*@px;
+              width: 100*@px;
+              height: 100*@px;
+              background: url("../../assets/image/D/d2_3_icon_delete@3x.png") 50% 50% no-repeat;
+              background-size: 100%;
             }
           }
         }

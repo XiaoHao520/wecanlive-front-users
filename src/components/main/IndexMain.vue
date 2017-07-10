@@ -9,17 +9,17 @@
         <li class="tab-item">
           <router-link to="/hot">熱門</router-link>
         </li>
-        <li class="tab-item">
-          <router-link to="/movie">節目</router-link>
-        </li>
-        <li class="tab-item">
-          <router-link to="/discover">發現</router-link>
-        </li>
-        <li class="tab-item">
-          <router-link to="/thenearby">附近</router-link>
-        </li>
+        <!--<li class="tab-item">-->
+          <!--<router-link to="/movie">節目</router-link>-->
+        <!--</li>-->
+        <!--<li class="tab-item">-->
+          <!--<router-link to="/discover">發現</router-link>-->
+        <!--</li>-->
+        <!--<li class="tab-item">-->
+          <!--<router-link to="/thenearby">附近</router-link>-->
+        <!--</li>-->
       </ul>
-      <router-link to="/ratings/diamond" class="nav-other"></router-link>
+      <!--<router-link to="/ratings/diamond" class="nav-other"></router-link>-->
     </header>
 
     <transition :name="transitionName">

@@ -2,27 +2,31 @@
   <header class="component-header-member">
     <div class="top-bar">
       <div class="top-btn-bar">
-        <a class="btn-settings"></a>
-        <a class="btn-friend"></a>
+        <router-link :to="{name:'main_personal_settings'}"
+                     class="btn-settings"></router-link>
+        <router-link :to="{name:'main_member_friends'}"
+                     class="btn-friend"></router-link>
       </div>
       <div class="info-bar">
-        <div class="avatar">
+        <div class="avatar"
+             @click="modifyAvatar"
+             :style="{backgroundImage: !!me && 'url('+ me.avatar_url +')'}">
           <a class="btn-camera"></a>
         </div>
         <div class="right-block">
-          <div class="nickname">Chris Lin</div>
+          <div class="nickname">{{me.nickname}}</div>
           <div class="basic-info">
-            <div class="icon"></div>
-            男 • 29 歲 • 金牛座
+            <div class="icon" :class="{femail: me.gender == 'F'}"></div>
+            {{ choices.gender[me.gender] }} • {{ me.age }} 歲 • {{ choices.constellation[me.constellation] }}
           </div>
           <div class="live-num-block">
             <div class="num-block">
               <div class="title">粉絲</div>
-              <div class="num">2861332</div>
+              <div class="num">{{ me.count_followed }}</div>
             </div>
             <div class="num-block">
               <div class="title">追蹤</div>
-              <div class="num">78912</div>
+              <div class="num">{{ me.count_follow }}</div>
             </div>
             <div class="num-block">
               <div class="title">直播</div>
@@ -32,15 +36,25 @@
         </div>
       </div>
     </div>
-    <div class="description">
-      任何想法，都能產生的圓圈這就隊和錯，新本體會陷入到對自己本體不能理解的狀態中
-    </div>
+    <div class="description">{{ me.signature }}</div>
   </header>
 </template>
 
 <script lang="babel">
   export default {
     methods: {
+      modifyAvatar() {
+        const vm = this;
+        vm.pickImage().then((resp) => {
+          vm.api('Member').patch({
+            id: vm.me.id,
+          }, {
+            avatar: resp.id,
+          }).then(() => {
+            vm.authenticate(true);
+          });
+        });
+      },
     },
     props: {
     },
@@ -135,6 +149,11 @@
               background: url("../../assets/image/B3/icon_male@3x.png") 50% 50% no-repeat;
               -webkit-background-size: 100%;
               background-size: 100%;
+              &.femail {
+                background: url("../../assets/image/B3/icon_female@3x.png") 50% 50% no-repeat;
+                -webkit-background-size: 100%;
+                background-size: 100%;
+              }
             }
           }
           .live-num-block {

@@ -1,5 +1,6 @@
 <template>
-  <div id="app-main-live">
+  <div id="app-main-live"
+       :class="{'not-status-bar': !overlapStatusBar}">
     <v-touch class="swift-block"
              :swipeOptions="swipeOptions"
              @swiperight="swiperight($event)"
@@ -318,6 +319,7 @@
     },
     destroyed() {
       if (window.TencentMLVB) {
+        document.body.style.background = 'white';
         window.TencentMLVB.stopPush(
 //          success => {
 //            alert(success);
@@ -337,6 +339,7 @@
       }
     },
     mounted() {
+      document.body.style.background = 'white';
     },
     computed: {
       is_owner() {
@@ -382,12 +385,12 @@
               window.TencentMLVB.startPlay(
                 vm.live.play_url,
                 window.TencentMLVB.PLAY_URL_TYPE.PLAY_TYPE_LIVE_FLV,
-                success => {
+                (success) => {
                   alert(success);
                 },
-                error => {
+                (error) => {
                   alert(error);
-                }
+                },
               );
             }
           }

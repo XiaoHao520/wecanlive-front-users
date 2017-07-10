@@ -1,6 +1,7 @@
 <template>
   <div class="page-member-detail">
-    <div class="member-detail-block">
+    <div class="member-detail-block"
+         :class="{'not-status-bar': !overlapStatusBar}">
       <div class="header-action">
         <router-link :to="{name:'main_personal_settings'}" class="btn btn-set"></router-link>
         <router-link :to="{name:'main_member_friends'}" href="javascript:;" class="btn btn-friend"></router-link>

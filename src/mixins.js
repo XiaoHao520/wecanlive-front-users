@@ -6,7 +6,12 @@ export default {
   mounted() {
   },
   components: { ...common, ...popup },
-  computed: {},
+  computed: {
+    overlapStatusBar() {
+      return /iPhone/.test(navigator.userAgent)
+        && /Cordova/.test(navigator.userAgent);
+    },
+  },
   filters: {
     number(value) {
       let val = Number(value);

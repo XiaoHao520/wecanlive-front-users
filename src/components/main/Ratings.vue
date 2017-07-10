@@ -15,7 +15,8 @@
     </header-common>
 
     <transition :name="transitionName">
-      <router-view class="child-view"></router-view>
+      <router-view class="child-view"
+                   :class="{'not-status-bar': !overlapStatusBar}"></router-view>
     </transition>
 
     <footer-common active="home"></footer-common>

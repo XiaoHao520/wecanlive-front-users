@@ -1,6 +1,7 @@
 <template>
   <div class="page-search">
-    <section class="search-header">
+    <section class="search-header"
+             :class="{'not-status-bar': !overlapStatusBar}">
       <div class="search-block">
         <div class="search-icon"></div>
         搜尋
@@ -73,14 +74,16 @@
         width: 65*@px;
         height: 65*@px;
         position: absolute;
-        right: 28*@px; bottom: 12*@px;
+        right: 28*@px;
+        bottom: 12*@px;
         .code-icon {
           background: 50% 50% no-repeat #ccc;
           background-size: 100%;
           height: 50*@px;
           width: 50*@px;
           position: absolute;
-          top: 7.5*@px; right: 0;
+          top: 7.5*@px;
+          right: 0;
 
         }
       }

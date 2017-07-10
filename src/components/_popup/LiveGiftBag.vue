@@ -305,8 +305,7 @@
         }, {
           live: vm.$route.params.id,
           prize: vm.prize,
-//          todo 數量
-          count: 1,
+          count: vm.prize_count,
         }).then(() => {
         });
       },
@@ -317,13 +316,12 @@
           vm.notify('請選擇禮物');
           return;
         }
-        // todo 數量
         vm.api('PrizeTransition').save({
           action: 'send_active_prize',
         }, {
           live: vm.$route.params.id,
           prize: vm.active,
-          count: 1,
+          count: vm.active_prize_count,
         }).then(() => {
           // todo 送完後的數量更新和動畫禮物
         });

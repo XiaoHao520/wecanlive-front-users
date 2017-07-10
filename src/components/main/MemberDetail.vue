@@ -17,6 +17,8 @@
             <a href="javascript:;" class="code-btn"></a>
           </div>
 
+          <div class="id">ID:{{ me.id }}</div>
+
           <div class="member-sex">
             {{ choices.gender[me.gender] }} &bull; {{ me.age }}歲 &bull; {{ choices.constellation[me.constellation] }}
           </div>
@@ -258,7 +260,7 @@
         }
       }
       .member-detail {
-        padding: 0 0 27*@px 196*@px;
+        padding: 0 0 5*@px 196*@px;
         position: relative;
         border-bottom: 1px solid #2F017A;
         .avatar {
@@ -285,7 +287,7 @@
           .member-name {
             .clearfix();
             color: #fff;
-            margin-bottom: 12*@px;
+            position: relative;
             .name {
               font-size: 32*@px;
               height: 35*@px;
@@ -303,21 +305,24 @@
               background: url("../../assets/image/f-f4/f_icon_vip_gray@3x.png") 50% 50% no-repeat;
               background-size: 100%;
               width: 88*@px;
-              /*<!--border-bottom-right-radius: 15*@px;-->*/
-              /*<!--border-top-right-radius: 15*@px;-->*/
-              /*<!--border-top-left-radius: 15*@px;-->*/
               text-align: center;
             }
             .code-btn {
-              width: 32*@px;
-              height: 32*@px;
+              position: absolute;
+              right: 0; top: 0;
+              width: 44*@px;
+              height: 44*@px;
               background: url("../../assets/image/f-f4/f_icon_scan@3x.png") 50% 50% no-repeat;
               background-size: 100%;
-              float: right;
             }
           }
+          .id {
+            color: #C2A4FB;
+            font-size: 26*@px;
+            margin-bottom: 5*@px;
+          }
           .member-sex {
-            margin-bottom: 30*@px;
+            margin-bottom: 25*@px;
             height: 26*@px;
             line-height: 26*@px;
             font-size: 26*@px;
@@ -340,10 +345,10 @@
                 font-size: 24*@px;
                 height: 24*@px;
                 line-height: 24*@px;
-                margin-bottom: 12*@px;
+                margin-bottom: 7*@px;
               }
               .num {
-                font-size: 22*@px;
+                font-size: 28*@px;
                 color: #1EE2FF;
               }
             }
@@ -354,9 +359,9 @@
         color: #fff;
         font-size: 25*@px;
         line-height: 34*@px;
-        padding-top: 30*@px;
+        padding-top: 20*@px;
         text-align: center;
-        margin-bottom: 47*@px;
+        margin-bottom: 35*@px;
         min-height: 68*@px;
         p {
           margin: 0;
@@ -387,8 +392,8 @@
           .balance-num {
             text-align: center;
             color: #fff;
-            font-size: 20*@px;
-            margin-top: 18*@px;
+            font-size: 28*@px;
+            margin-top: 10*@px;
           }
         }
       }
@@ -500,7 +505,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      top: 880*@px;
+      top: 859*@px;
       background: #E3E3EA;
       .app-scroll();
       transition: all .5s cubic-bezier(.55, 0, .1, 1);

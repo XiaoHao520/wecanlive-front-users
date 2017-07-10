@@ -341,7 +341,7 @@
       }
     },
     mounted() {
-      document.body.style.background = 'white';
+      document.body.style.background = 'transparent';
     },
     computed: {
       is_owner() {
@@ -553,7 +553,7 @@
     padding: @height-status-bar 0 0;
     .border-box();
     &.not-status-bar {
-      padding-top: 0;
+      /*padding-top: 0;*/
     }
     .swift-block {
       height: 100%-@height-status-bar;

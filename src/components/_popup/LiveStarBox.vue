@@ -6,16 +6,16 @@
           <a class="close-icon" href="javascript:;" @click="handleClick"></a>
           <div class="avatar"></div>
           <div class="star">
-            <div class="star-total">總元氣數 : 2000</div>
+            <div class="star-total">總元氣數 : {{ item.count_author_starlight }}</div>
           </div>
         </div>
         <div class="starbox-content">
-          <div class="starbox-null">
+          <div class="starbox-null" v-if="item.count_author_starlight < 500">
             <div class="starbox-null-title">擁有的星光指數不足</div>
             <div class="starbox-null-icon"></div>
           </div>
 
-          <div class="box-list">
+          <div class="box-list" v-else>
             <a href="javascript:;" class="box-item"></a>
             <a href="javascript:;" class="box-item"></a>
             <a href="javascript:;" class="box-item"></a>
@@ -151,6 +151,7 @@
     },
     props: {
       display: Boolean,
+      item: Object,
     },
   };
 </script>
@@ -233,7 +234,6 @@
         background: #fff;
         border: 1px solid #BCBEC0;
         .starbox-null {
-          display: none;
           box-sizing: border-box;
           padding: 30*@px 44*@px 0 44*@px;
           .starbox-null-title {

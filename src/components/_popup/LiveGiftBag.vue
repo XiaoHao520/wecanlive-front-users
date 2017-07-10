@@ -58,16 +58,18 @@
 
             <div class="distance">
               <div class="distance-intro">
-                距離一個星光寶盒還需送出 250 元氣的禮物 <span>250/500</span>
+                距離一個星光寶盒還需送出 250 元氣的禮物 <span>{{ me.star_balance }} / 500</span>
               </div>
               <div class="plan">
-                <div class="ready"></div>
+                <div class="ready" :style="{width : me.star_balance /5 + '%'}"></div>
               </div>
 
               <div class="gift-choose">
-                <a href="javascript:;" class="gift-item box-icon"></a>
-                <a href="javascript:;" class="gift-item box-icon"></a>
-                <a href="javascript:;" class="gift-item box-icon open-box-icon"></a>
+                <a href="javascript:;"
+                   v-for="i in 3"
+                   @click="openBoxGift(i)"
+                   :class="{'open-box-icon': choose_box === i}"
+                   class="gift-item box-icon"></a>
               </div>
             </div>
             <ul>
@@ -243,6 +245,7 @@
         active: 0,
         active_prize_count: 1,
         active_prize_count_total: 1,
+        choose_box: null,
       };
     },
     methods: {
@@ -324,6 +327,7 @@
           count: vm.active_prize_count,
         }).then(() => {
           // todo 送完後的數量更新和動畫禮物
+          vm.reload();
         });
       },
       choosePrize(prize) {
@@ -343,6 +347,24 @@
         }
         vm.active = prize.id;
         vm.active_prize_count_total = prize.count;
+      },
+      openBoxGift(i) {
+        const vm = this;
+//        if (vm.me.star_balance < 500) {
+//          vm.notify('你的元氣不夠，不能打開寶盒');
+//          return;
+//        }
+        vm.api('PrizeTransition').save({
+          action: 'open_star_box',
+        }, {}).then(() => {
+          vm.choose_box = i;
+          // todo: 只更新星星数量
+          vm.authenticate(true);
+          vm.reload();
+          setTimeout(() => {
+            vm.choose_box = null;
+          }, 3000);
+        });
       },
     },
     props: {
@@ -574,8 +596,8 @@
               left: 0;
               border-radius: 10*@px;
               background: #A201FD;
-              width: 150*@px;
               height: 100%;
+              max-width: 100%;
             }
           }
           .gift-choose {

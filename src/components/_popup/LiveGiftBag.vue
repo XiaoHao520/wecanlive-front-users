@@ -34,33 +34,20 @@
         <transition :name="transitionName">
           <div v-if="tab==0" class="active-gift gift-list">
 
-            <!--todo 沒有禮物-->
-            <!--<div></div>-->
+            <div v-if="active_prize.active_prize.length==0" class="null-block">
+              <div class="null-icon"></div>
+              <div class="null-warn">背包是空的～</div>
+            </div>
 
-            <ul>
-              <li class="gift-item">
-                <div class="gift-icon"></div>
-                <div class="gift-name">超值禮物</div>
-                <div class="gift-num">7000</div>
-              </li>
-
-              <li class="gift-item">
-                <div class="gift-icon"></div>
-                <div class="gift-name">超值禮物</div>
-                <div class="gift-num">7000</div>
-              </li>
-
-              <li class="gift-item">
-                <div class="gift-icon"></div>
-                <div class="gift-name">超值禮物</div>
-                <div class="gift-num">7000</div>
-              </li>
-
-
-              <li class="gift-item">
-                <div class="gift-icon"></div>
-                <div class="gift-name">超值禮物</div>
-                <div class="gift-num">7000</div>
+            <ul v-else>
+              <li v-for="prize in active_prize.active_prize"
+                  @click="chooseActivePrize(prize)"
+                  class="gift-item">
+                <div class="gift-icon" :style="{backgroundImage: 'url(' + prize.icon + ')'}">
+                  <div class="num" v-if="prize.count >0">{{prize.count}}</div>
+                </div>
+                <div class="gift-name">{{ prize.name }}</div>
+                <div class="gift-num">{{ prize.price }}</div>
               </li>
             </ul>
           </div>
@@ -83,50 +70,14 @@
                 <a href="javascript:;" class="gift-item box-icon open-box-icon"></a>
               </div>
             </div>
-
             <ul>
-              <li class="gift-item">
-                <div class="gift-icon"></div>
-                <div class="gift-name">超值禮物</div>
-              </li>
-
-              <li class="gift-item">
-                <div class="gift-icon"></div>
-                <div class="gift-name">超值禮物</div>
-              </li>
-
-              <li class="gift-item">
-                <div class="gift-icon">
-                  <div class="num">3</div>
+              <li v-for="prize in active_prize.box_prize"
+                  @click="chooseActivePrize(prize)"
+                  class="gift-item">
+                <div class="gift-icon" :style="{backgroundImage:'url('+prize.icon + ')'}">
+                  <div class="num" v-if="prize.count >0">{{prize.count}}</div>
                 </div>
-                <div class="gift-name">超值禮物</div>
-              </li>
-
-
-              <li class="gift-item">
-                <div class="gift-icon"></div>
-                <div class="gift-name">超值禮物</div>
-              </li>
-
-              <li class="gift-item">
-                <div class="gift-icon"></div>
-                <div class="gift-name">超值禮物</div>
-              </li>
-
-              <li class="gift-item">
-                <div class="gift-icon"></div>
-                <div class="gift-name">超值禮物</div>
-              </li>
-
-              <li class="gift-item">
-                <div class="gift-icon"></div>
-                <div class="gift-name">超值禮物</div>
-              </li>
-
-
-              <li class="gift-item">
-                <div class="gift-icon"></div>
-                <div class="gift-name">超值禮物</div>
+                <div class="gift-name">{{ prize.name }}</div>
               </li>
             </ul>
           </div>
@@ -134,17 +85,23 @@
 
         <transition :name="transitionName">
           <div v-if="tab==2" class="box-gift gift-list">
-            <!--<ul>-->
-              <!--<li class="gift-item">-->
-                <!--<div class="gift-icon"></div>-->
-                <!--<div class="gift-name">超值禮物</div>-->
-              <!--</li>-->
-            <!--</ul>-->
-
-            <div class="null-block">
+            <div v-if="active_prize.vip_prize.length==0" class="null-block">
               <div class="null-icon"></div>
               <div class="null-warn">背包是空的～</div>
             </div>
+
+            <ul v-else>
+              <li v-for="prize in active_prize.vip_prize"
+                  @click="chooseActivePrize(prize)"
+                  class="gift-item">
+                <div class="gift-icon" :style="{backgroundImage: 'url('+ prize.icon +')'}">
+                  <div class="num" v-if="prize.count >0">{{prize.count}}</div>
+                </div>
+                <div class="gift-name">{{ prize.name }}</div>
+              </li>
+            </ul>
+
+
           </div>
         </transition>
 
@@ -156,16 +113,20 @@
           </a>
           <a href="javascript:;" class="gift-bag-type">
             <div class="type-icon bag-icon"></div>
-            <div class="type">背包</div>
+            <div class="type active-type">背包</div>
           </a>
 
           <div class="gift-num">
             <a href="javascript:;">
               <div class="select-icon"></div>
-              1</a>
+              {{ active_prize_count }}</a>
+
+            <select class="count-select" v-model="active_prize_count">
+              <option v-for="i in active_prize_count_total" :value="i">{{ i }}</option>
+            </select>
           </div>
 
-          <div class="send-btn">贈送</div>
+          <div @click="sendActivePrize()" class="send-btn">贈送</div>
         </div>
       </div>
     </transition>
@@ -220,7 +181,7 @@
             <div v-if="shoptab==i" class="active-gift gift-list">
               <ul>
                 <li v-for="prize in category.prizes_item"
-                    @click="gift=prize.id"
+                    @click="choosePrize(prize)"
                     class="gift-item">
                   <div class="gift-icon" :style="{backgroundImage: 'url('+ prize.icon +')'}"></div>
                   <div class="gift-name">{{ prize.name }}</div>
@@ -235,7 +196,7 @@
         <div class="gift-footer">
           <a href="javascript:;" class="gift-bag-type">
             <div class="type-icon shop-icon"></div>
-            <div class="type">商店</div>
+            <div class="type active-type">商店</div>
           </a>
           <a href="javascript:;" class="gift-bag-type" @click="BagShop()">
             <div class="type-icon bag-icon-nor"></div>
@@ -245,8 +206,14 @@
           <div class="gift-num">
             <a href="javascript:;">
               <div class="select-icon"></div>
-              1</a>
+              {{ prize_count }}
+            </a>
+
+            <select class="count-select" v-model="prize_count">
+              <option v-for="i in 10" :value="i">{{ i }}</option>
+            </select>
           </div>
+
 
           <div class="send-btn" @click="buyPrize">贈送</div>
         </div>
@@ -270,16 +237,27 @@
         transitionName: 'slide-left',
         shpptransition: 'slide-left',
         prize_category: [],
-        gift: 0,
+        prize: 0,
+        prize_count: 1,
+        active_prize: [],
+        active: 0,
+        active_prize_count: 1,
+        active_prize_count_total: 1,
       };
     },
     methods: {
       reload() {
         const vm = this;
         vm.api('PrizeCategory').get({
-          is_active: 'True',
+          normal: 'True',
         }).then((resp) => {
           vm.prize_category = resp.data;
+        });
+
+        vm.api('Prize').get({
+          action: 'get_user_active_prize',
+        }).then((resp) => {
+          vm.active_prize = resp.data;
         });
       },
       handleClick(evt) {
@@ -288,6 +266,7 @@
         vm.shoptab = 0;
         vm.bag = true;
         vm.shop = false;
+        vm.prize = 0;
         vm.transitionName = 'slide-left';
         vm.shpptransition = 'slide-left';
         this.$emit('click', !this.display);
@@ -310,22 +289,62 @@
       },
       BagShop() {
         const vm = this;
-        vm.gift = 0;
+        vm.prize = 0;
         vm.bag = !vm.bag;
         vm.shop = !vm.shop;
       },
       buyPrize() {
         //
         const vm = this;
-        console.log(vm.$route.params.id);
+        if (vm.prize === 0) {
+          vm.notify('請選擇禮物');
+          return;
+        }
         vm.api('PrizeOrder').save({
           action: 'buy_prize',
         }, {
           live: vm.$route.params.id,
-          prize: vm.gift,
+          prize: vm.prize,
+//          todo 數量
           count: 1,
         }).then(() => {
         });
+      },
+      sendActivePrize() {
+        //
+        const vm = this;
+        if (vm.active === 0) {
+          vm.notify('請選擇禮物');
+          return;
+        }
+        // todo 數量
+        vm.api('PrizeTransition').save({
+          action: 'send_active_prize',
+        }, {
+          live: vm.$route.params.id,
+          prize: vm.active,
+          count: 1,
+        }).then(() => {
+          // todo 送完後的數量更新和動畫禮物
+        });
+      },
+      choosePrize(prize) {
+        // 选择商店礼物
+        const vm = this;
+        if (prize === prize.id) {
+          return;
+        }
+        vm.prize = prize.id;
+        vm.prize_count = 1;
+      },
+      chooseActivePrize(prize) {
+        // 选择活动礼物
+        const vm = this;
+        if (vm.active === prize.id) {
+          return;
+        }
+        vm.active = prize.id;
+        vm.active_prize_count_total = prize.count;
       },
     },
     props: {
@@ -609,7 +628,7 @@
               border: 1px solid #4E2AEF;
               color: #4E2AEF;
               position: absolute;
-              font-size: 13*@px;
+              font-size: 18*@px;
               text-align: center;
               line-height: 22*@px;
               top: -22*@px;
@@ -699,6 +718,9 @@
             color: rgba(255, 255, 255, 0.8);
             text-align: center;
             margin-top: 7*@px;
+            &.active-type {
+              color: #fff;
+            }
           }
         }
         .gift-num {
@@ -713,6 +735,17 @@
           font-size: 32*@px;
           float: left;
           color: #2E02ED;
+          .count-select {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            border: none;
+            background: none;
+            outline: none;
+            width: 125*@px;
+            height: 67*@px;
+          }
           .select-icon {
             position: absolute;
             top: 50%;

@@ -159,7 +159,6 @@
         vm.api('Prize').get({
           action: 'get_user_prize_emoji',
         }).then((resp) => {
-          console.log(resp.data);
         });
       },
       handleSubmit() {

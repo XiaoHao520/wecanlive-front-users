@@ -267,9 +267,9 @@
             }
 
             .message-btn {
-              width: 50*@px;
-              height: 55*@px;
-              background: 50% 50% no-repeat #ccc;
+              width: 60*@px;
+              height: 60*@px;
+              background:url("../../assets/image/f-f4/f3_icon_message@3x.png") 50% 50% no-repeat;
               background-size: 100%;
               margin-right: 20*@px;
               position: relative;

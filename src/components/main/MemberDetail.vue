@@ -36,7 +36,7 @@
             </div>
             <div class="follow-type">
               <div class="type">直播</div>
-              <div class="num">5446768</div>
+              <div class="num">{{ live.length }}</div>
             </div>
           </div>
 
@@ -140,7 +140,11 @@
 
     <transition :name="transitionName">
       <section class="section-list live-list" v-if="tab == 1">
-        <live-item :showInfo="false" :review="true"></live-item>
+        <template v-for="item in live">
+          <live-item :item="item"
+                     :showInfo="false"
+                     :review="true"></live-item>
+        </template>
       </section>
     </transition>
 
@@ -149,24 +153,18 @@
       <section class="section-list family-list" v-if="tab == 2">
         <div class="family">
           <ul>
-            <li class="family-item">
-              <a href="javascript:;" class="family-img">
-                <div class="family-name">大家族</div>
-              </a>
-            </li>
+            <!--<li class="family-item">-->
+            <!--<a href="javascript:;" class="family-img">-->
+            <!--<div class="family-name">大家族</div>-->
+            <!--</a>-->
+            <!--</li>-->
 
-            <li class="family-item">
-              <a href="javascript:;" class="family-img">
-                <div class="family-name">大家族</div>
-              </a>
-            </li>
-
-            <li class="family-item">
-              <a href="javascript:;" class="add-family-btn">
-                <div class="add-icon"></div>
-                創立家族
-              </a>
-            </li>
+            <!--<li class="family-item">-->
+            <!--<a href="javascript:;" class="add-family-btn">-->
+            <!--<div class="add-icon"></div>-->
+            <!--創立家族-->
+            <!--</a>-->
+            <!--</li>-->
           </ul>
         </div>
       </section>
@@ -502,7 +500,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      top: 893*@px;
+      top: 880*@px;
       background: #E3E3EA;
       .app-scroll();
       transition: all .5s cubic-bezier(.55, 0, .1, 1);

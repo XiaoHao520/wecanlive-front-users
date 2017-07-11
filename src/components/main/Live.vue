@@ -202,7 +202,7 @@
             <li class="btn-item btn-item-right btn-item-like" @click="showHearts">
               <div class="like-num">6.3K</div>
             </li>
-            <li class="btn-item btn-item-right btn-item-gift" @click="giftbag_display=true"></li>
+            <li class="btn-item btn-item-right btn-item-gift" @click="showGiftBag()"></li>
             <li class="btn-item btn-item-right btn-item-vidio"></li>
             <li class="btn-item btn-item-right btn-item-audio"
                 @click="toggleAudioBox"></li>
@@ -267,7 +267,9 @@
                  @pick="choicePick"></member-card>
 
 
-    <live-starbox :display="starbox_display" @click="starbox()"></live-starbox>
+    <live-starbox :display="starbox_display"
+                  :item="authorMember"
+                  @click="starbox()"></live-starbox>
 
     <live-giftbag :display="giftbag_display" @click="giftbag()"></live-giftbag>
 
@@ -368,6 +370,7 @@
             following_count: vm.live.count_following_author,
             followed_count: vm.live.count_author_followed,
             is_followed: vm.live.author_is_following,
+            count_author_starlight: vm.live.count_author_starlight,
           };
           if (window.TencentMLVB) {
             if (vm.is_owner) {
@@ -393,16 +396,16 @@
 //                  alert(error);
                 },
               );
+              // 观众观看记录
+              vm.api('LiveWatchLog').save({
+                action: 'start_watch_log',
+              }, {
+                live: vm.$route.params.id,
+              }).then((log) => {
+                vm.live_watch_log = log.data;
+              });
             }
           }
-        });
-        //
-        vm.api('LiveWatchLog').save({
-          action: 'start_watch_log',
-        }, {
-          live: vm.$route.params.id,
-        }).then((resp) => {
-          vm.live_watch_log = resp.data;
         });
       },
       submit(valObj) {
@@ -537,6 +540,12 @@
       },
       mission(value) {
         this.mission_display = value;
+      },
+      showGiftBag() {
+        const vm = this;
+        vm.authenticate(true).then(() => {
+          vm.giftbag_display = true;
+        });
       },
     },
   };

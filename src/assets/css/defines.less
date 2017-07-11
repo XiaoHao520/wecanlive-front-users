@@ -397,6 +397,46 @@ a {
         margin: 0 auto;
         .rounded-corners(10*@px);
       }
+      .prompt-checkbox {
+        position: relative;
+        overflow: hidden;
+        margin-top: 10*@px;
+        padding-left: 20*@px;
+        input {
+          position: absolute;
+          opacity: 0;
+          height: 44*@px;
+          width: 44*@px;
+          margin: 0 10*@px 0 0;
+          background: url("../../assets/image/D/d_radio_nor@3x.png") 50% 50% no-repeat;
+          -webkit-background-size: 100%;
+          background-size: 100%;
+          &:checked + label {
+            .icon {
+              background: url("../../assets/image/D/d_radio_selected@3x.png") 50% 50% no-repeat;
+              -webkit-background-size: 100%;
+              background-size: 100%;
+            }
+          }
+        }
+        label {
+          overflow: hidden;
+          float: left;
+          height: 44*@px;
+          line-height: 44*@px;
+          color: #8d8d8d;
+          font-size: 26*@px;
+          .icon {
+            float: left;
+            height: 44*@px;
+            width: 44*@px;
+            margin: 0 10*@px 0 0;
+            background: url("../../assets/image/D/d_radio_nor@3x.png") 50% 50% no-repeat;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+          }
+        }
+      }
     }
     .modal-footer {
       overflow: hidden;

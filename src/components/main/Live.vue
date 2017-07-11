@@ -294,16 +294,16 @@
         ],
         barrages: [],
         is_hide_all: false,
-        memberCard_display: false,
         bottom_nav_btn_display: false,
+        memberCard_display: false,
         bottom_nav_display: false,
+        blinkStar_display: false,
         audioBox_display: false,
+        inputBox_display: false,
         starbox_display: false,
         giftbag_display: false,
         redbag_display: false,
-        blinkStar_display: false,
         notice: false,
-        inputBox_display: false,
         live: null,
         authorMember: null,
         live_watch_log: [],
@@ -429,7 +429,7 @@
               }, {
                 live: vm.$route.params.id,
               }).then(() => {
-                vm.$router.replace({ name: 'main_index' });
+                vm.goBack({ name: 'main_index' });
               });
             }
           });
@@ -501,9 +501,9 @@
   @import (once) '../../assets/css/defines';
 
   #app-main-live {
-    background: url("../../assets/image/example/avatar.png") 50% 50% no-repeat;
-    -webkit-background-size: cover;
-    background-size: cover;
+    /*background: url("../../assets/image/example/avatar.png") 50% 50% no-repeat;*/
+    /*-webkit-background-size: cover;*/
+    /*background-size: cover;*/
     padding: @height-status-bar 0 0;
     .border-box();
     &.not-status-bar {

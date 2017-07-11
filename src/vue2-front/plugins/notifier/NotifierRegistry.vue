@@ -61,6 +61,13 @@
                 <input class="prompt-input" type="text"
                        :placeholder="item.placeholder" ref="promptInput"
                        title v-model="item.value"/>
+                <div class="prompt-checkbox" v-if="item.checkBoxText">
+                  <input type="checkbox" id="checkbox" v-model="item.checked">
+                  <label for="checkbox">
+                    <span class="icon"></span>
+                    {{item.checkBoxText}}
+                  </label>
+                </div>
               </div>
               <div class="modal-footer">
                 <a @click.stop="promptAction(true, index)"
@@ -231,7 +238,7 @@
         const pos = index === -1 ? vm.itemsPrompt.length - 1 : index;
         const item = vm.itemsPrompt[pos];
         vm.itemsPrompt.splice(pos, 1);
-        return item.deferred[success ? 'resolve' : 'reject'](item.value);
+        return item.deferred[success ? 'resolve' : 'reject']({ value: item.value, checked: item.checked });
       },
       pickImageAction() {
         const vm = this;

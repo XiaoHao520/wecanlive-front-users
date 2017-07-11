@@ -61,7 +61,6 @@
   };
 </script>
 
-
 <style rel="stylesheet/less" type="text/less" lang="less">
   @import (once) '../../vue2-front/assets/css/less-template/template';
   @import (once) '../../assets/css/defines';

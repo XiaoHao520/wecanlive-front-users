@@ -97,18 +97,18 @@
             <div class="popup-normal"
                  v-for="barrage in barrages"
                  :key="barrage"
-                 :style="{top: barrage.positionTop}" :ref="barrage.ref">
+                 :style="{top: barrage.positionTop}"
+                 :ref="'barrage_'+barrage.id">
               <div class="avatar"
-                   :style="{backgroundImage: !!barrage && 'url('+barrage.senderAvatarUrl+')'}"></div>
+                   :style="{backgroundImage: !!(barrage && barrage.author_avatar_url)
+                   && 'url('+barrage.author_avatar_url+')'}"></div>
               <div class="right">
                 <div class="nickname">
-                  <span class="name">{{barrage.senderNickname}}</span>
-                  <span class="level">LV.{{barrage.senderLevel}}</span>
-                  <span class="vip">{{barrage.senderVip}}</span>
+                  <span class="name">{{barrage.author_nickname}}</span>
+                  <span class="level">lv.{{barrage.author_level}}</span>
+                  <span class="vip">{{barrage.author_vip_level}}</span>
                 </div>
-                <div class="content">
-                  {{barrage.content}}
-                </div>
+                <div class="content">{{barrage.content}}</div>
               </div>
             </div>
             <!--普通弹幕 END-->
@@ -116,7 +116,6 @@
         </section>
       </transition>
       <!--弹幕 END-->
-
 
       <blink-star :display="blinkStar_display"
                   @click="toggleBlinkStar"></blink-star>
@@ -183,7 +182,7 @@
 
 
         <!--底部右邊按鈕-->
-        <ul class="btn-lists" v-if="!show_input_box && !audioBox_display">
+        <ul class="btn-lists" v-show="!show_input_box && !show_audio_box">
 
           <li class="btn-item btn-item-left btn-item-text" @click="show_input_box=true"></li>
 
@@ -202,8 +201,7 @@
             </li>
             <li class="btn-item btn-item-right btn-item-gift" @click="showGiftBag()"></li>
             <li class="btn-item btn-item-right btn-item-vidio"></li>
-            <li class="btn-item btn-item-right btn-item-audio"
-                @click="toggleAudioBox"></li>
+            <li class="btn-item btn-item-right btn-item-audio" @click="toggleAudioBox"></li>
           </template>
 
           <li class="btn-item btn-item-right btn-item-share" @click="makeShare()"></li>
@@ -212,7 +210,7 @@
 
         <input-item :display="show_input_box" @input="submit"></input-item>
 
-        <div class="audio-box" v-if="audioBox_display">
+        <div class="audio-box" v-if="show_audio_box">
           <div class="text">按住至少3秒</div>
           <div class="percent-box">
             <div class="percent"></div>
@@ -306,7 +304,7 @@
         memberCard_display: false,
         bottom_nav_display: false,
         blinkStar_display: false,
-        audioBox_display: false,
+        show_audio_box: false,
         show_input_box: false,
         starbox_display: false,
         giftbag_display: false,
@@ -413,31 +411,9 @@
       },
       submit(valObj) {
         const vm = this;
+        if (!valObj.content) return;
         if (valObj.isBarrage) {  // 弹幕消息
-          const top = Math.random() * 12.48;
-          const barrageid = Math.random() * 10000;
-          const barrage = {
-            content: valObj.content,
-            positionTop: `${top}rem`,
-            senderAvatarUrl: '',
-            senderNickname: '哈哈哈哈',
-            senderLevel: 15,
-            senderVip: 2,
-            ref: `barrage${barrageid}`,
-          };
-          vm.barrages.push(barrage);
-          vm.$nextTick(() => {
-            setTimeout(() => {
-              vm.$refs[barrage.ref][0].style.transform = 'translate3d(-20rem,0,0)';
-              /* 监听 transition! */
-              vm.$refs[barrage.ref][0].addEventListener('webkitTransitionEnd', () => {
-                vm.barrages.splice(vm.barrages.indexOf(barrage), 1);
-              });
-              vm.$refs[barrage.ref][0].addEventListener('transitionend', () => {
-                vm.barrages.splice(vm.barrages.indexOf(barrage), 1);
-              });
-            }, 0);
-          });
+          vm.sendBarrage(valObj.content);
         } else {  // 普通消息
           vm.sendComment(valObj.content);
         }
@@ -512,7 +488,7 @@
       },
       toggleAudioBox() {
         const vm = this;
-        vm.audioBox_display = !vm.audioBox_display;
+        vm.show_audio_box = !vm.show_audio_box;
       },
       starbox(value) {
         this.starbox_display = value;
@@ -581,7 +557,7 @@
       },
       sendComment(content) {
         const vm = this;
-        vm.api().post({
+        vm.api().save({
           id: vm.$route.params.id,
           action: 'make_comment',
         }, { content }).then(resp => {
@@ -594,6 +570,37 @@
       showComment(comment) {
         const vm = this;
         vm.messages.push({ type: 'comment', ...comment });
+      },
+      sendBarrage(content) {
+        const vm = this;
+        vm.api().save({
+          id: vm.$route.params.id,
+          action: 'make_barrage',
+        }, { content }).then(resp => {
+          const barrage = resp.data;
+          barrage.positionTop = `${Math.random() * 12.48}rem`;
+          vm.sendIM(`live_${vm.$route.params.id}`, { type: 'barrage', barrage });
+        });
+      },
+      showBarrage(barrage) {
+        const vm = this;
+        vm.barrages.push(barrage.data.barrage);
+//        console.log(JSON.parse(JSON.stringify(vm.barrages)));
+        vm.$nextTick(() => {
+          setTimeout(() => {
+            const refId = `barrage_${barrage.data.barrage.id}`;
+            const ref = vm.$refs[refId] && vm.$refs[refId][0];
+            if (!ref) return;
+            ref.style.transform = 'translate3d(-20rem,0,0)';
+            /* 监听 transition! */
+            ref.addEventListener('webkitTransitionEnd', () => {
+              vm.barrages.splice(vm.barrages.indexOf(barrage), 1);
+            });
+            ref.addEventListener('transitionend', () => {
+              vm.barrages.splice(vm.barrages.indexOf(barrage), 1);
+            });
+          }, 0);
+        });
       },
       /**
        * 切换追踪或者不追踪
@@ -1050,18 +1057,19 @@
           width: 68*@px;
           margin: 2*@px 0 0 2*@px;
           .rounded-corners(50%);
-          background: #000 50% 50% no-repeat;
+          background: 50% 50% no-repeat;
           -webkit-background-size: cover;
           background-size: cover;
         }
         .right {
-          float: left;
-          margin-left: 8*@px;
+          margin-left: 80*@px;
           padding-top: 3*@px;
           .nickname {
             height: 32*@px;
             line-height: 32*@px;
             font-size: 24*@px;
+            max-width: 14rem;
+            .nowrap();
             .level {
               display: inline-block;
               width: 86*@px;
@@ -1092,6 +1100,8 @@
             }
           }
           .content {
+            max-width: 14rem;
+            .nowrap();
             font-size: 22*@px;
           }
         }
@@ -1528,4 +1538,3 @@
     }
   }
 </style>
-

@@ -184,6 +184,13 @@ export default {
                   data: data.data,
                 });
               });
+            } else if (data.data.type === 'barrage') { // 弹幕
+              vm.getUserByUsername(data.fromAccount).then(user => {
+                vmLive.showBarrage({
+                  sender: user,
+                  data: data.data,
+                });
+              });
             } else if (data.data.type === 'gift') { // 送礼物
               // TODO: 未实现
             } else if (data.data.type === 'share') { // 分享

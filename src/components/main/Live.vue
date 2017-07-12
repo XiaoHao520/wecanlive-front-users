@@ -315,7 +315,7 @@
         giftbag_display: false,
         redbag_display: false,
         notice: false,
-        mission_display: true,
+        mission_display: false,
         inputBox: false,
         live: null,
         authorMember: null,

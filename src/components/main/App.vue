@@ -27,8 +27,9 @@
     beforeMount() {
       const vm = this;
       vm.authenticate().then(() => {
+        console.log('success');
         vm.init = true;
-      }, () => {
+      }, (e) => {
         vm.init = true;
         vm.$router.replace({ name: 'passport_signin' });
       });
@@ -68,3 +69,4 @@
     transform: translate3d(-20%, 0, 0);
   }
 </style>
+

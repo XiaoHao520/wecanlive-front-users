@@ -1,5 +1,5 @@
 /** Absolute Imports */
-import 'font-awesome/less/font-awesome.less';
+// import 'font-awesome/less/font-awesome.less';
 
 import VueRouter from 'vue-router';
 // import Deferred from 'es6-deferred';

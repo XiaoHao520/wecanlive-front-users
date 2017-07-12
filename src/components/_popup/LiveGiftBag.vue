@@ -58,10 +58,10 @@
 
             <div class="distance">
               <div class="distance-intro">
-                距離一個星光寶盒還需送出 250 元氣的禮物 <span>{{ me.star_balance }} / 500</span>
+                距離一個星光寶盒還需送出 {{ view_starbox_distance }} 元氣的禮物 <span>{{ me.star_prize_expend }} / 500</span>
               </div>
               <div class="plan">
-                <div class="ready" :style="{width : me.star_balance /5 + '%'}"></div>
+                <div class="ready" :style="{width : me.star_prize_expend /5 + '%'}"></div>
               </div>
 
               <div class="gift-choose">
@@ -246,6 +246,7 @@
         active_prize_count: 1,
         active_prize_count_total: 1,
         choose_box: null,
+        view_starbox_distance: 0,
       };
     },
     methods: {
@@ -262,6 +263,12 @@
         }).then((resp) => {
           vm.active_prize = resp.data;
         });
+
+        if (vm.me.star_prize_expend > 500) {
+          vm.view_starbox_distance = 0;
+        } else {
+          vm.view_starbox_distance = 500 - vm.me.star_prize_expend;
+        }
       },
       handleClick(evt) {
         const vm = this;
@@ -292,7 +299,12 @@
       },
       BagShop() {
         const vm = this;
+        // 切换背包商城，数据初始化
         vm.prize = 0;
+        vm.active = 0;
+        vm.prize_count = 1;
+        vm.active_prize_count_total = 1;
+        vm.active_prize_count = 1;
         vm.bag = !vm.bag;
         vm.shop = !vm.shop;
       },
@@ -345,8 +357,9 @@
         if (vm.active === prize.id) {
           return;
         }
-        vm.active = prize.id;
+        vm.active_prize_count = 1;
         vm.active_prize_count_total = prize.count;
+        vm.active = prize.id;
       },
       openBoxGift(i) {
         const vm = this;

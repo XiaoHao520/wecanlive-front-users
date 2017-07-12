@@ -279,7 +279,8 @@
 
     <live-redbag :display="redbag_display" @click="redbag()"></live-redbag>
 
-    <live-mission :display="mission_display" @click="mission()"></live-mission>
+    <live-mission :display="mission_display"
+                  @click="mission()"></live-mission>
 
     <transition :name="transitionNameLive">
       <router-view class="live-child-view"></router-view>
@@ -313,12 +314,12 @@
         starbox_display: false,
         giftbag_display: false,
         redbag_display: false,
-        notice: false,
+        notice: true,
         mission_display: false,
         inputBox: false,
         live: null,
+        live_watch_log: null,
         authorMember: null,
-        live_watch_log: [],
       };
     },
     beforeRouteUpdate(to, from, next) {
@@ -404,6 +405,8 @@
               );
             }
           }
+        });
+        if (!vm.is_owner) {
           // 观众观看记录
           vm.api('LiveWatchLog').save({
             action: 'start_watch_log',
@@ -412,7 +415,7 @@
           }).then((log) => {
             vm.live_watch_log = log.data;
           });
-        });
+        }
       },
       submit(valObj) {
         const vm = this;
@@ -475,15 +478,13 @@
           });
         } else {
           vm.confirm('是否離開當前直播間？').then(() => {
-            if (vm.live_watch_log.length !== 0) {
-              vm.api('LiveWatchLog').save({
-                action: 'leave_live',
-              }, {
-                live: vm.$route.params.id,
-              }).then(() => {
-                vm.goBack({ name: 'main_index' });
-              });
-            }
+            vm.api('LiveWatchLog').save({
+              action: 'leave_live',
+            }, {
+              live: vm.$route.params.id,
+            }).then(() => {
+              vm.$router.replace({ name: 'main_index' });
+            });
           });
         }
       },
@@ -543,7 +544,8 @@
         this.redbag_display = value;
       },
       mission(value) {
-        this.mission_display = value;
+        console.log(value);
+//        this.mission_display = value;
       },
       showGiftBag() {
         const vm = this;

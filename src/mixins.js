@@ -102,5 +102,83 @@ export default {
       ret += (150.0 * Math.sin(x / 12.0 * PI) + (300.0 * Math.sin(x / 30.0 * PI))) * 2.0 / 3.0;
       return ret;
     },
+    /**
+     * 发送即时消息
+     * @param target string 用户username/直播间live_{id}/家族family_{id}
+     * @param content string JSON 格式的数据对象
+     */
+    sendIM(target, content) {
+      const webim = window.webim;
+      const vm = this;
+      const isGroup = /^(?:live|family)_\d+$/.test(target);
+      const session = new webim.Session(
+        isGroup ? webim.SESSION_TYPE.GROUP : webim.SESSION_TYPE.C2C,
+        target,
+      );
+      // 如果 content 是字符串，直接发送，否则自动 JSON 串行化。
+      const elem = new webim.Msg.Elem.Custom(
+        typeof content === 'string' ? content : JSON.stringify(content), '', '');
+      const msg = new webim.Msg(
+        session,
+        true,
+        Math.floor(Math.random() * 100000000),
+        Math.floor(Math.random() * 100000000),
+        Math.floor(Number(new Date()) / 1000),
+        vm.me.username,
+        isGroup ? webim.GROUP_MSG_SUB_TYPE : webim.C2C_MSG_SUB_TYPE,
+        vm.me.username,
+      );
+      msg.addCustom(elem);
+      webim.sendMsg(msg);
+    },
+    /**
+     * 处理接收到的 IM 消息
+     * 路由消息并且分发给应用界面
+     * @param msg webim.Msg 实例
+     * https://www.qcloud.com/document/product/269/1594#2.4-.E6.B6.88.E6.81.AF.E5.AF.B9.E8.B1.A1msg
+     */
+    dealIM(msg) {
+      const vm = this;
+      if (!window.webim) return;
+      msg.getElems().forEach(elem => {
+        try {
+          const data = {
+            fromAccount: msg.fromAccount,
+            sessionId: msg.sess.id(),
+            data: JSON.parse(elem.content.data),
+          };
+          const isSelfSend = data.fromAccount === vm.me.username;
+          // console.error(data);
+          // 直播室消息
+          if (/^live_\d+$/.test(data.sessionId)) {  // 直播间消息
+            // TODO: 未实现
+            // 如果当前不是在直播间里面，忽略这条消息
+            if (vm.$route.name !== 'main_live' ||
+              `live_${vm.$route.params.id}` !== data.sessionId) return;
+            const vmLive = vm.getVmByName('main_live');
+            // 获取 main_live 房间的 vm
+            if (data.data.type === 'like') {
+              vmLive.showLike(!isSelfSend);
+            } else if (data.data.type === 'comment') {
+              // TODO: 未实现
+            } else if (data.data.type === 'gift') {
+              // TODO: 未实现
+            } else if (data.data.type === 'share') {
+              // TODO: 未实现
+            } else if (data.data.type === 'follow') {
+              // TODO: 未实现
+            }
+          } else if (/^family_\d+$/.test(data.sessionId)) {  // 家族消息
+            // TODO: 未实现
+          } else if (data.sessionId === vm.me.username) {  // 发给自己的消息
+            // TODO: 未实现
+          } else {
+            console.error('未定义的消息格式', data);
+          }
+        } catch (e) {
+          // pass
+        }
+      });
+    },
   },
 };

@@ -52,8 +52,20 @@ export default {
       return utils;
     },
     me: {
-      get: () => window.app.current_user,
-      set: value => (window.app.current_user = value),
+      get() {
+        if (this.$root.$options.name === 'vue2-front') {
+          return this.$root.current_user;
+        }
+        return window.app && window.app.current_user
+      },
+      set(value) {
+        if (this.$root.$options.name === 'vue2-front') {
+          return this.$root.current_user = value;
+        } else if (window.app) {
+          window.app.current_user = value;
+        }
+        throw { msg: 'Cannot get root vm object' };
+      }
     },
   },
   filters: {
@@ -410,6 +422,24 @@ export default {
     setContext(key, value) {
       const $root = this.$root;
       $root.$set($root.context, key, value);
+    },
+    /**
+     * 在当前的组件树里面搜索到 name 等于指定值的组件
+     * @param name String
+     * @param multiple Boolean
+     */
+    getVmByName(name, multiple = false) {
+      const result = [];
+      const queue = [this.$root || window.app];
+      while (queue.length) {
+        const vm = queue.shift();
+        if (vm.$options.name === name) {
+          if (!multiple) return vm;
+          result.push(vm);
+        }
+        vm.$children.forEach(child => queue.push(child));
+      }
+      return multiple ? result : null;
     },
   },
 };

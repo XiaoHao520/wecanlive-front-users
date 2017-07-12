@@ -199,8 +199,11 @@
           </template>
 
           <template v-else>
-            <li class="btn-item btn-item-right btn-item-like" @click="showHearts">
-              <div class="like-num">6.3K</div>
+            <li class="btn-item btn-item-right btn-item-like"
+                ref="likeBox"
+                @click="sendLike()">
+              <!--<div class="moving-heart"></div>-->
+              <div class="like-num" v-if="live && live.like_count">{{live.like_count}}</div>
             </li>
             <li class="btn-item btn-item-right btn-item-gift" @click="showGiftBag()"></li>
             <li class="btn-item btn-item-right btn-item-vidio"></li>
@@ -286,8 +289,10 @@
 
 <script type="text/babel" lang="babel">
   export default {
+    name: 'main_live',
     data() {
       return {
+        model: 'Live',
         transitionNameLive: 'slide-left',
         swipeOptions: {
           direction: 'horizontal',
@@ -359,7 +364,7 @@
           fields: 'author_id,nickname,author_avatar,signature,' +
           'count_view,count_following_author,push_url,play_url,' +
           'author_is_following,count_author_diamond,count_author_starlight,' +
-          'count_author_followed',
+          'count_author_followed,like_count',
         }).then((resp) => {
           vm.live = resp.body;
           vm.authorMember = {
@@ -398,6 +403,14 @@
               );
             }
           }
+          // 观众观看记录
+          vm.api('LiveWatchLog').save({
+            action: 'start_watch_log',
+          }, {
+            live: vm.$route.params.id,
+          }).then((log) => {
+            vm.live_watch_log = log.data;
+          });
         });
         if (!vm.is_owner) {
           // 观众观看记录
@@ -522,8 +535,6 @@
       toggleBlinkStar(value) {
         this.blinkStar_display = value;
       },
-      showHearts() {
-      },
       toggleAudioBox() {
         const vm = this;
         vm.audioBox_display = !vm.audioBox_display;
@@ -547,12 +558,105 @@
           vm.giftbag_display = true;
         });
       },
+      /**
+       * 点击发送一个赞
+       */
+      sendLike() {
+        const vm = this;
+        vm.sendIM(`live_${vm.$route.params.id}`, { type: 'like' });
+        // 即时显示动效避免延迟影响用户体验
+        vm.showLikeEffect();
+        // 定时 commit 这个数量到后台
+        // 5秒内多次点击集中到一次提交
+        vm.like_count_buffer = (vm.like_count_buffer || 0) + 1;
+        if (vm.like_count_commit_timer) {
+          clearTimeout(vm.like_count_commit_timer);
+        }
+        vm.like_count_commit_timer = setTimeout(() => {
+          const count = vm.like_count_buffer;
+          vm.like_count_buffer = 0;
+          vm.like_count_commit_timer = null;
+          vm.api().patch({
+            id: vm.$route.params.id,
+            action: 'add_like_count',
+          }, { count });
+        }, 5000);
+      },
+      /**
+       * 某个用户点出一个红心赞，由消息到达路由触发
+       */
+      showLike(effect = true) {
+        const vm = this;
+        if (effect) vm.showLikeEffect();
+      },
+      /**
+       * 显示红心飞出的动效
+       */
+      showLikeEffect() {
+        const vm = this;
+        console.log('有人点赞了啊');
+        vm.live.like_count += 1;
+        // TODO: 需要实现一个红心飞出的动效
+        const heart = document.createElement('div');
+        heart.className = 'moving-heart';
+        vm.$refs.likeBox.appendChild(heart);
+        setTimeout(() => {
+          vm.$refs.likeBox.removeChild(heart);
+        }, 2000);
+      },
     },
   };
 </script>
 
+<style rel="stylesheet/less" type="text/less" lang="less">
+  @import (once) '../../vue2-front/assets/css/less-template/template-defines';
+  @import (once) '../../assets/css/defines';
+
+  .moving-heart {
+    @sz: 1.65rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: @sz;
+    height: @sz;
+    /*background: rgba(0, 0, 0, 0.2);*/
+    color: red;
+    & {
+      .keyframes(heartmove); .-frames(@-...) {
+        0% {
+          margin-top: 0;
+          opacity: 1;
+        }
+        100% {
+          margin-top: -10rem;
+          opacity: 0;
+        }
+      }
+    }
+    .animation(heartmove, 2s, linear);
+    &::before {
+      font-family: fontello, sans-serif;
+      content: '\e801';
+      position: absolute;
+      top: 0.08rem;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      font-size: @sz;
+      line-height: @sz;
+      opacity: 0.75;
+    }
+  }
+</style>
+
 <style rel="stylesheet/less" type="text/less" lang="less" scoped>
-  @import (once) '../../vue2-front/assets/css/less-template/template';
+  @import (once) '../../vue2-front/assets/css/less-template/template-defines';
   @import (once) '../../assets/css/defines';
 
   #app-main-live {
@@ -1371,6 +1475,6 @@
       -o-transform: translate3d(300%, 0, 0);
       transform: translate3d(300%, 0, 0);
     }
-
   }
 </style>
+

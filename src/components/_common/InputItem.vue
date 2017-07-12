@@ -225,7 +225,7 @@
 </script>
 
 <style rel="stylesheet/less" type="text/less" lang="less">
-  @import (once) '../../vue2-front/assets/css/less-template/template';
+  @import (once) '../../vue2-front/assets/css/less-template/template-defines';
   @import (once) '../../assets/css/defines';
 
   img.emoji {
@@ -261,7 +261,7 @@
 </style>
 
 <style rel="stylesheet/less" type="text/less" lang="less" scoped>
-  @import (once) '../../vue2-front/assets/css/less-template/template';
+  @import (once) '../../vue2-front/assets/css/less-template/template-defines';
   @import (once) '../../assets/css/defines';
 
   .component-input-item {

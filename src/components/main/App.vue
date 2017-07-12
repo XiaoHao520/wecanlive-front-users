@@ -27,8 +27,9 @@
     beforeMount() {
       const vm = this;
       vm.authenticate().then(() => {
+        console.log('success');
         vm.init = true;
-      }, () => {
+      }, (e) => {
         vm.init = true;
         vm.$router.replace({ name: 'passport_signin' });
       });
@@ -41,7 +42,7 @@
 </script>
 
 <style rel="stylesheet/less" type="text/less" lang="less" scoped>
-  @import (once) '../../vue2-front/assets/css/less-template/template';
+  @import (once) '../../vue2-front/assets/css/less-template/template-defines';
   @import (once) '../../assets/css/defines';
 
   .child-view {
@@ -68,3 +69,4 @@
     transform: translate3d(-20%, 0, 0);
   }
 </style>
+

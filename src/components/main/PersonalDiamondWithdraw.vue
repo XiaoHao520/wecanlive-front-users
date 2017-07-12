@@ -67,7 +67,7 @@
 </script>
 
 <style rel="stylesheet/less" type="text/less" lang="less" scoped>
-  @import (once) '../../vue2-front/assets/css/less-template/template';
+  @import (once) '../../vue2-front/assets/css/less-template/template-defines';
   @import (once) '../../assets/css/defines';
 
   .page-personal-diamond-withdraw {

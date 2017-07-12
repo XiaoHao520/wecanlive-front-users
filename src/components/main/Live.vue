@@ -202,7 +202,7 @@
             <li class="btn-item btn-item-right btn-item-like"
                 ref="likeBox"
                 @click="sendLike()">
-              <div class="moving-heart"></div>
+              <!--<div class="moving-heart"></div>-->
               <div class="like-num" v-if="live && live.like_count">{{live.like_count}}</div>
             </li>
             <li class="btn-item btn-item-right btn-item-gift" @click="showGiftBag()"></li>
@@ -401,16 +401,16 @@
 //                  alert(error);
                 },
               );
-              // 观众观看记录
-              vm.api('LiveWatchLog').save({
-                action: 'start_watch_log',
-              }, {
-                live: vm.$route.params.id,
-              }).then((log) => {
-                vm.live_watch_log = log.data;
-              });
             }
           }
+          // 观众观看记录
+          vm.api('LiveWatchLog').save({
+            action: 'start_watch_log',
+          }, {
+            live: vm.$route.params.id,
+          }).then((log) => {
+            vm.live_watch_log = log.data;
+          });
         });
       },
       submit(valObj) {
@@ -600,7 +600,10 @@
   };
 </script>
 
-<style rel="stylesheet/less" type="text/less" lang="less" scoped>
+<style rel="stylesheet/less" type="text/less" lang="less">
+  @import (once) '../../vue2-front/assets/css/less-template/template-defines';
+  @import (once) '../../assets/css/defines';
+
   .moving-heart {
     @sz: 1.65rem;
     position: absolute;
@@ -613,7 +616,21 @@
     transform: translate(-50%, -50%);
     width: @sz;
     height: @sz;
-    background: rgba(0, 0, 0, 0.2);
+    /*background: rgba(0, 0, 0, 0.2);*/
+    color: red;
+    & {
+      .keyframes(heartmove); .-frames(@-...) {
+        0% {
+          margin-top: 0;
+          opacity: 1;
+        }
+        100% {
+          margin-top: -10rem;
+          opacity: 0;
+        }
+      }
+    }
+    .animation(heartmove, 2s, linear);
     &::before {
       font-family: fontello, sans-serif;
       content: '\e801';
@@ -625,13 +642,13 @@
       text-align: center;
       font-size: @sz;
       line-height: @sz;
-      color: fade(red, 50%);
+      opacity: 0.75;
     }
   }
 </style>
 
 <style rel="stylesheet/less" type="text/less" lang="less" scoped>
-  @import (once) '../../vue2-front/assets/css/less-template/template';
+  @import (once) '../../vue2-front/assets/css/less-template/template-defines';
   @import (once) '../../assets/css/defines';
 
   #app-main-live {

@@ -113,7 +113,7 @@
       submit() {
         const vm = this;
         vm.api('Member').save({
-          action: 'updateMemberInfo',
+          action: 'update_member_info',
         }, {
           avatar: vm.avatar ? vm.avatar.id : 0,
           nickname: vm.nickname,

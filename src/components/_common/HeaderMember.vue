@@ -1,5 +1,6 @@
 <template>
-  <header class="component-header-member">
+  <header class="component-header-member"
+          :class="{'not-status-bar': !overlapStatusBar}">
     <div class="top-bar">
       <div class="top-btn-bar">
         <router-link :to="{name:'main_personal_settings'}"
@@ -169,7 +170,7 @@
               .num {
                 font-size: 33*@px;
                 color: #00E2FD;
-                word-break:break-all;
+                word-break: break-all;
               }
               &:last-child {
                 margin: 0;

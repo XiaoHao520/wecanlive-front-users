@@ -1,5 +1,6 @@
 <template>
-  <div id="app-main-live">
+  <div id="app-main-live"
+       :class="{'not-status-bar': !overlapStatusBar}">
     <v-touch class="swift-block"
              :swipeOptions="swipeOptions"
              @swiperight="swiperight($event)"
@@ -8,8 +9,8 @@
         <section class="section-top" v-show="!is_hide_all">
           <div class="left">
             <div class="avatar"
-                 :style="{backgroundImage: !!live && 'url('+ live.author_avatar +')'}"
                  @click="showMemberCard"></div>
+            <!--:style="{backgroundImage: !!live && !$cordova && 'url('+ live.author_avatar +')'}"-->
             <div class="owner-info">
               <div class="nickname">{{live ? live.nickname : ''}}</div>
               <div class="member-num">
@@ -61,7 +62,7 @@
           <div class="right">
             <a class="btn-jewel-box" @click="starbox_display=true"></a>
 
-            <a class="btn-mission" @click="starbox_display=true"></a>
+            <a class="btn-mission" @click="mission_display=true"></a>
             <!--家族头像-->
             <div class="audience-avatar-warpper">
               <a class="audience-avatar">
@@ -272,6 +273,7 @@
 
     <live-redbag :display="redbag_display" @click="redbag()"></live-redbag>
 
+    <live-mission :display="mission_display" @click="mission()"></live-mission>
 
     <transition :name="transitionNameLive">
       <router-view class="live-child-view"></router-view>
@@ -304,6 +306,9 @@
         giftbag_display: false,
         redbag_display: false,
         notice: false,
+        mission_display: false,
+        notice: true,
+        inputBox: false,
         live: null,
         authorMember: null,
         live_watch_log: [],
@@ -315,7 +320,29 @@
       this.transitionNameLive = toDepth < fromDepth ? 'slide-right' : 'slide-left';
       next();
     },
+    destroyed() {
+      if (window.TencentMLVB) {
+        document.body.style.background = 'white';
+        window.TencentMLVB.stopPush(
+//          success => {
+//            alert(success);
+//          },
+//          error => {
+//            alert(error);
+//          }
+        );
+        window.TencentMLVB.stopPlay(
+//          success => {
+//            alert(success);
+//          },
+//          error => {
+//            alert(error);
+//          }
+        );
+      }
+    },
     mounted() {
+      document.body.style.background = 'transparent';
     },
     computed: {
       is_owner() {
@@ -346,10 +373,27 @@
           if (window.TencentMLVB) {
             if (vm.is_owner) {
               // 主播的話開啓推流
-              window.TencentMLVB.startPush(vm.live.push_url);
+              window.TencentMLVB.startPush(
+                vm.live.push_url,
+//                success => {
+//                  alert(success);
+//                },
+//                error => {
+//                  alert(error);
+//                }
+              );
             } else {
               // 觀衆的話開啓播放
-              window.TencentMLVB.startPlay(vm.live.play_url);
+              window.TencentMLVB.startPlay(
+                vm.live.play_url,
+                window.TencentMLVB.PLAY_URL_TYPE.PLAY_TYPE_LIVE_FLV,
+                (success) => {
+//                  alert(success);
+                },
+                (error) => {
+//                  alert(error);
+                },
+              );
             }
           }
         });
@@ -492,6 +536,9 @@
       redbag(value) {
         this.redbag_display = value;
       },
+      mission(value) {
+        this.mission_display = value;
+      },
     },
   };
 </script>
@@ -502,12 +549,12 @@
 
   #app-main-live {
     /*background: url("../../assets/image/example/avatar.png") 50% 50% no-repeat;*/
-    /*-webkit-background-size: cover;*/
-    /*background-size: cover;*/
+    -webkit-background-size: cover;
+    background-size: cover;
     padding: @height-status-bar 0 0;
     .border-box();
     &.not-status-bar {
-      padding-top: 0;
+      /*padding-top: 0;*/
     }
     .swift-block {
       height: 100%-@height-status-bar;

@@ -52,7 +52,7 @@
   .transactions-list {
     padding: 0 30*@px;
     position: absolute;
-    top: 126*@px;
+    top: @height-header;
     left: 0; right: 0; bottom: 0; overflow-y: scroll;
     .app-scroll();
     .transactions-item {

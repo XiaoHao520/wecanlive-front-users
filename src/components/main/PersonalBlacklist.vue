@@ -50,7 +50,7 @@
     background: #E5E5EC;
     .black-list {
       position: absolute;
-      top: 126*@px;
+      top: @height-header;
       left: 0;
       right: 0;
       bottom: 0;

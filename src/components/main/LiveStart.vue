@@ -2,7 +2,8 @@
   <div id="app-main-live-start">
     <div class="background-avatar mask"
          :style="{backgroundImage: !!me && 'url('+ me.avatar_url +')'}"></div>
-    <div class="wrapper">
+    <div class="wrapper"
+         :class="{'not-status-bar': !overlapStatusBar}">
       <div class="top-bar">
         <div class="location">
           <div class="icon"></div>

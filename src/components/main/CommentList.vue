@@ -75,7 +75,7 @@
       padding: 30*@px 30*@px 0 30*@px;
       box-sizing: border-box;
       position: absolute;
-      top: 126*@px;
+      top: @height-header;
       bottom: 87*@px;
       left: 0;
       right: 0;

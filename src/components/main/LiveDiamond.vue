@@ -1,7 +1,8 @@
 <template>
   <div>
     <header-common title="鑽石貢獻榜" :backLink="backLink"></header-common>
-    <section class="section-list">
+    <section class="section-list"
+             :class="{'not-status-bar': !overlapStatusBar}">
       <template v-for="i in 10">
         <rank-item action="diamond"
                    :rank="i"
@@ -29,6 +30,7 @@
 <style rel="stylesheet/less" type="text/less" lang="less" scoped>
   @import (once) '../../vue2-front/assets/css/less-template/template';
   @import (once) '../../assets/css/defines';
+
   .section-list {
     position: absolute;
     top: @height-header + @height-status-bar;

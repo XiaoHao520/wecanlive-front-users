@@ -10,4 +10,5 @@ cd -
 rm -r ../wecanlive-cordova/www/*
 cp -r dist/* ../wecanlive-cordova/www
 cd ../wecanlive-cordova
-./sign.sh
+
+./build-android.sh

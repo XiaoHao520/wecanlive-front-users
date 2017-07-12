@@ -72,6 +72,7 @@
             <!--家族头像 END-->
           </div>
 
+          <!--活动按钮-->
           <a class="btn-activity"></a>
 
         </div>
@@ -307,7 +308,6 @@
         redbag_display: false,
         notice: false,
         mission_display: false,
-        notice: true,
         inputBox: false,
         live: null,
         authorMember: null,

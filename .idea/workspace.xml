@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4f4bd95f-7c85-4987-9347-a2175dafbe9e" name="Default" comment="Merge branch 'bin' of https://gitlab.com/easecloud/wecanlive-front into jie&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;">
+    <list default="true" id="4f4bd95f-7c85-4987-9347-a2175dafbe9e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/css/defines.less" afterPath="$PROJECT_DIR$/src/assets/css/defines.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/_common/DynamicItem.vue" afterPath="$PROJECT_DIR$/src/components/_common/DynamicItem.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/_common/InputItem.vue" afterPath="$PROJECT_DIR$/src/components/_common/InputItem.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/Hot.vue" afterPath="$PROJECT_DIR$/src/components/main/Hot.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/Index.vue" afterPath="$PROJECT_DIR$/src/components/main/Index.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/_popup/LiveRedBag.vue" afterPath="$PROJECT_DIR$/src/components/_popup/LiveRedBag.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/Live.vue" afterPath="$PROJECT_DIR$/src/components/main/Live.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/LiveStart.vue" afterPath="$PROJECT_DIR$/src/components/main/LiveStart.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vue2-front/plugins/notifier/NotifierRegistry.vue" afterPath="$PROJECT_DIR$/src/vue2-front/plugins/notifier/NotifierRegistry.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -33,65 +27,35 @@
           <file leaf-file-name="Live.vue" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/main/Live.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="4066">
-                  <caret line="336" column="29" lean-forward="false" selection-start-line="336" selection-start-column="29" selection-end-line="336" selection-end-column="29" />
+                <state relative-caret-position="3743">
+                  <caret line="197" column="48" lean-forward="false" selection-start-line="197" selection-start-column="48" selection-end-line="197" selection-end-column="48" />
                   <folding>
-                    <element signature="n#section#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-                    <element signature="n#div#0;n#transition#2;n#div#0;n#template#0;n#!!top" expanded="false" />
-                    <element signature="e#16799#20178#0" expanded="false" />
-                    <element signature="e#16905#18762#0" expanded="false" />
-                    <element signature="e#18776#19889#0" expanded="false" />
-                    <element signature="e#20199#22920#0" expanded="false" />
-                    <element signature="e#23966#24751#0" expanded="false" />
+                    <element signature="e#18102#21481#0" expanded="false" />
+                    <element signature="e#18208#20065#0" expanded="false" />
+                    <element signature="e#20079#21192#0" expanded="false" />
+                    <element signature="e#21502#24223#0" expanded="false" />
+                    <element signature="e#25269#26054#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="IndexMain.vue" pinned="false" current-in-tab="true">
+          <file leaf-file-name="LiveRedBag.vue" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveRedBag.vue">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="221">
+                  <caret line="165" column="43" lean-forward="false" selection-start-line="165" selection-start-column="43" selection-end-line="165" selection-end-column="43" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="IndexMain.vue" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/main/IndexMain.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="855">
-                  <caret line="45" column="51" lean-forward="true" selection-start-line="45" selection-start-column="51" selection-end-line="45" selection-end-column="51" />
+                <state relative-caret-position="608">
+                  <caret line="32" column="47" lean-forward="false" selection-start-line="32" selection-start-column="47" selection-end-line="32" selection-end-column="47" />
                   <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Hot.vue" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/main/Hot.vue">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1159">
-                  <caret line="61" column="9" lean-forward="false" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
-                  <folding>
-                    <element signature="e#2632#3267#0" expanded="false" />
-                    <element signature="e#3557#4788#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="DynamicItem.vue" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/_common/DynamicItem.vue">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="5073">
-                  <caret line="267" column="28" lean-forward="false" selection-start-line="267" selection-start-column="28" selection-end-line="267" selection-end-column="28" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="LiveStart.vue" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/main/LiveStart.vue">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1957">
-                  <caret line="103" column="49" lean-forward="false" selection-start-line="103" selection-start-column="49" selection-end-line="103" selection-end-column="49" />
-                  <folding>
-                    <element signature="e#6273#7167#0" expanded="false" />
-                    <element signature="e#7182#7458#0" expanded="false" />
-                    <element signature="e#7983#9489#0" expanded="false" />
-                    <element signature="e#8321#9134#0" expanded="false" />
-                  </folding>
                 </state>
               </provider>
             </entry>
@@ -136,7 +100,7 @@
                 <state relative-caret-position="1862">
                   <caret line="101" column="25" lean-forward="false" selection-start-line="101" selection-start-column="25" selection-end-line="101" selection-end-column="25" />
                   <folding>
-                    <element signature="e#4196#6245#0" expanded="false" />
+                    <element signature="e#4196#6342#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -155,7 +119,7 @@
           <file leaf-file-name="defines.less" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/assets/css/defines.less">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="387">
+                <state relative-caret-position="540">
                   <caret line="418" column="13" lean-forward="false" selection-start-line="418" selection-start-column="13" selection-end-line="418" selection-end-column="13" />
                   <folding>
                     <element signature="e#4429#6118#0" expanded="false" />
@@ -201,8 +165,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>blinkStar_display</find>
-      <find>is_hide_all</find>
       <find>top-area</find>
       <find>blink-star-warpper</find>
       <find>audience-avatar-warpper</find>
@@ -231,6 +193,8 @@
       <find>promptAction</find>
       <find>btn-jewel-box</find>
       <find>btn-bar</find>
+      <find>diamond</find>
+      <find>coin-icon</find>
     </findStrings>
     <replaceStrings>
       <replace>*@px</replace>
@@ -256,7 +220,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/passport/SignUp.vue" />
         <option value="$PROJECT_DIR$/src/components/passport/SignUpComplete.vue" />
         <option value="$PROJECT_DIR$/src/components/_common/HeaderIndex.vue" />
         <option value="$PROJECT_DIR$/src/assets/css/style.less" />
@@ -298,7 +261,6 @@
         <option value="$PROJECT_DIR$/src/components/main/Movies.vue" />
         <option value="$PROJECT_DIR$/src/components/_common/HeaderMember.vue" />
         <option value="$PROJECT_DIR$/src/components/main/MemberOfficial.vue" />
-        <option value="$PROJECT_DIR$/src/components/main/IndexMain.vue" />
         <option value="$PROJECT_DIR$/src/components/_common/InputItem.vue" />
         <option value="$PROJECT_DIR$/src/components/_common/DynamicItem.vue" />
         <option value="$PROJECT_DIR$/src/components/main/Index.vue" />
@@ -306,7 +268,9 @@
         <option value="$PROJECT_DIR$/src/components/main/LiveStart.vue" />
         <option value="$PROJECT_DIR$/src/vue2-front/plugins/notifier/NotifierRegistry.vue" />
         <option value="$PROJECT_DIR$/src/assets/css/defines.less" />
+        <option value="$PROJECT_DIR$/src/components/main/IndexMain.vue" />
         <option value="$PROJECT_DIR$/src/components/main/Live.vue" />
+        <option value="$PROJECT_DIR$/src/components/_popup/LiveRedBag.vue" />
       </list>
     </option>
   </component>
@@ -341,7 +305,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -510,6 +473,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="_popup" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wecanlive-front" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wecanlive-front" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="_common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -556,6 +541,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -597,6 +583,17 @@
         <script value="build" />
       </scripts>
       <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="BashConfigurationType" factoryName="Bash">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <module name="" />
       <envs />
       <method />
     </configuration>
@@ -705,7 +702,9 @@
       <workItem from="1499224114354" duration="43698000" />
       <workItem from="1499393725076" duration="44858000" />
       <workItem from="1499738232958" duration="2023000" />
-      <workItem from="1499760477194" duration="298000" />
+      <workItem from="1499760477194" duration="616000" />
+      <workItem from="1499761249538" duration="1875000" />
+      <workItem from="1499842796842" duration="40000" />
     </task>
     <task id="LOCAL-00001" summary="頭部">
       <created>1498446946309</created>
@@ -854,11 +853,25 @@
       <option name="project" value="LOCAL" />
       <updated>1499668076087</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Merge branch 'bin' of https://gitlab.com/easecloud/wecanlive-front into jie&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;">
+      <created>1499760777409</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1499760777409</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Merge branch 'master' of https://gitlab.com/easecloud/wecanlive-front into jie&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/components/main/Live.vue&#10;">
+      <created>1499842810330</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1499842810330</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="353948000" />
+    <option name="totallyTimeSpent" value="356181000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -873,25 +886,25 @@
     <frame x="0" y="24" width="1920" height="993" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15981013" sideWeight="0.62568307" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15981013" sideWeight="0.591528" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32997763" sideWeight="0.4978903" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18120806" sideWeight="0.45516878" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17673378" sideWeight="0.49367088" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15981013" sideWeight="0.37431693" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18120806" sideWeight="0.5448312" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2606264" sideWeight="0.4593882" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23042506" sideWeight="0.49156117" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15981013" sideWeight="0.408472" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3210291" sideWeight="0.48101267" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2606264" sideWeight="0.5406118" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32997763" sideWeight="0.4978903" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -932,7 +945,8 @@
     <MESSAGE value="111" />
     <MESSAGE value="merge bin" />
     <MESSAGE value="Merge branch 'bin' of https://gitlab.com/easecloud/wecanlive-front into jie&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'bin' of https://gitlab.com/easecloud/wecanlive-front into jie&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;" />
+    <MESSAGE value="Merge branch 'master' of https://gitlab.com/easecloud/wecanlive-front into jie&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/components/main/Live.vue&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://gitlab.com/easecloud/wecanlive-front into jie&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/components/main/Live.vue&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -941,13 +955,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/_common/HeaderCommon.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="49" column="20" lean-forward="false" selection-start-line="49" selection-start-column="6" selection-end-line="49" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/_common/RankItem.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="475">
@@ -1254,7 +1261,7 @@
         <state relative-caret-position="1862">
           <caret line="101" column="25" lean-forward="false" selection-start-line="101" selection-start-column="25" selection-end-line="101" selection-end-column="25" />
           <folding>
-            <element signature="e#4196#6245#0" expanded="false" />
+            <element signature="e#4196#6342#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1268,14 +1275,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/main/LiveStart.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1957">
-          <caret line="103" column="49" lean-forward="false" selection-start-line="103" selection-start-column="49" selection-end-line="103" selection-end-column="49" />
-          <folding>
-            <element signature="e#6273#7167#0" expanded="false" />
-            <element signature="e#7182#7458#0" expanded="false" />
-            <element signature="e#7983#9489#0" expanded="false" />
-            <element signature="e#8321#9134#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="1995">
+          <caret line="105" column="11" lean-forward="false" selection-start-line="105" selection-start-column="11" selection-end-line="105" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -1283,10 +1284,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1159">
           <caret line="61" column="9" lean-forward="false" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
-          <folding>
-            <element signature="e#2632#3267#0" expanded="false" />
-            <element signature="e#3557#4788#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1294,7 +1291,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5073">
           <caret line="267" column="28" lean-forward="false" selection-start-line="267" selection-start-column="28" selection-end-line="267" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1302,13 +1298,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
           <caret line="16" column="4" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/assets/css/defines.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
+        <state relative-caret-position="540">
           <caret line="418" column="13" lean-forward="false" selection-start-line="418" selection-start-column="13" selection-end-line="418" selection-end-column="13" />
           <folding>
             <element signature="e#4429#6118#0" expanded="false" />
@@ -1319,26 +1314,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/main/IndexMain.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="32" column="47" lean-forward="false" selection-start-line="32" selection-start-column="47" selection-end-line="32" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/main/Live.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4066">
-          <caret line="336" column="29" lean-forward="false" selection-start-line="336" selection-start-column="29" selection-end-line="336" selection-end-column="29" />
+        <state relative-caret-position="3743">
+          <caret line="197" column="48" lean-forward="false" selection-start-line="197" selection-start-column="48" selection-end-line="197" selection-end-column="48" />
           <folding>
-            <element signature="n#section#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#transition#2;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#16799#20178#0" expanded="false" />
-            <element signature="e#16905#18762#0" expanded="false" />
-            <element signature="e#18776#19889#0" expanded="false" />
-            <element signature="e#20199#22920#0" expanded="false" />
-            <element signature="e#23966#24751#0" expanded="false" />
+            <element signature="e#18102#21481#0" expanded="false" />
+            <element signature="e#18208#20065#0" expanded="false" />
+            <element signature="e#20079#21192#0" expanded="false" />
+            <element signature="e#21502#24223#0" expanded="false" />
+            <element signature="e#25269#26054#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/main/IndexMain.vue">
+    <entry file="file://$PROJECT_DIR$/src/components/_popup/LiveRedBag.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
-          <caret line="45" column="51" lean-forward="true" selection-start-line="45" selection-start-column="51" selection-end-line="45" selection-end-column="51" />
+        <state relative-caret-position="221">
+          <caret line="165" column="43" lean-forward="false" selection-start-line="165" selection-start-column="43" selection-end-line="165" selection-end-column="43" />
           <folding />
         </state>
       </provider>

@@ -73,6 +73,7 @@ data = {
 
 #### 用户点赞 `type = 'like'`
 
+```
 data = {
   fromAccount: '13800138000',
   sessionId: 'live_5',
@@ -81,5 +82,61 @@ data = {
     // 无需额外参数
   },
 };
+```
 
+#### 用户跟踪 `type = 'follow'`
 
+```
+data = {
+  fromAccount: '13800138000',
+  sessionId: 'live_5',
+  data: {
+    type: 'follow',
+    // 无需额外参数
+  },
+};
+```
+
+#### 用户分享 `type = 'share'`
+
+```
+data = {
+  fromAccount: '13800138000',
+  sessionId: 'live_5',
+  data: {
+    type: 'share',
+    // 无需额外参数
+  },
+};
+```
+
+#### 用户发表普通评论 `type = 'comment'`
+
+```
+data = {
+  fromAccount: '13800138000',
+  sessionId: 'live_5',
+  data: {
+    type: 'comment',
+    comment: {
+      id: xxx,
+      author: xxx,
+      content: xxx,
+      // ... 后台 CommentSerialzer 产生的对象
+    },
+  },
+};
+```
+
+#### 事件通知 `type = 'notify'`
+
+```
+data = {
+  fromAccount: '13800138000',
+  sessionId: 'live_5',
+  data: {
+    type: 'notify',
+    content: '大小姐進入了房間',
+  },
+};
+```

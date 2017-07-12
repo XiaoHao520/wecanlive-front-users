@@ -1,15 +1,15 @@
 <template>
   <div class="component-input-item">
     <section class="section-input-text" v-if="display">
-      <div class="warn-text">
-        <span class="text">輸入了不符合wecanlive規範的文字</span>
-      </div>
+      <!--<div class="warn-text">-->
+        <!--<span class="text">輸入了不符合wecanlive規範的文字</span>-->
+      <!--</div>-->
       <!--输入框-->
       <div class="input-box-warpper">
 
         <div class="toggle-btn"
              :class="{checked: inputBarrage}"
-             @click="switchBarrage">
+             @click="toggleBarrage()">
           <transition name="fade">
             <div class="bg-color-gray" v-if="!inputBarrage"></div>
           </transition>
@@ -18,9 +18,9 @@
           </transition>
           <div class="btn">彈幕</div>
         </div>
-        <a class="btn-more" @click="toggleMoreBox"></a>
+        <a class="btn-more" @click="toggleMoreBox()"></a>
         <input type="text" :placeholder="placeholder" ref="input" v-model="content">
-        <a class="btn-submit" @click="handleSubmit">發送</a>
+        <a class="btn-submit" @click="handleSubmit()">發送</a>
       </div>
       <!--输入框 END-->
 
@@ -176,7 +176,7 @@
       toggleMoreBox() {
         this.moreBox_display = !this.moreBox_display;
       },
-      switchBarrage() {
+      toggleBarrage() {
         const vm = this;
         vm.inputBarrage = !vm.inputBarrage;
         if (vm.inputBarrage) {
@@ -197,7 +197,7 @@
           vm.caret_pos = ctrl.selectionStart;
         }
         // CarePos 光标位置
-        vm.content = vm.content.slice(0, vm.caret_pos) + tw +
+        vm.content = vm.content.slice(0, vm.caret_pos) + twemoji.convert.fromCodePoint(tw) +
           vm.content.slice(vm.caret_pos, vm.content.length);
         if (ctrl.setSelectionRange) {
           vm.caret_pos += 2;

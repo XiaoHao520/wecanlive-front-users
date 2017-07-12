@@ -280,7 +280,7 @@
     <live-redbag :display="redbag_display" @click="redbag()"></live-redbag>
 
     <live-mission :display="mission_display"
-                  @click="mission()"></live-mission>
+                  @click="mission"></live-mission>
 
     <transition :name="transitionNameLive">
       <router-view class="live-child-view"></router-view>
@@ -315,7 +315,7 @@
         giftbag_display: false,
         redbag_display: false,
         notice: false,
-        mission_display: false,
+        mission_display: true,
         inputBox: false,
         live: null,
         authorMember: null,
@@ -426,6 +426,7 @@
       },
       submit(valObj) {
         const vm = this;
+        console.log(valObj);
         if (valObj.isBarrage) {
           const top = Math.random() * 12.48;
           const barrageid = Math.random() * 10000;
@@ -551,7 +552,11 @@
         this.redbag_display = value;
       },
       mission(value) {
-        this.mission_display = value;
+        const vm = this;
+        vm.mission_display = false;
+        if (value === 'share') {
+          vm.share();
+        }
       },
       showGiftBag() {
         const vm = this;
@@ -628,7 +633,8 @@
     /*background: rgba(0, 0, 0, 0.2);*/
     color: red;
     & {
-      .keyframes(heartmove); .-frames(@-...) {
+      .keyframes(heartmove);
+      .-frames(@-...) {
         0% {
           margin-top: 0;
           opacity: 1;

@@ -54,13 +54,14 @@
 
             <li class="mission-item">
               <div class="mission-content">
-                <div class="title">完善資料<span>(0/1)</span></div>
+                <div class="title">完善資料<span>({{ live_watch_record.information_mission_count }}/1)</span></div>
                 <p class="mission-intro">捕全頭像，性別，簽名，生日，</p>
                 <p class="mission-intro">所在地區資訊,可獲得10元氣</p>
               </div>
-              <router-link :to="{name: 'main_personal_profile'}"
+              <router-link v-if="live_watch_record.information_mission_count === 0" :to="{name: 'main_personal_profile'}"
                            class="get-btn">完善
               </router-link>
+              <a href="javascript:;" v-else class="get-btn ">完善</a>
             </li>
           </ul>
         </div>
@@ -92,12 +93,10 @@
         vm.api('LiveWatchLog').get({
           author: vm.me.id,
           live: vm.$route.params.id,
-          fields: 'watch_mission_count',
+          fields: 'watch_mission_count,information_mission_count',
         }).then((resp) => {
           vm.live_watch_record = resp.data.results[0];
-          vm.live_watch_record.watch_mission_count = 8;
           vm.dateCountDown();
-          console.log(vm.watch_mission_date_distance);
         });
       },
       handleClick(evt) {
@@ -109,17 +108,31 @@
       dateCountDown() {
         const vm = this;
         if (vm.live_watch_record.watch_mission_count < 8) {
-          vm.watch_mission_date_distance = 1800000;
+//          vm.watch_mission_date_distance = 1800000;
+          vm.watch_mission_date_distance = 10000;
           const timer = setInterval(() => {
             vm.watch_mission_date_distance -= 1000;
             if (vm.watch_mission_date_distance <= 0) {
               vm.watch_mission_achievement = true;
+              vm.watch_mission_date_distance = '0';
               clearInterval(timer);
             }
           }, 1000);
         } else {
           vm.watch_mission_date_distance = '0';
         }
+      },
+      getWatchMission() {
+        const vm = this;
+        vm.watch_mission_achievement = false;
+        vm.api('StarMissionAchievement').save({
+          action: 'achievement_watch_mission',
+        }, {
+          live: vm.$route.params.id,
+        }).then(() => {
+          // 领取完成后
+          vm.reload();
+        });
       },
     },
     props: {
@@ -294,6 +307,10 @@
             top: 10*@px;
             width: 120*@px;
             text-align: center;
+            &.get-btn-while {
+              color: #2F02ED;
+              background: #fff;
+            }
           }
         }
       }

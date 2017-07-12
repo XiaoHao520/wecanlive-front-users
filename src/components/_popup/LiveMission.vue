@@ -15,10 +15,18 @@
           <div class="mission-detail">
             <div class="content">每觀看30分鐘，可獲得5元氣</div>
 
-            <div class="date">29:52<span>(1/8)</span></div>
+            <div class="date">{{ watch_mission_date_distance | date('MM:ss') }}<span>({{ live_watch_record.watch_mission_count }}/8)</span>
+            </div>
           </div>
 
-          <a href="javascript:;" class="get-btn">領取</a>
+          <a href="javascript:;"
+             v-if="watch_mission_achievement && live_watch_record.watch_mission_count < 8"
+             @click="getWatchMission()"
+             class="get-btn get-btn-active">領取</a>
+
+          <a href="javascript:;"
+             v-else
+             class="get-btn">領取</a>
         </div>
 
         <div class="mission-list">
@@ -28,7 +36,9 @@
                 <div class="title">分享直播間<span>(0/3)</span></div>
                 <p class="mission-intro mission-intro-1">分享直播，每次可獲得獎勵5元氣</p>
               </div>
-              <a href="javascript:;" class="get-btn">分享</a>
+              <a href="javascript:;"
+                 class="get-btn"
+                 @click=share()>分享</a>
             </li>
 
             <li class="mission-item">
@@ -37,7 +47,9 @@
                 <p class="mission-intro">在《個人中心》&rarr;《設定》&rarr;《邀請好友》，</p>
                 <p class="mission-intro">每邀請成功1個好友註冊，你和好友都可獲得獎勵40元氣</p>
               </div>
-              <a href="javascript:;" class="get-btn">邀請</a>
+              <router-link :to="{name: 'main_personal_referrer'}"
+                           class="get-btn">邀請
+              </router-link>
             </li>
 
             <li class="mission-item">
@@ -46,7 +58,9 @@
                 <p class="mission-intro">捕全頭像，性別，簽名，生日，</p>
                 <p class="mission-intro">所在地區資訊,可獲得10元氣</p>
               </div>
-              <a href="javascript:;" class="get-btn">完善</a>
+              <router-link :to="{name: 'main_personal_profile'}"
+                           class="get-btn">完善
+              </router-link>
             </li>
           </ul>
         </div>
@@ -65,15 +79,52 @@
 
 <script type="text/babel" lang="babel">
   export default {
+    data() {
+      return {
+        live_watch_record: [],
+        watch_mission_date_distance: 0,
+        watch_mission_achievement: false,
+      };
+    },
     methods: {
       reload() {
+        const vm = this;
+        vm.api('LiveWatchLog').get({
+          author: vm.me.id,
+          live: vm.$route.params.id,
+          fields: 'watch_mission_count',
+        }).then((resp) => {
+          vm.live_watch_record = resp.data.results[0];
+          vm.live_watch_record.watch_mission_count = 8;
+          vm.dateCountDown();
+          console.log(vm.watch_mission_date_distance);
+        });
       },
       handleClick(evt) {
         this.$emit('click', !this.display);
       },
+      share(evt) {
+        this.$emit('click', 'share');
+      },
+      dateCountDown() {
+        const vm = this;
+        if (vm.live_watch_record.watch_mission_count < 8) {
+          vm.watch_mission_date_distance = 1800000;
+          const timer = setInterval(() => {
+            vm.watch_mission_date_distance -= 1000;
+            if (vm.watch_mission_date_distance <= 0) {
+              vm.watch_mission_achievement = true;
+              clearInterval(timer);
+            }
+          }, 1000);
+        } else {
+          vm.watch_mission_date_distance = '0';
+        }
+      },
     },
     props: {
       display: Boolean,
+      record: {},
     },
   };
 </script>
@@ -186,6 +237,10 @@
           background: #fff;
           .border-radius(30*@px);
           text-align: center;
+          &.get-btn-active {
+            background: #A201FD;
+            color: #fff;
+          }
         }
       }
 

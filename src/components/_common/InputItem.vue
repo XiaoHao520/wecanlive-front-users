@@ -18,7 +18,7 @@
           </transition>
           <div class="btn">彈幕</div>
         </div>
-        <a class="btn-more" @click="toggleMoreBox">+</a>
+        <a class="btn-more" @click="toggleMoreBox"></a>
         <input type="text" :placeholder="placeholder" ref="input" v-model="content">
         <a class="btn-submit" @click="handleSubmit">發送</a>
       </div>
@@ -339,17 +339,13 @@
         }
         .btn-more {
           float: left;
-          width: 44*@px;
-          height: 44*@px;
+          width: 54*@px;
+          height: 54*@px;
           margin-top: 23*@px;
           margin-left: 15*@px;
-          .rounded-corners(50%);
-          color: #BABDBE;
-          text-align: center;
-          line-height: 44*@px;
-          border: 5*@px solid #BABDBE;
-          font-weight: bold;
-          font-size: 45*@px;
+          background: url("../../assets/image/D/d2_3_icon_add@3x.png") 50% 50% no-repeat;
+          -webkit-background-size: 100%;
+          background-size: 100%;
         }
         input {
           float: left;

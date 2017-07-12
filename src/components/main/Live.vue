@@ -72,6 +72,7 @@
             <!--家族头像 END-->
           </div>
 
+          <!--活动按钮-->
           <a class="btn-activity"></a>
 
         </div>
@@ -303,18 +304,18 @@
         ],
         barrages: [],
         is_hide_all: false,
-        memberCard_display: false,
         bottom_nav_btn_display: false,
+        memberCard_display: false,
         bottom_nav_display: false,
+        blinkStar_display: false,
         audioBox_display: false,
+        inputBox_display: false,
         starbox_display: false,
         giftbag_display: false,
         redbag_display: false,
+        notice: false,
         mission_display: false,
-        notice: true,
         inputBox: false,
-        blinkStar_display: false,
-        inputBox_display: false,
         live: null,
         authorMember: null,
         live_watch_log: [],
@@ -480,7 +481,7 @@
               }, {
                 live: vm.$route.params.id,
               }).then(() => {
-                vm.$router.replace({ name: 'main_index' });
+                vm.goBack({ name: 'main_index' });
               });
             }
           });

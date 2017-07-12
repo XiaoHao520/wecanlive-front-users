@@ -136,7 +136,7 @@
       },
       handleScroll(evt) {
         const vm = this;
-        vm.tab_absolute = vm.$refs.user_recommend ? evt.target.scrollTop >= vm.$refs.user_recommend.offsetHeight : false;
+        vm.tab_absolute = vm.$refs.user_recommend ? evt.target.scrollTop >= vm.$refs.user_recommend.offsetHeight : true;
       },
     },
   };

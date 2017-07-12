@@ -108,31 +108,31 @@
       setLive(type) {
         const vm = this;
         if (type === 0) {
-          vm.prompt('', '設置密碼', '', '輸入6-8位字母數字組合的密碼').then((value) => {
+          vm.prompt('', '設置密碼', '', '輸入6-8位字母數字組合的密碼', '是否隱藏直播間').then((item) => {
             const reg = /^[a-zA-Z0-9]{6,10}$/;
-            if (!reg.test(value)) {
+            if (!reg.test(item.value)) {
               vm.notify('密碼格式不正確！');
               return;
             }
-            vm.password = value;
+            vm.password = item.value;
           });
         } else if (type === 1) {
-          vm.prompt('', '設置收費', '', '輸入需要的金幣數量').then((value) => {
+          vm.prompt('', '設置收費', '', '輸入需要的金幣數量').then((item) => {
             const reg = /^([1-9]\d*|[0]{1,1})$/;
-            if (!reg.test(value)) {
+            if (!reg.test(item.value)) {
               vm.notify('金幣數量要大於或等於零！');
               return;
             }
-            vm.paid = value;
+            vm.paid = item.value;
           });
         } else if (type === 2) {
-          vm.prompt('', '設置上限人數', '', '進入直播間的上限人數').then((value) => {
+          vm.prompt('', '設置上限人數', '', '進入直播間的上限人數').then((item) => {
             const reg = /^([1-9]\d*|[0]{1,1})$/;
-            if (!reg.test(value)) {
+            if (!reg.test(item.value)) {
               vm.notify('人數要大於或等於零！');
               return;
             }
-            vm.quota = value;
+            vm.quota = item.value;
           });
         }
       },

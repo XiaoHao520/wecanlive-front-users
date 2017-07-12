@@ -8,6 +8,7 @@
           <a v-if="!diamond" href="javascript:;" class="balance-recharge">
             <div class="coin-icon"></div>
             400<i></i>充值
+            <div class="icon-caret"></div>
           </a>
         </div>
 
@@ -77,7 +78,7 @@
   export default {
     data() {
       return {
-        diamond: true,
+        diamond: false,
         red_choice: true,
         red_confirm: false,
         success: false,
@@ -165,7 +166,7 @@
           -o-transform: translate(0, -50%);
           transform: translate(0, -50%);
           color: #fff;
-          padding: 0 25*@px 0 41*@px;
+          padding: 0 0 0 41*@px;
           .coin-icon {
             width: 32*@px;
             height: 32*@px;
@@ -183,6 +184,15 @@
           i {
             display: inline-block;
             width: 30*@px;
+          }
+          .icon-caret {
+            float: right;
+            margin-top: 34*@px;
+            width: 32*@px;
+            height: 32*@px;
+            background: url("../../assets/image/D/d1_1_icon_back@3x.png") 50% 50% no-repeat;
+            background-size: 100%;
+            .transform(rotate(180deg));
           }
         }
       }

@@ -263,6 +263,7 @@
         word-break: break-all;
       }
       .btn-bar {
+        border-top: 1px solid #E4E4EB;
         height: 80*@px;
         line-height: 80*@px;
         width: 100%;

@@ -311,7 +311,7 @@
         starbox_display: false,
         giftbag_display: false,
         redbag_display: false,
-        mission_display: true,
+        mission_display: false,
         notice: true,
         inputBox: false,
         blinkStar_display: false,

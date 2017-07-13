@@ -112,6 +112,28 @@
               </div>
             </div>
             <!--普通弹幕 END-->
+
+            <!--礼物效果-->
+            <div v-for="gift in gift_barrages"
+                 :ref="'gift_'+gift.data.gift.id"
+                 class="popup-gift">
+              <div class="gift-icon" :style="{backgroundImage: 'url(' + gift.data.gift.prize_image + ')'}"></div>
+              <div class="gift-author">
+                <div class="avatar"
+                     :style="{backgroundImage: 'url(' + gift.sender.member_avatar + ')'}"></div>
+                <div class="nickname">
+                  <div class="name">{{ gift.sender.nickname }}</div>
+                  <div class="level">lv.{{ gift.sender.member_level }}</div>
+                  <div class="vip">{{ gift.sender.member_vip_level }}</div>
+                </div>
+                <div class="gift-name">送出{{ gift.data.gift.prize_name }}</div>
+                <div class="gift-count">
+                  <div class="add-icon"></div>
+                  <div class="num-icon"></div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </section>
       </transition>
@@ -269,9 +291,12 @@
                   :item="author_member"
                   @click="starbox()"></live-starbox>
 
-    <live-giftbag :display="giftbag_display" @click="giftbag()"></live-giftbag>
+    <!-- apply 會返回一個禮物流水對象 -->
+    <live-gift-bag :display="giftbag_display"
+                  @apply="sendGift"></live-gift-bag>
 
-    <live-redbag :display="redbag_display" @click="redbag()"></live-redbag>
+    <live-redbag :display="redbag_display"
+                 @click="redbag"></live-redbag>
 
     <live-mission :display="mission_display"
                   @click="mission"></live-mission>
@@ -315,6 +340,7 @@
         live: null,
         live_watch_log: null,
         author_member: null,
+        gift_barrages: [],
       };
     },
     beforeRouteUpdate(to, from, next) {
@@ -493,9 +519,6 @@
       starbox(value) {
         this.starbox_display = value;
       },
-      giftbag(value) {
-        this.giftbag_display = value;
-      },
       redbag(value) {
         this.redbag_display = value;
       },
@@ -652,6 +675,34 @@
       showSystem(msg) {
         const vm = this;
         vm.messages.push({ type: 'system', ...msg });
+      },
+      sendGift(prizeOrder) {
+        const vm = this;
+        vm.giftbag_display = false;
+        if (prizeOrder) {
+          vm.sendIM(`live_${vm.$route.params.id}`, { type: 'gift', prizeOrder });
+        }
+      },
+      showGift(gift) {
+        const vm = this;
+        const prizeOrder = gift.data;
+        debugger;
+        vm.gift_barrages.push(gift);
+        vm.$nextTick(() => {
+          setTimeout(() => {
+            const refId = `gift_${prizeOrder.id}`;
+            const ref = vm.$refs[refId] && vm.$refs[refId][0];
+            if (!ref) return;
+            ref.style.transform = 'translate3d(-100%,0,0)';
+            /* 监听 transition! */
+            ref.addEventListener('webkitTransitionEnd', () => {
+              vm.gift_barrages.splice(vm.gift_barrages.indexOf(gift), 1);
+            });
+            ref.addEventListener('transitionend', () => {
+              vm.gift_barrages.splice(vm.gift_barrages.indexOf(gift), 1);
+            });
+          }, 0);
+        });
       },
     },
   };
@@ -1106,6 +1157,137 @@
             max-width: 14rem;
             .nowrap();
             font-size: 22*@px;
+          }
+        }
+      }
+      .popup-gift {
+        display: inline-block;
+        top: 240*@px;
+        position: absolute;
+        z-index: 9;
+        -webkit-transform: translate3d(20rem, 0, 0);
+        -moz-transform: translate3d(20rem, 0, 0);
+        -ms-transform: translate3d(20rem, 0, 0);
+        -o-transform: translate3d(20rem, 0, 0);
+        transform: translate3d(20rem, 0, 0);
+        -webkit-transition: all 4s linear;
+        -moz-transition: all 4s linear;
+        -ms-transition: all 4s linear;
+        -o-transition: all 4s linear;
+        transition: all 4s linear;
+        .gift-icon {
+          margin: 0 auto;
+          width: 465*@px;
+          height: 160*@px;
+          background: 50% 50% no-repeat;
+          background-size: cover;
+        }
+        .gift-author {
+          width: 360*@px;
+          margin: 30*@px auto 0 auto;
+          background: rgba(0, 0, 0, 0.3);
+          height: 72*@px;
+          border-radius: 35*@px;
+          position: relative;
+          padding-left: 80*@px;
+          box-sizing: border-box;
+          .avatar {
+            height: 68*@px;
+            width: 68*@px;
+            border-radius: 50%;
+            background: 50% 50% no-repeat;
+            background-size: cover;
+            position: absolute;
+            top: 2*@px;
+            left: 2*@px;
+          }
+          .nickname {
+            .clearfix();
+            .name {
+              float: left;
+              color: #fff;
+              font-size: 24*@px;
+            }
+            .level {
+              background: url("../../assets/image/B1/icon_huangguan@3x.png") 50% 50% no-repeat;
+              background-size: 100%;
+              width: 86*@px;
+              height: 32*@px;
+              float: left;
+              color: #0928DF;
+              font-size: 18*@px;
+              padding-left: 38*@px;
+              box-sizing: border-box;
+              line-height: 32*@px;
+            }
+            .vip {
+              float: left;
+              display: inline-block;
+              vertical-align: text-bottom;
+              height: 32*@px;
+              line-height: 32*@px;
+              width: 62*@px;
+              color: #5E21EE;
+              font-size: 20*@px;
+              text-indent: 43*@px;
+              background: url("../../assets/image/B1/icon_vip@3x.png") 50% 50% no-repeat;
+              -webkit-background-size: 100%;
+              background-size: 100%;
+              .border-box();
+              padding-top: 2*@px;
+            }
+          }
+          .gift-name {
+            font-size: 24*@px;
+            color: #fff;
+          }
+          .gift-count {
+            position: absolute;
+            left: 310*@px;
+            bottom: 0;
+            min-width: 120*@px;
+            height: 80*@px;
+            .add-icon {
+              display: inline-block;
+              width: 46*@px;
+              height: 80*@px;
+              background: url("../../assets/image/num/numberX.gif") 50% 50% no-repeat;
+              background-size: 100%;
+            }
+            .num-icon {
+              display: inline-block;
+              width: 50*@px;
+              height: 80*@px;
+              background: url("../../assets/image/num/number0.gif") 50% 50% no-repeat;
+              background-size: 100%;
+              &.num-icon-1 {
+                background-image: url("../../assets/image/num/number1.gif");
+              }
+              &.num-icon-2 {
+                background-image: url("../../assets/image/num/number2.gif");
+              }
+              &.num-icon-3 {
+                background-image: url("../../assets/image/num/number3.gif");
+              }
+              &.num-icon-4 {
+                background-image: url("../../assets/image/num/number4.gif");
+              }
+              &.num-icon-5 {
+                background-image: url("../../assets/image/num/number5.gif");
+              }
+              &.num-icon-6 {
+                background-image: url("../../assets/image/num/number6.gif");
+              }
+              &.num-icon-7 {
+                background-image: url("../../assets/image/num/number7.gif");
+              }
+              &.num-icon-8 {
+                background-image: url("../../assets/image/num/number8.gif");
+              }
+              &.num-icon-9 {
+                background-image: url("../../assets/image/num/number9.gif");
+              }
+            }
           }
         }
       }

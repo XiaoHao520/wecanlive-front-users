@@ -31,6 +31,7 @@
               }"></div>
         </div>
 
+        <!-- 揹包 -->
         <transition :name="transitionName">
           <div v-if="tab==0" class="active-gift gift-list">
 
@@ -53,6 +54,7 @@
           </div>
         </transition>
 
+        <!-- 揹包 -->
         <transition :name="transitionName">
           <div v-if="tab==1" class="box-gift gift-list starbox-gift">
 
@@ -85,6 +87,7 @@
           </div>
         </transition>
 
+        <!-- 揹包 -->
         <transition :name="transitionName">
           <div v-if="tab==2" class="box-gift gift-list">
             <div v-if="active_prize.vip_prize.length==0" class="null-block">
@@ -102,11 +105,8 @@
                 <div class="gift-name">{{ prize.name }}</div>
               </li>
             </ul>
-
-
           </div>
         </transition>
-
 
         <div class="gift-footer">
           <a href="javascript:;" class="gift-bag-type" @click="BagShop()">
@@ -133,6 +133,7 @@
       </div>
     </transition>
 
+    <!-- 商店 -->
     <transition name="slide-down-up">
       <div class="bag-block" v-if="display && shop">
         <div class="vip-header">
@@ -182,12 +183,13 @@
           <transition :name="shpptransition">
             <div v-if="shoptab==i" class="active-gift gift-list">
               <ul>
-                <li v-for="prize in category.prizes_item"
-                    @click="choosePrize(prize)"
-                    class="gift-item">
-                  <div class="gift-icon" :style="{backgroundImage: 'url('+ prize.icon +')'}"></div>
-                  <div class="gift-name">{{ prize.name }}</div>
-                  <div class="gift-num">{{ prize.price }}</div>
+                <li v-for="p in category.prizes_item"
+                    @click="choosePrize(p)"
+                    class="gift-item"
+                    :class="{active: p.id==prize.id}">
+                  <div class="gift-icon" :style="{backgroundImage: 'url('+ p.icon +')'}"></div>
+                  <div class="gift-name">{{ p.name }}</div>
+                  <div class="gift-num">{{ p.price }}</div>
                   <div class="gift-exp">+300 經驗</div>
                 </li>
               </ul>
@@ -232,6 +234,7 @@
   export default {
     data() {
       return {
+        model: 'Live',
         tab: 0,
         shoptab: 0,
         bag: true,
@@ -270,7 +273,7 @@
           vm.view_starbox_distance = 500 - vm.me.star_prize_expend;
         }
       },
-      handleClick(evt) {
+      reset() {
         const vm = this;
         vm.tab = 0;
         vm.shoptab = 0;
@@ -279,7 +282,13 @@
         vm.prize = 0;
         vm.transitionName = 'slide-left';
         vm.shpptransition = 'slide-left';
-        this.$emit('click', !this.display);
+        vm.active = 0;
+        vm.active_prize_count = 1;
+        vm.active_prize_count_total = 1;
+      },
+      handleClick(evt) {
+        const vm = this;
+        vm.reset();
       },
       tabTo(pos) {
         const vm = this;
@@ -315,13 +324,16 @@
           vm.notify('請選擇禮物');
           return;
         }
-        vm.api('PrizeOrder').save({
+        vm.api().save({
+          id: vm.$route.params.id,
           action: 'buy_prize',
         }, {
-          live: vm.$route.params.id,
-          prize: vm.prize,
+          prize: vm.prize.id,
           count: vm.prize_count,
-        }).then(() => {
+        }).then((resp) => {
+          vm.reset();
+          // 这将返回一个 PrizeOrder 对象
+          this.$emit('apply', resp.data);
         });
       },
       sendActivePrize() {
@@ -331,24 +343,28 @@
           vm.notify('請選擇禮物');
           return;
         }
-        vm.api('PrizeTransition').save({
+        vm.api().save({
+          id: vm.$route.params.id,
           action: 'send_active_prize',
         }, {
-          live: vm.$route.params.id,
           prize: vm.active,
           count: vm.active_prize_count,
-        }).then(() => {
-          // todo 送完後的數量更新和動畫禮物
+        }).then((resp) => {
+          // 更新剩餘禮物數量
           vm.reload();
+          // 重新設置動作
+          vm.reset();
+          // 这将返回一个 PrizeOrder 对象
+          this.$emit('apply', resp.data);
         });
       },
       choosePrize(prize) {
         // 选择商店礼物
         const vm = this;
-        if (prize === prize.id) {
+        if (vm.prize === prize) {
           return;
         }
-        vm.prize = prize.id;
+        vm.prize = prize;
         vm.prize_count = 1;
       },
       chooseActivePrize(prize) {
@@ -642,12 +658,16 @@
         }
         .gift-item {
           float: left;
-          margin: 0 0 28*@px 0;
+          margin: -14*@px 0 14*@px 0;
+          padding: 14*@px 0;
           width: 25%;
           /*<!--width: 100*@px;-->*/
           color: #4D4D4F;
           font-size: 24*@px;
           text-align: center;
+          &.active {
+            background: fade(@color-main, 30%);
+          }
           .gift-icon {
             width: 100*@px;
             height: 106*@px;

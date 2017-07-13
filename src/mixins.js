@@ -103,6 +103,23 @@ export default {
       return ret;
     },
     /**
+     * 采用缓存机制，通过用户名获取一个用户对象
+     * @param username
+     */
+    getUserByUsername(username) {
+      const vm = this;
+      if (!window.userBuffer) window.userBuffer = {};
+      const userBuffer = window.userBuffer;
+      return new Promise((resolve, reject) => {
+        if (userBuffer[username]) resolve(userBuffer[username]);
+        vm.api('User').get({ username, page_size: 1 }).then(resp => {
+          if (!resp.data || !resp.data.results.length) reject();
+          userBuffer[username] = resp.data.results[0];
+          resolve(userBuffer[username]);
+        });
+      });
+    },
+    /**
      * 发送即时消息
      * @param target string 用户username/直播间live_{id}/家族family_{id}
      * @param content string JSON 格式的数据对象
@@ -151,22 +168,50 @@ export default {
           // console.error(data);
           // 直播室消息
           if (/^live_\d+$/.test(data.sessionId)) {  // 直播间消息
-            // TODO: 未实现
             // 如果当前不是在直播间里面，忽略这条消息
             if (vm.$route.name !== 'main_live' ||
               `live_${vm.$route.params.id}` !== data.sessionId) return;
-            const vmLive = vm.getVmByName('main_live');
             // 获取 main_live 房间的 vm
-            if (data.data.type === 'like') {
+            const vmLive = vm.getVmByName('main_live');
+
+            // 各种类型消息的路由
+            if (data.data.type === 'like') { // 点爱心
               vmLive.showLike(!isSelfSend);
-            } else if (data.data.type === 'comment') {
+            } else if (data.data.type === 'comment') { // 发普通评论
+              vm.getUserByUsername(data.fromAccount).then(user => {
+                vmLive.showComment({
+                  sender: user,
+                  data: data.data,
+                });
+              });
+            } else if (data.data.type === 'barrage') { // 弹幕
+              vm.getUserByUsername(data.fromAccount).then(user => {
+                vmLive.showBarrage({
+                  sender: user,
+                  data: data.data,
+                });
+              });
+            } else if (data.data.type === 'gift') { // 送礼物
               // TODO: 未实现
-            } else if (data.data.type === 'gift') {
-              // TODO: 未实现
-            } else if (data.data.type === 'share') {
-              // TODO: 未实现
-            } else if (data.data.type === 'follow') {
-              // TODO: 未实现
+            } else if (data.data.type === 'share') { // 分享
+              vm.getUserByUsername(data.fromAccount).then(user => {
+                vmLive.showShare(user);
+              });
+            } else if (data.data.type === 'follow') { // 追踪
+              vm.getUserByUsername(data.fromAccount).then(user => {
+                vmLive.showFollow(user);
+              });
+            } else if (data.data.type === 'notify') { // 事件通知
+              vm.getUserByUsername(data.fromAccount).then(user => {
+                vmLive.showNotify({
+                  sender: user,
+                  data: data.data,
+                });
+              });
+            } else if (data.data.type === 'system') { // 系统消息
+              vmLive.showSystem({
+                data: data.data,
+              });
             }
           } else if (/^family_\d+$/.test(data.sessionId)) {  // 家族消息
             // TODO: 未实现

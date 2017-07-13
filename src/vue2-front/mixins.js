@@ -441,5 +441,23 @@ export default {
       }
       return multiple ? result : null;
     },
+    echo(obj) {
+      console.log(obj);
+    },
+    waitFor(obj, prop, timeout = 5000) {
+      const vm = this;
+      let timedOut = false;
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          timedOut = true;
+          reject();
+        }, timeout);
+        const func = () => {
+          if (vm.getProperty(obj, prop)) resolve();
+          if (!timedOut) setTimeout(func, 200);
+        };
+        func();
+      });
+    },
   },
 };

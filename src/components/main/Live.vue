@@ -7,12 +7,17 @@
              @swipeleft="swipeleft($event)">
       <transition name="fade">
         <section class="section-top" v-show="!is_hide_all">
-          <div class="left">
+          <div class="left" v-if="author_member">
             <div class="avatar"
+                 :style="{backgroundImage: !!(author_member && author_member.avatar_url)
+                 && 'url('+author_member.avatar_url+')'}"
                  @click="showMemberCard"></div>
             <!--:style="{backgroundImage: !!live && !$cordova && 'url('+ live.author_avatar +')'}"-->
             <div class="owner-info">
-              <div class="nickname">{{live ? live.nickname : ''}}</div>
+              <div class="nickname">
+                {{author_member.member_avatar}}
+                {{live ? live.nickname : ''}}
+              </div>
               <div class="member-num">
                 <div class="icon"></div>
                 <div class="num">{{live ? live.count_view : 0}}</div>
@@ -20,10 +25,10 @@
             </div>
             <template v-if="live && !is_owner">
               <a class="btn-tracking"
-                 v-if="!live.author_is_following"
+                 v-if="!author_member.is_following"
                  @click="toggleFollow">追蹤</a>
               <a class="btn-tracking is-tracked"
-                 v-if="live.author_is_following"
+                 v-else
                  @click="toggleFollow">已追蹤</a>
             </template>
           </div>
@@ -92,18 +97,18 @@
             <div class="popup-normal"
                  v-for="barrage in barrages"
                  :key="barrage"
-                 :style="{top: barrage.positionTop}" :ref="barrage.ref">
+                 :style="{top: barrage.positionTop}"
+                 :ref="'barrage_'+barrage.id">
               <div class="avatar"
-                   :style="{backgroundImage: !!barrage && 'url('+barrage.senderAvatarUrl+')'}"></div>
+                   :style="{backgroundImage: !!(barrage && barrage.author_avatar_url)
+                   && 'url('+barrage.author_avatar_url+')'}"></div>
               <div class="right">
                 <div class="nickname">
-                  <span class="name">{{barrage.senderNickname}}</span>
-                  <span class="level">LV.{{barrage.senderLevel}}</span>
-                  <span class="vip">{{barrage.senderVip}}</span>
+                  <span class="name">{{barrage.author_nickname}}</span>
+                  <span class="level">lv.{{barrage.author_level}}</span>
+                  <span class="vip">{{barrage.author_vip_level}}</span>
                 </div>
-                <div class="content">
-                  {{barrage.content}}
-                </div>
+                <div class="content">{{barrage.content}}</div>
               </div>
             </div>
             <!--普通弹幕 END-->
@@ -112,86 +117,74 @@
       </transition>
       <!--弹幕 END-->
 
-
       <blink-star :display="blinkStar_display"
                   @click="toggleBlinkStar"></blink-star>
 
-      <div class="inout-mask"
-           v-if="inputBox_display"
-           @click="toggleInputBox"></div>
+      <div class="input-mask"
+           v-if="show_input_box"
+           @click="show_input_box=false"></div>
     </v-touch>
 
 
     <transition name="fade">
       <section class="section-bottom" v-show="!is_hide_all">
         <!--評論文字區-->
-        <section class="section-messages">
+        <section class="section-messages" @click="show_input_box=false">
+          <ul class="message-list">
+            <li class="message-item" v-for="message in messages">
+              <template v-if="message.type==='comment'">
+                <div class="nickname-block">
+                  <span class="name"
+                        :class="{purple:me.id===message.sender.id,
+                        yellow:me.id!==message.sender.id}">{{message.sender.member_nickname}}</span>
+                  <span class="tag tag-level">lv.{{message.sender.member_level}}</span>
+                  <span class="tag tag-vip"
+                        v-if="message.sender.member_vip_level">{{message.sender.member_vip_level}}</span>
+                </div>
+                <div class="content">{{message.data.comment.content}}</div>
+              </template>
+              <template v-else-if="message.type==='follow'">
+                <div class="nickname-block">
+                  <span class="name blue">{{message.user.member_nickname}}</span>
+                  <span class="tag tag-level">lv.{{message.user.member_level}}</span>
+                  <span class="tag tag-vip"
+                        v-if="message.user.member_vip_level">{{message.user.member_vip_level}}</span>
+                </div>
+                <div class="content">已追蹤主播</div>
+                <a class="btn-tracking" v-if="!is_owner && !author_member.is_following"
+                   @click="toggleFollow">+ 追蹤</a>
+              </template>
+              <template v-else-if="message.type==='share'">
+                <div class="nickname-block">
+                  <span class="name red">{{message.user.member_nickname}}</span>
+                  <span class="tag tag-level">lv.{{message.user.member_level}}</span>
+                  <span class="tag tag-vip"
+                        v-if="message.user.member_vip_level">{{message.user.member_vip_level}}</span>
+                </div>
+                <div class="content">已分享主播</div>
+                <a class="btn-share" @click="makeShare()">
+                  <span class="icon"></span>
+                  分享
+                </a>
+              </template>
+              <template v-else-if="message.type==='notify'">
+                <div class="content">{{message.data.content}}</div>
+              </template>
+              <template v-else-if="message.type==='system'">
+                <span class="tag-system">系统</span>
+                <div class="content">{{message.data.content}}</div>
+              </template>
+            </li>
 
-          <div class="message-item">
-            <span class="tag-system">系统</span>
-            <span class="content">
-            我們倡導清新綠色直播，
-            任何違反wecanleve規範的行爲都將收到相應的懲罰。
-            </span>
-          </div>
-
-          <div class="message-item">
-            <span class="nickname-block">
-              <span class="name blue">Kevin Chiu</span>
-              <span class="tag tag-level">LV.20</span>
-              <span class="tag tag-vip">2</span>
-            </span>
-            <span class="content">已追蹤主播</span>
-
-            <a class="btn-tracking"
-               v-if="!is_owner"
-               @click="toggleFollow">
-              <span class="icon">+</span>
-              追蹤
-            </a>
-
-          </div>
-
-          <div class="message-item">
-            <span class="nickname-block">
-              <span class="name red">Kevin Chiu</span>
-              <span class="tag tag-level">LV.20</span>
-              <span class="tag tag-vip">2</span>
-            </span>
-            <span class="content">已分享主播</span>
-
-            <a class="btn-share" @click="share">
-              <span class="icon"></span>
-              分享
-            </a>
-          </div>
-
-          <div class="message-item">
-            <span class="nickname-block">
-              <span class="name purple">Kevin Chiu</span>
-              <span class="tag tag-level">LV.20</span>
-              <span class="tag tag-vip">2</span>
-            </span>
-            <span class="content">你好可愛喔！</span>
-          </div>
-
-          <div class="message-item">
-            <span class="nickname-block">
-              <span class="name ">Kevin Chiu</span>
-              <span class="tag tag-level">LV.20</span>
-              <span class="tag tag-vip">2</span>
-            </span>
-            <span class="content">你好可愛喔！</span>
-          </div>
-
+          </ul>
         </section>
         <!--評論文字區 END-->
 
 
         <!--底部右邊按鈕-->
-        <ul class="btn-lists" v-if="!inputBox_display && !audioBox_display">
+        <ul class="btn-lists" v-show="!show_input_box && !show_audio_box">
 
-          <li class="btn-item btn-item-left btn-item-text" @click="toggleInputBox"></li>
+          <li class="btn-item btn-item-left btn-item-text" @click="show_input_box=true"></li>
 
           <template v-if="is_owner">
             <li class="btn-item btn-item-right btn-item-redbag" @click="redbag_display=true"></li>
@@ -208,17 +201,16 @@
             </li>
             <li class="btn-item btn-item-right btn-item-gift" @click="showGiftBag()"></li>
             <li class="btn-item btn-item-right btn-item-vidio"></li>
-            <li class="btn-item btn-item-right btn-item-audio"
-                @click="toggleAudioBox"></li>
+            <li class="btn-item btn-item-right btn-item-audio" @click="toggleAudioBox"></li>
           </template>
 
-          <li class="btn-item btn-item-right btn-item-share" @click="share"></li>
+          <li class="btn-item btn-item-right btn-item-share" @click="makeShare()"></li>
         </ul>
         <!--底部右邊按鈕 END-->
 
-        <input-item :display="inputBox_display" @input="submit"></input-item>
+        <input-item :display="show_input_box" @input="submit"></input-item>
 
-        <div class="audio-box" v-if="audioBox_display">
+        <div class="audio-box" v-if="show_audio_box">
           <div class="text">按住至少3秒</div>
           <div class="percent-box">
             <div class="percent"></div>
@@ -253,10 +245,12 @@
         </div>
         <div class="nav-container">
           <div class="nav-item">
-            <div class="avatar"></div>
+            <div class="avatar"
+                 :style="{backgroundImage: !!(author_member && author_member.author_avatar)
+                 && 'url('+author_member.author_avatar+')'}"></div>
             <div class="right">
-              <div class="nickname">ICEKING</div>
-              <div class="account">wecanlive賬號：2342342342</div>
+              <div class="nickname">{{author_member.nickname}}</div>
+              <div class="account">WECANLIVE賬號：{{author_member.user}}</div>
             </div>
           </div>
         </div>
@@ -265,14 +259,14 @@
 
     <member-card :display="memberCard_display"
                  :choice="choice"
-                 :item="authorMember"
-                 v-if="authorMember"
+                 :item="author_member"
+                 v-if="author_member"
                  @click="toggleMemberCard"
                  @pick="choicePick"></member-card>
 
 
     <live-starbox :display="starbox_display"
-                  :item="authorMember"
+                  :item="author_member"
                   @click="starbox()"></live-starbox>
 
     <live-giftbag :display="giftbag_display" @click="giftbag()"></live-giftbag>
@@ -303,23 +297,24 @@
           { text: '加入封鎖清單', value: 1 },
           { text: '舉報', value: 2 },
         ],
+        messages: [],
         barrages: [],
         is_hide_all: false,
         bottom_nav_btn_display: false,
         memberCard_display: false,
         bottom_nav_display: false,
         blinkStar_display: false,
-        audioBox_display: false,
-        inputBox_display: false,
+        show_audio_box: false,
+        show_input_box: false,
         starbox_display: false,
         giftbag_display: false,
         redbag_display: false,
-        notice: false,
+        notice: true,
         mission_display: false,
         inputBox: false,
         live: null,
-        authorMember: null,
-        live_watch_log: [],
+        live_watch_log: null,
+        author_member: null,
       };
     },
     beforeRouteUpdate(to, from, next) {
@@ -350,12 +345,16 @@
       }
     },
     mounted() {
+      const vm = this;
       document.body.style.background = 'transparent';
+      vm.waitFor(vm, 'live').then(() => {
+        vm.sendNotify(`${vm.me.nickname} 進入了房間`);
+      });
     },
     computed: {
       is_owner() {
         const vm = this;
-        return vm.live ? Number(vm.me.id) === Number(vm.live.author_id) : false;
+        return vm.live ? Number(vm.me.id) === Number(vm.live.author) : false;
       },
     },
     methods: {
@@ -363,22 +362,15 @@
         const vm = this;
         vm.api('Live').get({
           id: vm.$route.params.id,
-          fields: 'author_id,nickname,author_avatar,signature,' +
+          fields: 'author,nickname,author_avatar,signature,' +
           'count_view,count_following_author,push_url,play_url,' +
           'author_is_following,count_author_diamond,count_author_starlight,' +
           'count_author_followed,like_count',
         }).then((resp) => {
-          vm.live = resp.body;
-          vm.authorMember = {
-            id: vm.live.author_id,
-            nickname: vm.live.nickname,
-            avatar_url: vm.live.author_avatar,
-            signature: vm.live.signature,
-            following_count: vm.live.count_following_author,
-            followed_count: vm.live.count_author_followed,
-            is_followed: vm.live.author_is_following,
-            count_author_starlight: vm.live.count_author_starlight,
-          };
+          vm.live = resp.data;
+          vm.api('Member').get({ id: vm.live.author }).then(resp2 => {
+            vm.author_member = resp2.data;
+          });
           if (window.TencentMLVB) {
             if (vm.is_owner) {
               // 主播的話開啓推流
@@ -405,14 +397,6 @@
               );
             }
           }
-          // 观众观看记录
-          vm.api('LiveWatchLog').save({
-            action: 'start_watch_log',
-          }, {
-            live: vm.$route.params.id,
-          }).then((log) => {
-            vm.live_watch_log = log.data;
-          });
         });
         if (!vm.is_owner) {
           // 观众观看记录
@@ -421,56 +405,17 @@
           }, {
             live: vm.$route.params.id,
           }).then((log) => {
+            vm.live_watch_log = log.data;
           });
         }
       },
       submit(valObj) {
         const vm = this;
-        if (valObj.isBarrage) {
-          // 弹幕
-          const top = Math.random() * 12.48;
-          const barrageid = Math.random() * 10000;
-          const barrage = {
-            content: valObj.content,
-            positionTop: `${top}rem`,
-            senderAvatarUrl: '',
-            senderNickname: '哈哈哈哈',
-            senderLevel: 15,
-            senderVip: 2,
-            ref: `barrage${barrageid}`,
-          };
-          vm.barrages.push(barrage);
-          vm.$nextTick(() => {
-            setTimeout(() => {
-              vm.$refs[barrage.ref][0].style.transform = 'translate3d(-20rem,0,0)';
-              /* 监听 transition! */
-              vm.$refs[barrage.ref][0].addEventListener('webkitTransitionEnd', () => {
-                vm.barrages.splice(vm.barrages.indexOf(barrage), 1);
-              });
-              vm.$refs[barrage.ref][0].addEventListener('transitionend', () => {
-                vm.barrages.splice(vm.barrages.indexOf(barrage), 1);
-              });
-            }, 0);
-          });
-        } else {
-          // 评论
-//          vm.api('Comment').save({
-//            author: vm.me.id,
-//            content: valObj.content,
-//            lives: [vm.$route.params.id],
-//          }).then(() => {});
-        }
-      },
-      toggleFollow() {
-        const vm = this;
-        if (vm.live) {
-          vm.api('Member').save({
-            action: 'follow',
-            id: vm.live.author_id,
-          }, {}).then(() => {
-            vm.live.is_followed = !vm.live.is_followed;
-          }, () => {
-          });
+        if (!valObj.content) return;
+        if (valObj.isBarrage) {  // 弹幕消息
+          vm.sendBarrage(valObj.content);
+        } else {  // 普通消息
+          vm.sendComment(valObj.content);
         }
       },
       beginRecord(e) {
@@ -519,7 +464,7 @@
           vm.is_hide_all = false;
           vm.bottom_nav_btn_display = false;
           vm.bottom_nav_display = false;
-          vm.inputBox_display = false;
+          vm.show_input_box = false;
         } else {
           vm.blinkStar_display = true;
           vm.is_hide_all = true;
@@ -538,16 +483,12 @@
         // TODO 根據返回的值執行
         console.log(value);
       },
-      toggleInputBox() {
-        const vm = this;
-        vm.inputBox_display = !vm.inputBox_display;
-      },
       toggleBlinkStar(value) {
         this.blinkStar_display = value;
       },
       toggleAudioBox() {
         const vm = this;
-        vm.audioBox_display = !vm.audioBox_display;
+        vm.show_audio_box = !vm.show_audio_box;
       },
       starbox(value) {
         this.starbox_display = value;
@@ -607,15 +548,110 @@
        */
       showLikeEffect() {
         const vm = this;
-        console.log('有人点赞了啊');
+//        console.log('有人点赞了啊');
         vm.live.like_count += 1;
-        // TODO: 需要实现一个红心飞出的动效
+        // TODO: （动画效果有待优化）
         const heart = document.createElement('div');
         heart.className = 'moving-heart';
         vm.$refs.likeBox.appendChild(heart);
         setTimeout(() => {
           vm.$refs.likeBox.removeChild(heart);
         }, 2000);
+      },
+      sendComment(content) {
+        const vm = this;
+        vm.api().save({
+          id: vm.$route.params.id,
+          action: 'make_comment',
+        }, { content }).then(resp => {
+          vm.sendIM(`live_${vm.$route.params.id}`, {
+            type: 'comment',
+            comment: resp.data,
+          });
+        });
+      },
+      showComment(comment) {
+        const vm = this;
+        vm.messages.push({ type: 'comment', ...comment });
+      },
+      sendBarrage(content) {
+        const vm = this;
+        vm.api().save({
+          id: vm.$route.params.id,
+          action: 'make_barrage',
+        }, { content }).then(resp => {
+          const barrage = resp.data;
+          barrage.positionTop = `${Math.random() * 12.48}rem`;
+          vm.sendIM(`live_${vm.$route.params.id}`, { type: 'barrage', barrage });
+        });
+      },
+      showBarrage(barrage) {
+        const vm = this;
+        vm.barrages.push(barrage.data.barrage);
+//        console.log(JSON.parse(JSON.stringify(vm.barrages)));
+        vm.$nextTick(() => {
+          setTimeout(() => {
+            const refId = `barrage_${barrage.data.barrage.id}`;
+            const ref = vm.$refs[refId] && vm.$refs[refId][0];
+            if (!ref) return;
+            ref.style.transform = 'translate3d(-20rem,0,0)';
+            /* 监听 transition! */
+            ref.addEventListener('webkitTransitionEnd', () => {
+              vm.barrages.splice(vm.barrages.indexOf(barrage), 1);
+            });
+            ref.addEventListener('transitionend', () => {
+              vm.barrages.splice(vm.barrages.indexOf(barrage), 1);
+            });
+          }, 0);
+        });
+      },
+      /**
+       * 切换追踪或者不追踪
+       */
+      toggleFollow() {
+        const vm = this;
+        if (!vm.live) return;
+        // 新增为跟踪
+        const isFollow = !vm.author_member.is_following;
+        vm.api('Member').save({
+          action: 'follow',
+          id: vm.live.author,
+        }, {}).then(() => {
+          if (isFollow) {
+            vm.sendIM(`live_${vm.$route.params.id}`, { type: 'follow' });
+          }
+          vm.reload();
+        });
+      },
+      showFollow(user) {
+        const vm = this;
+        vm.messages.push({ type: 'follow', user });
+      },
+      makeShare() {
+        const vm = this;
+        vm.share(); // TODO: 要真正调起分享，然后回调
+        vm.sendShare();
+      },
+      sendShare() {
+        const vm = this;
+        vm.sendIM(`live_${vm.$route.params.id}`, { type: 'share' });
+      },
+      showShare(user) {
+        const vm = this;
+        vm.messages.push({ type: 'share', user });
+      },
+      sendNotify(content) {
+        const vm = this;
+        console.error(content);
+        vm.sendIM(`live_${vm.$route.params.id}`, { type: 'notify', content });
+      },
+      showNotify(notify) {
+        const vm = this;
+        vm.messages.push({ type: 'notify', ...notify });
+      },
+      showSystem(msg) {
+        const vm = this;
+        vm.messages.push({ type: 'system', ...msg });
       },
     },
   };
@@ -673,6 +709,8 @@
   @import (once) '../../vue2-front/assets/css/less-template/template-defines';
   @import (once) '../../assets/css/defines';
 
+  @text-shadow-color: rgba(0, 0, 0, 0.5);
+
   #app-main-live {
     /*background: url("../../assets/image/example/avatar.png") 50% 50% no-repeat;*/
     -webkit-background-size: cover;
@@ -685,7 +723,7 @@
     .swift-block {
       height: 100%-@height-status-bar;
     }
-    .inout-mask {
+    .input-mask {
       position: fixed;
       bottom: 0;
       left: 0;
@@ -711,7 +749,7 @@
           height: 82*@px;
           .rounded-corners(50%);
           margin-top: 3*@px;
-          background: url("../../assets/image/example/avatar.png") 50% 50% no-repeat;
+          background: url("../../assets/image/logo.png") 50% 50% no-repeat;
           -webkit-background-size: cover;
           background-size: cover;
         }
@@ -916,6 +954,7 @@
       float: right;
       width: 220*@px;
       margin-top: 30*@px;
+      z-index: 1;
       .right {
         float: right;
         margin-left: 30*@px;
@@ -1021,18 +1060,19 @@
           width: 68*@px;
           margin: 2*@px 0 0 2*@px;
           .rounded-corners(50%);
-          background: #000 50% 50% no-repeat;
+          background: 50% 50% no-repeat;
           -webkit-background-size: cover;
           background-size: cover;
         }
         .right {
-          float: left;
-          margin-left: 8*@px;
+          margin-left: 80*@px;
           padding-top: 3*@px;
           .nickname {
             height: 32*@px;
             line-height: 32*@px;
             font-size: 24*@px;
+            max-width: 14rem;
+            .nowrap();
             .level {
               display: inline-block;
               width: 86*@px;
@@ -1063,6 +1103,8 @@
             }
           }
           .content {
+            max-width: 14rem;
+            .nowrap();
             font-size: 22*@px;
           }
         }
@@ -1124,7 +1166,7 @@
               color: #FFFFFF;
               width: 95*@px;
               text-align: center;
-              text-shadow: 1px 1px 1px #000;
+              text-shadow: 1px 1px 1px @text-shadow-color;
             }
           }
           &.btn-item-gift {
@@ -1207,98 +1249,106 @@
         .purple {
           color: #A41AC7;
         }
-        .message-item {
-          margin-bottom: 10*@px;
-          line-height: 44*@px;
-          .tag-system {
-            display: inline-block;
-            height: 44*@px;
-            width: 80*@px;
+        ul.message-list {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          li.message-item {
+            margin-bottom: 10*@px;
             line-height: 44*@px;
-            text-align: center;
-            color: #000;
-            font-size: 24*@px;
-            background: #FFFFFF;
-            .rounded-corners(44*@px);
-          }
-          .nickname-block {
-            .tag {
+            .tag-system {
               display: inline-block;
-              height: 32*@px;
-              line-height: 32*@px;
-              .border-box();
-              vertical-align: middle;
-              &.tag-vip {
-                width: 62*@px;
-                color: #5E21EE;
-                font-size: 22*@px;
-                background: url("../../assets/image/B1/icon_vip@3x.png") 50% 50% no-repeat;
-                background-size: 100%;
-                padding-left: 40*@px;
+              height: 44*@px;
+              width: 80*@px;
+              line-height: 44*@px;
+              text-align: center;
+              color: #000;
+              font-size: 24*@px;
+              background: #FFFFFF;
+              .rounded-corners(44*@px);
+            }
+            .nickname-block {
+              display: inline-block;
+              .tag {
+                display: inline-block;
+                height: 32*@px;
+                line-height: 32*@px;
+                .border-box();
+                vertical-align: middle;
+                &.tag-vip {
+                  width: 62*@px;
+                  color: #5E21EE;
+                  font-size: 22*@px;
+                  background: url("../../assets/image/B1/icon_vip@3x.png") 50% 50% no-repeat;
+                  background-size: 100%;
+                  padding-left: 40*@px;
+                }
+                &.tag-level {
+                  width: 86*@px;
+                  font-size: 16*@px;
+                  color: #0021E6;
+                  padding-left: 38*@px;
+                  padding-top: 2*@px;
+                  background: url("../../assets/image/B1/icon_huangguan@3x.png") 50% 50% no-repeat;
+                  background-size: 100%;
+                }
               }
-              &.tag-level {
-                width: 86*@px;
-                font-size: 16*@px;
-                color: #0021E6;
-                padding-left: 38*@px;
-                padding-top: 2*@px;
-                background: url("../../assets/image/B1/icon_huangguan@3x.png") 50% 50% no-repeat;
-                background-size: 100%;
+              .name {
+                text-shadow: 1px 1px 1px @text-shadow-color;
               }
             }
-            .name {
-              text-shadow: 1px 1px 1px #000;
+            .content {
+              display: inline;
+              text-shadow: 1px 1px 1px @text-shadow-color;
+              margin-left: 5*@px;
             }
-          }
-          .content {
-            text-shadow: 1px 1px 1px #000;
-            margin-left: 5*@px;
-          }
-          &:last-child {
-            margin-bottom: 0;
-          }
-          .btn-tracking {
-            display: block;
-            height: 50*@px;
-            line-height: 50*@px;
-            text-align: center;
-            font-size: 29*@px;
-            .rounded-corners(50*@px);
-            width: 160*@px;
-            .border-box();
-            background: url("../../assets/image/D/d1_btn_track_1@3x.png") 50% 50% no-repeat;
-            -webkit-background-size: 100%;
-            background-size: 100%;
-            margin-top: 5*@px;
-            .icon {
-              .border-box();
-              display: inline-block;
+            &:last-child {
+              margin-bottom: 0;
+            }
+            .btn-tracking {
+              display: block;
               height: 50*@px;
               line-height: 50*@px;
-              font-size: 40*@px;
-              vertical-align: middle;
-            }
-          }
-          .btn-share {
-            display: block;
-            height: 50*@px;
-            line-height: 50*@px;
-            text-align: center;
-            font-size: 29*@px;
-            .rounded-corners(50*@px);
-            width: 160*@px;
-            .border-box();
-            margin-top: 5*@px;
-            background: url("../../assets/image/D/d1_btn_share@3x.png") 50% 50% no-repeat;
-            -webkit-background-size: 100%;
-            background-size: 100%;
-            .icon {
-              display: inline-block;
-              width: 26*@px;
-              height: 26*@px;
-              background: url("../../assets/image/D/d1_icon_share_s@3x.png") 50% 50% no-repeat;
+              text-align: center;
+              font-size: 29*@px;
+              .rounded-corners(50*@px);
+              width: 160*@px;
+              .border-box();
+              background: url("../../assets/image/D/d1_btn_track_1@3x.png") 50% 50% no-repeat;
               -webkit-background-size: 100%;
               background-size: 100%;
+              margin-top: 5*@px;
+              .icon {
+                .border-box();
+                display: inline-block;
+                height: 50*@px;
+                line-height: 50*@px;
+                font-size: 40*@px;
+                vertical-align: middle;
+              }
+            }
+            .btn-share {
+              display: block;
+              height: 50*@px;
+              line-height: 50*@px;
+              text-align: center;
+              font-size: 29*@px;
+              .rounded-corners(50*@px);
+              width: 160*@px;
+              .border-box();
+              margin-top: 5*@px;
+              background: url("../../assets/image/D/d1_btn_share@3x.png") 50% 50% no-repeat;
+              -webkit-background-size: 100%;
+              background-size: 100%;
+              .icon {
+                display: inline-block;
+                width: 26*@px;
+                height: 26*@px;
+                background: url("../../assets/image/D/d1_icon_share_s@3x.png") 50% 50% no-repeat;
+                -webkit-background-size: 100%;
+                background-size: 100%;
+              }
             }
           }
         }
@@ -1491,4 +1541,3 @@
     }
   }
 </style>
-

@@ -5,8 +5,10 @@
         <router-link class="footer-btn-home" to="/"></router-link>
         <router-link class="footer-btn-member" to="/member/0"></router-link>
         <div class="footer-btn-popup" @click="toggleBtn"></div>
-        <router-link class="footer-btn-search" to="/search"></router-link>
-        <router-link class="footer-btn-message" to="/message"></router-link>
+        <a class="footer-btn-search" @click="notify('開發中')"></a>
+        <a class="footer-btn-message" @click="notify('開發中')"></a>
+        <!--<router-link class="footer-btn-search" to="/search"></router-link>-->
+        <!--<router-link class="footer-btn-message" to="/message"></router-link>-->
       </div>
     </footer>
 

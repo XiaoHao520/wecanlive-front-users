@@ -426,8 +426,8 @@
       },
       submit(valObj) {
         const vm = this;
-        console.log(valObj);
         if (valObj.isBarrage) {
+          // 弹幕
           const top = Math.random() * 12.48;
           const barrageid = Math.random() * 10000;
           const barrage = {
@@ -452,6 +452,13 @@
               });
             }, 0);
           });
+        } else {
+          // 评论
+//          vm.api('Comment').save({
+//            author: vm.me.id,
+//            content: valObj.content,
+//            lives: [vm.$route.params.id],
+//          }).then(() => {});
         }
       },
       toggleFollow() {

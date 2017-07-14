@@ -8,7 +8,7 @@
     <div class="personal-coin">
       <div class="diamond-balance">
         <div class="diamond-icon"></div>
-        <div class="balance">10000</div>
+        <div class="balance">{{ me.coin_balance }}</div>
         <div class="diamond-form">金幣</div>
       </div>
 

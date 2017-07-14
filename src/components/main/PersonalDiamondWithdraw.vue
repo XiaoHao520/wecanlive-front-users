@@ -5,11 +5,11 @@
     <div class="personal-diamond-withdraw">
       <div class="personal-balance">
         <div class="balance diamond">
-          <div class="num">10000</div>
+          <div class="num">{{ me.diamond_balance }}</div>
           <div class="unit">鑽石</div>
         </div>
         <div class="balance coin">
-          <div class="num">10000</div>
+          <div class="num">{{ me.coin_balance }}</div>
           <div class="unit">金幣</div>
         </div>
       </div>

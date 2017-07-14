@@ -238,7 +238,6 @@
             vertical-align: text-top;
           }
           .vip {
-            vertical-align: middle;
             display: inline-block;
             vertical-align: text-top;
             height: 32*@px;

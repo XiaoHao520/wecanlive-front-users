@@ -4,7 +4,7 @@
          :class="{'not-status-bar': !overlapStatusBar}">
       <div class="header-action">
         <router-link :to="{name:'main_personal_settings'}" class="btn btn-set"></router-link>
-        <router-link :to="{name:'main_member_friends'}" href="javascript:;" class="btn btn-friend"></router-link>
+        <router-link :to="{name:'main_member_friends'}" class="btn btn-friend"></router-link>
       </div>
 
       <div class="member-detail">
@@ -66,7 +66,7 @@
         </div>
         <div class="balance-type">
           <div class="icon icon-level"></div>
-          <div class="balance-num">Lv.16</div>
+          <div class="balance-num">Lv.{{ me.member_level }}</div>
         </div>
       </div>
     </div>
@@ -74,17 +74,17 @@
 
     <div class="contribution-list">
       <div class="contribution-title">貢獻榜</div>
-      <div class="contribution-item">
-        <div class="top-one-bg"></div>
-        <div class="top-one-icon"></div>
-        <div class="avatar top-one"></div>
-      </div>
-      <div class="contribution-item">
-        <div class="avatar"></div>
-      </div>
-      <div class="contribution-item">
-        <div class="avatar"></div>
-      </div>
+      <!--<div class="contribution-item">-->
+        <!--<div class="top-one-bg"></div>-->
+        <!--<div class="top-one-icon"></div>-->
+        <!--<div class="avatar top-one"></div>-->
+      <!--</div>-->
+      <!--<div class="contribution-item">-->
+        <!--<div class="avatar"></div>-->
+      <!--</div>-->
+      <!--<div class="contribution-item">-->
+        <!--<div class="avatar"></div>-->
+      <!--</div>-->
     </div>
 
     <div class="tab-menu">

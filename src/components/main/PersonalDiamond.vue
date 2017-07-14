@@ -10,7 +10,7 @@
     <div class="personal-diamond">
       <div class="diamond-balance">
         <div class="diamond-icon"></div>
-        <div class="balance">10000</div>
+        <div class="balance">{{ me.diamond_balance }}</div>
         <div class="diamond-form">收到鑽石</div>
       </div>
 

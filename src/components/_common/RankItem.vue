@@ -3,15 +3,18 @@
     <div class="rank-warpper-1" v-if="rank == 1">
       <div class="ranking"></div>
       <div class="avatar-warpper">
-        <div class="avatar" @click="member()"></div>
+        <div class="avatar"
+             :style="{backgroundImage: 'url(' + item.member.avatar_url + ')'}"
+             @click="member()"></div>
       </div>
       <div class="mid-block" :class="{'no-track-btn': !showTrackBtn}">
         <div class="nickname">
-          <span class="name">Chris Lin</span>
+          <span class="name">{{ item.member.nickname }}</span>
           <template v-if="!showTrackBtn">
-            <span class="gender-female"></span>
-            <span class="level">LV.20</span>
-            <span class="vip">2</span>
+            <span :class="{'gender-female' :item.member.gender==='F',
+                            'gender-male' : item.member.gender==='M' }"></span>
+            <span class="level">LV.{{ item.member.level }}</span>
+            <span class="vip">{{ item.member.vip_level }}</span>
           </template>
         </div>
         <div class="bot">
@@ -19,7 +22,7 @@
             <div class="action" v-if="action == 'diamond'">貢獻</div>
             <div class="action" v-if="action == 'gift'">收到</div>
             <div class="icon-diamond"></div>
-            <div class="num">231.6k</div>
+            <div class="num">{{ item.amount }}</div>
           </template>
           <template v-if="action == 'star'">
             <div class="num">星光指数：3879</div>
@@ -36,6 +39,7 @@
       </a>
     </div>
 
+
     <div class="rank-warpper" v-if="rank != 1">
       <div class="ranking-2" v-if="rank == 2"></div>
       <div class="ranking-3" v-if="rank == 3"></div>
@@ -48,14 +52,17 @@
           <span :class="rankingClassSingle"></span>
         </template>
       </div>
-      <div class="avatar" @click="member()"></div>
+      <div class="avatar"
+           :style="{backgroundImage: 'url(' + item.member.avatar_url + ')'}"
+           @click="member()"></div>
       <div class="mid-block" :class="{'no-track-btn': !showTrackBtn}">
         <div class="nickname">
-          <span class="name">Wecan Live</span>
+          <span class="name">{{ item.member.nickname }}</span>
           <template v-if="!showTrackBtn">
-            <span class="gender-male"></span>
-            <span class="level">LV.20</span>
-            <span class="vip">2</span>
+            <span :class="{'gender-female' :item.member.gender==='F',
+                            'gender-male' : item.member.gender==='M' }"></span>
+            <span class="level">LV.{{ item.member.level }}</span>
+            <span class="vip">{{ item.member.vip_level }}</span>
           </template>
         </div>
         <div class="bot">
@@ -63,7 +70,7 @@
             <div class="action" v-if="action == 'diamond'">貢獻</div>
             <div class="action" v-if="action == 'gift'">收到</div>
             <div class="icon-diamond"></div>
-            <div class="num">53.6k</div>
+            <div class="num">{{ item.amount }}</div>
           </template>
           <template v-if="action == 'star'">
             <div class="num">星光指数：3879</div>
@@ -102,6 +109,8 @@
     },
     methods: {
       reload() {
+        const vm = this;
+        console.log(vm.item.member.credit_diamond);
       },
       member() {
         const vm = this;
@@ -126,6 +135,9 @@
       showTag: {
         type: Boolean,
         default: false,
+      },
+      item: {
+        type: Object,
       },
     },
   };
@@ -175,7 +187,7 @@
           height: 120*@px;
           background: #000 50% 50% no-repeat;
           -webkit-background-size: 100%;
-          background-size: 100%;
+          background-size: cover;
           .rounded-corners(50%);
         }
       }
@@ -227,6 +239,19 @@
           }
           .vip {
             vertical-align: middle;
+            display: inline-block;
+            vertical-align: text-top;
+            height: 32*@px;
+            line-height: 32*@px;
+            width: 62*@px;
+            color: #5E21EE;
+            font-size: 20*@px;
+            text-indent: 43*@px;
+            background: url("../../assets/image/B1/icon_vip@3x.png") 50% 50% no-repeat;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+            .border-box();
+            padding-top: 2*@px;
           }
         }
         .bot {

@@ -3,9 +3,10 @@
     <header-common title="鑽石貢獻榜" :backLink="backLink"></header-common>
     <section class="section-list"
              :class="{'not-status-bar': !overlapStatusBar}">
-      <template v-for="i in 10">
+      <template v-for="(item,i) in items">
         <rank-item action="diamond"
-                   :rank="i"
+                   :rank="i+1"
+                   :item="item"
                    :showTrackBtn="showTrackBtn"></rank-item>
       </template>
     </section>
@@ -16,12 +17,20 @@
   export default {
     data() {
       return {
-        backLink: { name: 'main_live', params: { id: 0 } },
+        backLink: { name: 'main_live', params: { id: this.$route.params.id } },
         showTrackBtn: false,
+        items: [],
       };
     },
     methods: {
       reload() {
+        const vm = this;
+        vm.api('Live').get({
+          action: 'get_live_diamond_rank',
+          id: vm.$route.params.id,
+        }, {}).then((resp) => {
+          vm.items = resp.data;
+        });
       },
     },
   };

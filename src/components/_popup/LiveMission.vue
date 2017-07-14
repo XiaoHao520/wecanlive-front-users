@@ -15,12 +15,12 @@
           <div class="mission-detail">
             <div class="content">每觀看30分鐘，可獲得5元氣</div>
 
-            <div class="date">{{ watch_mission_date_distance | date('MM:ss') }}<span>({{ live_watch_record.watch_mission_count }}/8)</span>
+            <div class="date">{{ watch_mission_date_distance | date('MM:ss') }}<span>({{ live_watch_record.today_watch_mission_count }}/8)</span>
             </div>
           </div>
 
           <a href="javascript:;"
-             v-if="watch_mission_achievement && live_watch_record.watch_mission_count < 8"
+             v-if="watch_mission_achievement && live_watch_record.today_watch_mission_count < 8"
              @click="getWatchMission()"
              class="get-btn get-btn-active">領取</a>
 
@@ -58,7 +58,8 @@
                 <p class="mission-intro">捕全頭像，性別，簽名，生日，</p>
                 <p class="mission-intro">所在地區資訊,可獲得10元氣</p>
               </div>
-              <router-link v-if="live_watch_record.information_mission_count === 0" :to="{name: 'main_personal_profile'}"
+              <router-link v-if="live_watch_record.information_mission_count === 0"
+                           :to="{name: 'main_personal_profile'}"
                            class="get-btn">完善
               </router-link>
               <a href="javascript:;" v-else class="get-btn ">完善</a>
@@ -84,7 +85,7 @@
       return {
         live_watch_record: [],
         watch_mission_date_distance: 0,
-        watch_mission_achievement: false,
+        watch_mission_achievement: true,
       };
     },
     methods: {
@@ -93,9 +94,10 @@
         vm.api('LiveWatchLog').get({
           author: vm.me.id,
           live: vm.$route.params.id,
-          fields: 'watch_mission_count,information_mission_count',
+          fields: 'information_mission_count,today_watch_mission_count',
         }).then((resp) => {
           vm.live_watch_record = resp.data.results[0];
+          console.log(vm.live_watch_record.today_watch_mission_count);
           vm.dateCountDown();
         });
       },
@@ -107,7 +109,7 @@
       },
       dateCountDown() {
         const vm = this;
-        if (vm.live_watch_record.watch_mission_count < 8) {
+        if (vm.live_watch_record.today_watch_mission_count < 8) {
 //          vm.watch_mission_date_distance = 1800000;
           vm.watch_mission_date_distance = 10000;
           const timer = setInterval(() => {
@@ -127,9 +129,7 @@
         vm.watch_mission_achievement = false;
         vm.api('StarMissionAchievement').save({
           action: 'achievement_watch_mission',
-        }, {
-          live: vm.$route.params.id,
-        }).then(() => {
+        }, {}).then(() => {
           // 领取完成后
           vm.reload();
         });

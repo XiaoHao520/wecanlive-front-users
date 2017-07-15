@@ -1,5 +1,5 @@
 <template>
-  <div id="live-mission">
+  <div id="live-mission" v-if="live_watch_record">
     <transition name="slide-down-up">
       <div class="mission-block" v-if="display">
         <div class="mission-header">
@@ -82,7 +82,7 @@
   export default {
     data() {
       return {
-        live_watch_record: [],
+        live_watch_record: null,
         watch_mission_date_distance: 0,
         watch_mission_achievement: false,
       };

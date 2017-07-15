@@ -7,38 +7,76 @@
         <h2 class="subhead">新手上路 wecan 爲您精選推薦直播</h2>
       </div>
       <div slot="right" class="btn-close">
-        <router-link to="/" class="btn close"></router-link>
+        <router-link :to="{name: 'main_index'}" class="btn close"></router-link>
       </div>
     </header-common>
 
 
     <div class="follow-list">
       <ul>
-        <li class="follow-item active">
-          <div class="avatar"></div>
+        <li class="follow-item active"
+            :class="{active: selectedItems.indexOf(member.user) > -1}"
+            v-for="member in items"
+            @click="toggleSelect(member.user)">
+          <div class="avatar" :style="{backgroundImage: 'url('+member.avatar_url+')'}"></div>
           <div class="member-info">
-            <div class="member-name">名字</div>
+            <div class="member-name">{{member.nickname}}</div>
             <div class="member-follow">
               <div class="follow-icon"></div>
-              100002378
+              {{member.count_followed}}
             </div>
-            <div class="member-title">我是 wecanlive 會員</div>
+            <div class="member-title">{{member.signature}}</div>
           </div>
-          <div class="active-icon "></div>
+          <div class="active-icon" v-if="selectedItems.indexOf(member.user) > -1"></div>
         </li>
       </ul>
     </div>
 
     <div class="submit-btn">
-      <a href="javascript:;" class="btn">完成</a>
+      <a href="javascript:;" class="btn"
+         @click="submit()">完成</a>
     </div>
   </div>
 </template>
 
 <script type="text/babel" lang="babel">
   export default {
+    data() {
+      return {
+        model: 'Member',
+        items: [],
+        selectedItems: [],
+      };
+    },
     methods: {
       reload() {
+        const vm = this;
+        vm.api().get({
+          is_new_recommended: 'True',
+          page_size: 50,
+        }).then(resp => {
+          vm.items = resp.data.results;
+        });
+      },
+      toggleSelect(memberId) {
+        const vm = this;
+        const index = vm.selectedItems.indexOf(memberId);
+        if (index > -1) {
+          vm.selectedItems.splice(index, 1);
+        } else {
+          vm.selectedItems.push(memberId);
+        }
+      },
+      submit() {
+        const vm = this;
+        vm.selectedItems.forEach(memberId => {
+          vm.api().save({
+            action: 'follow',
+            id: memberId,
+          }, {}).then(() => {
+            vm.$router.replace({ name: 'main_index' });
+          });
+        });
       },
     },
   };
@@ -97,14 +135,16 @@
       padding: 30*@px 25*@px 120*@px 30*@px;
       position: absolute;
       top: @height-header;
-      left: 0; right: 0;
-      bottom: 0; overflow-y: scroll;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow-y: scroll;
       .app-scroll;
       box-sizing: border-box;
       .follow-item {
         position: relative;
         border-bottom: 1px solid @color-border;
-        padding: 0 0 15*@px 135*@px;
+        padding: 0 80*@px 15*@px 135*@px;
         margin-bottom: 15*@px;
         .avatar {
           position: absolute;
@@ -121,13 +161,13 @@
           box-sizing: border-box;
           padding-top: 10*@px;
           .member-name {
+            .nowrap();
             font-size: 32*@px;
-            line-height: 32*@px;
-            height: 32*@px;
+            line-height: 1rem;
+            height: 1rem;
           }
           .member-follow {
-            margin-top: 15*@px;
-            height: 24*@px;
+            line-height: 36*@px;
             font-size: 26*@px;
             color: #959595;
             .follow-icon {
@@ -139,11 +179,11 @@
             }
           }
           .member-title {
-            margin-top: 11*@px;
+            .nowrap();
             color: #959595;
             font-size: 26*@px;
-            height: 26*@px;
-            line-height: 26*@px;
+            height: 36*@px;
+            line-height: 36*@px;
           }
         }
         .active-icon {

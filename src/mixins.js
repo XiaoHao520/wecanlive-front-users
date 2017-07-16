@@ -192,7 +192,12 @@ export default {
                 });
               });
             } else if (data.data.type === 'gift') { // 送礼物
-              // TODO: 未实现
+              vm.getUserByUsername(data.fromAccount).then(user => {
+                vmLive.showGift({
+                  sender: user,
+                  data: data.data,
+                });
+              });
             } else if (data.data.type === 'share') { // 分享
               vm.getUserByUsername(data.fromAccount).then(user => {
                 vmLive.showShare(user);

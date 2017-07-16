@@ -3,33 +3,20 @@
     <header-common title="粉丝"></header-common>
     <div class="list">
       <ul>
-        <li class="item">
-          <div class="avatar"></div>
+        <li v-for="item in items" class="item">
+          <div class="avatar" :style="{backgroundImage: 'url(' + item.avatar_url + ')'}"></div>
           <div class="content">
-            <div class="name">Wale</div>
+            <div class="name">{{ item.nickname }}</div>
             <div class="info">
-              <div class="gender"></div>
-              <div class="age">23歲</div>
-              <div class="cont">金牛座</div>
+              <div class="gender"
+                   :class="{'female' : item.gender==='F' ,'male' : item.gender==='M' }"></div>
+              <div class="age">{{ item.age }}歲</div>
+              <div class="cont">{{ choices.constellation[item.constellation] }}</div>
             </div>
-            <a href="javascript:;" class="add-btn">
-              <div class="add-icon"></div>追蹤
-            </a>
-          </div>
-        </li>
-
-        <li class="item">
-          <div class="avatar"></div>
-          <div class="content">
-            <div class="name">Wale</div>
-            <div class="info">
-              <div class="gender"></div>
-              <div class="age">23歲</div>
-              <div class="cont">金牛座</div>
-            </div>
-            <a href="javascript:;" class="add-btn">
-              <div class="add-icon"></div>追蹤
-            </a>
+            <!--<a href="javascript:;" class="add-btn">-->
+              <!--<div class="add-icon"></div>-->
+              <!--追蹤-->
+            <!--</a>-->
           </div>
         </li>
       </ul>
@@ -39,8 +26,20 @@
 
 <script type="text/babel" lang="babel">
   export default {
+    data() {
+      return {
+        items: [],
+      };
+    },
     methods: {
       reload() {
+        const vm = this;
+        vm.api('Member').get({
+          member: vm.me.id,
+          is_follow: 'True',
+        }, {}).then((resp) => {
+          vm.items = resp.data.results;
+        });
       },
     },
   };
@@ -49,6 +48,7 @@
 <style rel="stylesheet/less" type="text/less" lang="less" scoped>
   @import (once) '../../vue2-front/assets/css/less-template/template-defines';
   @import (once) '../../assets/css/defines';
+
   .page-member-fans {
     background: #E5E5EC;
     .list {
@@ -65,7 +65,8 @@
         }
         .avatar {
           position: absolute;
-          left: 0; top: 0;
+          left: 0;
+          top: 0;
           width: 120*@px;
           height: 120*@px;
           border-radius: 50%;
@@ -87,12 +88,18 @@
             .gender {
               height: 36*@px;
               width: 36*@px;
-              background: url("../../assets/image/B3/icon_female@3x.png");
+              background: 50% 50% no-repeat;
               background-size: 100%;
               float: left;
               margin-right: 23*@px;
+              &.female {
+                background-image: url("../../assets/image/B3/icon_female@3x.png");
+              }
+              &.male {
+                background-image: url("../../assets/image/B3/icon_male@3x.png");
+              }
             }
-            .age , .cont {
+            .age, .cont {
               margin-right: 10*@px;
               font-size: 25*@px;
               height: 36*@px;
@@ -108,7 +115,8 @@
             color: #fff;
             display: block;
             position: absolute;
-            right: 0; top: 35*@px;
+            right: 0;
+            top: 35*@px;
             font-size: 24*@px;
             line-height: 50*@px;
             border-radius: 25*@px;
@@ -120,7 +128,8 @@
               height: 20*@px;
               background: url("../../assets/image/B1/icon_add@3x.png");
               background-size: 100%;
-              top: 15*@px; left: 35*@px;
+              top: 15*@px;
+              left: 35*@px;
             }
           }
         }

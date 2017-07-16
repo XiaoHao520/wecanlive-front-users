@@ -178,7 +178,7 @@
     .friend-block {
       background: #E5E5EC;
       position: absolute;
-      top: 378*@px;
+      top: 342*@px;
       left: 0;
       right: 0;
       bottom: 0;
@@ -279,10 +279,11 @@
                 border-radius: 50%;
                 width: 30*@px;
                 height: 30*@px;
+                line-height: 30*@px;
                 position: absolute;
                 top: -15*@px;
                 right: -15*@px;
-                font-size: 16*@px;
+                font-size: 20*@px;
                 color: #fff;
                 text-align: center;
               }

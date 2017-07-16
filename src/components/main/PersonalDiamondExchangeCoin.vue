@@ -95,14 +95,14 @@
         &.coin {
           padding-left: 140*@px;
           height: 120*@px;
-          background: url("../../assets/image/f-f4/f_icon_coin@3x.png") 0 50% no-repeat;
+          background: url("../../assets/image/F/f_icon_coin@3x.png") 0 50% no-repeat;
           background-size: 120*@px;
         }
         &.diamond {
           margin-top: 35*@px;
           padding-left: 140*@px;
           height: 120*@px;
-          background: url("../../assets/image/f-f4/f_icon_diamond@3x.png") 0 50% no-repeat;
+          background: url("../../assets/image/F/f_icon_diamond@3x.png") 0 50% no-repeat;
           background-size: 120*@px;
         }
       }
@@ -112,7 +112,7 @@
       .exchange-item {
         border-bottom: 1px solid @color-border;
         padding: 30*@px 0 30*@px 78*@px;
-        background: url("../../assets/image/f-f4/f_icon_coin@2x.png") 0 50% no-repeat;
+        background: url("../../assets/image/F/f_icon_coin@2x.png") 0 50% no-repeat;
         background-size: 62*@px;
         position: relative;
         .num {

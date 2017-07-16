@@ -60,10 +60,13 @@
 
             <div class="distance">
               <div class="distance-intro">
-                距離一個星光寶盒還需送出 {{ view_starbox_distance }} 元氣的禮物 <span>{{ me.star_prize_expend }} / 500</span>
+                <div class="text">
+                  距離一個星光寶盒還需送出 {{ star_index_remain }} 元氣的禮物
+                </div>
+                <div class="num">{{ star_index }} / 500</div>
               </div>
               <div class="plan">
-                <div class="ready" :style="{width : me.star_prize_expend /5 + '%'}"></div>
+                <div class="ready" :style="{width:(star_index%500)/5+'%'}"></div>
               </div>
 
               <div class="gift-choose">
@@ -145,10 +148,10 @@
         </div>
 
         <div class="gift-menu ">
-          <a v-for="(category, i) in prize_category.results" href="javascript:;"
+          <a v-for="(category, i) in prize_categories" href="javascript:;"
              :class="{'tab-active' : shoptab==i}"
              @click="shoptabTo(i)"
-             :style="{width: (1 / prize_category.count) * 100 + '%'}"
+             :style="{width: (1 / prize_categories.count) * 100 + '%'}"
              class="gift-type shop-type">{{ category.name }}</a>
 
           <!--<a href="javascript:;"-->
@@ -167,7 +170,7 @@
           <!--class="gift-type shop-type">xx禮物</a>-->
 
           <div class="show-underline"
-               :style="{width: (1 / prize_category.count) * 100 + '%'}"
+               :style="{width: (1 / prize_categories.count) * 100 + '%'}"
                :class="{
              'position-1': shoptab==0,
              'position-2': shoptab==1,
@@ -179,7 +182,7 @@
               }"></div>
         </div>
 
-        <template v-for="(category, i) in prize_category.results">
+        <template v-for="(category, i) in prize_categories">
           <transition :name="shpptransition">
             <div v-if="shoptab==i" class="active-gift gift-list">
               <ul>
@@ -187,9 +190,11 @@
                     @click="choosePrize(p)"
                     class="gift-item"
                     :class="{active: p.id==prize.id}">
-                  <div class="gift-icon" :style="{backgroundImage: 'url('+ p.icon +')'}"></div>
+                  <div class="gift-icon" :style="{backgroundImage: 'url('+ p.icon_item.image +')'}"></div>
                   <div class="gift-name">{{ p.name }}</div>
-                  <div class="gift-num">{{ p.price }}</div>
+                  <div class="gift-num"
+                       :class="{star: p.price_type==='STAR'}">{{ p.price }}
+                  </div>
                   <div class="gift-exp">+300 經驗</div>
                 </li>
               </ul>
@@ -218,14 +223,13 @@
             </select>
           </div>
 
-
           <div class="send-btn" @click="buyPrize">贈送</div>
         </div>
       </div>
     </transition>
 
     <transition name="fade">
-      <div class="maske" @click="handleClick" v-if="display"></div>
+      <div class="maske" @click="reset(); $emit('hide');" v-if="display"></div>
     </transition>
   </div>
 </template>
@@ -241,7 +245,7 @@
         shop: false,
         transitionName: 'slide-left',
         shpptransition: 'slide-left',
-        prize_category: [],
+        prize_categories: [],
         prize: 0,
         prize_count: 1,
         active_prize: [],
@@ -258,7 +262,16 @@
         vm.api('PrizeCategory').get({
           normal: 'True',
         }).then((resp) => {
-          vm.prize_category = resp.data;
+          Promise.all(resp.data.results.map(item =>
+            vm.api('Prize').get({
+              category: item.id,
+              page_size: 100,
+            }).then(resp2 => {
+              item.prizes_item = resp2.data.results;
+            })
+          )).then(() => {
+            vm.prize_categories = resp.data.results;
+          });
         });
 
         vm.api('Prize').get({
@@ -285,10 +298,6 @@
         vm.active = 0;
         vm.active_prize_count = 1;
         vm.active_prize_count_total = 1;
-      },
-      handleClick(evt) {
-        const vm = this;
-        vm.reset();
       },
       tabTo(pos) {
         const vm = this;
@@ -396,8 +405,24 @@
         });
       },
     },
+    computed: {
+      is_author() {
+        const vm = this;
+        return vm.live.author === vm.me.id;
+      },
+      star_index() {
+        const vm = this;
+        return vm.is_author ? vm.me.star_index_receiver_balance
+          : vm.me.star_index_sender_balance;
+      },
+      star_index_remain() {
+        const vm = this;
+        return 500 - vm.star_index % 500;
+      },
+    },
     props: {
       display: Boolean,
+      live: Object,
     },
   };
 </script>
@@ -606,10 +631,16 @@
           padding: 0 50*@px;
           margin-bottom: 30*@px;
           .distance-intro {
-            font-size: 20*@px;
+            .clearfix();
             color: #B0B0B0;
-            span {
+            font-size: 24*@px;
+            .text {
+              float: left;
+              line-height: 34*@px;
+            }
+            .num {
               float: right;
+              line-height: 34*@px;
             }
           }
           .plan {
@@ -640,10 +671,10 @@
               background-size: 100%;
               margin: 0 95*@px 0 0;
               &.box-icon {
-                background-image: url('../../assets/image/D1-1/d1_1_icon_box_nor@3x.png');
+                background-image: url('../../assets/image/D/d1_1_icon_box_nor@3x.png');
               }
               &.open-box-icon {
-                background-image: url('../../assets/image/D1-1/d1_1_icon_box_opened@3x.png');
+                background-image: url('../../assets/image/D/d1_1_icon_box_opened@3x.png');
               }
               &:last-child {
                 margin: 0;
@@ -701,8 +732,11 @@
             line-height: 24*@px;
             padding-left: 28*@px;
             text-align: left;
-            background: url("../../assets/image/f-f4/f_icon_coin@3x.png") 0 50% no-repeat;
+            background: url("../../assets/image/F/f_icon_coin@3x.png") 0 50% no-repeat;
             background-size: 20*@px;
+            &.star {
+              background-image: url("../../assets/image/F/f9_icon_yuanqi@3x.png");
+            }
           }
           .gift-exp {
             font-size: 20*@px;

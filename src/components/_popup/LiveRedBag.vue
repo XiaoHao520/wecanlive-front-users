@@ -170,7 +170,7 @@
           .coin-icon {
             width: 32*@px;
             height: 32*@px;
-            background: url("../../assets/image/f-f4/f_icon_coin@3x.png") 50% 50% no-repeat;
+            background: url("../../assets/image/F/f_icon_coin@3x.png") 50% 50% no-repeat;
             background-size: 100%;
             position: absolute;
             left: 0;
@@ -227,10 +227,10 @@
             height: 60*@px;
             line-height: 68*@px;
             font-size: 35*@px;
-            background: url("../../assets/image/f-f4/f_icon_coin@3x.png") 0 50% no-repeat;
+            background: url("../../assets/image/F/f_icon_coin@3x.png") 0 50% no-repeat;
             background-size: 60*@px;
             &.diamond-icon {
-              background-image: url("../../assets/image/f-f4/f_icon_diamond@3x.png");
+              background-image: url("../../assets/image/F/f_icon_diamond@3x.png");
             }
           }
         }

@@ -33,12 +33,15 @@
             </template>
           </div>
           <div class="users">
-            <div class="avatar-container">
-              <div class="user-avatar"></div>
-              <div class="decoration"></div>
-            </div>
-            <div class="user-avatar"></div>
-            <div class="user-avatar"></div>
+            <template v-for="(watch_log, i) in watch_logs">
+              <div class="avatar-container" v-if="i===0">
+                <div class="user-avatar"
+                     :style="{backgroundImage: 'url('+watch_log.author_avatar_url+')'}"></div>
+                <div class="decoration"></div>
+              </div>
+              <div class="user-avatar" v-else-if="i<3"
+                   :style="{backgroundImage: 'url('+watch_log.author_avatar_url+')'}"></div>
+            </template>
           </div>
           <a class="btn-close" @click="leaveLive()"></a>
         </section>
@@ -54,9 +57,16 @@
           <div class="starlight-block">
             <div class="icon-warpper"></div>
             <div class="percent-block">
-              <div class="percent" v-if="live"
-                   :style="{width: ((live.count_author_starlight % 500) / 5)+'%'}"></div>
-              <div class="num">{{live ? live.count_author_starlight % 500 : 0}}/500</div>
+              <template v-if="live.author===me.id">
+                <div class="percent" v-if="live"
+                     :style="{width: ((me.star_index_receiver_balance % 500) / 5)+'%'}"></div>
+                <div class="num">{{me.star_index_receiver_balance}}/500</div>
+              </template>
+              <template v-else>
+                <div class="percent" v-if="live"
+                     :style="{width: ((me.star_index_sender_balance % 500) / 5)+'%'}"></div>
+                <div class="num">{{me.star_index_sender_balance}}/500</div>
+              </template>
             </div>
           </div>
         </div>
@@ -88,11 +98,12 @@
         <section class="section-popup-comment" v-show="!is_hide_all">
           <div class="container">
             <!--TODO notice內容過多處理-->
-            <transition name="fade">
-              <div class="notice" v-if="notice">
-                恭喜 Chris，Denka，Kelly，Trina，丫丫抽中 30 金幣
-              </div>
-            </transition>
+            <!-- TODO: D2-9 活動跑馬燈 -->
+            <!--<transition name="fade">-->
+            <!--<div class="notice" v-if="notice">-->
+            <!--恭喜 Chris，Denka，Kelly，Trina，丫丫抽中 30 金幣-->
+            <!--</div>-->
+            <!--</transition>-->
             <!--普通弹幕-->
             <div class="popup-normal"
                  v-for="barrage in barrages"
@@ -114,19 +125,23 @@
             <!--普通弹幕 END-->
 
             <!--礼物效果-->
-            <div v-for="gift in gift_barrages"
-                 :ref="'gift_'+gift.data.gift.id"
+            <div v-for="msg in gift_barrages"
+                 :ref="'gift_'+msg.data.prizeOrder.id"
                  class="popup-gift">
-              <div class="gift-icon" :style="{backgroundImage: 'url(' + gift.data.gift.prize_image + ')'}"></div>
+              <!-- TODO: 此處實現的是小跑馬效果，還需要實現中跑馬和大跑馬 -->
+              <div class="gift-icon">
+                <!--:style="{backgroundImage: 'url(' + msg.data.prizeOrder.prize_marquee_url + ')'}">-->
+                <img :src="msg.data.prizeOrder.prize_marquee_url"/>
+              </div>
               <div class="gift-author">
                 <div class="avatar"
-                     :style="{backgroundImage: 'url(' + gift.sender.member_avatar + ')'}"></div>
+                     :style="{backgroundImage: 'url(' + msg.sender.member_avatar + ')'}"></div>
                 <div class="nickname">
-                  <div class="name">{{ gift.sender.nickname }}</div>
-                  <div class="level">lv.{{ gift.sender.member_level }}</div>
-                  <div class="vip">{{ gift.sender.member_vip_level }}</div>
+                  <div class="name">{{ msg.sender.member_nickname }}</div>
+                  <div class="level">lv.{{ msg.sender.member_level }}</div>
+                  <div class="vip">{{ msg.sender.member_vip_level }}</div>
                 </div>
-                <div class="gift-name">送出{{ gift.data.gift.prize_name }}</div>
+                <div class="gift-name">送出{{ msg.data.prizeOrder.prize_name }}</div>
                 <div class="gift-count">
                   <div class="add-icon"></div>
                   <div class="num-icon"></div>
@@ -279,7 +294,7 @@
       </div>
     </transition>
 
-    <member-card :display="memberCard_display"
+    <member-card :display="member_card_display"
                  :choice="choice"
                  :item="author_member"
                  v-if="author_member"
@@ -287,16 +302,18 @@
                  @pick="choicePick"></member-card>
 
 
-    <live-starbox :display="starbox_display"
-                  :item="author_member"
-                  @click="starbox()"></live-starbox>
+    <live-star-box :display="starbox_display"
+                   :item="author_member"
+                   @click="starbox()"></live-star-box>
 
     <!-- apply 會返回一個禮物流水對象 -->
     <live-gift-bag :display="giftbag_display"
-                  @apply="sendGift"></live-gift-bag>
+                   :live="live"
+                   @hide="giftbag_display=false"
+                   @apply="sendGift"></live-gift-bag>
 
-    <live-redbag :display="redbag_display"
-                 @click="redbag"></live-redbag>
+    <live-red-bag :display="redbag_display"
+                  @click="redbag"></live-red-bag>
 
     <live-mission :display="mission_display"
                   @click="mission"></live-mission>
@@ -326,7 +343,7 @@
         barrages: [],
         is_hide_all: false,
         bottom_nav_btn_display: false,
-        memberCard_display: false,
+        member_card_display: false,
         bottom_nav_display: false,
         blinkStar_display: false,
         show_audio_box: false,
@@ -338,7 +355,8 @@
         mission_display: false,
         inputBox: false,
         live: null,
-        live_watch_log: null,
+        my_watch_log: null,
+        watch_logs: [],
         author_member: null,
         gift_barrages: [],
       };
@@ -386,6 +404,8 @@
     methods: {
       reload() {
         const vm = this;
+        // 重新加載用戶信息
+        vm.authenticate(true);
         vm.api('Live').get({
           id: vm.$route.params.id,
           fields: 'author,nickname,author_avatar,signature,' +
@@ -431,9 +451,24 @@
           }, {
             live: vm.$route.params.id,
           }).then((log) => {
-            vm.live_watch_log = log.data;
+            vm.my_watch_log = log.data;
           });
         }
+        // 加載觀看記錄列表
+        vm.loadWatchLogs();
+      },
+      loadWatchLogs() {
+        const vm = this;
+        vm.api('Live').get({
+          id: vm.$route.params.id,
+          action: 'get_watch_logs',
+        }, {
+          page: 1,
+          page_size: 10,
+          ordering: 'diamonds',
+        }).then(resp => {
+          vm.watch_logs = resp.data;
+        });
       },
       submit(valObj) {
         const vm = this;
@@ -500,10 +535,10 @@
         this.bottom_nav_display = !this.bottom_nav_display;
       },
       showMemberCard() {
-        this.memberCard_display = true;
+        this.member_card_display = true;
       },
       toggleMemberCard(value) {
-        this.memberCard_display = value;
+        this.member_card_display = value;
       },
       choicePick(value) {
         // TODO 根據返回的值執行
@@ -611,22 +646,9 @@
       showBarrage(barrage) {
         const vm = this;
         vm.barrages.push(barrage.data.barrage);
-//        console.log(JSON.parse(JSON.stringify(vm.barrages)));
-        vm.$nextTick(() => {
-          setTimeout(() => {
-            const refId = `barrage_${barrage.data.barrage.id}`;
-            const ref = vm.$refs[refId] && vm.$refs[refId][0];
-            if (!ref) return;
-            ref.style.transform = 'translate3d(-20rem,0,0)';
-            /* 监听 transition! */
-            ref.addEventListener('webkitTransitionEnd', () => {
-              vm.barrages.splice(vm.barrages.indexOf(barrage), 1);
-            });
-            ref.addEventListener('transitionend', () => {
-              vm.barrages.splice(vm.barrages.indexOf(barrage), 1);
-            });
-          }, 0);
-        });
+        setTimeout(() => {
+          vm.barrages.splice(vm.barrages.indexOf(barrage.data.barrage), 1);
+        }, 4000);
       },
       /**
        * 切换追踪或者不追踪
@@ -683,26 +705,13 @@
           vm.sendIM(`live_${vm.$route.params.id}`, { type: 'gift', prizeOrder });
         }
       },
-      showGift(gift) {
+      showGift(msg) {
         const vm = this;
-        const prizeOrder = gift.data;
-        debugger;
-        vm.gift_barrages.push(gift);
-        vm.$nextTick(() => {
-          setTimeout(() => {
-            const refId = `gift_${prizeOrder.id}`;
-            const ref = vm.$refs[refId] && vm.$refs[refId][0];
-            if (!ref) return;
-            ref.style.transform = 'translate3d(-100%,0,0)';
-            /* 监听 transition! */
-            ref.addEventListener('webkitTransitionEnd', () => {
-              vm.gift_barrages.splice(vm.gift_barrages.indexOf(gift), 1);
-            });
-            ref.addEventListener('transitionend', () => {
-              vm.gift_barrages.splice(vm.gift_barrages.indexOf(gift), 1);
-            });
-          }, 0);
-        });
+        vm.gift_barrages.push(msg);
+        vm.reload();
+        setTimeout(() => {
+          vm.gift_barrages.splice(vm.gift_barrages.indexOf(msg), 1);
+        }, 4000);
       },
     },
   };
@@ -932,6 +941,7 @@
           height: 47*@px;
           line-height: 47*@px;
           width: 120*@px;
+          font-size: 25*@px;
           .nowrap();
         }
         .icon-caret {
@@ -984,7 +994,7 @@
           border-bottom-right-radius: 41*@px;
           .num {
             .block-center();
-            font-size: 32*@px;
+            font-size: 25*@px;
           }
           .percent {
             width: 95%;
@@ -1086,25 +1096,33 @@
         font-size: 25*@px;
         background: rgba(238, 144, 99, 0.7);
       }
+
       .popup-normal {
         position: absolute;
         height: 72*@px;
         overflow: hidden;
         color: #FFFFFF;
-        right: 0;
         padding-right: 28*@px;
         background: rgba(0, 0, 0, 0.4);
         .rounded-corners(72*@px);
-        -webkit-transform: translate3d(100%, 0, 0);
-        -moz-transform: translate3d(100%, 0, 0);
-        -ms-transform: translate3d(100%, 0, 0);
-        -o-transform: translate3d(100%, 0, 0);
-        transform: translate3d(100%, 0, 0);
-        -webkit-transition: all 4s linear;
-        -moz-transition: all 4s linear;
-        -ms-transition: all 4s linear;
-        -o-transition: all 4s linear;
-        transition: all 4s linear;
+        & {
+          .keyframes(barrage_move);
+          .-frames(@-...) {
+            0% {
+              .translate("100%", "0");
+              right: 0;
+            }
+            100% {
+              .translate("0", "0");
+              right: 100%;
+            }
+          }
+        }
+        .animation(barrage_move, 4s, linear);
+        -webkit-animation-fill-mode: forwards;
+        -moz-animation-fill-mode: forwards;
+        -o-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
         .avatar {
           float: left;
           height: 68*@px;
@@ -1165,22 +1183,24 @@
         top: 240*@px;
         position: absolute;
         z-index: 9;
-        -webkit-transform: translate3d(20rem, 0, 0);
-        -moz-transform: translate3d(20rem, 0, 0);
-        -ms-transform: translate3d(20rem, 0, 0);
-        -o-transform: translate3d(20rem, 0, 0);
-        transform: translate3d(20rem, 0, 0);
-        -webkit-transition: all 4s linear;
-        -moz-transition: all 4s linear;
-        -ms-transition: all 4s linear;
-        -o-transition: all 4s linear;
-        transition: all 4s linear;
+        .animation(barrage_move, 4s, linear);
+        -webkit-animation-fill-mode: forwards;
+        -moz-animation-fill-mode: forwards;
+        -o-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
         .gift-icon {
           margin: 0 auto;
           width: 465*@px;
           height: 160*@px;
-          background: 50% 50% no-repeat;
-          background-size: cover;
+          /*background: 50% 50% no-repeat;*/
+          /*background-size: cover;*/
+          text-align: center;
+          img {
+            max-width: 465*@px;
+            max-height: 160*@px;
+            display: block;
+            margin: 0 auto;
+          }
         }
         .gift-author {
           width: 360*@px;

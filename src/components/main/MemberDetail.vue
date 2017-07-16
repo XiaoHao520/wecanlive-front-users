@@ -303,7 +303,7 @@
               font-size: 21*@px;
               height: 32*@px;
               line-height: 32*@px;
-              background: url("../../assets/image/f-f4/f_icon_vip_gray@3x.png") 50% 50% no-repeat;
+              background: url("../../assets/image/F/f_icon_vip_gray@3x.png") 50% 50% no-repeat;
               background-size: 100%;
               width: 88*@px;
               text-align: center;
@@ -313,7 +313,7 @@
               right: 0; top: 0;
               width: 44*@px;
               height: 44*@px;
-              background: url("../../assets/image/f-f4/f_icon_scan@3x.png") 50% 50% no-repeat;
+              background: url("../../assets/image/F/f_icon_scan@3x.png") 50% 50% no-repeat;
               background-size: 100%;
             }
           }
@@ -381,13 +381,13 @@
             background-size: 100%;
             margin: 0 auto;
             &.icon-zuan {
-              background-image: url('../../assets/image/f-f4/f_icon_diamond@3x.png');
+              background-image: url('../../assets/image/F/f_icon_diamond@3x.png');
             }
             &.icon-gold {
-              background-image: url('../../assets/image/f-f4/f_icon_coin@3x.png');
+              background-image: url('../../assets/image/F/f_icon_coin@3x.png');
             }
             &.icon-level {
-              background-image: url('../../assets/image/f-f4/f_icon_grade@3x.png');
+              background-image: url('../../assets/image/F/f_icon_grade@3x.png');
             }
           }
           .balance-num {
@@ -433,7 +433,7 @@
           }
         }
         .top-one-icon {
-          background: url("../../assets/image/f-f4/f_icon_crown@3x.png") 50% 50% no-repeat;
+          background: url("../../assets/image/F/f_icon_crown@3x.png") 50% 50% no-repeat;
           width: 46*@px;
           height: 31*@px;
           background-size: 100%;
@@ -524,16 +524,16 @@
             display: inline-block;
             &.one-style {
               float: right;
-              background-image: url('../../assets/image/f-f4/f_icon_bigpic_nor@3x.png');
+              background-image: url('../../assets/image/F/f_icon_bigpic_nor@3x.png');
             }
             &.three-style {
-              background-image: url('../../assets/image/f-f4/f_icon_spic_pred@3x.png');
+              background-image: url('../../assets/image/F/f_icon_spic_pred@3x.png');
             }
             &.three-style-black {
-              background-image: url('../../assets/image/f-f4/f_icon_spic_nor@3x.png');
+              background-image: url('../../assets/image/F/f_icon_spic_nor@3x.png');
             }
             &.one-style-black {
-              background-image: url('../../assets/image/f-f4/f_icon_bigpic_pred@3x.png');
+              background-image: url('../../assets/image/F/f_icon_bigpic_pred@3x.png');
             }
           }
         }

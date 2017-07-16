@@ -81,7 +81,7 @@
         box-sizing: border-box;
         height: 62*@px;
         line-height: 62*@px;
-        background: url("../../assets/image/f-f4/f_icon_coin@3x.png") 0 50% no-repeat;
+        background: url("../../assets/image/F/f_icon_coin@3x.png") 0 50% no-repeat;
         background-size: 62*@px;
         color: #2D02ED;
         font-size: 32*@px;

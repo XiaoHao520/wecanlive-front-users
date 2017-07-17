@@ -13,6 +13,7 @@
               <div class="age">{{ item.age }}歲</div>
               <div class="cont">{{ choices.constellation[item.constellation] }}</div>
             </div>
+            <!--todo-->
             <!--<a href="javascript:;" class="add-btn">-->
               <!--<div class="add-icon"></div>-->
               <!--追蹤-->

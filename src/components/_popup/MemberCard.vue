@@ -58,7 +58,30 @@
         const vm = this;
         if (vm.choice.length) {
           vm.pickChoice(vm.choice).then((val) => {
-            this.$emit('pick', val);
+//            this.$emit('pick', val);
+            if (val === 2) {
+              // 举报
+              vm.pickChoice([
+                { text: '色情', value: '色情' },
+                { text: '騷擾', value: '騷擾' },
+                { text: '機械軍火', value: '機械軍火' },
+                { text: '虐待孩童', value: '虐待孩童' },
+                { text: '嚴重暴力', value: '嚴重暴力' },
+                { text: '廣告', value: '廣告' },
+                { text: '詐騙', value: '詐騙' },
+                { text: '取消', value: false },
+              ]).then((report) => {
+                if (!report) return;
+                vm.api('Live').save({
+                  action: 'live_report',
+                  id: vm.$route.params.id,
+                }, {
+                  content: report,
+                }).then(() => {
+                  vm.notify('舉報成功，我們會儘快處理。');
+                });
+              });
+            }
           });
         }
       },

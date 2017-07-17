@@ -4,11 +4,11 @@
     <div class="diamond-exchange-coin">
       <div class="personal-balance">
         <div class="balance coin">
-          <div class="num">10000</div>
+          <div class="num">{{ me.coin_balance }}</div>
           <div class="unit">金幣</div>
         </div>
         <div class="balance diamond">
-          <div class="num">10000</div>
+          <div class="num">{{ me.diamond_balance }}</div>
           <div class="unit">鑽石</div>
         </div>
       </div>
@@ -18,27 +18,27 @@
         <ul>
           <li class="exchange-item">
             <div class="num">50</div>
-            <div class="exchange-btn">103 鑽石</div>
+            <div @click="exchange(50)" class="exchange-btn">103 鑽石</div>
           </li>
 
           <li class="exchange-item">
             <div class="num">150</div>
-            <div class="exchange-btn">205 鑽石</div>
+            <div @click="exchange(150)" class="exchange-btn">205 鑽石</div>
           </li>
 
           <li class="exchange-item">
-            <div class="num">50</div>
-            <div class="exchange-btn">103 鑽石</div>
+            <div class="num">300</div>
+            <div @click="exchange(300)" class="exchange-btn">1021 鑽石</div>
           </li>
 
           <li class="exchange-item">
-            <div class="num">50</div>
-            <div class="exchange-btn">103 鑽石</div>
+            <div class="num">500</div>
+            <div @click="exchange(500)" class="exchange-btn">2041 鑽石</div>
           </li>
 
           <li class="exchange-item">
             <div class="num">10000</div>
-            <div class="exchange-btn">1025 鑽石</div>
+            <div @click="exchange(10000)" class="exchange-btn">10205 鑽石</div>
           </li>
         </ul>
       </div>
@@ -52,6 +52,13 @@
   export default {
     methods: {
       reload() {
+        const vm = this;
+        vm.authenticate(true).then(() => {
+        });
+      },
+      exchange() {
+        const vm = this;
+        vm.notify('該功能尚未實現');
       },
     },
   };
@@ -64,7 +71,10 @@
   .diamond-exchange-coin {
     position: absolute;
     top: @height-header;
-    left: 0; right: 0; bottom: 0; overflow-y: scroll;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: scroll;
     .app-scroll();
     .personal-balance {
       background: #170175;

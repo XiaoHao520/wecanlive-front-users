@@ -74,16 +74,19 @@
 
     <div class="contribution-list">
       <div class="contribution-title">貢獻榜</div>
+      <template v-for="(item,i) in rank_items" v-if="i < 3">
+        <div class="contribution-item">
+          <div class="top-one-bg" v-if="i == 0"></div>
+          <div class="top-one-icon" v-if="i == 0"></div>
+          <div class="avatar " :class="{'top-one' : i ==0}"
+               :style="{backgroundImage: 'url(' + item.member.avatar_url+')'}"></div>
+        </div>
+      </template>
       <!--<div class="contribution-item">-->
-        <!--<div class="top-one-bg"></div>-->
-        <!--<div class="top-one-icon"></div>-->
-        <!--<div class="avatar top-one"></div>-->
+      <!--<div class="avatar"></div>-->
       <!--</div>-->
       <!--<div class="contribution-item">-->
-        <!--<div class="avatar"></div>-->
-      <!--</div>-->
-      <!--<div class="contribution-item">-->
-        <!--<div class="avatar"></div>-->
+      <!--<div class="avatar"></div>-->
       <!--</div>-->
     </div>
 
@@ -186,6 +189,7 @@
         avatar: '',
         active_event: [],
         live: [],
+        rank_items: [],
       };
     },
     methods: {
@@ -204,6 +208,12 @@
             author: vm.me.id,
           }).then((resp) => {
             vm.live = resp.data.results;
+          });
+          //
+          vm.api('Member').get({
+            action: 'get_prize_rank',
+          }, {}).then((resp) => {
+            vm.rank_items = resp.data;
           });
         });
       },
@@ -310,7 +320,8 @@
             }
             .code-btn {
               position: absolute;
-              right: 0; top: 0;
+              right: 0;
+              top: 0;
               width: 44*@px;
               height: 44*@px;
               background: url("../../assets/image/F/f_icon_scan@3x.png") 50% 50% no-repeat;
@@ -421,7 +432,8 @@
         .avatar {
           width: 65*@px;
           height: 65*@px;
-          background: 50% 50% no-repeat #fff;
+          background: 50% 50% no-repeat;
+          background-size: cover;
           border-radius: 50%;
           position: relative;
           &.top-one {

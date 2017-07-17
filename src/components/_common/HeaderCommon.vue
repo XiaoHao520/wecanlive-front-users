@@ -109,7 +109,7 @@
         display: block;
         width: 60*@px;
         height: 60*@px;
-        background: url("../../assets/image/f-f4/f_icon_scan@3x.png");
+        background: url("../../assets/image/F/f_icon_scan@3x.png");
         background-size: 100%;
         position: absolute;
         top: 50%;

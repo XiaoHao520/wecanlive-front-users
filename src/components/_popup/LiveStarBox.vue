@@ -253,7 +253,7 @@
           .starbox-null-icon {
             width: 285*@px;
             height: 285*@px;
-            background: url("../../assets/image/D1-1/d1_1_icon_box_none@3x.png") 50% 50% no-repeat;
+            background: url("../../assets/image/D/d1_1_icon_box_none@3x.png") 50% 50% no-repeat;
             background-size: 100%;
             margin: 0 auto;
           }
@@ -268,10 +268,10 @@
             display: block;
             float: left;
             width: 125*@px;
-            background: url("../../assets/image/D1-1/d1_1_icon_box_nor@3x.png") 50% 100% no-repeat;
+            background: url("../../assets/image/D/d1_1_icon_box_nor@3x.png") 50% 100% no-repeat;
             background-size: 132*@px;
             &.box-item-open {
-              background-image: url("../../assets/image/D1-1/d1_1_icon_box_opened@3x.png");
+              background-image: url("../../assets/image/D/d1_1_icon_box_opened@3x.png");
             }
           }
         }

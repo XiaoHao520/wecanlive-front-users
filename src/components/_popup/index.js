@@ -1,12 +1,12 @@
 /* eslint-disable */
 
 export const MemberCard = require('./MemberCard.vue');
-export const DailyCheckin = require('./DailyCheckIn.vue');
-export const DailyCheckinresult = require('./DailyCheckInResult.vue');
+export const DailyCheckIn = require('./DailyCheckIn.vue');
+export const DailyCheckinResult = require('./DailyCheckInResult.vue');
 export const FamilyQrcode = require('./FamilyQrcode.vue');
-export const LiveCoinget = require('./LiveCoinGet.vue');
-export const LiveRedbag = require('./LiveRedBag.vue');
-export const LiveStarbox = require('./LiveStarBox.vue');
+export const LiveCoinGet = require('./LiveCoinGet.vue');
+export const LiveRedBag = require('./LiveRedBag.vue');
+export const LiveStarBox = require('./LiveStarBox.vue');
 export const PersonalQrcode = require('./PersonalQrcode.vue');
 export const ShareBox = require('./Share.vue');
 export const LiveGiftBag = require('./LiveGiftBag.vue');

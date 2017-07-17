@@ -103,13 +103,13 @@
             margin-top: 35*@px;
             padding-left: 140*@px;
             height: 120*@px;
-            background: url("../../assets/image/f-f4/f_icon_coin@3x.png") 0 50% no-repeat;
+            background: url("../../assets/image/F/f_icon_coin@3x.png") 0 50% no-repeat;
             background-size: 120*@px;
           }
           &.diamond {
             padding-left: 140*@px;
             height: 120*@px;
-            background: url("../../assets/image/f-f4/f_icon_diamond@3x.png") 0 50% no-repeat;
+            background: url("../../assets/image/F/f_icon_diamond@3x.png") 0 50% no-repeat;
             background-size: 120*@px;
           }
         }

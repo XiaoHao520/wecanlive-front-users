@@ -55,7 +55,7 @@
       .diamond-icon {
         width: 175*@px;
         height: 170*@px;
-        background: url("../../assets/image/f-f4/f_icon_coin@3x.png") 50% 50% no-repeat;
+        background: url("../../assets/image/F/f_icon_coin@3x.png") 50% 50% no-repeat;
         background-size: 100%;
         margin: 0 auto;
       }
@@ -86,7 +86,7 @@
         .coin-icon {
           width: 62*@px;
           height: 62*@px;
-          background: url("../../assets/image/f-f4/f_icon_coin@3x.png") 50% 50% no-repeat;
+          background: url("../../assets/image/F/f_icon_coin@3x.png") 50% 50% no-repeat;
           background-size: 100%;
           float: left;
           margin-right: 14*@px;

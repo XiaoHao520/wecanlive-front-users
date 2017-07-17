@@ -84,7 +84,7 @@
           color: #2D02ED;
           .transactions-diamond {
             padding-left: 56*@px;
-            background: url("../../assets/image/f-f4/f_icon_diamond@3x.png") 0 50% no-repeat;
+            background: url("../../assets/image/F/f_icon_diamond@3x.png") 0 50% no-repeat;
             background-size: 50*@px;
             display: inline-block;
             line-height: 56*@px;
@@ -93,7 +93,7 @@
           .transactions-coin {
             float: right;
             padding-left: 56*@px;
-            background: url("../../assets/image/f-f4/f_icon_coin@3x.png") 0 50% no-repeat;
+            background: url("../../assets/image/F/f_icon_coin@3x.png") 0 50% no-repeat;
             background-size: 50*@px;
             line-height: 56*@px;
             height: 50*@px;
@@ -102,7 +102,7 @@
           .transactions-cash {
             float: right;
             padding-left: 56*@px;
-            background: url("../../assets/image/f-f4/f_icon_coin@3x.png") 0 50% no-repeat;
+            background: url("../../assets/image/F/f_icon_coin@3x.png") 0 50% no-repeat;
             background-size: 50*@px;
             line-height: 56*@px;
             height: 50*@px;

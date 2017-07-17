@@ -33,11 +33,17 @@
           </div>
         </div>
         <div class="popup-member-card-footer">
-          <a class="btn-footer btn-like" v-if="!item.is_followed">
+
+          <a class="btn-footer btn-like btn-liked"
+             v-if="item.is_following">已追蹤</a>
+
+
+          <a class="btn-footer btn-like"
+             v-else
+             @click="addFollow()">
             <span class="icon">+</span>追蹤
           </a>
-          <a class="btn-footer btn-like btn-liked"
-             v-if="item.is_followed">已追蹤</a>
+
           <a class="btn-footer btn-aboutme">關於我</a>
         </div>
       </div>
@@ -104,6 +110,15 @@
             vm.item.contact_form_me = true;
           });
         }
+      },
+      addFollow() {
+        const vm = this;
+        vm.api('Member').save({
+          action: 'follow',
+          id: vm.item.user,
+        }, {}).then(() => {
+          vm.item.is_following = true;
+        });
       },
     },
     props: {

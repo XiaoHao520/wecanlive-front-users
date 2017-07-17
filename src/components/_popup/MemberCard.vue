@@ -11,7 +11,7 @@
           <div class="description">{{item.signature}}</div>
         </div>
         <div class="popup-member-card-btn">
-          <a class="btn-find-friend"></a>
+          <a class="btn-find-friend" @click="addFriend()"></a>
           <a class="btn-message"></a>
         </div>
         <div class="popup-member-card-content">
@@ -87,6 +87,23 @@
       },
       handleClick(evt) {
         this.$emit('click', !this.display);
+      },
+      addFriend() {
+        const vm = this;
+        if (vm.item.contact_form_me && vm.item.contact_to_me) {
+          vm.notify('你们已经是好友了');
+        } else if (vm.item.contact_form_me && !vm.item.contact_to_me) {
+          vm.notify('已經發送好友申請，等待對方回覆');
+        } else if (!vm.item.contact_form_me) {
+          vm.api('Contact').save({
+            author: vm.me.id,
+            user: vm.item.user,
+            type: 'OPEN',
+          }).then(() => {
+            vm.notify('已經發送好友申請，等待對方回覆');
+            vm.item.contact_form_me = true;
+          });
+        }
       },
     },
     props: {

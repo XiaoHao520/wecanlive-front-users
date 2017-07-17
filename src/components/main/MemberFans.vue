@@ -13,13 +13,14 @@
               <div class="age">{{ item.age }}歲</div>
               <div class="cont">{{ choices.constellation[item.constellation] }}</div>
             </div>
-            <!--todo-->
-            <!--<a href="javascript:;" class="add-btn">-->
-              <!--<div class="add-icon"></div>-->
-              <!--追蹤-->
-            <!--</a>-->
+            <a @click="follow(item.user)"
+               v-if="!item.is_following" href="javascript:;" class="add-btn">
+              <div class="add-icon"></div>
+              追蹤
+            </a>
           </div>
         </li>
+
       </ul>
     </div>
   </div>
@@ -37,9 +38,18 @@
         const vm = this;
         vm.api('Member').get({
           member: vm.me.id,
-          is_follow: 'True',
+          is_followed: 'True',
         }, {}).then((resp) => {
           vm.items = resp.data.results;
+        });
+      },
+      follow(user) {
+        const vm = this;
+        vm.api('Member').save({
+          action: 'follow',
+          id: user,
+        }, {}).then(() => {
+          vm.reload();
         });
       },
     },
@@ -54,7 +64,7 @@
     background: #E5E5EC;
     .list {
       background: #fff;
-      padding: 30*@px 30*@px 0 30*@px;
+      padding: 0 30*@px 0 30*@px;
       .item {
         border-bottom: 1px solid @color-border;
         padding: 0 0 15*@px 138*@px;
@@ -64,10 +74,12 @@
           border: 0;
           margin: 0;
         }
+        &:first-child {
+          padding-top: 30*@px;
+        }
         .avatar {
           position: absolute;
           left: 0;
-          top: 0;
           width: 120*@px;
           height: 120*@px;
           border-radius: 50%;
@@ -117,7 +129,15 @@
             display: block;
             position: absolute;
             right: 0;
-            top: 35*@px;
+            /*<!--top: 35*@px;-->*/
+            top: 50%;
+            -webkit-transform: translate(0,-50%);
+            -moz-transform: translate(0,-50%);
+            -ms-transform: translate(0,-50%);
+            -o-transform: translate(0,-50%);
+            transform: translate(0,-50%);
+
+
             font-size: 24*@px;
             line-height: 50*@px;
             border-radius: 25*@px;

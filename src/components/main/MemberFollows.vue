@@ -13,9 +13,12 @@
               <div class="age">{{ item.age }}歲</div>
               <div class="cont">{{ choices.constellation[item.constellation] }}</div>
             </div>
-            <a href="javascript:;" class="add-btn">正在直播</a>
+            <router-link :to="{name: 'main_live',params: {id: item.is_living} }"
+                         v-if="item.is_living" class="add-btn">正在直播
+            </router-link>
           </div>
         </li>
+
       </ul>
     </div>
   </div>
@@ -33,9 +36,10 @@
         const vm = this;
         vm.api('Member').get({
           member: vm.me.id,
-          is_followed: 'True',
+          is_follow: 'True',
         }, {}).then((resp) => {
           vm.items = resp.data.results;
+          console.log(vm.items);
         });
       },
     },
@@ -50,7 +54,7 @@
     background: #E5E5EC;
     .list {
       background: #fff;
-      padding: 30*@px 30*@px 0 30*@px;
+      padding:0 30*@px 0 30*@px;
       .item {
         border-bottom: 1px solid @color-border;
         padding: 0 0 15*@px 138*@px;
@@ -60,10 +64,12 @@
           border: 0;
           margin: 0;
         }
+        &:first-child {
+          padding-top: 30*@px;
+        }
         .avatar {
           position: absolute;
           left: 0;
-          top: 0;
           width: 120*@px;
           height: 120*@px;
           border-radius: 50%;
@@ -113,7 +119,13 @@
             display: block;
             position: absolute;
             right: 0;
-            top: 35*@px;
+            /*<!--top: 35*@px;-->*/
+            top: 50%;
+            -webkit-transform: translate(0,-50%);
+            -moz-transform: translate(0,-50%);
+            -ms-transform: translate(0,-50%);
+            -o-transform: translate(0,-50%);
+            transform: translate(0,-50%);
             font-size: 24*@px;
             line-height: 50*@px;
             border-radius: 25*@px;

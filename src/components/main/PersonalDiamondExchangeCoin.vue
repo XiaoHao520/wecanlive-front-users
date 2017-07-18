@@ -18,27 +18,27 @@
         <ul>
           <li class="exchange-item">
             <div class="num">50</div>
-            <div @click="exchange(50)" class="exchange-btn">103 鑽石</div>
+            <div @click="exchange(50)" class="exchange-btn">100 鑽石</div>
           </li>
 
           <li class="exchange-item">
             <div class="num">150</div>
-            <div @click="exchange(150)" class="exchange-btn">205 鑽石</div>
+            <div @click="exchange(150)" class="exchange-btn">300 鑽石</div>
           </li>
 
           <li class="exchange-item">
             <div class="num">300</div>
-            <div @click="exchange(300)" class="exchange-btn">1021 鑽石</div>
+            <div @click="exchange(300)" class="exchange-btn">600 鑽石</div>
           </li>
 
           <li class="exchange-item">
             <div class="num">500</div>
-            <div @click="exchange(500)" class="exchange-btn">2041 鑽石</div>
+            <div @click="exchange(500)" class="exchange-btn">1000 鑽石</div>
           </li>
 
           <li class="exchange-item">
             <div class="num">10000</div>
-            <div @click="exchange(10000)" class="exchange-btn">10205 鑽石</div>
+            <div @click="exchange(10000)" class="exchange-btn">2000 鑽石</div>
           </li>
         </ul>
       </div>
@@ -56,9 +56,17 @@
         vm.authenticate(true).then(() => {
         });
       },
-      exchange() {
+      exchange(coinCount) {
         const vm = this;
-        vm.notify('該功能尚未實現');
+        vm.confirm(`是否確認兌換${coinCount}金幣`).then(() => {
+          vm.api('DiamondExchangeRecord').save({
+            action: 'diamond_exchange_coin',
+          }, {
+            coin_count: coinCount,
+          }).then((resp) => {
+            vm.reload();
+          });
+        });
       },
     },
   };

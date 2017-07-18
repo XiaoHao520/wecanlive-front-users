@@ -134,5 +134,42 @@
         padding-right: 30*@px;
       }
     }
+    .family-action {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      height: @height-header;
+      width: 150*@px;
+      .btn {
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translate(0, -50%);
+        -moz-transform: translate(0, -50%);
+        -ms-transform: translate(0, -50%);
+        -o-transform: translate(0, -50%);
+        transform: translate(0, -50%);
+        width: 44*@px;
+        height: 44*@px;
+        .unread {
+          background: #FE0202;
+          width: 12*@px;
+          height: 12*@px;
+          position: absolute;
+          border-radius: 50%;
+          top: 0;
+          right: -6*@px;
+        }
+        &.mission-btn {
+          background: url("../../assets/image/F/f5_1_icon_task@3x.png") 50% 50% no-repeat;
+          background-size: 100%;
+          right: 30*@px;
+        }
+        &.notice-btn {
+          background: url("../../assets/image/F/f5_1_icon_notice@3x.png") 50% 50% no-repeat;
+          background-size: 100%;
+          right: 100*@px;
+        }
+      }
+    }
   }
 </style>

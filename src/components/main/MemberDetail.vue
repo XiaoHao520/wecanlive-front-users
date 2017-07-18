@@ -180,18 +180,18 @@
                v-if="tab == 2">
         <div class="family">
           <ul>
-            <!--<li class="family-item">-->
-            <!--<a href="javascript:;" class="family-img">-->
-            <!--<div class="family-name">大家族</div>-->
-            <!--</a>-->
-            <!--</li>-->
+            <li class="family-item">
+              <a href="javascript:;" class="family-img">
+                <div class="family-name">大家族</div>
+              </a>
+            </li>
 
-            <!--<li class="family-item">-->
-            <!--<a href="javascript:;" class="add-family-btn">-->
-            <!--<div class="add-icon"></div>-->
-            <!--創立家族-->
-            <!--</a>-->
-            <!--</li>-->
+            <li v-if="$route.params.id == me.id" class="family-item">
+              <router-link class="add-family-btn" :to="{name: 'main_family_create'}">
+                <div class="add-icon"></div>
+                創立家族
+              </router-link>
+            </li>
           </ul>
         </div>
       </section>

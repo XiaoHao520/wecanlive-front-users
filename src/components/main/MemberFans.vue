@@ -37,7 +37,7 @@
       reload() {
         const vm = this;
         vm.api('Member').get({
-          member: vm.me.id,
+          member: vm.$route.params.id,
           is_followed: 'True',
         }, {}).then((resp) => {
           vm.items = resp.data.results;

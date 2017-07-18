@@ -151,7 +151,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        top: 36*@px+317*@px+126*@px+75*@px;
+        top: -37*@px+36*@px+317*@px+126*@px+75*@px;
         background: #E3E3EA;
         transition: all .5s cubic-bezier(.55, 0, .1, 1);
         .app-scroll();

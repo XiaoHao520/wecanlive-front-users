@@ -1,7 +1,9 @@
 <template>
   <div class="page-member-detail">
     <div class="member-detail-block"
-         :class="{'not-status-bar': !overlapStatusBar}">
+         :class="{'not-status-bar': !overlapStatusBar,
+                  'not-owned': me.id != $route.params.id}">
+
       <div class="header-action">
         <router-link :to="{name:'main_personal_settings'}" class="btn btn-set"></router-link>
         <router-link :to="{name:'main_member_friends'}" class="btn btn-friend"></router-link>
@@ -9,32 +11,34 @@
 
       <div class="member-detail">
         <div class="avatar" :style="{backgroundImage: 'url('+ avatar +')'}">
-          <a href="javascript:;" @click="modifyAvatar()" class="modify-avatar-btn"></a>
+          <a href="javascript:;" v-if="me.id == $route.params.id"
+             @click="modifyAvatar()" class="modify-avatar-btn"></a>
         </div>
         <div class="member-info">
           <div class="member-name">
-            <div class="name">{{ me.nickname }}</div>
+            <div class="name">{{ user.nickname }}</div>
             <a href="javascript:;" class="vip-level">VIP</a>
             <a href="javascript:;" class="code-btn"></a>
           </div>
 
-          <div class="id">ID:{{ me.id }}</div>
+          <div class="id">ID:{{ user.id?user.id: user.user }}</div>
 
           <div class="member-sex">
-            {{ choices.gender[me.gender] }} &bull; {{ me.age }}歲 &bull; {{ choices.constellation[me.constellation] }}
+            {{ choices.gender[user.gender] }} &bull; {{ user.age }}歲 &bull; {{ choices.constellation[user.constellation]
+            }}
           </div>
 
           <div class="member-follow">
             <div class="follow-type">
               <router-link :to="{name: 'main_member_fans'}">
                 <div class="type">粉絲</div>
-                <div class="num">{{ me.count_followed }}</div>
+                <div class="num">{{ user.count_followed }}</div>
               </router-link>
             </div>
             <div class="follow-type follow">
               <router-link :to="{name: 'main_member_follows'}">
                 <div class="type">追蹤</div>
-                <div class="num">{{ me.count_follow }}</div>
+                <div class="num">{{ user.count_follow }}</div>
               </router-link>
             </div>
             <div class="follow-type">
@@ -48,10 +52,10 @@
 
       <div class="personal-sign">
         <p>{{ me.signature }}</p>
-        <!--<p>心本體體會陷入到對自己本體不能理解的狀態中</p>-->
       </div>
 
-      <div class="member-balance">
+      <div v-if="me.id == $route.params.id"
+           class="member-balance">
         <div class="balance-type">
           <router-link :to="{name: 'main_personal_diamond'}">
             <div class="icon icon-zuan"></div>
@@ -69,10 +73,18 @@
           <div class="balance-num">Lv.{{ me.member_level }}</div>
         </div>
       </div>
+
+    </div>
+
+    <!--todo 如果當前用戶正在直播才會顯示-->
+    <div v-if="me.id != $route.params.id && member_living" class="user-live">
+      <live-item :item="member_living"
+                 :showInfo="false"
+                 :review="true"></live-item>
     </div>
 
 
-    <div class="contribution-list">
+    <div v-if="me.id == $route.params.id" class="contribution-list">
       <div class="contribution-title">貢獻榜</div>
       <template v-for="(item,i) in rank_items" v-if="i < 3">
         <div class="contribution-item">
@@ -119,7 +131,10 @@
 
 
     <transition :name="transitionName">
-      <section class="section-list dynamic-list" v-if="tab == 0">
+      <section class="section-list dynamic-list"
+               :class="{'not-owned-list': me.id != $route.params.id ,
+                        'not-live-list': me.id != $route.params.id && !user.is_living}"
+               v-if="tab == 0">
         <div class="watch-style">
           <a href="javascript:;" @click="big_dynamic=false"
              :class="{'three-style-black': big_dynamic}"
@@ -145,7 +160,10 @@
 
 
     <transition :name="transitionName">
-      <section class="section-list live-list" v-if="tab == 1">
+      <section class="section-list live-list"
+               :class="{'not-owned-list': me.id != $route.params.id ,
+                        'not-live-list': me.id != $route.params.id && !user.is_living}"
+               v-if="tab == 1">
         <template v-for="item in live">
           <live-item :item="item"
                      :showInfo="false"
@@ -156,7 +174,10 @@
 
 
     <transition :name="transitionName">
-      <section class="section-list family-list" v-if="tab == 2">
+      <section class="section-list family-list"
+               :class="{'not-owned-list': me.id != $route.params.id ,
+                        'not-live-list': me.id != $route.params.id && !user.is_living}"
+               v-if="tab == 2">
         <div class="family">
           <ul>
             <!--<li class="family-item">-->
@@ -175,6 +196,16 @@
         </div>
       </section>
     </transition>
+
+    <!--todo 陌生人不能發信息-->
+    <div class="footer-btn" v-if="me.id != $route.params.id">
+      <div class="bg"></div>
+      <a href="javascript:;" v-if="user.is_following" class="btn follow-btn">已追蹤</a>
+      <a href="javascript:;" v-else class="btn follow-btn"><span>+</span>追蹤</a>
+
+
+      <a href="javascript:;" @click="sendMessage()" class="btn message-btn">發訊息</a>
+    </div>
   </div>
 </template>
 
@@ -190,32 +221,65 @@
         active_event: [],
         live: [],
         rank_items: [],
+        user: [],
+        member_living: null,
       };
     },
     methods: {
       reload() {
         const vm = this;
-        vm.authenticate(true).then(() => {
-          vm.avatar = vm.me.avatar_url;
+        if (Number(vm.$route.params.id) === Number(vm.me.id)) {
+          // 當前用戶個人
+          vm.authenticate(true).then(() => {
+            vm.avatar = vm.me.avatar_url;
+            //
+            vm.user = vm.me;
+            vm.api('ActiveEvent').get({
+              author: vm.me.id,
+            }).then((resp) => {
+              vm.active_event = resp.data.results;
+            });
+            //
+            vm.api('Live').get({
+              author: vm.me.id,
+            }).then((resp) => {
+              vm.live = resp.data.results;
+            });
+            //
+            vm.api('Member').get({
+              action: 'get_prize_rank',
+            }, {}).then((resp) => {
+              vm.rank_items = resp.data;
+            });
+          });
+        } else {
+          // 其他人個人
+          vm.api('Member').get({
+            id: vm.$route.params.id,
+          }).then((resp) => {
+            vm.user = resp.data;
+            vm.avatar = vm.user.avatar_url;
+            if (vm.user.is_living) {
+              vm.api('Live').get({
+                id: vm.user.is_living,
+              }).then((living) => {
+                vm.member_living = living.data;
+              });
+            }
+          });
           //
           vm.api('ActiveEvent').get({
-            author: vm.me.id,
+            author: vm.$route.params.id,
           }).then((resp) => {
             vm.active_event = resp.data.results;
           });
           //
           vm.api('Live').get({
-            author: vm.me.id,
+            author: vm.$route.params.id,
           }).then((resp) => {
             vm.live = resp.data.results;
           });
-          //
-          vm.api('Member').get({
-            action: 'get_prize_rank',
-          }, {}).then((resp) => {
-            vm.rank_items = resp.data;
-          });
-        });
+        }
       },
       tabTo(pos) {
         const vm = this;
@@ -237,6 +301,23 @@
           });
         });
       },
+      sendMessage() {
+        const vm = this;
+        if (!vm.user.contact_form_me && !vm.user.contact_to_me) {
+          vm.notify('你們是陌生人，不能發信息');
+          return;
+        }
+        vm.notify('開發中');
+      },
+      addFollow() {
+        const vm = this;
+        vm.api('Member').save({
+          action: 'follow',
+          id: vm.user.user,
+        }, {}).then(() => {
+          vm.reload();
+        });
+      },
     },
   };
 </script>
@@ -251,6 +332,9 @@
       padding: 62*@px 30*@px 45*@px 30*@px;
       &.not-status-bar {
         padding: 26*@px 30*@px 45*@px 30*@px;
+      }
+      &.not-owned {
+        padding-bottom: 1px;
       }
       .header-action {
         height: 52*@px;
@@ -411,6 +495,10 @@
       }
 
     }
+    .user-live {
+      height: 650*@px;
+      overflow: hidden;
+    }
     .contribution-list {
       height: 137*@px;
       background: #170174;
@@ -522,6 +610,12 @@
       background: #E3E3EA;
       .app-scroll();
       transition: all .5s cubic-bezier(.55, 0, .1, 1);
+      &.not-owned-list {
+        top: 1170*@px;
+      }
+      &.not-live-list {
+        top: 520*@px;
+      }
       &.dynamic-list {
         background: #E5E5EC;
         .watch-style {
@@ -639,6 +733,39 @@
               }
             }
           }
+        }
+      }
+    }
+    .footer-btn {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 128*@px;
+      background: rgba(255, 255, 255, 0.5);
+      .bg {
+        height: 100%;
+        .blur();
+        z-index: 9;
+      }
+      a {
+        position: absolute;
+        z-index: 99;
+        top: 20*@px;
+        display: block;
+        height: 80*@px;
+        width: 300*@px;
+        text-align: center;
+        line-height: 80*@px;
+        color: #fff;
+        border-radius: 40*@px;
+        &.follow-btn {
+          left: 30*@px;
+          background: svg-gradient(to right, #0021E7, #9D20F6);
+        }
+        &.message-btn {
+          background: @color-submit;
+          right: 30*@px;
         }
       }
     }

@@ -10,22 +10,22 @@
 
     <div class="member-friends">
       <div class="member-info">
-        <div class="avatar" :style="{backgroundImage: 'url('+ me.avatar_url +')'}"></div>
+        <div class="avatar" :style="{backgroundImage: 'url('+ user.avatar_url +')'}"></div>
         <div class="member">
-          <div class="name">{{ me.nickname }}</div>
-          <div class="id">ID :{{ me.id }}</div>
+          <div class="name">{{ user.nickname }}</div>
+          <div class="id">ID :{{ user.id ? user.id : user.user }}</div>
         </div>
       </div>
 
       <div class="friend-block">
-        <div class="friends-type">
+        <div class="friends-type" v-if="$route.params.id == me.id">
           交友邀請 ({{ friends_invite_count }})
           <a href="javascript:;" @click="invite=!invite"
              :class="{'hide-icon': !invite}"
              class="open-icon"></a>
         </div>
 
-        <div :class="{'hide' : !invite}" class="member-list">
+        <div :class="{'hide' : !invite}" class="member-list" v-if="$route.params.id == me.id">
           <ul>
             <li v-for="invite in friends_invite" class="member-item">
               <div class="avatar" :style="{backgroundImage: 'url('+ invite.avatar_url +')'}"></div>
@@ -51,7 +51,7 @@
             <li v-for="friend in friends_list" class="member-item">
               <div class="avatar" :style="{backgroundImage: 'url('+ friend.avatar_url +')'}"></div>
               <div class="name">{{ friend.nickname }}</div>
-              <div class="action">
+              <div class="action" v-if="me.id == $route.params.id">
                 <a href="javascript:;" class="message-btn">
                   <div class="unread-count" v-if="friend.unread">{{ friend.unread }}</div>
                 </a>
@@ -86,20 +86,32 @@
         friends_list_count: 0,
         friends_invite: [],
         friends_invite_count: 0,
+        user: [],
       };
     },
     methods: {
       reload() {
         const vm = this;
         vm.add_friend_success = false;
-//      我的好友
+        // 個人資料
+        if (Number(vm.$route.params.id) === Number(vm.me.id)) {
+          vm.user = vm.me;
+        } else {
+          vm.api('Member').get({
+            id: vm.$route.params.id,
+          }).then((resp) => {
+            vm.user = resp.data;
+          });
+        }
+        //      我的好友
         vm.api('Member').get({
           action: 'get_contact_list',
+          id: vm.$route.params.id,
         }).then((resp) => {
           vm.friends_list = resp.data;
           vm.friends_list_count = resp.data.length;
         });
-//      申请加我
+        // 申请加我
         vm.api('Member').get({
           invite: 'True',
         }).then((resp) => {
@@ -269,7 +281,7 @@
             .message-btn {
               width: 60*@px;
               height: 60*@px;
-              background:url("../../assets/image/F/f3_icon_message@3x.png") 50% 50% no-repeat;
+              background: url("../../assets/image/F/f3_icon_message@3x.png") 50% 50% no-repeat;
               background-size: 100%;
               margin-right: 20*@px;
               position: relative;

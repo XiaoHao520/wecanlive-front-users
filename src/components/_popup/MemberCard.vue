@@ -44,7 +44,7 @@
             <span class="icon">+</span>追蹤
           </a>
 
-          <a class="btn-footer btn-aboutme">關於我</a>
+          <router-link :to="{name: 'main_member_detail' ,params:{id: item.user}}" class="btn-footer btn-aboutme">關於我</router-link>
         </div>
       </div>
     </transition>

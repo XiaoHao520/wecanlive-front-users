@@ -173,7 +173,6 @@ export default {
               `live_${vm.$route.params.id}` !== data.sessionId) return;
             // 获取 main_live 房间的 vm
             const vmLive = vm.getVmByName('main_live');
-
             // 各种类型消息的路由
             if (data.data.type === 'like') { // 点爱心
               vmLive.showLike(!isSelfSend);
@@ -219,7 +218,13 @@ export default {
               });
             }
           } else if (/^family_\d+$/.test(data.sessionId)) {  // 家族消息
-            // TODO: 未实现
+            //
+            if (vm.$route.name !== 'main_family_chat' ||
+              `family_${vm.$route.params.id}` !== data.sessionId) return;
+            //
+            const vmFamily = vm.getVmByName('main_family_chat');
+            console.log(data.data);
+            vmFamily.showMessage({ data: data.data });
           } else if (data.sessionId === vm.me.username) {  // 发给自己的消息
             // TODO: 未实现
           } else {

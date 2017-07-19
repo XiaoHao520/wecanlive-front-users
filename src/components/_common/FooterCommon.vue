@@ -3,7 +3,7 @@
     <footer class="component-footer-common">
       <div class="footer-warpper">
         <router-link class="footer-btn-home" to="/"></router-link>
-        <router-link class="footer-btn-member" to="/member/0"></router-link>
+        <router-link class="footer-btn-member" :to="{name: 'main_member_detail',params: {id: me.id}}"></router-link>
         <div class="footer-btn-popup" @click="toggleBtn"></div>
         <a class="footer-btn-search" @click="notify('開發中')"></a>
         <a class="footer-btn-message" @click="notify('開發中')"></a>

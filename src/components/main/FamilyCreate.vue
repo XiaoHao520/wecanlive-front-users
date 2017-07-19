@@ -43,7 +43,6 @@
         const vm = this;
         vm.pickImage().then((resp) => {
           vm.image_item = resp;
-          console.log(vm.image_item);
         });
       },
       submit() {
@@ -65,9 +64,10 @@
           return;
         }
         vm.api('Family').save({
+          action: 'create_family',
+        }, {
           name: vm.name,
           family_introduce: vm.intro,
-          author: vm.me.id,
           logo: vm.image_item.id,
         }).then((resp) => {
           vm.$router.push({ name: 'main_family_chat', params: { id: resp.data.id } });

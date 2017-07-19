@@ -180,9 +180,10 @@
                v-if="tab == 2">
         <div class="family">
           <ul>
-            <li class="family-item">
-              <a href="javascript:;" class="family-img">
-                <div class="family-name">大家族</div>
+            <li v-for="family in families" class="family-item">
+              <a href="javascript:;" @click="goFamily(family.id)" class="family-img"
+                 :style="{backgroundImage: 'url(' + family.logo_item.image + ')'}">
+                <div class="family-name">{{ family.name }}</div>
               </a>
             </li>
 
@@ -223,6 +224,7 @@
         rank_items: [],
         user: [],
         member_living: null,
+        families: [],
       };
     },
     methods: {
@@ -251,6 +253,11 @@
             }, {}).then((resp) => {
               vm.rank_items = resp.data;
             });
+            vm.api('Family').get({
+              author: vm.me.id,
+            }).then((resp) => {
+              vm.families = resp.data.results;
+            });
           });
         } else {
           // 其他人個人
@@ -278,6 +285,12 @@
             author: vm.$route.params.id,
           }).then((resp) => {
             vm.live = resp.data.results;
+          });
+          //
+          vm.api('Family').get({
+            author: vm.$route.params.id,
+          }).then((resp) => {
+            vm.families = resp.data.results;
           });
         }
       },
@@ -317,6 +330,13 @@
         }, {}).then(() => {
           vm.reload();
         });
+      },
+      goFamily(id) {
+        const vm = this;
+        if (Number(vm.me.id) !== Number(vm.$route.params.id)) {
+          return;
+        }
+        vm.$router.push({ name: 'main_family_chat', params: { id } });
       },
     },
   };

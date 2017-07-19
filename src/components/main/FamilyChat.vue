@@ -1,8 +1,9 @@
 <template>
   <div class="page-family-chat">
-    <header-common :title="title">
+    <header-common>
+      <h1 slot="middle" class="title" @click.stop="goFamilyDetail()">{{ title }}</h1>
       <div class="family-action" slot="right">
-        <a href="javascript:;" @click="mission=!mission" class="btn mission-btn">
+        <a href="javascript:;" @click="mission_display=!mission_display" class="btn mission-btn">
           <div class="unread"></div>
         </a>
         <a href="javascript:;" class="btn notice-btn">
@@ -11,7 +12,7 @@
       </div>
     </header-common>
     <transition name="slide-down-up">
-      <div v-if="mission" class="family-notice">
+      <div v-if="mission_display" class="family-notice">
         <div class="avatar"></div>
         <div class="notice-info">
           <div class="header">
@@ -26,49 +27,120 @@
       </div>
     </transition>
 
-    <div class="chat-list">
+    <div ref="body" class="chat-list">
+      <template v-for="(message,index) in messages">
+        <div class="date" v-if="timeNode(index)">{{ message.date_create | date('mm/dd HH:MM') }}</div>
 
-      <div class="date">04/06 10:59</div>
+        <div class="message"
+             :class="{'own-message' : message.sender == me.id,
+                      'side-message' : message.sender !=me.id,}">
+          <div class="avatar" :style="{backgroundImage: 'url('+ message.avatar_url +')'}"></div>
+          <div class="content">{{ message.content }}</div>
+        </div>
+      </template>
 
-      <div class="message side-message">
-        <div class="avatar"></div>
-        <div class="content">我跟你说哦我跟你说哦我跟你说哦我跟你说哦我跟你说哦我跟你说哦我跟你说哦</div>
-      </div>
-
-      <div class="message side-message">
-        <div class="avatar"></div>
-        <div class="content">我跟你说哦</div>
-      </div>
-
-      <div class="message own-message">
-        <div class="avatar"></div>
-        <div class="content">我跟你说哦</div>
-      </div>
-
-      <div class="message own-message">
-        <div class="avatar"></div>
-        <div class="content">我跟你说哦我跟你说哦我跟你说哦我跟你说哦我跟你说哦我跟你说哦我跟你说哦</div>
-      </div>
     </div>
 
     <div class="chat-input">
       <a href="javascript:;" class="add-icon"></a>
-      <input type="text" placeholder="輸入對話內容">
-      <a href="javascript:;" class="submit-btn">發送</a>
+      <input type="text" v-model="content" placeholder="輸入對話內容">
+      <a href="javascript:;" @click="sendMessage()" class="submit-btn">發送</a>
     </div>
   </div>
 </template>
 
 <script type="text/babel" lang="babel">
   export default {
+    name: 'main_family_chat',
     data() {
       return {
-        title: '兄弟家族(13)',
-        mission: false,
+        title: null,
+        mission_display: false,
+        family: null,
+        messages: [],
+        last_id: -1,
+        content: '',
       };
     },
     methods: {
       reload() {
+        const vm = this;
+        vm.api('Family').get({
+          id: vm.$route.params.id,
+        }).then((resp) => {
+          vm.family = resp.data;
+          vm.title = `${vm.family.name}(${vm.family.count_family_member})`;
+        });
+        try {
+          vm.messages = JSON.parse(localStorage.getItem(`family_${vm.$route.params.id}`));
+          vm.last_id = vm.messages[vm.messages.length - 1].id;
+          vm.$nextTick(() => {
+            setTimeout(() => {
+              vm.$refs.body.scrollTop = 1e9;
+            }, 500);
+          });
+        } catch (e) {
+          vm.messages = [];
+          vm.last_id = -1;
+        }
+        vm.loadMessage();
+      },
+      loadMessage() {
+        const vm = this;
+        vm.api('Message').get({
+          family: vm.$route.params.id,
+          last_id: vm.last_id,
+          page_size: 9999,
+        }).then((resp) => {
+          resp.data.results.forEach(msg => {
+            vm.messages.push(msg);
+          });
+          //
+          localStorage.setItem(`family_${vm.$route.params.id}`, JSON.stringify(vm.messages));
+          //
+          vm.$nextTick(() => {
+            if (resp.data.count) vm.$refs.body.scrollTop = 1e9;
+          });
+        });
+      },
+      timeNode(index) {
+        // 时间提示
+        const vm = this;
+        if (vm.messages[index - 1]) {
+          const time = new Date(vm.messages[index].date_created).getTime() / 1000;
+          const last = new Date(vm.messages[index - 1].date_created).getTime() / 1000;
+          if (time - last > 30 * 60) {
+            return true;
+          }
+        }
+        return false;
+      },
+      sendMessage() {
+        const vm = this;
+        if (!vm.content.replace(/^\s*|\s*$/g, '')) {
+          vm.notify('不能發送空白信息');
+          vm.content = '';
+          return;
+        }
+        vm.api('Message').save({
+          content: vm.content,
+          families: [vm.$route.params.id],
+        }).then((resp) => {
+          vm.content = '';
+          vm.sendIM(`family_${vm.$route.params.id}`, { message: resp.data });
+        });
+      },
+      showMessage(data) {
+        const vm = this;
+        vm.messages.push(data.data.message);
+        localStorage.setItem(`family_${vm.$route.params.id}`, JSON.stringify(vm.messages));
+        vm.$nextTick(() => {
+          vm.$refs.body.scrollTop = 1e9;
+        });
+      },
+      goFamilyDetail() {
+        const vm = this;
+        vm.$router.push({ name: 'main_family_detail', params: { id: vm.$route.params.id } });
       },
     },
   };
@@ -119,7 +191,7 @@
           .more-btn {
             position: absolute;
             color: #2C02EA;
-            bottom: 90*@px;
+            bottom: 0;
             right: 0;
           }
         }
@@ -131,8 +203,13 @@
       top: @height-header;
       right: 0;
       left: 0;
-      bottom: 0;
+      bottom: 90*@px;
       padding: 15*@px 30*@px 0 30*@px;
+      overflow-y: scroll;
+      .app-scroll();
+      &.have-mission {
+        top: @height-header + 200*@px;
+      }
       .date {
         margin-bottom: 15*@px;
         text-align: center;

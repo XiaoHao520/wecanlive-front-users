@@ -2,7 +2,7 @@
   <header class="component-header-common"
           :class="{'not-status-bar': !overlapStatusBar}">
     <slot name="left">
-      <div class="btn-back-warpper" @click="back">
+      <div class="btn-back-warpper" @click.stop="back">
         <a class="btn btn-back"></a>
       </div>
     </slot>

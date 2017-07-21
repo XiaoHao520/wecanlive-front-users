@@ -37,12 +37,13 @@
               session: data,
 //              JSON.parse(data).session,
             }).then(resp => {
-              vm.authenticate(true);
-              if (resp.data.is_register) {
-                vm.$router.replace({ name: 'passport_signup_complete' });
-              } else {
-                vm.$router.push({ name: 'main_index' });
-              }
+              vm.authenticate(true).then(() => {
+                if (resp.data.is_register) {
+                  vm.$router.replace({ name: 'passport_signup_complete' });
+                } else {
+                  vm.$router.push({ name: 'main_index' });
+                }
+              });
               vm.notify('登錄成功');
             });
           }, error => {

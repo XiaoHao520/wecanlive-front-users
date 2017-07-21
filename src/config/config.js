@@ -188,6 +188,16 @@ const config = {
       );
     }
   },
+  action_logout(Vue) {
+    const vm = this;
+    return vm.api('User').get({ action: 'logout' }).then(() => {
+      vm.current_user = null;
+      vm.$router.push({ name: 'passport_signin' });
+    });
+    if (window.WeCan) {
+      window.WeCan.logout();
+    }
+  },
 };
 
 export default config;

@@ -74,7 +74,9 @@
             action: 'follow',
             id: memberId,
           }, {}).then(() => {
-            vm.$router.replace({ name: 'main_index' });
+            vm.authenticate(true).then(() => {
+              vm.$router.replace({ name: 'main_index' });
+            });
           });
         });
       },
@@ -225,7 +227,6 @@
         text-align: center;
       }
     }
-
   }
-
 </style>
+

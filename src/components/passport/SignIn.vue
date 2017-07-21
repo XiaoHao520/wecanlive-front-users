@@ -34,7 +34,8 @@
             vm.api('User').save({
               action: 'landing_with_wecan_session',
             }, {
-              session: JSON.parse(data).session,
+              session: data,
+//              JSON.parse(data).session,
             }).then(resp => {
               if (resp.data.is_register) {
                 vm.$router.replace({ name: 'passport_signup_complete' });

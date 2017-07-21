@@ -121,6 +121,7 @@
           age: vm.age,
           constellation: vm.constellation,
         }).then((resp) => {
+          vm.authenticate(true);
           if (resp.data) {
             vm.$router.push({ name: 'passport_follow' });
           }

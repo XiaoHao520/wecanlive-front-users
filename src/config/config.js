@@ -9,7 +9,7 @@ const config = {
   // api_root: (process.env.NODE_ENV === 'production') ? 'http://wecanlive.local.puahzj.com/api' : 'http://127.0.0.1:8000/api',
   // api_root: (process.env.NODE_ENV === 'production') ? 'http://app.local.easecloud.cn/api' : 'http://127.0.0.1:8000/api',
   api_root: (process.env.NODE_ENV === 'production') ?
-    'http://wecanlive.vpsx.easecloud.cn:10080/api' : 'http://127.0.0.1:8000/api',
+    'http://wecanlive.vpsx.easecloud.cn:10080/api' : '/api',
   // 多套 API
   // api: {
   //   site_a: 'http://a.example.com/api',
@@ -168,8 +168,7 @@ const config = {
         err => {
           console.log('>>>>>===== webim error', resp);
         }
-      )
-      ;
+      );
       return vm.current_user;
     });
   },
@@ -179,6 +178,14 @@ const config = {
   action_cordova_ready(Vue) {
     if (window.TencentMLVB) {
       window.TencentMLVB.getVersion();
+    }
+    if (window.WeCan) {
+      window.WeCan.init(
+        '2', // gameId
+        '6Wn4ebr9kaQHGWLa', // gameKey
+        'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAh2sxFSpovptJ/+JgkVuLB1CzQJc/ngY9x9nCPAkIjYru1AU7/83MC3KsyOL9M1wiJMKXK15pIriG6Lsb5blGrs87zWe/D5fC6BdQLHLncjszwM7/g8vaickTY5xw1z8MORT6W72xyhPi1khUZxGA0LQIBMBhp1+YMO5V2GLkrqpt7CQpRwfBxx/4lqbhhZjwiV7sUfc5jkWM7ymVTk9qobt1+qkp7mKEdMz3m9fJbFXNue6oTXqyK4iZooQShs2xnJ05jELqmYNa5pNrEkcX3Ig4qVNJQ8ZdJuwDCnYvizVSbEo1hxG1WKjmDFYb5udMLolRFowQNU7sWi+jLpfrSwIDAQAB', // Public Key
+        'extraInfo' // extraInfo
+      );
     }
   },
 };

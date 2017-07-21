@@ -1,5 +1,6 @@
 <template>
-  <div class="page-signin">
+  <!-- 置换成 WeCanSDK -->
+  <div class="page-signin" v-show="!hasWeCanSDK">
     <div class="wecan-icon"></div>
 
     <div class="login-block">
@@ -15,12 +16,40 @@
         <div class="warn-text">的服務條款與隱私權政策</div>
       </div>
     </div>
-
   </div>
 </template>
 
 <script type="text/babel" lang="babel">
   export default {
+    computed: {
+      hasWeCanSDK() {
+        return !!window.WeCan;
+      },
+    },
+    mounted() {
+      const vm = this;
+      if (vm.hasWeCanSDK) {
+        const doWeCanLogin = () => {
+          window.WeCan.openLanding(false, data => {
+            vm.api('User').save({
+              action: 'landing_with_wecan_session',
+            }, {
+              session: JSON.parse(data).session,
+            }).then(resp => {
+              if (resp.data.is_register) {
+                vm.$router.replace({ name: 'passport_signup_complete' });
+              } else {
+                vm.$router.push({ name: 'main_index' });
+              }
+              vm.notify('登錄成功');
+            });
+          }, error => {
+            doWeCanLogin();
+          });
+        };
+        doWeCanLogin();
+      }
+    },
     methods: {
       reload() {
       },

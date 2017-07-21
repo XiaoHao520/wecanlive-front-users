@@ -3,14 +3,19 @@
     <header-common>
       <h1 slot="middle" class="title" @click.stop="goFamilyDetail()">{{ title }}</h1>
       <div class="family-action" slot="right">
-        <a href="javascript:;" @click="mission_display=!mission_display" class="btn mission-btn">
+        <a href="javascript:;"
+           @click.stop="popUp('mission')"
+           class="btn mission-btn">
           <div class="unread"></div>
         </a>
-        <a href="javascript:;" class="btn notice-btn">
+        <a href="javascript:;"
+           @click.stop="popUp('notice')"
+           class="btn notice-btn">
           <div class="unread"></div>
         </a>
       </div>
     </header-common>
+    <!--todo 显示最新一条公告和任务，公告发送的那一天进入都显示，之后就隐藏，点击才显示-->
     <transition name="slide-down-up">
       <div v-if="mission_display" class="family-notice">
         <div class="avatar"></div>
@@ -22,6 +27,24 @@
           <div class="content">
             新加入家族的童鞋可以修改自己的家族名片哦，格式例如：１１
             <a href="javascript:;" class="more-btn">更多</a>
+          </div>
+        </div>
+      </div>
+    </transition>
+
+
+    <transition name="slide-down-up">
+      <div v-if="notice_display" class="family-notice">
+        <div class="avatar"></div>
+        <div class="notice-info">
+          <div class="header">
+            <span class="title">[家族公告]新人须知</span>
+            <span class="date">2017-05-10 14:00</span>
+          </div>
+          <div class="content">
+            新加入家族的童鞋可以修改自己的家族名片哦，格式例如：１１
+            <router-link :to="{name: 'main_family_articles', params: {id: $route.params.id} }" class="more-btn">更多
+            </router-link>
           </div>
         </div>
       </div>
@@ -56,6 +79,7 @@
       return {
         title: null,
         mission_display: false,
+        notice_display: true,
         family: null,
         messages: [],
         last_id: -1,
@@ -141,6 +165,8 @@
       goFamilyDetail() {
         const vm = this;
         vm.$router.push({ name: 'main_family_detail', params: { id: vm.$route.params.id } });
+      },
+      popUp(type) {
       },
     },
   };

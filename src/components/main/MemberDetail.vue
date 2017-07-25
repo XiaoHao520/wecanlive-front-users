@@ -5,7 +5,12 @@
                   'not-owned': me.id != $route.params.id}">
 
       <div class="header-action">
-        <router-link :to="{name:'main_personal_settings'}" class="btn btn-set"></router-link>
+        <router-link v-if="me.id == $route.params.id"
+                     :to="{name:'main_personal_settings'}" class="btn btn-set"></router-link>
+        <a v-else href="javascript:;" class="btn btn-back" @click="goBack()"></a>
+
+
+
         <router-link :to="{name:'main_member_friends'}" class="btn btn-friend"></router-link>
       </div>
 
@@ -198,8 +203,10 @@
       </section>
     </transition>
 
+
+    <footer-common v-if="me.id==$route.params.id"></footer-common>
     <!--todo 陌生人不能發信息-->
-    <div class="footer-btn" v-if="me.id != $route.params.id">
+    <div v-else class="footer-btn" v-if="me.id != $route.params.id">
       <div class="bg"></div>
       <a href="javascript:;" v-if="user.is_following" class="btn follow-btn">已追蹤</a>
       <a href="javascript:;" v-else class="btn follow-btn"><span>+</span>追蹤</a>
@@ -207,6 +214,8 @@
 
       <a href="javascript:;" @click="sendMessage()" class="btn message-btn">發訊息</a>
     </div>
+
+
   </div>
 </template>
 
@@ -366,6 +375,10 @@
           &.btn-set {
             background: url("../../assets/image/B5/icon_setting@3x.png") 50% 50% no-repeat;
             background-size: 100%;
+          }
+          &.btn-back {
+            background: url("../../assets/image/A/nav_back@3x.png") 50% 50% no-repeat;
+            background-size: 44*@px;
           }
           &.btn-friend {
             float: right;
@@ -626,6 +639,7 @@
       left: 0;
       right: 0;
       bottom: 0;
+      padding-bottom: @height-footer;
       top: 825*@px;
       background: #E3E3EA;
       .app-scroll();

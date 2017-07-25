@@ -42,7 +42,7 @@
 
             <ul v-else>
               <li v-for="prize in active_prize.active_prize"
-                  @click="chooseActivePrize(prize)"
+                  @click="chooseActivePrize(prize,'ACTIVITY')"
                   class="gift-item">
                 <div class="gift-icon" :style="{backgroundImage: 'url(' + prize.icon + ')'}">
                   <div class="num" v-if="prize.count >0">{{prize.count}}</div>
@@ -79,7 +79,7 @@
             </div>
             <ul>
               <li v-for="prize in active_prize.box_prize"
-                  @click="chooseActivePrize(prize)"
+                  @click="chooseActivePrize(prize,'STAR_BOX')"
                   class="gift-item">
                 <div class="gift-icon" :style="{backgroundImage:'url('+prize.icon + ')'}">
                   <div class="num" v-if="prize.count >0">{{prize.count}}</div>
@@ -100,7 +100,7 @@
 
             <ul v-else>
               <li v-for="prize in active_prize.vip_prize"
-                  @click="chooseActivePrize(prize)"
+                  @click="chooseActivePrize(prize, 'VIP')"
                   class="gift-item">
                 <div class="gift-icon" :style="{backgroundImage: 'url('+ prize.icon +')'}">
                   <div class="num" v-if="prize.count >0">{{prize.count}}</div>
@@ -254,6 +254,7 @@
         active_prize_count_total: 1,
         choose_box: null,
         view_starbox_distance: 0,
+        source_tag: '',
       };
     },
     methods: {
@@ -358,6 +359,7 @@
         }, {
           prize: vm.active,
           count: vm.active_prize_count,
+          source_tag: vm.source_tag,
         }).then((resp) => {
           // 更新剩餘禮物數量
           vm.reload();
@@ -376,7 +378,7 @@
         vm.prize = prize;
         vm.prize_count = 1;
       },
-      chooseActivePrize(prize) {
+      chooseActivePrize(prize, sourceTag) {
         // 选择活动礼物
         const vm = this;
         if (vm.active === prize.id) {
@@ -385,6 +387,7 @@
         vm.active_prize_count = 1;
         vm.active_prize_count_total = prize.count;
         vm.active = prize.id;
+        vm.source_tag = sourceTag;
       },
       openBoxGift(i) {
         const vm = this;

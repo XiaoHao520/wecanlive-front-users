@@ -26,7 +26,7 @@
     <!--<div class="btn-video" v-show="btnBar"></div>-->
     <!--</transition>-->
     <transition name="quick-slide-down-right">
-      <div class="btn-camera" v-show="btnBar"></div>
+      <div class="btn-camera" @click="openCamera()" v-show="btnBar"></div>
     </transition>
 
   </div>
@@ -55,6 +55,11 @@
       writeEvent() {
         const vm = this;
         vm.$router.push({ name: 'main_active_event' });
+      },
+      openCamera() {
+        const vm = this;
+        vm.pickImage().then(() => {
+        });
       },
     },
     props: {},

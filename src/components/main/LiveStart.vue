@@ -5,9 +5,9 @@
     <div class="wrapper"
          :class="{'not-status-bar': !overlapStatusBar}">
       <div class="top-bar">
-        <div class="location" @click="chooseLocation()">
+        <div class="location">
           <div class="icon"></div>
-          <div class="text">地區</div>
+          <div class="text">{{ district }}</div>
         </div>
         <a class="btn-cancel" @click="cancelLive"></a>
       </div>
@@ -83,6 +83,7 @@
         live_categories: [],
         category_warn: '',
         title_warn: '',
+        district: null,
       };
     },
     computed: {
@@ -96,6 +97,8 @@
     mounted() {
       this.getLocate().then((location) => {
         console.log(location);
+        this.district = '定位失敗';
+        if (location) this.district = location;
       });
     },
     methods: {
@@ -184,8 +187,6 @@
             reject(false);
           }
         });
-      },
-      chooseLocation() {
       },
     },
   };

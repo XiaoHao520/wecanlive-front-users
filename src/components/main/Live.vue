@@ -250,6 +250,7 @@
             <li class="btn-item btn-item-right btn-item-redbag" @click="redbag_display=true"></li>
             <li class="btn-item btn-item-right btn-item-tag">#</li>
             <li class="btn-item btn-item-right btn-item-camera"></li>
+            <li class="btn-item btn-item-right btn-item-video"></li>
           </template>
 
           <template v-else>
@@ -1420,6 +1421,9 @@
             background-size: 100%;
           }
           &.btn-item-video {
+            background: url("../../assets/image/D/d1_icon_video@3x.png") 50% 50% no-repeat;
+            -webkit-background-size: 100%;
+            background-size: 100%;
           }
           &.btn-item-tag {
             font-size: 63*@px;

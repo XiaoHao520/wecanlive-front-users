@@ -24,9 +24,9 @@
       <div class="row-gender">
         <div class="title">性別</div>
         <div class="select-gender">
-          <div class="gender-male" @click="selectGender('M')"></div>
-          <div class="gender-female" @click="selectGender('F')"></div>
-          <div class="gender-unkown" @click="selectGender()"></div>
+          <div class="gender-male" :class="{'active' : gender == 'M'}" @click="selectGender('M')"></div>
+          <div class="gender-female" :class="{'active' : gender == 'F'}" @click="selectGender('F')"></div>
+          <div class="gender-unkown" :class="{'active' : gender == ''}" @click="selectGender()"></div>
         </div>
       </div>
 
@@ -237,6 +237,10 @@
             background: url("../../assets/image/A/icon_male_selected@3x.png") 50% 50% no-repeat;
             -webkit-background-size: 100%;
             background-size: 100%;
+            border: 1px solid #fff;
+            &.active {
+              border: 1px solid #0021E7;
+            }
           }
           .gender-female {
             float: left;
@@ -246,6 +250,10 @@
             background: url("../../assets/image/A/icon_female_selected@3x.png") 50% 50% no-repeat;
             -webkit-background-size: 100%;
             background-size: 100%;
+            border: 1px solid #fff;
+            &.active {
+              border: 1px solid #0021E7;
+            }
           }
           .gender-unkown {
             float: left;
@@ -254,6 +262,10 @@
             background: url("../../assets/image/A/icon_secret-_selected@3x.png") 50% 50% no-repeat;
             -webkit-background-size: 100%;
             background-size: 100%;
+            border: 1px solid #fff;
+            &.active {
+              border: 1px solid #0021E7;
+            }
           }
         }
       }

@@ -2,6 +2,7 @@ import Deferred from 'es6-deferred';
 import NotifierRegistry from './NotifierRegistry.vue';
 import AwesomeSwiper from 'vue-awesome-swiper';
 import api from '../../resource/api';
+import areaData from 'china-area-data';
 
 export default {
   install(Vue, opts) {
@@ -207,6 +208,13 @@ export default {
         share() {
           const vm = this.vmNotifier;
           vm.shareBar = !vm.shareBar;
+        },
+        pickDistrict(val = '') {
+          const vm = this;
+          const value = val || '';
+          return vm.pickChoice(areaData[86], `${vm.areaPrefix(value, 2)}`)
+            .then(province => vm.pickChoice(areaData[province], `${vm.areaPrefix(value, 4)}`))
+            .then(city => vm.pickChoice(areaData[city], vm.areaPrefix(value)));
         },
       },
     });

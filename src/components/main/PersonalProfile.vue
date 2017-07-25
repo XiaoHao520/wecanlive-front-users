@@ -47,14 +47,13 @@
         <div class="open-icon"></div>
       </div>
 
-      <!--todo 動態是可以很多的條的，這裏應該是個性簽名？？-->
       <div class="row last-row">
         <input class="row-input" v-model="signature"
                type="text" placeholder="我的動態">
       </div>
 
       <div class="submit-btn">
-        <a @click="submit()" href="javascript:;">下一步</a>
+        <a @click="submit()" href="javascript:;">儲存</a>
       </div>
 
     </div>

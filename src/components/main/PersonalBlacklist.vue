@@ -1,7 +1,7 @@
 <template>
   <div class="page-personal-black-list">
     <header-common title="封鎖清單"></header-common>
-    <div class="black-list">
+    <div class="black-list" :class="{'not-status-bar': !overlapStatusBar}">
       <ul>
         <li class="black-item">
           <div class="avatar"></div>
@@ -50,12 +50,15 @@
     background: #E5E5EC;
     .black-list {
       position: absolute;
-      top: @height-header;
+      top: 126*@px;
       left: 0;
       right: 0;
       bottom: 0;
       overflow-y: scroll;
       .app-scroll();
+      &.not-status-bar {
+        top: @height-header;
+      }
       ul {
         background: #fff;
         padding: 30*@px 30*@px 0 30*@px;

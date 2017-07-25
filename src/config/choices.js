@@ -25,5 +25,10 @@ export default {
     AQUARIUS: '水瓶座',
     PISCES: '双鱼座',
   },
+  role: {
+    MASTER: '族长',
+    ADMIN: '管理员',
+    NORMAL: '平民',
+  },
 };
 

@@ -5,7 +5,7 @@
       </router-link>
     </header-common>
 
-    <div class="personal-coin">
+    <div class="personal-coin" :class="{'not-status-bar': !overlapStatusBar}">
       <div class="diamond-balance">
         <div class="diamond-icon"></div>
         <div class="balance">{{ me.coin_balance }}</div>
@@ -41,12 +41,15 @@
 
   .personal-coin {
     position: absolute;
-    top: @height-header;
+    top: 126*@px;
     bottom: 0;
     left: 0;
     right: 0;
     overflow-y: scroll;
     .app-scroll();
+    &.not-status-bar {
+      top: @height-header;
+    }
     .diamond-balance {
       height: 520*@px;
       background: #170175;

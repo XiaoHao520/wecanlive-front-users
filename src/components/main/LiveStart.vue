@@ -5,7 +5,7 @@
     <div class="wrapper"
          :class="{'not-status-bar': !overlapStatusBar}">
       <div class="top-bar">
-        <div class="location">
+        <div class="location" @click="chooseLocation()">
           <div class="icon"></div>
           <div class="text">地區</div>
         </div>
@@ -184,6 +184,8 @@
             reject(false);
           }
         });
+      },
+      chooseLocation() {
       },
     },
   };

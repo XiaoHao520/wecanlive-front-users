@@ -12,7 +12,8 @@
             <!--todo-->
             <div class="con">贡献值 : 2000</div>
             <div class="date">成立时间: {{ family.date_created | date('yyyy-mm-dd')}}</div>
-            <a href="javascript:;" class="manage-btn" v-if="me.id == family.author">管理家族</a>
+            <router-link :to="{name: 'main_family_manage', params:{id: $route.params.id} }"
+                         class="manage-btn" v-if="me.id == family.author">管理家族</router-link>
           </div>
         </div>
 
@@ -39,14 +40,17 @@
           <ul>
             <template v-for="item in manager_items">
               <li class="member-item">
-                <div class="avatar"></div>
+                <div class="avatar" :style="{backgroundImage: 'url(' + item.author_avatar + ')'}"></div>
                 <div class="member-info">
-                  <div class="name">Wale</div>
+                  <div class="name">{{ item.author_nickname }}</div>
                   <div class="detail">
-                    <div class="sex"></div>
-                    <div class="age">23歲</div>
-                    <div class="constellation">金牛座</div>
+                    <div class="sex"
+                         :class="{'female': item.author_gender == 'F',
+                                  'male': item.author_gender == 'M'}"></div>
+                    <div class="age">{{ item.author_age }}歲</div>
+                    <div class="constellation">{{ choices.constellation[item.author_constellation] }}</div>
                   </div>
+                  <!--todo-->
                   <div class="con">貢獻值 : 2000</div>
                 </div>
                 <div v-if="item.role=='MASTER'" class="title master">家族長</div>
@@ -69,14 +73,17 @@
           <ul>
             <template v-for="item in member_items">
               <li class="member-item">
-                <div class="avatar"></div>
+                <div class="avatar" :style="{backgroundImage: 'url(' + item.author_avatar + ')'}"></div>
                 <div class="member-info">
-                  <div class="name">Wale</div>
+                  <div class="name">{{ item.author_nickname }}</div>
                   <div class="detail">
-                    <div class="sex"></div>
-                    <div class="age">23歲</div>
-                    <div class="constellation">金牛座</div>
+                    <div class="sex"
+                         :class="{ 'female': item.author_gender =='F' ,
+                                   'male': item.author_gender == 'M' }"></div>
+                    <div class="age">{{ item.author_age }}歲</div>
+                    <div class="constellation">{{ choices.constellation[item.author_constellation] }}</div>
                   </div>
+                  <!--todo-->
                   <div class="con">貢獻值 : 2000</div>
                 </div>
               </li>
@@ -114,6 +121,7 @@
         }).then((resp) => {
           vm.items = resp.data.results;
           vm.items.forEach((member) => {
+            console.log(member);
             if (member.role === 'ADMIN' || member.role === 'MASTER') {
               vm.manager_items.push(member);
             } else if (member.role === 'NORMAL') {
@@ -280,9 +288,15 @@
                   .sex {
                     height: 100%;
                     width: 28*@px;
-                    background: url("../../assets/image/B3/icon_female@3x.png") 50% 50% no-repeat;
-                    background-size: 100%;
                     float: left;
+                    &.female {
+                      background: url("../../assets/image/B3/icon_female@3x.png") 50% 50% no-repeat;
+                      background-size: 100%;
+                    }
+                    &.male {
+                      background: url("../../assets/image/B3/icon_male@3x.png") 50% 50% no-repeat;
+                      background-size: 100%;
+                    }
                   }
                   .age, .constellation {
                     float: left;

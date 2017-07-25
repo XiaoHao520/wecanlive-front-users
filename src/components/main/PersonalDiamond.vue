@@ -7,7 +7,7 @@
     </header-common>
 
 
-    <div class="personal-diamond">
+    <div class="personal-diamond" :class="{'not-status-bar': !overlapStatusBar}">
       <div class="diamond-balance">
         <div class="diamond-icon"></div>
         <div class="balance">{{ me.diamond_balance }}</div>
@@ -49,10 +49,13 @@
   .page-personal-diamond {
     .personal-diamond {
       position: absolute;
-      top: @height-header;
+      top: 126*@px;
       left: 0; right: 0; bottom: 0;
       overflow-y: scroll;
       .app-scroll();
+      &.not-status-bar {
+        top: @height-header;
+      }
       .diamond-balance {
         height: 520*@px;
         background: #170175;

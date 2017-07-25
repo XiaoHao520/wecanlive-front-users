@@ -392,17 +392,18 @@
 //          vm.notify('你的元氣不夠，不能打開寶盒');
 //          return;
 //        }
-        vm.api('PrizeTransition').save({
-          action: 'open_star_box',
-        }, {}).then(() => {
-          vm.choose_box = i;
-          // todo: 只更新星星数量
-          vm.authenticate(true);
-          vm.reload();
-          setTimeout(() => {
-            vm.choose_box = null;
-          }, 3000);
-        });
+        vm.notify('该功能尚未实现');
+//        vm.api('PrizeTransition').save({
+//          action: 'open_star_box',
+//        }, {}).then(() => {
+//          vm.choose_box = i;
+//          // todo: 只更新星星数量
+//          vm.authenticate(true);
+//          vm.reload();
+//          setTimeout(() => {
+//            vm.choose_box = null;
+//          }, 3000);
+//        });
       },
     },
     computed: {

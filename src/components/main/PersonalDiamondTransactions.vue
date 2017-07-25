@@ -2,7 +2,7 @@
   <div class="page-personal-diamond-transactions">
     <header-common title="交易明細"></header-common>
 
-    <div class="transactions-list">
+    <div class="transactions-list" :class="{'not-status-bar': !overlapStatusBar}">
       <ul>
         <li class="transactions-item" v-for="item in items">
           <div class="transactions-header">
@@ -54,12 +54,15 @@
     .transactions-list {
       padding: 30*@px 30*@px 0 30*@px;
       position: absolute;
-      top: @height-header;
+      top: 126*@px;
       bottom: 0;
       left: 0;
       right: 0;
       overflow-y: scroll;
       .app-scroll();
+      &.not-status-bar {
+        top: @height-header;
+      }
       .transactions-item {
         border-bottom: 1px solid @color-border;
         padding-bottom: 15*@px;

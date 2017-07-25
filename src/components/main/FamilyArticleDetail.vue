@@ -5,11 +5,12 @@
     <div class="family-article-detail">
       <div class="title">{{ item.name }}</div>
       <div class="author-date">
-        <span class="author">管理員 1234 發佈</span>
-        <span class="date">4/20 15:00</span>
+        <span class="author">{{ choices.role[item.author_role] }} {{ item.author_nickname }} 發佈</span>
+        <span class="date">{{ item.date_created | date('mm/dd HH:MM') }}</span>
       </div>
 
-      <div class="content">1123456</div>
+      <!--todo 要放图片-->
+      <div class="content">{{ item.content }}</div>
     </div>
 
   </div>
@@ -64,6 +65,7 @@
         margin-top: 30*@px;
         font-size: 32*@px;
         line-height: 42*@px;
+        word-wrap: break-word;
       }
     }
   }

@@ -12,7 +12,7 @@
         </div>
         <div class="popup-member-card-btn">
           <a class="btn-find-friend" @click="addFriend()"></a>
-          <a class="btn-message"></a>
+          <a class="btn-message" @click="notify('尚未开发此功能')"></a>
         </div>
         <div class="popup-member-card-content">
           <div class="row">

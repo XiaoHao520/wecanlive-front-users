@@ -1,7 +1,7 @@
 <template>
   <div>
     <header-common title="兌換成金幣"></header-common>
-    <div class="diamond-exchange-coin">
+    <div class="diamond-exchange-coin" :class="{'not-status-bar': !overlapStatusBar}">
       <div class="personal-balance">
         <div class="balance coin">
           <div class="num">{{ me.coin_balance }}</div>
@@ -37,8 +37,8 @@
           </li>
 
           <li class="exchange-item">
-            <div class="num">10000</div>
-            <div @click="exchange(10000)" class="exchange-btn">2000 鑽石</div>
+            <div class="num">1000</div>
+            <div @click="exchange(1000)" class="exchange-btn">2000 鑽石</div>
           </li>
         </ul>
       </div>
@@ -78,12 +78,15 @@
 
   .diamond-exchange-coin {
     position: absolute;
-    top: @height-header;
+    top: 126*@px;
     left: 0;
     right: 0;
     bottom: 0;
     overflow-y: scroll;
     .app-scroll();
+    &.not-status-bar {
+      top: @height-header;
+    }
     .personal-balance {
       background: #170175;
       height: 515*@px;

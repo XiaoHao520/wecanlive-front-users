@@ -14,6 +14,7 @@
 
     <div class="follow-list">
       <ul>
+        <!--todo-->
         <li class="follow-item active"
             :class="{active: selectedItems.indexOf(member.user) > -1}"
             v-for="member in items"
@@ -69,16 +70,21 @@
       },
       submit() {
         const vm = this;
-        vm.selectedItems.forEach(memberId => {
-          vm.api().save({
-            action: 'follow',
-            id: memberId,
-          }, {}).then(() => {
-            vm.authenticate(true).then(() => {
-              vm.$router.replace({ name: 'main_index' });
+        if (vm.selectedItems.length > 0) {
+          vm.selectedItems.forEach(memberId => {
+            console.log('12');
+            vm.api().save({
+              action: 'follow',
+              id: memberId,
+            }, {}).then(() => {
+              vm.authenticate(true).then(() => {
+                vm.$router.replace({ name: 'main_index' });
+              });
             });
           });
-        });
+        } else {
+          vm.$router.replace({ name: 'main_index' });
+        }
       },
     },
   };

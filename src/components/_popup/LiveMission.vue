@@ -83,7 +83,7 @@
       return {
         live_watch_record: null,
         watch_mission_date_distance: 0,
-        watch_mission_achievement: true,
+        watch_mission_achievement: false,
       };
     },
     methods: {

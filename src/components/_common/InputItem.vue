@@ -209,6 +209,7 @@
           range.moveStart('character', vm.caret_pos + 1);
           range.select();
         }
+        console.log(vm.content);
       },
       emoji(val) {
         const e = twemoji.convert.fromCodePoint(val);
@@ -228,18 +229,29 @@
   @import (once) '../../vue2-front/assets/css/less-template/template-defines';
   @import (once) '../../assets/css/defines';
 
-  img.emoji {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    height: 35*@px;
-    width: 35*@px;
+  .emoji-box, .tab-item {
+    img.emoji {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      height: 35*@px;
+      width: 35*@px;
+    }
   }
+  .message-item {
+    img.emoji {
+      height: 35*@px;
+      width: 35*@px;
+      vertical-align: text-top;
+      margin-left: 5*@px;
+    }
+  }
+
 
   .top {
     .swiper-container {

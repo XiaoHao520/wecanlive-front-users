@@ -144,7 +144,30 @@
                 <div class="gift-name">送出{{ msg.data.prizeOrder.prize_name }}</div>
                 <div class="gift-count">
                   <div class="add-icon"></div>
-                  <div class="num-icon"></div>
+                  <div class="num-icon" v-if="parseInt(msg.data.prizeOrder.prize_transaction_amount / 10, 0) > 0"
+                       :class="{'num-icon-1' : parseInt(msg.data.prizeOrder.prize_transaction_amount / 10, 0) == 1,
+                       'num-icon-2' : parseInt(msg.data.prizeOrder.prize_transaction_amount / 10, 0) == 2,
+                       'num-icon-3' : parseInt(msg.data.prizeOrder.prize_transaction_amount / 10, 0) == 3,
+                       'num-icon-4' : parseInt(msg.data.prizeOrder.prize_transaction_amount / 10, 0) == 4,
+                       'num-icon-5' : parseInt(msg.data.prizeOrder.prize_transaction_amount / 10, 0) == 5,
+                       'num-icon-6' : parseInt(msg.data.prizeOrder.prize_transaction_amount / 10, 0) == 6,
+                       'num-icon-7' : parseInt(msg.data.prizeOrder.prize_transaction_amount / 10, 0) == 7,
+                       'num-icon-8' : parseInt(msg.data.prizeOrder.prize_transaction_amount / 10, 0) == 8,
+                       'num-icon-9' : parseInt(msg.data.prizeOrder.prize_transaction_amount / 10, 0) == 9,
+                       }">
+                  </div>
+                  <div class="num-icon"
+                       :class="{'num-icon-1' : msg.data.prizeOrder.prize_transaction_amount % 10 == 1,
+                       'num-icon-2' : msg.data.prizeOrder.prize_transaction_amount % 10 == 2,
+                       'num-icon-3' : msg.data.prizeOrder.prize_transaction_amount % 10 == 3,
+                       'num-icon-4' : msg.data.prizeOrder.prize_transaction_amount % 10 == 4,
+                       'num-icon-5' : msg.data.prizeOrder.prize_transaction_amount % 10 == 5,
+                       'num-icon-6' : msg.data.prizeOrder.prize_transaction_amount % 10 == 6,
+                       'num-icon-7' : msg.data.prizeOrder.prize_transaction_amount % 10 == 7,
+                       'num-icon-8' : msg.data.prizeOrder.prize_transaction_amount % 10 == 8,
+                       'num-icon-9' : msg.data.prizeOrder.prize_transaction_amount % 10 == 9,
+                  }">
+                  </div>
                 </div>
               </div>
             </div>
@@ -178,7 +201,7 @@
                   <span class="tag tag-vip"
                         v-if="message.sender.member_vip_level">{{message.sender.member_vip_level}}</span>
                 </div>
-                <div class="content">{{message.data.comment.content}}</div>
+                <div class="content" v-html="emojiText(message.data.comment.content)"></div>
               </template>
               <template v-else-if="message.type==='follow'">
                 <div class="nickname-block">
@@ -325,6 +348,8 @@
 </template>
 
 <script type="text/babel" lang="babel">
+  import twemoji from 'twemoji';
+
   export default {
     name: 'main_live',
     data() {
@@ -712,6 +737,9 @@
         setTimeout(() => {
           vm.gift_barrages.splice(vm.gift_barrages.indexOf(msg), 1);
         }, 4000);
+      },
+      emojiText(val) {
+        return twemoji.parse(val);
       },
     },
   };
@@ -1265,7 +1293,7 @@
             position: absolute;
             left: 310*@px;
             bottom: 0;
-            min-width: 120*@px;
+            min-width: 170*@px;
             height: 80*@px;
             .add-icon {
               display: inline-block;

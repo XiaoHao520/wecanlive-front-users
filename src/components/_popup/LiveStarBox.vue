@@ -6,20 +6,21 @@
           <a class="close-icon" href="javascript:;" @click="handleClick"></a>
           <div class="avatar"></div>
           <div class="star">
-            <div class="star-total">總元氣數 : {{ item.count_author_starlight }}</div>
+            <div class="star-total">總元氣數 : {{ me.star_index_receiver_balance }}</div>
           </div>
         </div>
         <div class="starbox-content">
-          <div class="starbox-null" v-if="item.count_author_starlight < 500">
+          <div class="starbox-null" v-if="me.star_index_receiver_balance < 500">
             <div class="starbox-null-title">擁有的星光指數不足</div>
             <div class="starbox-null-icon"></div>
           </div>
 
           <div class="box-list" v-else>
-            <a href="javascript:;" class="box-item"></a>
-            <a href="javascript:;" class="box-item"></a>
-            <a href="javascript:;" class="box-item"></a>
-            <a href="javascript:;" class="box-item box-item-open"></a>
+            <a href="javascript:;"
+               v-for="i in 6"
+               class="box-item"
+               :class="{'box-item-open':i == star_box_num}"
+               @click="openStarBox(i)"></a>
           </div>
 
 
@@ -50,19 +51,14 @@
 
         <div class="record-list">
           <ul>
-            <li class="record-item">
+            <li class="record-item" v-for="record in box_record">
               <div class="record-content">
                 <div class="record-num">-1星光寶盒</div>
-                <div class="record-award">+50金幣</div>
+                <div class="record-award" v-if="record.coin_amount">+{{ record.coin_amount }}金幣</div>
+                <div class="record-award" v-if="record.diamond_amount">+{{ record.diamond_amount }}鑽石</div>
+                <div class="record-award" v-if="record.prize_amount">+{{ record.prize_amount + record.prize_name }}禮物</div>
               </div>
-              <div class="record-date">2017-4-9 15:00</div>
-            </li>
-            <li class="record-item">
-              <div class="record-content">
-                <div class="record-num">-1星光寶盒</div>
-                <div class="record-award">+50金幣</div>
-              </div>
-              <div class="record-date">2017-4-9 15:00</div>
+              <div class="record-date">{{ record.date_created | date("yyyy-mm-dd HH:MM") }}</div>
             </li>
           </ul>
         </div>
@@ -136,15 +132,21 @@
         record: false,
         ranking: false,
         white_maske: false,
+        star_box_num: null,
+        box_record: [],
       };
     },
     methods: {
       reload() {
         const vm = this;
+        vm.authenticate(true).then(() => {
+        });
         vm.api('StarBoxRecord').get({
           author: vm.me.id,
           live: vm.$route.params.id,
+          page_size: 6,
         }).then((resp) => {
+          vm.box_record = resp.data.results;
         });
       },
       handleClick(evt) {
@@ -153,6 +155,22 @@
         this.ranking = false;
         this.white_maske = false;
         this.$emit('click', !this.display);
+      },
+      openStarBox(i) {
+        const vm = this;
+        if (vm.star_box_num) return;
+        vm.star_box_num = i;
+        console.log(vm.star_box_num);
+        vm.api('StarBoxRecord').save({
+          action: 'receiver_open_star_box',
+        }, {
+          live: vm.$route.params.id,
+        }).then((resp) => {
+          setTimeout(() => {
+            vm.star_box_num = null;
+          }, 4000);
+          vm.reload();
+        });
       },
     },
     props: {

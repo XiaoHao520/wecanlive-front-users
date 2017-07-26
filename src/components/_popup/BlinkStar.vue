@@ -8,32 +8,39 @@
           <div class="top-area">
 
             <div class="top-1">
-              <div class="avatar"></div>
+              <div class="avatar"
+                   :style="{backgroundImage:!!member.avatar_url&&'url('+member.avatar_url+')'}"></div>
               <div class="left-area">
                 <div class="nickname">
-                  <span class="name">Chris 爲</span>
-                  <span class="gender gender-female"></span>
-                  <span class="level">LV.20</span>
-                  <span class="vip">2</span>
+                  <span class="name">{{member.nickname}}</span>
+                  <span class="gender"
+                        :class="{'gender-female':member.gender==='F','gender-male':member.gender==='M'}"></span>
+                  <span class="level">LV.{{member.level}}</span>
+                  <span class="vip">{{member.vip_level}}</span>
                 </div>
-                <div class="time">2017 年 5 月 20 號成爲 wecan 主播</div>
+                <div class="time">{{member.date_created.substr(0,10)}}成爲Wecan主播</div>
               </div>
             </div>
 
             <div class="top-2">
-              <div class="next-target" @click="togglePopup">下個目標</div>
+              <div class="next-target"
+                   @click="popup_display=!popup_display">下個目標
+              </div>
               <div class="blink-star">
                 <div class="icon"></div>
+                <!--TODO: 未綁定-->
                 閃亮新星
               </div>
             </div>
 
             <div class="diamond-percent">
+              <!--TODO: 未綁定-->
               <div class="icon"></div>
               <div class="percent-block">
-                <div class="percent"></div>
+                <div class="percent"
+                     :style="{width:member.diamond_balance/30000*100+'%'}"></div>
               </div>
-              <div class="num">232323 / 300000</div>
+              <div class="num">{{member.diamond_balance}} / 300000</div>
             </div>
           </div>
         </div>
@@ -52,18 +59,20 @@
 
 
         <ul class="badge-list" v-show="tab == 0">
-          <li v-for="i in 10">
-            <div class="thumbnail"></div>
-            <div class="text">人氣勳章</div>
+          <li v-for="badge_record in badge_list">
+            <div class="thumbnail"
+                 :style="{backgroundImage:'url('+badge_record.badge_url+')'}"></div>
+            <div class="text">{{badge_record.badge_name}}</div>
           </li>
         </ul>
 
         <ul class="gift-list" v-show="tab == 1">
-          <li v-for="i in 10">
-            <div class="thumbnail"></div>
-            <div class="user-avatar"></div>
-            <div class="text">人氣勳章人氣勳章人氣勳章</div>
-            <div class="num">5</div>
+          <li v-for="gift in gift_list">
+            <div class="thumbnail"
+                 :style="{backgroundImage:'url('+gift.icon+')'}"></div>
+            <!--<div class="user-avatar"></div>-->
+            <div class="text">{{gift.name}}</div>
+            <div class="num">{{gift.amount}}</div>
           </li>
         </ul>
 
@@ -71,7 +80,7 @@
           <div class="pop-up-block" v-show="popup_display">
             <header class="pop-up-header">
               魔法師
-              <div class="warpper" @click="togglePopup">
+              <div class="warpper" @click="popup_display=!popup_display">
                 <a class="btn-close"></a>
               </div>
             </header>
@@ -88,7 +97,8 @@
           </div>
         </transition>
 
-        <div class="masked" @click="togglePopup" v-show="popup_display"></div>
+        <div class="masked" @click="popup_display=!popup_display"
+             v-show="popup_display"></div>
 
       </div>
     </transition>
@@ -97,25 +107,39 @@
 
 <script type="text/babel" lang="babel">
   export default {
+    props: {
+      member: Object,
+      display: Boolean,
+      id: Number,
+    },
     data() {
       return {
         tab: 1,
         popup_display: false,
+        gift_list: [],
+        badge_list: [],
       };
     },
     methods: {
       reload() {
-      },
-      togglePopup() {
-        this.popup_display = !this.popup_display;
+        console.log(this.member);
+        const vm = this;
+        vm.api('BadgeRecord').get({
+          author: vm.member.user,
+        }).then(resp => {
+          vm.badge_list = resp.data.results;
+          console.log(vm.badge_list);
+        });
+        vm.api('Member').get({
+          action: 'get_gift_list',
+          id: vm.member.user,
+        }).then(resp => {
+          vm.gift_list = resp.data;
+        });
       },
       tabTo(tab) {
         this.tab = tab;
       },
-    },
-    props: {
-      display: Boolean,
-      id: Number,
     },
   };
 </script>
@@ -397,13 +421,13 @@
             position: absolute;
             right: 0;
             top: 0;
-            width: 20*@px;
-            height: 20*@px;
-            line-height: 20*@px;
+            width: 30*@px;
+            height: 30*@px;
+            line-height: 30*@px;
             text-align: center;
             color: #FFFFFF;
-            font-size: 14*@px;
-            .rounded-corners(50%);
+            font-size: 28*@px;
+            .circle();
             border: 1px solid #FFFFFF;
           }
         }

@@ -178,7 +178,9 @@
       <!--弹幕 END-->
 
       <blink-star :display="blinkStar_display"
-                  @click="toggleBlinkStar"></blink-star>
+                  @click="toggleBlinkStar"
+                  v-if="author_member"
+                  :member="author_member"></blink-star>
 
       <div class="input-mask"
            v-if="show_input_box"

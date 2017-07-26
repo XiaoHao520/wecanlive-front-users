@@ -59,7 +59,7 @@
         </transition>
 
       </div>
-      <a class="btn-start-live" @click="startLive">
+      <a class="btn-start-live" @click="startLive()">
         <div class="icon"></div>
         <div class="text">開始直播</div>
       </a>
@@ -160,7 +160,7 @@
           quota: vm.quota,
           category: vm.category,
         }).then((resp) => {
-          vm.$router.push({ name: 'main_live', params: { id: resp.data.id } });
+          vm.$router.replace({ name: 'main_live', params: { id: resp.data.id } });
         }, () => {
         });
       },

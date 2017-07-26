@@ -1,11 +1,11 @@
 <template>
   <div class="page-active-event">
+
     <header-common title="全部相簿" :backLink="{name: 'main_index'}">
       <div slot="right" class="submit-btn">
         <a href="javascript:;" @click="submit()">下一步</a>
       </div>
     </header-common>
-
 
     <div class="photo-list">
       <ul>
@@ -16,7 +16,6 @@
         </li>
       </ul>
     </div>
-
 
     <div class="all-file">
       <a class="all-file-btn" @click="uploadImage()" href="javascript:;">

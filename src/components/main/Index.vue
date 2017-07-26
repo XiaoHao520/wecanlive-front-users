@@ -52,7 +52,7 @@
 
     <transition name="fade">
       <section class="section-live-list"
-               :class="{'tab-absolute': tab_absolute}"
+               :class="{'tab-absolute': tab_absolute, 'overlap-statusbar': overlapStatusBar}"
                v-if="tab == 0">
         <transition name="fade" appear>
           <div class="tips">5 個新直播～</div>
@@ -65,7 +65,7 @@
 
     <transition name="fade">
       <section class="section-live-list"
-               :class="{'tab-absolute': tab_absolute}"
+               :class="{'tab-absolute': tab_absolute, 'overlap-statusbar': overlapStatusBar}"
                v-if="tab == 1">
         <transition name="fade" appear>
           <div class="tips">5 個新動態～</div>
@@ -136,7 +136,8 @@
       },
       handleScroll(evt) {
         const vm = this;
-        vm.tab_absolute = vm.$refs.user_recommend ? evt.target.scrollTop >= vm.$refs.user_recommend.offsetHeight : true;
+        vm.tab_absolute = vm.$refs.user_recommend ?
+          evt.target.scrollTop >= vm.$refs.user_recommend.offsetHeight : true;
       },
     },
   };
@@ -188,6 +189,7 @@
               position: absolute;
               left: 0;
               right: 0;
+              /*width: 100%;*/
               bottom: 0;
               height: 47*@px;
               line-height: 47*@px;
@@ -246,6 +248,10 @@
         left: 0;
         right: 0;
         z-index: 1;
+        margin-top: -@height-status-bar;
+        &.overlap-statusbar {
+          margin-top: 0;
+        }
       }
       .tab-item {
         float: left;

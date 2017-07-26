@@ -2,8 +2,11 @@
   <div>
     <footer class="component-footer-common">
       <div class="footer-warpper">
-        <router-link class="footer-btn-home" to="/"></router-link>
-        <router-link class="footer-btn-member" :to="{name: 'main_member_detail',params: {id: me.id}}"></router-link>
+        <router-link class="footer-btn-home"
+                     :class="{'footer-active':['index','hot','movies','discover','nearby'].indexOf($route.name.replace('main_',''))>-1}"
+                     :to="{name: 'main_index'}"></router-link>
+        <router-link class="footer-btn-member"
+                     :to="{name: 'main_member_detail',params: {id: me.id}}"></router-link>
         <div class="footer-btn-popup" @click="toggleBtn"></div>
         <a class="footer-btn-search" @click="notify('開發中')"></a>
         <a class="footer-btn-message" @click="notify('開發中')"></a>
@@ -19,6 +22,7 @@
     <transition name="fade">
       <div class="btn-live" @click="startLive" v-show="btnBar"></div>
     </transition>
+
     <transition name="quick-slide">
       <div class="btn-image" @click="writeEvent" v-show="btnBar"></div>
     </transition>
@@ -58,7 +62,9 @@
       },
       openCamera() {
         const vm = this;
-        vm.pickImage().then(() => {
+        vm.pickImage().then(image => {
+          vm.setContext('images', [image]);
+          vm.$router.push({ name: 'main_active_event_write' });
         });
       },
     },
@@ -93,7 +99,7 @@
         -webkit-background-size: 100%;
         background-size: 100%;
         margin-left: 45*@px;
-        &.footer-avtive, &.router-link-active {
+        &.footer-active {
           background-image: url("../../assets/image/B1/icon_home_pred@3x.png");
         }
       }
@@ -106,7 +112,7 @@
         background: url("../../assets/image/B1/icon_person_nor@3x.png") 50% 50% no-repeat;
         -webkit-background-size: 100%;
         background-size: 100%;
-        &.footer-avtive, &.router-link-active {
+        &.footer-active, &.router-link-active {
           background-image: url("../../assets/image/B1/icon_person-_pred@3x.png");
         }
       }
@@ -119,7 +125,7 @@
         background: url("../../assets/image/B1/icon_message_nor@3x.png") 50% 50% no-repeat;
         -webkit-background-size: 100%;
         background-size: 100%;
-        &.footer-avtive, &.router-link-active {
+        &.footer-active, &.router-link-active {
           background-image: url("../../assets/image/B1/icon_message_pred@3x.png");
         }
       }
@@ -132,7 +138,7 @@
         background: url("../../assets/image/B1/icon_search_nor@3x.png") 50% 50% no-repeat;
         -webkit-background-size: 100%;
         background-size: 100%;
-        &.footer-avtive, &.router-link-active {
+        &.footer-active, &.router-link-active {
           background-image: url("../../assets/image/B1/icon_search_pred@3x.png");
         }
       }

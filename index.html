@@ -10,23 +10,22 @@
 </head>
 <body>
 <!--<script>alert(navigator.userAgent);</script>-->
-<!--<script>-->
-<!--// 强制设置一个逻辑像素对应一个物理像素-->
-<!--if (window.devicePixelRatio) {-->
-<!--var ratio = 1 / window.devicePixelRatio;-->
-<!--alert(ratio);-->
-<!--document.getElementById('viewport')['content'] =-->
-<!--'width=device-width' +-->
-<!--',initial-scale=' + ratio +-->
-<!--',maximum-scale=' + ratio +-->
-<!--',user-scalable=no';-->
-<!--// 补刀：手动设置字体大小为 5vw-->
-<!--document.body.parentElement.style.fontSize =-->
-<!--document.body.parentElement.clientWidth * 0.05 + 'px';-->
-<!--// 手动将 body 设置成满高-->
-<!--//document.body.style.height = window.innerHeight + 'px';-->
-<!--}-->
-<!--</script>-->
+<script>
+  // 强制设置一个逻辑像素对应一个物理像素
+  if (window.devicePixelRatio) {
+    var ratio = 1 / window.devicePixelRatio;
+    document.getElementById('viewport')['content'] =
+      'width=device-width' +
+      ',initial-scale=' + ratio +
+      ',maximum-scale=' + ratio +
+      ',user-scalable=no';
+// 补刀：手动设置字体大小为 5vw
+    document.body.parentElement.style.fontSize =
+      document.body.parentElement.clientWidth * 0.05 + 'px';
+// 手动将 body 设置成满高
+//document.body.style.height = window.innerHeight + 'px';
+  }
+</script>
 <div id="app"></div>
 </body>
 </html>

@@ -8,15 +8,21 @@
           <div class="top-area">
 
             <div class="top-1">
-              <div class="avatar"></div>
+              <div class="avatar"
+                   :style="{backgroundImage: !!(item && item.avatar_url)
+                 && 'url('+item.avatar_url+')'}"></div>
               <div class="left-area">
                 <div class="nickname">
-                  <span class="name">Chris 爲</span>
-                  <span class="gender gender-female"></span>
-                  <span class="level">LV.20</span>
-                  <span class="vip">2</span>
+                  <span class="name">{{ item.nickname }}</span>
+                  <span class="gender"
+                        :class="{'gender-female':item.gender =='F',
+                                 'gender-male':item.gender =='M'}"></span>
+                  <span class="level">LV.{{ item.level }}</span>
+                  <span class="vip">{{ item.vip_level }}</span>
                 </div>
-                <div class="time">2017 年 5 月 20 號成爲 wecan 主播</div>
+                <div class="time">{{ item.first_live_date | date('yyyy'+ ' 年' + 'm' + ' 月' + 'd' + ' 號' ) }}成爲 wecan
+                  主播
+                </div>
               </div>
             </div>
 
@@ -52,18 +58,19 @@
 
 
         <ul class="badge-list" v-show="tab == 0">
-          <li v-for="i in 10">
-            <div class="thumbnail"></div>
-            <div class="text">人氣勳章</div>
-          </li>
+          <!--<li v-for="i in 10">-->
+          <!--<div class="thumbnail"></div>-->
+          <!--<div class="text">人氣勳章</div>-->
+          <!--</li>-->
         </ul>
 
         <ul class="gift-list" v-show="tab == 1">
-          <li v-for="i in 10">
-            <div class="thumbnail"></div>
+          <li v-for="prize in prize_items">
+            <div class="thumbnail" :style="{backgroundImage: 'url(' + prize.prize.icon_item.image + ')'}"></div>
+            <!--todo-->
             <div class="user-avatar"></div>
-            <div class="text">人氣勳章人氣勳章人氣勳章</div>
-            <div class="num">5</div>
+            <div class="text">{{ prize.prize.name }}</div>
+            <div class="num">{{ prize.amount }}</div>
           </li>
         </ul>
 
@@ -101,10 +108,18 @@
       return {
         tab: 1,
         popup_display: false,
+        prize_items: [],
       };
     },
     methods: {
       reload() {
+        const vm = this;
+        vm.api('Member').get({
+          action: 'get_live_prize',
+          id: vm.item.user,
+        }, {}).then((resp) => {
+          vm.prize_items = resp.data;
+        });
       },
       togglePopup() {
         this.popup_display = !this.popup_display;
@@ -116,6 +131,7 @@
     props: {
       display: Boolean,
       id: Number,
+      item: Object,
     },
   };
 </script>

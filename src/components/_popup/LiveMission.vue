@@ -106,7 +106,7 @@
         const vm = this;
 //        todo:倒计时
         if (vm.live_watch_record.today_watch_mission_count < 8) {
-          vm.watch_mission_date_distance = 1800000;
+          vm.watch_mission_date_distance = 1800000 - Number(vm.live_watch_record.watch_mission_time) * 1000;
 //          vm.watch_mission_date_distance = 10000;
           const timer = setInterval(() => {
             vm.watch_mission_date_distance -= 1000;

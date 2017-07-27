@@ -4,7 +4,9 @@
     <v-touch class="swift-block"
              :swipeOptions="swipeOptions"
              @swiperight="swiperight($event)"
-             @swipeleft="swipeleft($event)">
+             @swipeleft="swipeleft($event)"
+             @swipeup="swipeup($event)"
+             @swipedown="swipedown($event)">
       <transition name="fade">
         <section class="section-top" v-show="!is_hide_all">
           <div class="left" v-if="author_member">
@@ -360,7 +362,7 @@
         model: 'Live',
         transitionNameLive: 'slide-left',
         swipeOptions: {
-          direction: 'horizontal',
+//          direction: 'horizontal',
         },
         choice: [
           { text: '禁言', value: 0 },
@@ -743,6 +745,32 @@
       },
       emojiText(val) {
         return twemoji.parse(val);
+      },
+      swipeup(e) {
+        const vm = this;
+        vm.api('Live').get({
+          up_liveing: vm.$route.params.id,
+        }).then((resp) => {
+          if (resp.data.count === 0) {
+            vm.notify('已經到最後一個直播了');
+          } else {
+            vm.$router.replace({ name: 'main_live', params: { id: resp.data.results[0].id } });
+            vm.reload();
+          }
+        });
+      },
+      swipedown(e) {
+        const vm = this;
+        vm.api('Live').get({
+          down_liveing: vm.$route.params.id,
+        }).then((resp) => {
+          if (resp.data.count === 0) {
+            vm.notify('已經到第一個直播了');
+          } else {
+            vm.$router.replace({ name: 'main_live', params: { id: resp.data.results[0].id } });
+            vm.reload();
+          }
+        });
       },
     },
   };

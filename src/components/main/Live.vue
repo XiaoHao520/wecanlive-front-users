@@ -327,7 +327,6 @@
                  @click="toggleMemberCard"
                  @pick="choicePick"></member-card>
 
-
     <live-star-box :display="starbox_display"
                    :item="author_member"
                    @click="starbox()"></live-star-box>
@@ -809,13 +808,15 @@
     /*background: url("../../assets/image/example/avatar.png") 50% 50% no-repeat;*/
     -webkit-background-size: cover;
     background-size: cover;
-    padding: @height-status-bar 0 0;
     .border-box();
     &.not-status-bar {
-      /*padding-top: 0;*/
+      .swift-block {
+        padding-top: @height-statusbar;
+      }
     }
     .swift-block {
-      height: 100%-@height-status-bar;
+      padding-top: @height-statusbar*2;
+      .fill-absolute();
     }
     .input-mask {
       position: fixed;

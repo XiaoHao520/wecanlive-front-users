@@ -34,7 +34,7 @@
     </section>
 
     <ul class="tab-index"
-        :class="{'tab-absolute': tab_absolute}">
+        :class="{'tab-absolute': tab_absolute, 'overlap-statusbar': overlapStatusBar}">
       <li class="tab-item"
           :class="{'tab-active': tab == 0}"
           @click="tabTo(0)">我關注的直播
@@ -52,7 +52,7 @@
 
     <transition name="fade">
       <section class="section-live-list"
-               :class="{'tab-absolute': tab_absolute, 'overlap-statusbar': overlapStatusBar}"
+               :class="{'tab-absolute': tab_absolute}"
                v-if="tab == 0">
         <transition name="fade" appear>
           <div class="tips">5 個新直播～</div>
@@ -65,7 +65,7 @@
 
     <transition name="fade">
       <section class="section-live-list"
-               :class="{'tab-absolute': tab_absolute, 'overlap-statusbar': overlapStatusBar}"
+               :class="{'tab-absolute': tab_absolute}"
                v-if="tab == 1">
         <transition name="fade" appear>
           <div class="tips">5 個新動態～</div>
@@ -248,7 +248,7 @@
         left: 0;
         right: 0;
         z-index: 1;
-        margin-top: -@height-status-bar;
+        margin-top: -@height-statusbar;
         &.overlap-statusbar {
           margin-top: 0;
         }

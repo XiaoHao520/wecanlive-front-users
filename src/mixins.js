@@ -8,8 +8,8 @@ export default {
   components: { ...common, ...popup },
   computed: {
     overlapStatusBar() {
-      return /iPhone/.test(navigator.userAgent)
-        && /Cordova/.test(navigator.userAgent);
+      return /iPhone/.test(navigator.userAgent);
+        // && /Cordova/.test(navigator.userAgent);
     },
   },
   filters: {

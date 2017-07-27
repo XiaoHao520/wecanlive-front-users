@@ -77,7 +77,7 @@
   @import (once) '../../assets/css/defines';
 
   .component-footer-common {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;

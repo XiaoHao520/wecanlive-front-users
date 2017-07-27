@@ -33,7 +33,7 @@
           <ul>
             <li class="mission-item">
               <div class="mission-content">
-                <div class="title">分享直播間<span>(0/3)</span></div>
+                <div class="title">分享直播間<span>({{ live_watch_record.today_share_mission_count }}/3)</span></div>
                 <p class="mission-intro mission-intro-1">分享直播，每次可獲得獎勵5元氣</p>
               </div>
               <a href="javascript:;"
@@ -43,7 +43,7 @@
 
             <li class="mission-item">
               <div class="mission-content">
-                <div class="title">邀請朋友<span>(0/2)</span></div>
+                <div class="title">邀請朋友<span>({{ live_watch_record.today_invite_mission_count }}/2)</span></div>
                 <p class="mission-intro">在《個人中心》&rarr;《設定》&rarr;《邀請好友》，</p>
                 <p class="mission-intro">每邀請成功1個好友註冊，你和好友都可獲得獎勵40元氣</p>
               </div>

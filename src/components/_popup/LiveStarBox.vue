@@ -56,7 +56,8 @@
                 <div class="record-num">-1星光寶盒</div>
                 <div class="record-award" v-if="record.coin_amount">+{{ record.coin_amount }}金幣</div>
                 <div class="record-award" v-if="record.diamond_amount">+{{ record.diamond_amount }}鑽石</div>
-                <div class="record-award" v-if="record.prize_amount">+{{ record.prize_amount + record.prize_name }}禮物</div>
+                <div class="record-award" v-if="record.prize_amount">+{{ record.prize_amount + record.prize_name }}禮物
+                </div>
               </div>
               <div class="record-date">{{ record.date_created | date("yyyy-mm-dd HH:MM") }}</div>
             </li>
@@ -160,11 +161,11 @@
         const vm = this;
         if (vm.star_box_num) return;
         vm.star_box_num = i;
-        console.log(vm.star_box_num);
         vm.api('StarBoxRecord').save({
-          action: 'receiver_open_star_box',
+          action: 'open_star_box',
         }, {
           live: vm.$route.params.id,
+          identity: 'receiver',
         }).then((resp) => {
           setTimeout(() => {
             vm.star_box_num = null;

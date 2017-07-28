@@ -27,4 +27,18 @@
 <style rel="stylesheet/less" type="text/less" lang="less" scoped>
   @import (once) '../../vue2-front/assets/css/less-template/template-defines';
   @import (once) '../../assets/css/defines';
+  .page-message-list {
+    background: #E5E5EC;
+    .message-list {
+      padding: 30*@px;
+      .message-item {
+        .date {
+          padding-top: 30*@px;
+          font-size: 24*@px;
+          text-align: center;
+          color: #8A8A8A;
+        }
+      }
+    }
+  }
 </style>

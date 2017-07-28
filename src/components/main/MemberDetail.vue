@@ -10,7 +10,6 @@
         <a v-else href="javascript:;" class="btn btn-back" @click="goBack()"></a>
 
 
-
         <router-link :to="{name:'main_member_friends'}" class="btn btn-friend"></router-link>
       </div>
 
@@ -357,7 +356,7 @@
 
   .page-member-detail {
     .member-detail-block {
-      background: @bg-header;
+      background: svg-gradient(to right, #A201FD, #3802EF);
       padding: 62*@px 30*@px 45*@px 30*@px;
       &.not-status-bar {
         padding: 26*@px 30*@px 45*@px 30*@px;
@@ -388,9 +387,9 @@
         }
       }
       .member-detail {
-        padding: 0 0 5*@px 196*@px;
+        padding: 0 0 20*@px 196*@px;
         position: relative;
-        border-bottom: 1px solid #2F017A;
+        border-bottom: 1px solid #2B0179;
         .avatar {
           background: 50% 50% no-repeat #ccc;
           background-size: cover;
@@ -434,11 +433,12 @@
               background-size: 100%;
               width: 88*@px;
               text-align: center;
+              font-weight: bold;
             }
             .code-btn {
               position: absolute;
               right: 0;
-              top: 0;
+              top: -8*@px;
               width: 44*@px;
               height: 44*@px;
               background: url("../../assets/image/F/f_icon_scan@3x.png") 50% 50% no-repeat;
@@ -447,14 +447,15 @@
           }
           .id {
             color: #C2A4FB;
-            font-size: 26*@px;
-            margin-bottom: 5*@px;
+            font-size: 20*@px;
+            height: 46*@px;
+            line-height: 46*@px;
           }
           .member-sex {
-            margin-bottom: 25*@px;
-            height: 26*@px;
-            line-height: 26*@px;
-            font-size: 26*@px;
+            margin-bottom: 20*@px;
+            height: 24*@px;
+            line-height: 24*@px;
+            font-size: 22*@px;
             padding-left: 35*@px;
             background: url("../../assets/image/B3/icon_male@3x.png") 0 50% no-repeat;
             background-size: 26*@px;
@@ -478,6 +479,7 @@
               }
               .num {
                 font-size: 28*@px;
+                font-weight: bold;
                 color: #1EE2FF;
               }
             }
@@ -488,10 +490,10 @@
         color: #fff;
         font-size: 25*@px;
         line-height: 34*@px;
-        padding-top: 20*@px;
+        padding-top: 15*@px;
         text-align: center;
         margin-bottom: 35*@px;
-        min-height: 68*@px;
+        min-height: 80*@px;
         p {
           margin: 0;
         }
@@ -640,15 +642,15 @@
       right: 0;
       bottom: 0;
       padding-bottom: @height-footer;
-      top: 825*@px;
+      top: 850*@px;
       background: #E3E3EA;
       .app-scroll();
       transition: all .5s cubic-bezier(.55, 0, .1, 1);
       &.not-owned-list {
-        top: 1170*@px;
+        top: 1195*@px;
       }
       &.not-live-list {
-        top: 520*@px;
+        top: 545*@px;
       }
       &.dynamic-list {
         background: #E5E5EC;

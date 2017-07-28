@@ -1,5 +1,18 @@
 <template>
-  <div>此页面尚未实现</div>
+  <div class="page-message-list">
+    <header-common title="系統訊息"></header-common>
+    <div class="message-list">
+      <ul>
+        <li class="message-item">
+          <div class="date">04/06 10:59</div>
+          <div class="message-detail">
+            <div class="avatar"></div>
+            <div class=""></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <script type="text/babel" lang="babel">

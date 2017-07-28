@@ -47,51 +47,51 @@
               <div class="swiper-pagination" slot="pagination"></div>
             </swiper>
           </template>
-          <template v-if="bottomTab == 1">
-            <swiper :options="swiperOption">
-              <swiper-slide>
-                <div class="slide-item">
-                  <ul class="gift-box">
-                    <li class="gift-item" v-for="i in 9">
-                      <div class="gift-image"></div>
-                      <div class="deadline">15天</div>
-                    </li>
-                    <div class="btn-delete"></div>
-                  </ul>
-                </div>
-              </swiper-slide>
-              <div class="swiper-pagination" slot="pagination"></div>
-            </swiper>
-          </template>
-          <template v-if="bottomTab == 2">
-            <swiper :options="swiperOption">
-              <swiper-slide>
-                <div class="slide-item">
-                  <ul class="gift-box">
-                    <li class="gift-item" v-for="i in 9">
-                      <div class="gift-image"></div>
-                      <div class="deadline">15天</div>
-                    </li>
-                    <div class="btn-delete"></div>
-                  </ul>
-                </div>
-              </swiper-slide>
-              <div class="swiper-pagination" slot="pagination"></div>
-            </swiper>
-          </template>
+          <!--<template v-if="bottomTab == 1">-->
+            <!--<swiper :options="swiperOption">-->
+              <!--<swiper-slide>-->
+                <!--<div class="slide-item">-->
+                  <!--<ul class="gift-box">-->
+                    <!--<li class="gift-item" v-for="i in 9">-->
+                      <!--<div class="gift-image"></div>-->
+                      <!--<div class="deadline">15天</div>-->
+                    <!--</li>-->
+                    <!--<div class="btn-delete"></div>-->
+                  <!--</ul>-->
+                <!--</div>-->
+              <!--</swiper-slide>-->
+              <!--<div class="swiper-pagination" slot="pagination"></div>-->
+            <!--</swiper>-->
+          <!--</template>-->
+          <!--<template v-if="bottomTab == 2">-->
+            <!--<swiper :options="swiperOption">-->
+              <!--<swiper-slide>-->
+                <!--<div class="slide-item">-->
+                  <!--<ul class="gift-box">-->
+                    <!--<li class="gift-item" v-for="i in 9">-->
+                      <!--<div class="gift-image"></div>-->
+                      <!--<div class="deadline">15天</div>-->
+                    <!--</li>-->
+                    <!--<div class="btn-delete"></div>-->
+                  <!--</ul>-->
+                <!--</div>-->
+              <!--</swiper-slide>-->
+              <!--<div class="swiper-pagination" slot="pagination"></div>-->
+            <!--</swiper>-->
+          <!--</template>-->
         </div>
         <ul class="bottom-tab">
           <li class="tab-item tab-item-emoji"
               :class="{active: bottomTab == 0}"
               v-html="emoji(emoji_item[0])" @click="moreTabTo(0)"></li>
-          <li class="tab-item"
-              :class="{active: bottomTab == 1}"
-              @click="moreTabTo(1)">禮物包
-          </li>
-          <li class="tab-item"
-              :class="{active: bottomTab == 2}"
-              @click="moreTabTo(2)">禮物包
-          </li>
+          <!--<li class="tab-item"-->
+              <!--:class="{active: bottomTab == 1}"-->
+              <!--@click="moreTabTo(1)">禮物包-->
+          <!--</li>-->
+          <!--<li class="tab-item"-->
+              <!--:class="{active: bottomTab == 2}"-->
+              <!--@click="moreTabTo(2)">禮物包-->
+          <!--</li>-->
         </ul>
       </div>
 
@@ -302,6 +302,7 @@
       .input-box-warpper {
         height: 100*@px;
         width: 100%;
+        position: relative;
         .toggle-btn {
           float: left;
           margin-left: 20*@px;
@@ -371,7 +372,8 @@
           line-height: 30*@px;
         }
         .btn-submit {
-          float: right;
+          /*float: right;*/
+          position: absolute;right: 0; top: 0;
           height: 100%;
           width: 120*@px;
           color: #FFFFFF;

@@ -6,7 +6,7 @@
         <router-link class="footer-btn-member" :to="{name: 'main_member_detail',params: {id: me.id}}"></router-link>
         <div class="footer-btn-popup" @click="toggleBtn"></div>
         <a class="footer-btn-search" @click="notify('開發中')"></a>
-        <a class="footer-btn-message" @click="notify('開發中')"></a>
+        <router-link :to="{name: 'main_message'}" class="footer-btn-message" ></router-link>
         <!--<router-link class="footer-btn-search" to="/search"></router-link>-->
         <!--<router-link class="footer-btn-message" to="/message"></router-link>-->
       </div>

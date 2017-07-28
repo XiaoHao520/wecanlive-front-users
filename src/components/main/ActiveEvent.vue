@@ -7,7 +7,7 @@
     </header-common>
 
 
-    <div class="photo-list">
+    <div class="photo-list" :class="{'not-status-bar': !overlapStatusBar}">
       <ul>
         <li v-for="(item,i) in items" @click="choiceImage(item)" class="photo-item"
             :class="{'photo-item-last': (i+1)%3==0}">
@@ -78,12 +78,15 @@
 
     .photo-list {
       position: absolute;
-      top: @height-header;
+      top: 126*@px;
       bottom: 85*@px;
       left: 0;
       right: 0;
       overflow-y: scroll;
       .app-scroll();
+      &.not-status-bar {
+        top: @height-header;
+      }
       ul {
         .clearfix();
       }

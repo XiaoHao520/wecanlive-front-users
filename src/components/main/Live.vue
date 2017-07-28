@@ -249,7 +249,7 @@
         <!--底部右邊按鈕-->
         <ul class="btn-lists" v-show="!show_input_box && !show_audio_box">
 
-          <li class="btn-item btn-item-left btn-item-text" @click="show_input_box=true"></li>
+          <li class="btn-item btn-item-left btn-item-text" @click="show_link_mic=true"></li>
 
           <template v-if="is_owner">
             <li class="btn-item btn-item-right btn-item-redbag" @click="redbag_display=true"></li>
@@ -290,6 +290,15 @@
                      class="btn-record"></v-touch>
             <a class="btn-cancel" @click="toggleAudioBox">取消</a>
           </div>
+        </div>
+
+
+        <div class="link-mc" v-if="show_link_mic">
+          <div class="link-status">與主播連麥
+            <div class="down-icon" @click="show_link_mic=false"></div>
+          </div>
+          <a class="link-btn link-start"></a>
+          <a class="link-btn link-cancel"></a>
         </div>
 
       </section>
@@ -379,6 +388,7 @@
         blinkStar_display: false,
         show_audio_box: false,
         show_input_box: false,
+        show_link_mic: false,
         starbox_display: false,
         giftbag_display: false,
         redbag_display: false,
@@ -580,7 +590,8 @@
       },
       toggleAudioBox() {
         const vm = this;
-        vm.show_audio_box = !vm.show_audio_box;
+//        vm.show_audio_box = !vm.show_audio_box;
+        vm.show_link_mic = true;
       },
       starbox(value) {
         this.starbox_display = value;
@@ -642,6 +653,7 @@
         // TODO: （动画效果有待优化）
         const heart = document.createElement('div');
         heart.className = 'moving-heart';
+        heart.style.left = `${Math.random() * 50}%`;
         vm.$refs.likeBox.appendChild(heart);
         setTimeout(() => {
           vm.$refs.likeBox.removeChild(heart);
@@ -742,7 +754,7 @@
         vm.reload();
         setTimeout(() => {
           vm.gift_barrages.splice(vm.gift_barrages.indexOf(msg), 1);
-        }, 4000);
+        }, 7000);
       },
       emojiText(val) {
         return twemoji.parse(val);
@@ -785,12 +797,12 @@
     @sz: 1.65rem;
     position: absolute;
     top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    /*left: 50%;*/
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    -o-transform: translate(0, -50%);
+    transform: translate(0, -50%);
     width: @sz;
     height: @sz;
     /*background: rgba(0, 0, 0, 0.2);*/
@@ -804,6 +816,7 @@
         }
         100% {
           margin-top: -10rem;
+          left: 50%;
           opacity: 0;
         }
       }
@@ -1243,11 +1256,32 @@
         top: 240*@px;
         position: absolute;
         z-index: 9;
-        .animation(barrage_move, 4s, linear);
-        -webkit-animation-fill-mode: forwards;
-        -moz-animation-fill-mode: forwards;
-        -o-animation-fill-mode: forwards;
-        animation-fill-mode: forwards;
+        /*<!--& {-->*/
+        /*<!--.keyframes(barrage_opacity);-->*/
+        /*<!--.-frames(@-...) {-->*/
+        /*<!--0% {-->*/
+        /*<!--opacity: 100%;-->*/
+        /*<!--}-->*/
+        /*<!--99% {-->*/
+        /*<!--opacity: 100%;-->*/
+        /*<!--}-->*/
+        /*<!--100% {-->*/
+        /*<!--opacity: 0;-->*/
+        /*<!--}-->*/
+        /*<!--}-->*/
+        /*<!--}-->*/
+        /*<!--.animation(barrage_opacity, 10s, linear,@iteration-count:infinite);-->*/
+        /*-webkit-animation-fill-mode: forwards;*/
+        /*-moz-animation-fill-mode: forwards;*/
+        /*-o-animation-fill-mode: forwards;*/
+        /*animation-fill-mode: forwards;*/
+        left: 50%;
+        -webkit-transform: translate(-50%, 0);
+        -moz-transform: translate(-50%, 0);
+        -ms-transform: translate(-50%, 0);
+        -o-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+
         .gift-icon {
           margin: 0 auto;
           width: 465*@px;
@@ -1670,6 +1704,48 @@
           }
         }
       }
+      .link-mc {
+        height: 357*@px;
+        background: rgba(255, 255, 255, 0.8);
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        box-sizing: border-box;
+        padding-top: 35*@px;
+        .link-status {
+          font-size: 29*@px;
+          text-align: center;
+          position: relative;
+          margin-bottom: 62*@px;
+          .down-icon {
+            position: absolute;
+            right: 30*@px;
+            width: 44*@px;
+            top: 0;
+            height: 44*@px;
+            background: url("../../assets/image/D/d_2_11_icon_hide@3x.png") 50% 50% no-repeat;
+            background-size: 100%;
+          }
+        }
+        .link-btn {
+          width: 162*@px;
+          height: 162*@px;
+          margin: 0 auto;
+          display: block;
+          &.link-start {
+            background: url("../../assets/image/D/d2_11_btn_linkmic@3x.png") 50% 50% no-repeat;
+            background-size: 100%;
+          }
+          &.link-cancel {
+            display: none;
+            background: url("../../assets/image/D/d2_11_btn_stoplink@3x.png") 50% 50% no-repeat;
+            background-size: 100%;
+
+          }
+        }
+
+      }
     }
 
     .bottom-nav-open {
@@ -1803,6 +1879,20 @@
       -ms-transform: translate3d(300%, 0, 0);
       -o-transform: translate3d(300%, 0, 0);
       transform: translate3d(300%, 0, 0);
+    }
+    .popin-enter-active {
+      transition: all .7s cubic-bezier(.55, 0, .1, 1);
+    }
+    .popin-leave-active {
+      transition: all .7s cubic-bezier(.55, 0, .1, 1);
+    }
+    .popin-enter, .popin-leave-active {
+      -webkit-transform: translate(-50%, -50%) scale3d(0.5, 0.5, 1);
+      -moz-transform: translate(-50%, -50%) scale3d(0.5, 0.5, 1);
+      -ms-transform: translate(-50%, -50%) scale3d(0.5, 0.5, 1);
+      -o-transform: translate(-50%, -50%) scale3d(0.5, 0.5, 1);
+      transform: translate(-50%, -50%) scale3d(0.5, 0.5, 1);
+      opacity: 0;
     }
   }
 </style>

@@ -1,5 +1,8 @@
 <template>
-  <div>此页面尚未实现</div>
+  <div class="page-family-manage-members">
+    <header-common title="成員管理"></header-common>
+    <div class=""></div>
+  </div>
 </template>
 
 <script type="text/babel" lang="babel">

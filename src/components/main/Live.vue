@@ -182,6 +182,7 @@
       <blink-star :display="blinkStar_display"
                   v-if="author_member"
                   :item="author_member"
+                  :live="live"
                   @click="toggleBlinkStar"></blink-star>
 
       <div class="input-mask"

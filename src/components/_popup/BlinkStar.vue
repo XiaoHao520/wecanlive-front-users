@@ -29,17 +29,18 @@
             <div class="top-2">
               <div class="next-target" @click="togglePopup">下個目標</div>
               <div class="blink-star">
-                <div class="icon"></div>
-                閃亮新星
+                <div class="icon" :style="{backgroundImage: 'url(' + next_badge.icon_item.image + ')'}"></div>
+                {{ next_badge.name }}
               </div>
             </div>
 
             <div class="diamond-percent">
               <div class="icon"></div>
               <div class="percent-block">
-                <div class="percent"></div>
+                <div class="percent"
+                     :style="{width: (live.count_author_diamond *100 / next_badge.item_value) + '%'}"></div>
               </div>
-              <div class="num">232323 / 300000</div>
+              <div class="num">{{ live.count_author_diamond }} / {{ next_badge.item_value }}</div>
             </div>
           </div>
         </div>
@@ -58,10 +59,10 @@
 
 
         <ul class="badge-list" v-show="tab == 0">
-          <!--<li v-for="i in 10">-->
-          <!--<div class="thumbnail"></div>-->
-          <!--<div class="text">人氣勳章</div>-->
-          <!--</li>-->
+          <li v-for="badge in author_badge">
+            <div class="thumbnail" :style="{backgroundImage: 'url(' + badge.icon_url + ')'}"></div>
+            <div class="text">{{ badge.badge_name }}</div>
+          </li>
         </ul>
 
         <ul class="gift-list" v-show="tab == 1">
@@ -109,16 +110,34 @@
         tab: 1,
         popup_display: false,
         prize_items: [],
+        next_badge: [],
+        author_badge: [],
       };
     },
     methods: {
       reload() {
         const vm = this;
+        console.log(vm.item);
         vm.api('Member').get({
           action: 'get_live_prize',
           id: vm.item.user,
         }, {}).then((resp) => {
           vm.prize_items = resp.data;
+        });
+        vm.api('Badge').get({
+          next_diamond_badge: 'True',
+          live_author: vm.item.user,
+        }).then((resp) => {
+          if (resp.data.count > 0) {
+            vm.next_badge = resp.data.results[0];
+          }
+        });
+        vm.api('BadgeRecord').get({
+          live_author: vm.item.user,
+        }).then((resp) => {
+          if (resp.data.count > 0) {
+            vm.author_badge = resp.data.results;
+          }
         });
       },
       togglePopup() {
@@ -132,6 +151,7 @@
       display: Boolean,
       id: Number,
       item: Object,
+      live: Object,
     },
   };
 </script>
@@ -259,7 +279,8 @@
                 width: 52*@px;
                 background: url("../../assets/image/D/d6_1_icon_star@3x.png") 50% 50% no-repeat;
                 -webkit-background-size: 100%;
-                background-size: 100%;
+                background-size: cover;
+                border-radius: 50%;
               }
             }
           }
@@ -306,7 +327,7 @@
               margin-top: 3*@px;
               .percent {
                 height: 40*@px;
-                width: 70%;
+                max-width: 100%;
                 background: #00A7D0;
               }
             }

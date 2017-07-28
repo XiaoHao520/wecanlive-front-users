@@ -136,7 +136,7 @@
 
     <transition :name="transitionName">
       <section class="section-list dynamic-list"
-               :class="{'not-owned-list': me.id != $route.params.id ,
+               :class="{'not-owned-list': me.id != $route.params.id,
                         'not-live-list': me.id != $route.params.id && !user.is_living}"
                v-if="tab == 0">
         <div class="watch-style">
@@ -355,6 +355,9 @@
   @import (once) '../../assets/css/defines';
 
   .page-member-detail {
+    position: absolute;
+    .fill-absolute();
+    background: #E3E3EA;
     .member-detail-block {
       background: svg-gradient(to right, #A201FD, #3802EF);
       padding: 62*@px 30*@px 45*@px 30*@px;
@@ -591,6 +594,7 @@
       font-size: 24*@px;
       padding: 30*@px 75*@px 0 75*@px;
       position: relative;
+      background: white;
       .menu-item {
         float: left;
         margin-right: 150*@px;
@@ -637,10 +641,10 @@
     }
 
     .section-list {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      //position: absolute;
+      //left: 0;
+      //right: 0;
+      //bottom: 0;
       padding-bottom: @height-footer;
       top: 850*@px;
       background: #E3E3EA;

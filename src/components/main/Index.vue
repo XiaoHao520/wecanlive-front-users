@@ -34,7 +34,7 @@
     </section>
 
     <ul class="tab-index"
-        :class="{'tab-absolute': tab_absolute}">
+        :class="{'tab-absolute': tab_absolute, 'overlap-statusbar': overlapStatusBar}">
       <li class="tab-item"
           :class="{'tab-active': tab == 0}"
           @click="tabTo(0)">我關注的直播
@@ -136,7 +136,8 @@
       },
       handleScroll(evt) {
         const vm = this;
-        vm.tab_absolute = vm.$refs.user_recommend ? evt.target.scrollTop >= vm.$refs.user_recommend.offsetHeight : true;
+        vm.tab_absolute = vm.$refs.user_recommend ?
+          evt.target.scrollTop >= vm.$refs.user_recommend.offsetHeight : true;
       },
     },
   };
@@ -188,6 +189,7 @@
               position: absolute;
               left: 0;
               right: 0;
+              /*width: 100%;*/
               bottom: 0;
               height: 47*@px;
               line-height: 47*@px;
@@ -246,6 +248,10 @@
         left: 0;
         right: 0;
         z-index: 1;
+        margin-top: -@height-statusbar;
+        &.overlap-statusbar {
+          margin-top: 0;
+        }
       }
       .tab-item {
         float: left;

@@ -1,0 +1,7 @@
+{
+  "name": "wecanlive",
+  "ios_identifier": "1234567890",
+  "android_identifier": "com.twwecan.live",
+  "update": "now",
+  "content_url": "http://wecanlive.vpsx.easecloud.cn:10080/"
+}

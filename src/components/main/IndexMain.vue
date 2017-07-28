@@ -5,10 +5,10 @@
             :class="{'not-status-bar': !overlapStatusBar}">
       <ul class="tab-list">
         <li class="tab-item active">
-          <router-link to="/">追蹤</router-link>
+          <router-link :to="{name:'main_index'}">追蹤</router-link>
         </li>
         <li class="tab-item">
-          <router-link to="/hot">熱門</router-link>
+          <router-link :to="{name:'main_hot'}">熱門</router-link>
         </li>
         <li class="tab-item">
           <a @click="notify('開發中')">節目</a>

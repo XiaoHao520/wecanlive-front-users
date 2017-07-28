@@ -54,6 +54,15 @@ const config = {
     const vm = this;
     if (vm.me && !reload) return Promise.resolve(vm.me);
     return vm.api('User').get({ action: 'current', }).then(resp => {
+      // 讀取配置參數
+      vm.api('Option').get({ page_size: 9999 }).then(resp2 => {
+        const options = {};
+        resp2.data.results.forEach(row => {
+          options[row.key] = row.value;
+        });
+        resp.data.options = options;
+      });
+      // 寫入
       vm.current_user = resp.data;
       // 登录腾讯云通讯
       window.webim.login(

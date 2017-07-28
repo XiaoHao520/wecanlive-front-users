@@ -5,7 +5,8 @@
     <div class="personal-profile">
 
       <div class="row">
-        <input class="row-input" type="text" v-model="nickname" placeholder="請輸入暱稱">
+        <input class="row-input" type="text"
+               v-model="nickname" placeholder="請輸入暱稱">
       </div>
 
       <div class="row">
@@ -128,13 +129,14 @@
 
   .page-personal-profile {
     background: #E5E5EC;
+    @line-height: 90*@px;
     .personal-profile {
       padding: 30*@px 30*@px 0 30*@px;
       .row {
         margin-bottom: 30*@px;
         background: #fff;
-        height: 90*@px;
-        border-radius: 40*@px;
+        height: @line-height;
+        border-radius: @line-height * 0.5;
         box-sizing: border-box;
         font-size: 30*@px;
         position: relative;
@@ -142,10 +144,10 @@
         &.last-row {
           margin-bottom: 185*@px;
         }
-
         .row-input {
           height: 100%;
           width: 100%;
+          font-size: inherit;
         }
         .row-select {
           height: 100%;
@@ -159,7 +161,7 @@
         }
         .row-select-text {
           height: 100%;
-          line-height: 90*@px;
+          line-height: @line-height;
         }
         .open-icon {
           position: absolute;
@@ -177,11 +179,11 @@
           display: block;
           background: #3ABBF0;
           color: #fff;
-          height: 90*@px;
+          height: @line-height;
           text-align: center;
-          line-height: 90*@px;
+          line-height: @line-height;
           font-size: 38*@px;
-          border-radius: 40*@px;
+          border-radius: @line-height * 0.5;
         }
       }
     }

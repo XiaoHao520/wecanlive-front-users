@@ -42,7 +42,7 @@
 
   .section-list {
     position: absolute;
-    top: @height-header + @height-status-bar;
+    top: @height-header + @height-statusbar;
     left: 0;
     right: 0;
     bottom: 0;

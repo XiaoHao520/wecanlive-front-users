@@ -109,6 +109,7 @@
 
     <div class="block-imagepicker block-invisible">
       <input type="file" accept="image/*"
+             style="width: 1px; height: 1px; position: absolute; z-index: -1; opacity: 0"
              @change="pickImageAction()"
              ref="imageUploader"/>
     </div>

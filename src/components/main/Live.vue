@@ -81,16 +81,16 @@
 
             <a class="btn-mission" @click="mission_display=true"></a>
             <!--家族头像-->
-            <div class="audience-avatar-warpper">
-              <a class="audience-avatar">
-                <div class="level">Lv 1</div>
-              </a>
-            </div>
+            <!--<div class="audience-avatar-warpper">-->
+              <!--<a class="audience-avatar">-->
+                <!--<div class="level">Lv 1</div>-->
+              <!--</a>-->
+            <!--</div>-->
             <!--家族头像 END-->
           </div>
 
           <!--活动按钮-->
-          <a class="btn-activity"></a>
+          <!--<a class="btn-activity"></a>-->
 
         </div>
       </transition>
@@ -181,9 +181,9 @@
 
       <blink-star :display="blinkStar_display"
                   v-if="author_member"
-                  :item="author_member"
                   :live="live"
-                  @click="toggleBlinkStar"></blink-star>
+                  @click="toggleBlinkStar"
+                  :member="author_member"></blink-star>
 
       <div class="input-mask"
            v-if="show_input_box"
@@ -254,7 +254,7 @@
           <template v-if="is_owner">
             <li class="btn-item btn-item-right btn-item-redbag" @click="redbag_display=true"></li>
             <li class="btn-item btn-item-right btn-item-tag">#</li>
-            <li class="btn-item btn-item-right btn-item-camera"></li>
+            <li class="btn-item btn-item-right btn-item-camera" @click="switchCamera()"></li>
             <li class="btn-item btn-item-right btn-item-video"></li>
           </template>
 
@@ -266,7 +266,7 @@
               <div class="like-num" v-if="live && live.like_count">{{live.like_count}}</div>
             </li>
             <li class="btn-item btn-item-right btn-item-gift" @click="showGiftBag()"></li>
-            <li class="btn-item btn-item-right btn-item-vidio"></li>
+            <li class="btn-item btn-item-right btn-item-video"></li>
             <li class="btn-item btn-item-right btn-item-audio" @click="toggleAudioBox"></li>
           </template>
 
@@ -338,7 +338,6 @@
                  v-if="author_member"
                  @click="toggleMemberCard"
                  @pick="choicePick"></member-card>
-
 
     <live-star-box :display="starbox_display"
                    :item="author_member"
@@ -756,6 +755,9 @@
           vm.gift_barrages.splice(vm.gift_barrages.indexOf(msg), 1);
         }, 7000);
       },
+      switchCamera() {
+        window.TencentMLVB.switchCamera();
+      },
       emojiText(val) {
         return twemoji.parse(val);
       },
@@ -848,13 +850,15 @@
     /*background: url("../../assets/image/example/avatar.png") 50% 50% no-repeat;*/
     -webkit-background-size: cover;
     background-size: cover;
-    padding: @height-status-bar 0 0;
     .border-box();
     &.not-status-bar {
-      /*padding-top: 0;*/
+      .swift-block {
+        padding-top: @height-statusbar;
+      }
     }
     .swift-block {
-      height: 100%-@height-status-bar;
+      padding-top: @height-statusbar*2;
+      .fill-absolute();
     }
     .input-mask {
       position: fixed;
@@ -982,6 +986,8 @@
         background: url("../../assets/image/A/pop_icon_close@3x.png") 50% 50% no-repeat;
         -webkit-background-size: 100%;
         background-size: 100%;
+        .circle();
+        .box-shadow(0 0 0.5rem rgba(0, 0, 0, 0.5));
       }
     }
     .top-left-block {
@@ -1470,7 +1476,7 @@
             -webkit-background-size: 100%;
             background-size: 100%;
           }
-          &.btn-item-vidio {
+          &.btn-item-video {
             background: url("../../assets/image/D/d1_icon_video@3x.png") 50% 50% no-repeat;
             -webkit-background-size: 100%;
             background-size: 100%;

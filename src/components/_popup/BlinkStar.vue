@@ -9,25 +9,27 @@
 
             <div class="top-1">
               <div class="avatar"
-                   :style="{backgroundImage: !!(item && item.avatar_url)
-                 && 'url('+item.avatar_url+')'}"></div>
+                   :style="{backgroundImage: !!(member && member.avatar_url)
+                 && 'url('+member.avatar_url+')'}"></div>
               <div class="left-area">
                 <div class="nickname">
-                  <span class="name">{{ item.nickname }}</span>
+                  <span class="name">{{ member.nickname }}</span>
                   <span class="gender"
-                        :class="{'gender-female':item.gender =='F',
-                                 'gender-male':item.gender =='M'}"></span>
-                  <span class="level">LV.{{ item.level }}</span>
-                  <span class="vip">{{ item.vip_level }}</span>
+                        :class="{'gender-female':member.gender =='F',
+                                 'gender-male':member.gender =='M'}"></span>
+                  <span class="level">LV.{{ member.level }}</span>
+                  <span class="vip">{{ member.vip_level }}</span>
                 </div>
-                <div class="time">{{ item.first_live_date | date('yyyy'+ ' 年' + 'm' + ' 月' + 'd' + ' 號' ) }}成爲 wecan
+                <div class="time">{{ member.first_live_date | date('yyyy'+ ' 年' + 'm' + ' 月' + 'd' + ' 號' ) }}成爲 wecan
                   主播
                 </div>
               </div>
             </div>
 
             <div class="top-2">
-              <div class="next-target" @click="togglePopup">下個目標</div>
+              <div class="next-target"
+                   @click="popup_display=!popup_display">下個目標
+              </div>
               <div class="blink-star">
                 <div class="icon" :style="{backgroundImage: 'url(' + next_badge.icon_item.image + ')'}"></div>
                 {{ next_badge.name }}
@@ -35,6 +37,7 @@
             </div>
 
             <div class="diamond-percent">
+              <!--TODO: 未綁定-->
               <div class="icon"></div>
               <div class="percent-block">
                 <div class="percent"
@@ -79,7 +82,7 @@
           <div class="pop-up-block" v-show="popup_display">
             <header class="pop-up-header">
               魔法師
-              <div class="warpper" @click="togglePopup">
+              <div class="warpper" @click="popup_display=!popup_display">
                 <a class="btn-close"></a>
               </div>
             </header>
@@ -96,7 +99,8 @@
           </div>
         </transition>
 
-        <div class="masked" @click="togglePopup" v-show="popup_display"></div>
+        <div class="masked" @click="popup_display=!popup_display"
+             v-show="popup_display"></div>
 
       </div>
     </transition>
@@ -120,20 +124,20 @@
         console.log(vm.item);
         vm.api('Member').get({
           action: 'get_live_prize',
-          id: vm.item.user,
+          id: vm.member.user,
         }, {}).then((resp) => {
           vm.prize_items = resp.data;
         });
         vm.api('Badge').get({
           next_diamond_badge: 'True',
-          live_author: vm.item.user,
+          live_author: vm.member.user,
         }).then((resp) => {
           if (resp.data.count > 0) {
             vm.next_badge = resp.data.results[0];
           }
         });
         vm.api('BadgeRecord').get({
-          live_author: vm.item.user,
+          live_author: vm.member.user,
         }).then((resp) => {
           if (resp.data.count > 0) {
             vm.author_badge = resp.data.results;
@@ -148,6 +152,7 @@
       },
     },
     props: {
+      member: Object,
       display: Boolean,
       id: Number,
       item: Object,
@@ -434,13 +439,13 @@
             position: absolute;
             right: 0;
             top: 0;
-            width: 20*@px;
-            height: 20*@px;
-            line-height: 20*@px;
+            width: 30*@px;
+            height: 30*@px;
+            line-height: 30*@px;
             text-align: center;
             color: #FFFFFF;
-            font-size: 14*@px;
-            .rounded-corners(50%);
+            font-size: 28*@px;
+            .circle();
             border: 1px solid #FFFFFF;
           }
         }
